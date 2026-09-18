@@ -8,27 +8,69 @@
     <title>CSUN Student Portal</title>
 
     <!-- Shared stylesheet -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/main.css">
 </head>
 
 <body>
 
-    <header>
+    <header class="site-header">
+        <div class="container header-inner">
+
+<!--   .container keeps content centered and limits its width.
+        .header-inner controls the layout of the header content.    -->
+
         <h1>CSUN Student Portal</h1>
 
-        <nav>
-            <a href="index.html">Home</a>
+        <nav class="main-nav">
+            <div class="container nav-inner">
+
+<!-- .nav-inner organizes the navigation links into the navigation bar.    -->
+
+            <a class="active" href="index.html">Home</a>
+
+<!-- The "active" class is used to highlight the current page in the navigation bar.   -->
+
             <a href="pages/program-mapper.html">Program Mapper</a>
             <a href="pages/registration.html">Registration</a>
             <a href="pages/resources.html">Campus Resources</a>
             <a href="pages/cybersecurity.html">Cybersecurity</a>
+            </div>
         </nav>
     </header>
 
 
     <main>
+<!--
+    MAIN CONTENT
+    <main> identifies the primary content of this page.
+-->
+        <section class="hero">
+            <div class="container hero-inner">
+                <div class="hero-content">
 
-        <section>
+<!-- HERO SECTION
+        Introduces the main purpose of the website to the user.
+
+        <section>:
+        Groups the introductory heading and description into one
+        meaningful section of the page.
+
+        .hero:
+        Provides the main styling for the introductory/hero area.
+
+        .container:
+        Keeps the content centered and prevents it from becoming
+        too wide on larger screens.
+
+        .hero-inner:
+        Controls the layout and spacing of the content within
+        the hero section.
+
+        .hero-content:
+        Groups the heading and paragraph together so their
+        appearance and positioning can be controlled as one unit.
+-->
+
             <h2>A Better Way to Navigate CSUN</h2>
 
             <p>
@@ -36,69 +78,85 @@
                 focused on making university resources, academic planning,
                 registration, and student services easier to access.
             </p>
+                </div>
+            </div>
         </section>
 
 
-        <section>
-            <h2>Program Mapper</h2>
+        <section class="section">
+            <div class="container">
+                <div class="card-grid">
+                    
+            <article class="card">
+                <h2>Program Mapper</h2>
 
-            <p>
-                Build a personalized academic roadmap based on your major,
-                minor, or double major and choose how quickly you would like
-                to complete your degree.
-            </p>
+                <p>
+                    Build a personalized academic roadmap based on your major,
+                    minor, or double major and choose how quickly you would like
+                    to complete your degree.
+                </p>
 
-            <a href="pages/program-mapper.html">
-                Explore Program Mapper
-            </a>
-        </section>
-
-
-        <section>
-            <h2>Registration Help</h2>
-
-            <p>
-                Find information that can help you understand course
-                registration, prerequisites, and degree requirements.
-            </p>
-
-            <a href="pages/registration.html">
-                Registration Help
-            </a>
-        </section>
+                <a class="text-link" href="pages/program-mapper.html">
+                    Explore Program Mapper
+                </a>
+            </article>
 
 
-        <section>
-            <h2>Campus Resource Finder</h2>
+            <article class="card">
+                <h2>Registration Help</h2>
 
-            <p>
-                Find CSUN services such as tutoring, the gym, food assistance,
-                academic support, and other campus resources.
-            </p>
+                <p>
+                    Find information that can help you understand course
+                    registration, prerequisites, and degree requirements.
+                </p>
 
-            <a href="pages/resources.html">
-                Find Resources
-            </a>
-        </section>
-
-
-        <section>
-            <h2>Cybersecurity Center</h2>
-
-            <p>
-                Learn how to protect your personal information through
-                cybersecurity resources, phishing examples, scam awareness,
-                and online safety information.
-            </p>
-
-            <a href="pages/cybersecurity.html">
-                Cybersecurity Resources
-            </a>
-        </section>
+                <a class="text-link" href="pages/registration.html">
+                    Registration Help
+                </a>
+            </article>
 
 
-        <section>
-            <h2>Student Tools</h2>
+            <article class="card">
+                <h2>Campus Resource Finder</h2>
+
+                <p>
+                    Find CSUN services such as tutoring, the gym, food assistance,
+                    academic support, and other campus resources.
+                </p>
+
+                <a class="text-link" href="pages/resources.html">
+                    Find Resources
+                </a>
+            </article>
+
+
+            <article class="card">
+                <h2>Cybersecurity Center</h2>
+
+                <p>
+                    Learn how to protect your personal information through
+                    cybersecurity resources, phishing examples, scam awareness,
+                    and online safety information.
+                </p>
+
+                <a class="text-link" href="pages/cybersecurity.html">
+                    Cybersecurity Resources
+                </a>
+            </article>
+
+        </div>
+
+    </div>
+</section>
+
+
+        <section class="section">
+
+            <div class="container">
+
+            <h2 class="section-title">Student Tools</h2>
+
+                <div class="card-grid">
 
             <ul>
                 <li>
@@ -124,7 +182,7 @@
     </main>
 
 
-    <footer>
+    <footer class="site-footer">
         <p>CSUN Student Portal Project</p>
         <p>This is a student project and is not an official CSUN website.</p>
     </footer>

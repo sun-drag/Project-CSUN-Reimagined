@@ -1,0 +1,222 @@
+/* This file contains the basic formatting styles for the website. */
+
+/* ===========
+   FORMATTING
+============== */
+/* This section will move things away from the edges of the page, making everything look like it's centered */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f5f5;
+    color: #1c1c1c;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+}
+
+.container {
+    width: 1180px;
+    max-width: calc(100% - 40px);
+    margin: 0 auto;
+}
+
+
+/* 
+Navigation bar
+This should be used at the top of each page, so that the navigation bar is consistent across the site.
+*/
+
+.main-nav {
+background: #111;
+}
+
+.nav-inner{
+    display: flex;
+}
+
+.main-nav a {
+    color:white;
+    padding:18px 22px;
+    display: block;
+    border-bottom: 4px solid transparent;
+}
+
+/* Keeps the text blocks centered */
+.container {
+    width: 1180px;
+    max-width: calc(100% - 40px);
+    margin: 0 auto;
+}
+
+/* Hover and active states for navigation links
+Active should be applied to the link that corresponds to the current page.
+If the user is on the registration page, the link to that page should have the "active" class applied to it. 
+Example: <a href="registration.html" class="active">Home</a>
+*/
+
+.main-nav a:hover, .main-nav a.active{
+    background: #222;
+    border-bottom: 4px solid #d71920;
+}
+
+/* General Page Header Styles
+This should be used at the top of each page, so that the header is consistent across the site.
+*/
+
+.utility-header {
+    background: white;
+    border-bottom: 1px solid #d6d6d6;
+}
+
+.utility-inner {
+    min-height: 82px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.brand-mark {
+    font-size: 38px;
+    font-weight: bold;
+    color: #d71920;
+}
+
+.brand-divider {
+    width: 1px;
+    height: 45px;
+    background: #bbb;
+}
+
+.brand-title {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.brand-subtitle {
+    margin-top: 4px;
+    font-size: 12px;
+    color: #666;
+}
+
+/*
+Sections will contain a grid like format
+*/
+
+.section {
+    padding: 38px 0;
+}
+
+.section-title {
+    font-size: 28px;
+    margin: 0 0 24px;
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+}
+
+.card {
+    background: white;
+    border: 1px solid #ccc;
+    padding: 24px;
+    min-height: 240px;
+}
+
+.card-icon {
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    background: #eee;
+    color: #d71920;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    margin-bottom: 18px;
+}
+
+.card h2,
+.card h3 {
+    margin-top: 0;
+}
+
+.card p {
+    line-height: 1.5;
+    color: #555;
+}
+
+.text-link {
+    color: #d71920;
+    font-weight: bold;
+}
+
+/*
+   TWO COLUMN SECTIONS
+*/
+
+.two-column {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+}
+
+.panel {
+    background: white;
+    border: 1px solid #ccc;
+    padding: 24px;
+}
+
+.panel h2 {
+    margin-top: 0;
+}
+
+/*
+    Footer
+    This creates a solid black bar at the bottom of the page, with a few links and some text if we want to add it.
+    We can add more links to the footer if we want, but it should be kept simple.
+*/
+.site-footer {
+    margin-top: 40px;
+    background: #111;
+    color: white;
+    padding: 35px 0 20px;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 30px;
+}
+
+.footer-links a {
+    display: block;
+    margin-bottom: 8px;
+    color: #ddd;
+}
+
+.footer-bottom {
+    border-top: 1px solid #555;
+    margin-top: 25px;
+    padding-top: 18px;
+    color: #aaa;
+    font-size: 13px;
+}
