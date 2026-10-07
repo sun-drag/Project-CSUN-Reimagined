@@ -1,1 +1,238 @@
-/* Registration Help page-specific styles will go here. */
+/* Registration Help page-specific styles.
+   Shared styles (nav, cards, panels, footer) come from main.css. */
+
+.registration-content p {
+    line-height: 1.5;
+}
+
+/* Spacing between sections is tighter on this page because it has many sections */
+.registration-content .section {
+    padding: 24px 0;
+}
+
+/* Jump links under the intro */
+.jump-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 16px;
+}
+
+.jump-links a {
+    background: white;
+    border: 1px solid #ccc;
+    padding: 8px 14px;
+    font-size: 14px;
+}
+
+.jump-links a:hover {
+    border-color: #d71920;
+    color: #d71920;
+}
+
+/* KEY DATES */
+.date-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 14px;
+}
+
+.date-card {
+    background: white;
+    border: 1px solid #ccc;
+    border-top: 4px solid #d71920;
+    padding: 18px;
+}
+
+.date-card .date {
+    margin: 0 0 6px;
+    font-weight: bold;
+    color: #d71920;
+}
+
+.date-card h3 {
+    margin: 0 0 8px;
+    font-size: 17px;
+}
+
+.date-card p {
+    margin: 0;
+    color: #555;
+    font-size: 14px;
+}
+
+.note {
+    margin-top: 16px;
+    font-size: 14px;
+    color: #555;
+}
+
+/* CHECKLIST */
+.progress-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.progress-row p {
+    margin: 0;
+    font-weight: bold;
+}
+
+.reset-button {
+    background: white;
+    border: 1px solid #ccc;
+    padding: 6px 14px;
+    cursor: pointer;
+    font: inherit;
+}
+
+.reset-button:hover {
+    border-color: #d71920;
+    color: #d71920;
+}
+
+.progress-bar {
+    height: 10px;
+    background: #eee;
+    margin: 12px 0 20px;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 0;
+    background: #d71920;
+    transition: width 0.3s;
+}
+
+.checklist {
+    margin: 0;
+    padding-left: 22px;
+}
+
+.checklist li {
+    padding: 14px 0;
+    border-bottom: 1px solid #e3e3e3;
+}
+
+.checklist li:last-child {
+    border-bottom: none;
+}
+
+.checklist label {
+    cursor: pointer;
+}
+
+.checklist input {
+    width: 18px;
+    height: 18px;
+    accent-color: #d71920;
+    vertical-align: middle;
+    margin-right: 6px;
+}
+
+.checklist p {
+    margin: 6px 0;
+    color: #555;
+}
+
+/* Finished steps get faded and crossed out */
+.checklist li.done strong {
+    text-decoration: line-through;
+    color: #888;
+}
+
+.checklist li.done p {
+    color: #999;
+}
+
+/* COMMON QUESTIONS */
+.faq {
+    background: white;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+}
+
+.faq summary {
+    padding: 16px 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.faq summary:hover,
+.faq[open] summary {
+    color: #d71920;
+}
+
+.faq p {
+    margin: 0;
+    padding: 0 20px 18px;
+    color: #555;
+}
+
+/* TERMS */
+.terms-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+}
+
+.term {
+    background: white;
+    border: 1px solid #ccc;
+    border-left: 4px solid #d71920;
+    padding: 16px 18px;
+}
+
+.term h3 {
+    margin: 0 0 6px;
+    font-size: 17px;
+}
+
+.term p {
+    margin: 0;
+    color: #555;
+    font-size: 14px;
+}
+
+/* OFFICIAL LINKS: shorter cards than the homepage */
+.registration-content .card {
+    min-height: 0;
+}
+
+/* CONTACT */
+.contact-panel {
+    border-left: 4px solid #d71920;
+}
+
+/* Keyboard focus outline so the page works without a mouse */
+.registration-content a:focus-visible,
+.registration-content summary:focus-visible,
+.registration-content button:focus-visible,
+.registration-content input:focus-visible {
+    outline: 3px solid #d71920;
+    outline-offset: 2px;
+}
+
+/* RESPONSIVE: tablets and phones */
+@media (max-width: 1000px) {
+    .date-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .terms-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .registration-content .card-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .date-grid,
+    .terms-grid,
+    .registration-content .card-grid {
+        grid-template-columns: 1fr;
+    }
+}
