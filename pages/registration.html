@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CSUN registration help: key dates, a step by step checklist, common questions, registration terms, and official links.">
+  <title>Registration Help | CSUN Student Portal</title>
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/pages/registration.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>CSUN Student Portal</h1>
+      <nav class="main-nav" aria-label="Main navigation">
+        <div class="nav-inner">
+          <a href="../index.html">Home</a>
+          <a href="program-mapper.html">Program Mapper</a>
+          <a href="registration.html" class="active" aria-current="page">Registration</a>
+          <a href="resources.html">Campus Resources</a>
+          <a href="cybersecurity.html">Cybersecurity</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="registration-content">
+
+    <!-- INTRO
+         Explains what this page is for and gives quick jump links to each section. -->
+    <section class="section" aria-labelledby="registration-heading">
+      <div class="container">
+        <h2 id="registration-heading" class="section-title">Registration Help</h2>
+        <p>Registering for classes at CSUN can feel confusing the first time. This page puts the dates, steps, and links you need in one place so you can go into your registration appointment ready.</p>
+        <nav class="jump-links" aria-label="On this page">
+          <a href="#dates-heading">Key Dates</a>
+          <a href="#checklist-heading">Checklist</a>
+          <a href="#faq-heading">Common Questions</a>
+          <a href="#terms-heading">Terms</a>
+          <a href="#links-heading">Official Links</a>
+        </nav>
+      </div>
+    </section>
+
+    <!-- KEY DATES
+         Spring 2027 dates from the official CSUN Registration Calendar.
+         Update these each semester. -->
+    <section class="section" aria-labelledby="dates-heading">
+      <div class="container">
+        <h2 id="dates-heading" class="section-title">Spring 2027 Key Dates</h2>
+        <div class="date-grid">
+          <article class="date-card">
+            <p class="date">Nov 2, 2026</p>
+            <h3>Advising and registration open</h3>
+            <p>Registration by appointment begins. Check your appointment time in the CSUN Portal.</p>
+          </article>
+          <article class="date-card">
+            <p class="date">Dec 12, 2026</p>
+            <h3>Open registration</h3>
+            <p>Any eligible student can register, no appointment needed, through Jan 19.</p>
+          </article>
+          <article class="date-card">
+            <p class="date">Jan 13, 2027</p>
+            <h3>Payment due</h3>
+            <p>Pay tuition and fees on time or you could be dropped from your classes.</p>
+          </article>
+          <article class="date-card">
+            <p class="date">Jan 20, 2027</p>
+            <h3>Classes begin</h3>
+            <p>Week 1 (Jan 20 to 26) you can still add, drop, or swap online.</p>
+          </article>
+          <article class="date-card">
+            <p class="date">Feb 15, 2027</p>
+            <h3>Last day to drop</h3>
+            <p>Last day for undergraduates to drop without a W on their record.</p>
+          </article>
+        </div>
+        <p class="note">Dates come from the official <a class="text-link" href="https://www.csun.edu/current-students/registration-calendar" target="_blank" rel="noopener">CSUN Registration Calendar</a>. Always double check there before making decisions.</p>
+      </div>
+    </section>
+
+    <!-- CHECKLIST
+         Students can check off each step. Progress is saved in their browser
+         by js/pages/registration.js so it stays when they come back. -->
+    <section class="section" aria-labelledby="checklist-heading">
+      <div class="container">
+        <h2 id="checklist-heading" class="section-title">Registration Checklist</h2>
+        <div class="panel checklist-panel">
+          <div class="progress-row">
+            <p id="progress-text" aria-live="polite">0 of 8 steps done</p>
+            <button type="button" id="reset-checklist" class="reset-button">Reset</button>
+          </div>
+          <div class="progress-bar" aria-hidden="true"><div id="progress-fill" class="progress-fill"></div></div>
+
+          <ol class="checklist">
+            <li>
+              <label><input type="checkbox" data-step="1"> <strong>Check your registration appointment</strong></label>
+              <p>Log in to the CSUN Portal and find your enrollment appointment in your checklist. You cannot register before this time.</p>
+              <a class="text-link" href="https://www.csun.edu/current-students/register/when-register" target="_blank" rel="noopener">When to register</a>
+            </li>
+            <li>
+              <label><input type="checkbox" data-step="2"> <strong>Clear any holds</strong></label>
+              <p>Holds block you from registering. Look for them in the portal and take care of them before your appointment.</p>
+              <a class="text-link" href="https://www.csun.edu/current-students/view-holds" target="_blank" rel="noopener">How to view holds</a>
+            </li>
+            <li>
+              <label><input type="checkbox" data-step="3"> <strong>Review your degree progress</strong></label>
+              <p>Use the degree planning tools and your roadmap to see which classes you still need.</p>
+              <a class="text-link" href="https://www.csun.edu/current-students/plan-your-degree" target="_blank" rel="noopener">Degree planning tools</a>
+            </li>
+            <li>
+              <label><input type="checkbox" data-step="4"> <strong>Meet with your academic advisor</strong></label>
+              <p>An advisor can confirm your class choices and help you stay on track to graduate.</p>
+              <a class="text-link" href="https://catalog.csun.edu/undergraduate-services/academic-advisement/" target="_blank" rel="noopener">Academic advisement</a>
+            </li>
+            <li>
+              <label><input type="checkbox" data-step="5"> <strong>Search for classes and build a plan</strong></label>
+              <p>Find the sections you want and add them to your Planner before your appointment so you are ready to go.</p>
+              <a class="text-link" href="https://www.csun.edu/class-search" target="_blank" rel="noopener">Class Search</a>
+            </li>
+            <li>
+              <label><input type="checkbox" data-step="6"> <strong>Get permission numbers if needed</strong></label>
+              <p>Some classes are restricted by major or class standing. Ask the department for a permission number.</p>
+              <a class="text-link" href="https://www.csun.edu/current-students/register/faqs" target="_blank" rel="noopener">Registration FAQs</a>
+            </li>
+            <li>
+              <label><input type="checkbox" data-step="7"> <strong>Enroll in your classes</strong></label>
+              <p>When your appointment opens, go to Enroll in Classes, add your classes to the shopping cart, and finish enrolling. Wait list any full classes.</p>
+              <a class="text-link" href="https://www.csun.edu/current-students/add-classes" target="_blank" rel="noopener">How to add classes</a>
+            </li>
+            <li>
+              <label><input type="checkbox" data-step="8"> <strong>Pay your tuition and fees</strong></label>
+              <p>Pay by the deadline so you keep your seats.</p>
+              <a class="text-link" href="https://www.csun.edu/stufin/tuition/ucs-how-pay-your-fees" target="_blank" rel="noopener">How to pay fees</a>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMMON QUESTIONS
+         Uses <details> and <summary> so each answer opens and closes without extra JavaScript. -->
+    <section class="section" aria-labelledby="faq-heading">
+      <div class="container">
+        <h2 id="faq-heading" class="section-title">Common Questions</h2>
+        <div class="faq-list">
+          <details class="faq">
+            <summary>When can I register?</summary>
+            <p>Each student gets a registration appointment, which is the earliest time you can enroll. You can find it in your CSUN Portal checklist. After the appointment period ends, open registration lets any eligible student register.</p>
+          </details>
+          <details class="faq">
+            <summary>What happens if a class is full?</summary>
+            <p>You can join the wait list by checking the "Wait list if class is full" box when you enroll. If a seat opens and you meet all the requirements, you are added to the class automatically. You can wait list up to 13 units per term.</p>
+          </details>
+          <details class="faq">
+            <summary>Why can't I register?</summary>
+            <p>The most common reasons are a hold on your account, your appointment time has not started yet, or the class needs a permission number. Check your holds first.</p>
+          </details>
+          <details class="faq">
+            <summary>What is a permission number and how do I get one?</summary>
+            <p>A permission number lets you into a restricted class, for example one limited to a certain major. You get it from the department or instructor, then enter it when you enroll.</p>
+          </details>
+          <details class="faq">
+            <summary>Can I change my schedule after classes start?</summary>
+            <p>Yes. During the first week you can add, drop, or swap online. After that, adding usually needs instructor permission and drops have deadlines. See Late Schedule Changes in the official links below.</p>
+          </details>
+          <details class="faq">
+            <summary>What if I got enrolled off the wait list?</summary>
+            <p>Check your account balance right away. New fees may be due and missing the payment could drop you from your classes.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- TERMS
+         Short definitions of words students see during registration. -->
+    <section class="section" aria-labelledby="terms-heading">
+      <div class="container">
+        <h2 id="terms-heading" class="section-title">Registration Terms</h2>
+        <div class="terms-grid">
+          <div class="term"><h3>Registration Appointment</h3><p>Your assigned date and time when you can start enrolling.</p></div>
+          <div class="term"><h3>Hold</h3><p>A block on your account that stops you from registering until you clear it.</p></div>
+          <div class="term"><h3>Shopping Cart</h3><p>Where you place classes before you officially enroll in them.</p></div>
+          <div class="term"><h3>Planner</h3><p>A tool to save the classes you plan to take in future semesters.</p></div>
+          <div class="term"><h3>Wait List</h3><p>A line for a full class. You are added automatically if a seat opens.</p></div>
+          <div class="term"><h3>Permission Number</h3><p>A code that lets you into a restricted class.</p></div>
+          <div class="term"><h3>Swap</h3><p>Trade one class for another in one step without losing your first seat.</p></div>
+          <div class="term"><h3>Prerequisite</h3><p>A class you must pass before you can take another class.</p></div>
+          <div class="term"><h3>Corequisite</h3><p>A class you must take at the same time as another class.</p></div>
+          <div class="term"><h3>Census Date</h3><p>The day enrollment becomes official for the term, after which dropping is harder.</p></div>
+          <div class="term"><h3>Unit Load</h3><p>The total units you are enrolled in. During appointments the max is 18.</p></div>
+          <div class="term"><h3>Open Registration</h3><p>The period after appointments when any eligible student can register.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- OFFICIAL LINKS
+         Every link opens the official CSUN page in a new tab. -->
+    <section class="section" aria-labelledby="links-heading">
+      <div class="container">
+        <h2 id="links-heading" class="section-title">Official CSUN Links</h2>
+        <div class="card-grid">
+          <article class="card">
+            <h3>CSUN Portal</h3>
+            <p>Log in to see your appointment, holds, shopping cart, and schedule.</p>
+            <a class="text-link" href="https://portal.csun.edu/login" target="_blank" rel="noopener">Go to Portal</a>
+          </article>
+          <article class="card">
+            <h3>Class Search</h3>
+            <p>Browse class sections, times, and seats. No login needed.</p>
+            <a class="text-link" href="https://www.csun.edu/class-search" target="_blank" rel="noopener">Search Classes</a>
+          </article>
+          <article class="card">
+            <h3>Registration Calendar</h3>
+            <p>All registration, payment, and drop dates for every term.</p>
+            <a class="text-link" href="https://www.csun.edu/current-students/registration-calendar" target="_blank" rel="noopener">View Calendar</a>
+          </article>
+          <article class="card">
+            <h3>How to Register</h3>
+            <p>CSUN's full registration guide, tips, and policies.</p>
+            <a class="text-link" href="https://www.csun.edu/current-students/register" target="_blank" rel="noopener">Registration Guide</a>
+          </article>
+          <article class="card">
+            <h3>Wait List Guide</h3>
+            <p>How wait listing works and what to do when you get in.</p>
+            <a class="text-link" href="https://www.csun.edu/current-students/waitlist" target="_blank" rel="noopener">Wait List Info</a>
+          </article>
+          <article class="card">
+            <h3>Drop or Swap</h3>
+            <p>Steps to drop a class or swap it for another one.</p>
+            <a class="text-link" href="https://www.csun.edu/current-students/drop-or-swap-classes" target="_blank" rel="noopener">Drop or Swap</a>
+          </article>
+          <article class="card">
+            <h3>Late Schedule Changes</h3>
+            <p>Rules for adding or dropping after classes have started.</p>
+            <a class="text-link" href="https://www.csun.edu/current-students/register/late-register" target="_blank" rel="noopener">Late Changes</a>
+          </article>
+          <article class="card">
+            <h3>Financial Aid</h3>
+            <p>Make sure your aid is set before payment is due.</p>
+            <a class="text-link" href="https://www.csun.edu/financialaid" target="_blank" rel="noopener">Financial Aid</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section" aria-labelledby="contact-heading">
+      <div class="container">
+        <div class="panel contact-panel">
+          <h2 id="contact-heading">Still need help?</h2>
+          <p>Contact the CSUN Office of the Registrar at <a class="text-link" href="tel:+18186771200">(818) 677-1200</a> or visit their <a class="text-link" href="https://www.csun.edu/current-students/contact-office-registrar" target="_blank" rel="noopener">contact page</a>.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>CSUN Student Portal Project</p>
+      <p>This is a student project and is not an official CSUN website.</p>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/pages/registration.js"></script>
+</body>
+</html>
