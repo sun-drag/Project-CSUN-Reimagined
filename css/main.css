@@ -171,6 +171,7 @@ Controls the text itself.
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
+    a{color:#d71920;}
 }
 
 /* ===========
