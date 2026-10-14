@@ -1,5 +1,7 @@
 /* ========
    BASE
+
+   THIS IS THE CODE I WANT
 =========== */
 
 * {
@@ -141,22 +143,23 @@ Controls the text itself.
    Displays a campus photograph behind the introductory text.
 */
 .hero {
-    width: 100%;
-    min-height: 400px;
     background-image: url("../images/csuncampus.jpg");
+
     background-size: cover;
-    background-position: center;
+    background-position: 0px -150px;
     background-repeat: no-repeat;
+    min-height: 400px;
+    color: white;
 }
+
 /*
    The translucent black panel covers the complete hero image without
    changing the opacity of the text or button inside it.
 */
-
 .hero-inner {
     width: 100%;
     max-width: none;
-    margin: 0;
+    min-height: 400px;
 }
 
 .hero-content {

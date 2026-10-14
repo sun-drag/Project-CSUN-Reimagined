@@ -1,0 +1,533 @@
+/* ========
+   BASE
+=========== */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f5f5;
+    color: #1c1c1c;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+}
+
+.container {
+    width: 1180px;
+    max-width: calc(100% - 40px);
+    margin: 0 auto;
+}
+
+/* =========
+   HEADER
+============ */
+
+.utility-header {
+    background: white;
+    border-bottom: 1px solid #d6d6d6;
+}
+
+.utility-inner {
+    min-height: 82px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.brand-mark {
+    font-size: 38px;
+    font-weight: bold;
+    color: #d71920;
+}
+
+.brand-divider {
+    width: 1px;
+    height: 45px;
+    background: #bbb;
+}
+
+.brand-title {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.brand-subtitle {
+    margin-top: 4px;
+    font-size: 12px;
+    color: #666;
+}
+
+.header-search {
+    display: flex;
+    gap: 8px;
+}
+
+.header-search input {
+    width: 260px;
+    padding: 11px 12px;
+    border: 1px solid #aaa;
+}
+
+.header-search button {
+    border: 0;
+    background: #d71920;
+    color: white;
+    padding: 0 18px;
+    cursor: pointer;
+}
+
+/* ===================
+   NAVIGATION BAR
+====================== */
+
+.main-nav {
+    background: #111;
+    width: 100%;
+}
+
+.nav-inner {
+    display: flex;
+    width: 100%;
+    max-width: none;
+    justify-content: center;
+}
+
+.main-nav a {
+    color: white;
+    padding: 17px 22px;
+    display: block;
+    border-bottom: 4px solid transparent;
+}
+
+.main-nav a:hover,
+.main-nav a.active {
+    background: #222;
+    border-bottom-color: #d71920;
+}
+
+/* ==========
+   HERO
+============= */
+/*.hero
+Controls the whole section.
+
+.container
+Controls how wide the content can be.
+
+.hero-inner
+Controls how the content is arranged.
+
+.hero-content
+Controls the text itself.
+*/
+
+/* HERO SECTION
+   Displays a campus photograph behind the introductory text.
+*/
+.hero {
+    width: 100%;
+    min-height: 400px;
+    background-image: url("../images/csuncampus.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+/*
+   The translucent black panel covers the complete hero image without
+   changing the opacity of the text or button inside it.
+*/
+
+.hero-inner {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+}
+
+.hero-content {
+    width: 100%;
+    min-height: 400px;
+    padding: 60px max(40px, calc((100% - 1180px) / 2));
+    background: rgba(0, 0, 0, 0.55);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+/* ===========
+   BUTTONS
+============== */
+
+.btn {
+    display: inline-block;
+    padding: 12px 20px;
+    background: #d71920;
+    color: white;
+    font-weight: bold;
+    border: 2px solid #d71920;
+}
+
+.btn:hover {
+    background: #aa1118;
+    border-color: #aa1118;
+}
+
+.btn-secondary {
+    background: white;
+    color: #111;
+    border-color: #111;
+}
+
+/* ===================
+   SECTIONS
+====================== */
+
+.section {
+    padding: 38px 0;
+}
+
+.section-title {
+    font-size: 28px;
+    margin: 0 0 24px;
+}
+
+/*
+   Homepage section and heading styles.
+   These names match the classes used in index2(1).html.
+*/
+.page-section {
+    padding: 38px 0;
+}
+
+.section-heading {
+    margin-bottom: 24px;
+}
+
+.section-heading h2 {
+    font-size: 28px;
+    margin: 0 0 12px;
+}
+
+.section-heading p {
+    margin: 0;
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+}
+
+.card,
+.feature-card {
+    background: white;
+    border: 1px solid #ccc;
+    padding: 24px;
+    min-height: 240px;
+}
+
+.card-icon {
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    background: #eee;
+    color: #d71920;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    margin-bottom: 18px;
+}
+
+.card h2,
+.card h3,
+.feature-card h2,
+.feature-card h3 {
+    margin-top: 0;
+}
+
+.card p,
+.feature-card p {
+    line-height: 1.5;
+    color: #555;
+}
+
+.text-link {
+    color: #d71920;
+    font-weight: bold;
+}
+
+/* Creates matching boxes for the secondary homepage links. */
+.tool-links {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.tool-links a {
+    display: block;
+    background: white;
+    border: 1px solid #ccc;
+    padding: 20px;
+    font-weight: bold;
+}
+
+/* =========================
+   TWO COLUMN SECTIONS
+========================= */
+
+.two-column {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+}
+
+.panel {
+    background: white;
+    border: 1px solid #ccc;
+    padding: 24px;
+}
+
+.panel h2 {
+    margin-top: 0;
+}
+
+/* ===================
+   PAGE BANNER
+====================== */
+
+.page-banner {
+    background: #252525;
+    color: white;
+    padding: 45px 0;
+    border-bottom: 5px solid #d71920;
+}
+
+.page-banner h1 {
+    margin: 0 0 10px;
+    font-size: 38px;
+}
+
+.page-banner p {
+    margin: 0;
+    color: #ddd;
+}
+
+/* ===================
+   RESOURCE PAGE
+====================== */
+
+.content-layout {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    gap: 25px;
+}
+
+.sidebar {
+    background: white;
+    border: 1px solid #ccc;
+    padding: 20px;
+}
+
+.sidebar h3 {
+    margin-top: 0;
+}
+
+.filter-group label {
+    display: block;
+    margin: 12px 0;
+}
+
+.resource-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.resource-card {
+    background: white;
+    border: 1px solid #ccc;
+    padding: 20px;
+    min-height: 210px;
+}
+
+/* =========================
+   REGISTRATION PAGE
+========================= */
+
+.registration-layout {
+    display: grid;
+    grid-template-columns: 220px 1fr 260px;
+    gap: 22px;
+}
+
+.side-menu,
+.help-box,
+.checklist {
+    background: white;
+    border: 1px solid #ccc;
+    padding: 20px;
+}
+
+.side-menu a {
+    display: block;
+    padding: 12px 8px;
+    border-bottom: 1px solid #ddd;
+}
+
+.side-menu a.active {
+    color: #d71920;
+    font-weight: bold;
+}
+
+.checklist-item {
+    padding: 15px;
+    border: 1px solid #ddd;
+    margin-bottom: 12px;
+}
+
+/* =================
+   ROADMAP PAGE
+==================== */
+
+.roadmap-layout {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 24px;
+}
+
+.form-panel,
+.roadmap-panel {
+    background: white;
+    border: 1px solid #ccc;
+    padding: 22px;
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 7px;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 11px;
+    border: 1px solid #aaa;
+}
+
+.semester-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.semester-card {
+    border: 1px solid #bbb;
+    background: #fafafa;
+    padding: 18px;
+}
+
+.notice {
+    margin-top: 18px;
+    padding: 15px;
+    background: #f8dddd;
+    border-left: 5px solid #d71920;
+}
+
+/* ==================
+   CYBERSECURITY
+===================== */
+
+.cyber-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.cyber-card {
+    background: white;
+    border: 1px solid #ccc;
+    padding: 25px;
+}
+
+.tip-list li {
+    margin-bottom: 12px;
+}
+
+/* ===========
+   ABOUT
+============== */
+
+.about-layout {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 25px;
+}
+
+.about-content {
+    background: white;
+    border: 1px solid #ccc;
+    padding: 30px;
+}
+
+.placeholder-box {
+    height: 180px;
+    border: 2px dashed #aaa;
+    background: #eee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #777;
+}
+
+/* ==========
+   FOOTER
+============= */
+
+.site-footer {
+    margin-top: 40px;
+    background: #111;
+    color: white;
+    padding: 35px 0 20px;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 30px;
+}
+
+.footer-links a {
+    display: block;
+    margin-bottom: 8px;
+    color: #ddd;
+}
+
+.footer-bottom {
+    border-top: 1px solid #555;
+    margin-top: 25px;
+    padding-top: 18px;
+    color: #aaa;
+    font-size: 13px;
+}
