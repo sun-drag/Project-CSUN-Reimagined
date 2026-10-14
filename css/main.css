@@ -141,23 +141,22 @@ Controls the text itself.
    Displays a campus photograph behind the introductory text.
 */
 .hero {
-    background-image: url("../images/csuncampus.jpg");
-
-    background-size: cover;
-    background-position: 0px -150px;
-    background-repeat: no-repeat;
+    width: 100%;
     min-height: 400px;
-    color: white;
+    background-image: url("../images/csuncampus.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
-
 /*
    The translucent black panel covers the complete hero image without
    changing the opacity of the text or button inside it.
 */
+
 .hero-inner {
     width: 100%;
     max-width: none;
-    min-height: 400px;
+    margin: 0;
 }
 
 .hero-content {
