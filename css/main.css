@@ -1,9 +1,6 @@
-/* This file contains the basic formatting styles for the website. */
-
-/* ===========
-   FORMATTING
-============== */
-/* This section will move things away from the edges of the page, making everything look like it's centered */
+/* ========
+   BASE
+=========== */
 
 * {
     box-sizing: border-box;
@@ -31,48 +28,9 @@ img {
     margin: 0 auto;
 }
 
-
-/* 
-Navigation bar
-This should be used at the top of each page, so that the navigation bar is consistent across the site.
-*/
-
-.main-nav {
-background: #111;
-}
-
-.nav-inner{
-    display: flex;
-}
-
-.main-nav a {
-    color:white;
-    padding:18px 22px;
-    display: block;
-    border-bottom: 4px solid transparent;
-}
-
-/* Keeps the text blocks centered */
-.container {
-    width: 1180px;
-    max-width: calc(100% - 40px);
-    margin: 0 auto;
-}
-
-/* Hover and active states for navigation links
-Active should be applied to the link that corresponds to the current page.
-If the user is on the registration page, the link to that page should have the "active" class applied to it. 
-Example: <a href="registration.html" class="active">Home</a>
-*/
-
-.main-nav a:hover, .main-nav a.active{
-    background: #222;
-    border-bottom: 4px solid #d71920;
-}
-
-/* General Page Header Styles
-This should be used at the top of each page, so that the header is consistent across the site.
-*/
+/* =========
+   HEADER
+============ */
 
 .utility-header {
     background: white;
@@ -115,9 +73,131 @@ This should be used at the top of each page, so that the header is consistent ac
     color: #666;
 }
 
-/*
-Sections will contain a grid like format
+.header-search {
+    display: flex;
+    gap: 8px;
+}
+
+.header-search input {
+    width: 260px;
+    padding: 11px 12px;
+    border: 1px solid #aaa;
+}
+
+.header-search button {
+    border: 0;
+    background: #d71920;
+    color: white;
+    padding: 0 18px;
+    cursor: pointer;
+}
+
+/* ===================
+   NAVIGATION BAR
+====================== */
+
+.main-nav {
+    background: #111;
+    width: 100%;
+}
+
+.nav-inner {
+    display: flex;
+    width: 100%;
+    max-width: none;
+    justify-content: center;
+}
+
+.main-nav a {
+    color: white;
+    padding: 17px 22px;
+    display: block;
+    border-bottom: 4px solid transparent;
+}
+
+.main-nav a:hover,
+.main-nav a.active {
+    background: #222;
+    border-bottom-color: #d71920;
+}
+
+/* ==========
+   HERO
+============= */
+/*.hero
+Controls the whole section.
+
+.container
+Controls how wide the content can be.
+
+.hero-inner
+Controls how the content is arranged.
+
+.hero-content
+Controls the text itself.
 */
+
+/* HERO SECTION
+   Displays a campus photograph behind the introductory text.
+*/
+.hero {
+    background-image: url("../images/csuncampus.jpg");
+
+    background-size: cover;
+    background-position: 0px -150px;
+    background-repeat: no-repeat;
+    min-height: 400px;
+    color: white;
+}
+
+/*
+   The translucent black panel covers the complete hero image without
+   changing the opacity of the text or button inside it.
+*/
+.hero-inner {
+    width: 100%;
+    max-width: none;
+    min-height: 400px;
+}
+
+.hero-content {
+    width: 100%;
+    min-height: 400px;
+    padding: 60px max(40px, calc((100% - 1180px) / 2));
+    background: rgba(0, 0, 0, 0.55);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+/* ===========
+   BUTTONS
+============== */
+
+.btn {
+    display: inline-block;
+    padding: 12px 20px;
+    background: #d71920;
+    color: white;
+    font-weight: bold;
+    border: 2px solid #d71920;
+}
+
+.btn:hover {
+    background: #aa1118;
+    border-color: #aa1118;
+}
+
+.btn-secondary {
+    background: white;
+    color: #111;
+    border-color: #111;
+}
+
+/* ===================
+   SECTIONS
+====================== */
 
 .section {
     padding: 38px 0;
@@ -128,13 +208,35 @@ Sections will contain a grid like format
     margin: 0 0 24px;
 }
 
+/*
+   Homepage section and heading styles.
+   These names match the classes used in index2(1).html.
+*/
+.page-section {
+    padding: 38px 0;
+}
+
+.section-heading {
+    margin-bottom: 24px;
+}
+
+.section-heading h2 {
+    font-size: 28px;
+    margin: 0 0 12px;
+}
+
+.section-heading p {
+    margin: 0;
+}
+
 .card-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 18px;
 }
 
-.card {
+.card,
+.feature-card {
     background: white;
     border: 1px solid #ccc;
     padding: 24px;
@@ -155,11 +257,14 @@ Sections will contain a grid like format
 }
 
 .card h2,
-.card h3 {
+.card h3,
+.feature-card h2,
+.feature-card h3 {
     margin-top: 0;
 }
 
-.card p {
+.card p,
+.feature-card p {
     line-height: 1.5;
     color: #555;
 }
@@ -169,9 +274,24 @@ Sections will contain a grid like format
     font-weight: bold;
 }
 
-/*
+/* Creates matching boxes for the secondary homepage links. */
+.tool-links {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.tool-links a {
+    display: block;
+    background: white;
+    border: 1px solid #ccc;
+    padding: 20px;
+    font-weight: bold;
+}
+
+/* =========================
    TWO COLUMN SECTIONS
-*/
+========================= */
 
 .two-column {
     display: grid;
@@ -189,11 +309,203 @@ Sections will contain a grid like format
     margin-top: 0;
 }
 
-/*
-    Footer
-    This creates a solid black bar at the bottom of the page, with a few links and some text if we want to add it.
-    We can add more links to the footer if we want, but it should be kept simple.
-*/
+/* ===================
+   PAGE BANNER
+====================== */
+
+.page-banner {
+    background: #252525;
+    color: white;
+    padding: 45px 0;
+    border-bottom: 5px solid #d71920;
+}
+
+.page-banner h1 {
+    margin: 0 0 10px;
+    font-size: 38px;
+}
+
+.page-banner p {
+    margin: 0;
+    color: #ddd;
+}
+
+/* ===================
+   RESOURCE PAGE
+====================== */
+
+.content-layout {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    gap: 25px;
+}
+
+.sidebar {
+    background: white;
+    border: 1px solid #ccc;
+    padding: 20px;
+}
+
+.sidebar h3 {
+    margin-top: 0;
+}
+
+.filter-group label {
+    display: block;
+    margin: 12px 0;
+}
+
+.resource-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.resource-card {
+    background: white;
+    border: 1px solid #ccc;
+    padding: 20px;
+    min-height: 210px;
+}
+
+/* =========================
+   REGISTRATION PAGE
+========================= */
+
+.registration-layout {
+    display: grid;
+    grid-template-columns: 220px 1fr 260px;
+    gap: 22px;
+}
+
+.side-menu,
+.help-box,
+.checklist {
+    background: white;
+    border: 1px solid #ccc;
+    padding: 20px;
+}
+
+.side-menu a {
+    display: block;
+    padding: 12px 8px;
+    border-bottom: 1px solid #ddd;
+}
+
+.side-menu a.active {
+    color: #d71920;
+    font-weight: bold;
+}
+
+.checklist-item {
+    padding: 15px;
+    border: 1px solid #ddd;
+    margin-bottom: 12px;
+}
+
+/* =================
+   ROADMAP PAGE
+==================== */
+
+.roadmap-layout {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 24px;
+}
+
+.form-panel,
+.roadmap-panel {
+    background: white;
+    border: 1px solid #ccc;
+    padding: 22px;
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 7px;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 11px;
+    border: 1px solid #aaa;
+}
+
+.semester-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.semester-card {
+    border: 1px solid #bbb;
+    background: #fafafa;
+    padding: 18px;
+}
+
+.notice {
+    margin-top: 18px;
+    padding: 15px;
+    background: #f8dddd;
+    border-left: 5px solid #d71920;
+}
+
+/* ==================
+   CYBERSECURITY
+===================== */
+
+.cyber-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.cyber-card {
+    background: white;
+    border: 1px solid #ccc;
+    padding: 25px;
+}
+
+.tip-list li {
+    margin-bottom: 12px;
+}
+
+/* ===========
+   ABOUT
+============== */
+
+.about-layout {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 25px;
+}
+
+.about-content {
+    background: white;
+    border: 1px solid #ccc;
+    padding: 30px;
+}
+
+.placeholder-box {
+    height: 180px;
+    border: 2px dashed #aaa;
+    background: #eee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #777;
+}
+
+/* ==========
+   FOOTER
+============= */
+
 .site-footer {
     margin-top: 40px;
     background: #111;
