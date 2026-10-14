@@ -13,178 +13,256 @@
 
 <body>
 
+    <!-- ========================================
+         SITE HEADER
+         Copy this entire section to every page
+     ========================================= -->
+
     <header class="site-header">
+
         <div class="container header-inner">
 
-<!--   .container keeps content centered and limits its width.
-        .header-inner controls the layout of the header content.    -->
-
-        <h1>CSUN Student Portal</h1>
-
-        <nav class="main-nav">
-            <div class="container nav-inner">
-
-<!-- .nav-inner organizes the navigation links into the navigation bar.    -->
-
-            <a class="active" href="index.html">Home</a>
-
-<!-- The "active" class is used to highlight the current page in the navigation bar.   -->
-
-            <a href="pages/program-mapper.html">Program Mapper</a>
-            <a href="pages/registration.html">Registration</a>
-            <a href="pages/resources.html">Campus Resources</a>
-            <a href="pages/cybersecurity.html">Cybersecurity</a>
+            <div class="site-brand">
+                <h1>CSUN Student Portal</h1>
             </div>
-        </nav>
-    </header>
-
-
-    <main>
-<!--
-    MAIN CONTENT
-    <main> identifies the primary content of this page.
--->
-        <section class="hero">
-            <div class="container hero-inner">
-                <div class="hero-content">
-
-<!-- HERO SECTION
-        Introduces the main purpose of the website to the user.
-
-        <section>:
-        Groups the introductory heading and description into one
-        meaningful section of the page.
-
-        .hero:
-        Provides the main styling for the introductory/hero area.
-
-        .container:
-        Keeps the content centered and prevents it from becoming
-        too wide on larger screens.
-
-        .hero-inner:
-        Controls the layout and spacing of the content within
-        the hero section.
-
-        .hero-content:
-        Groups the heading and paragraph together so their
-        appearance and positioning can be controlled as one unit.
--->
-
-            <h2>A Better Way to Navigate CSUN</h2>
-
-            <p>
-                The CSUN Student Portal is a redesigned student experience
-                focused on making university resources, academic planning,
-                registration, and student services easier to access.
-            </p>
-                </div>
-            </div>
-        </section>
-
-
-        <section class="section">
-            <div class="container">
-                <div class="card-grid">
-                    
-            <article class="card">
-                <h2>Program Mapper</h2>
-
-                <p>
-                    Build a personalized academic roadmap based on your major,
-                    minor, or double major and choose how quickly you would like
-                    to complete your degree.
-                </p>
-
-                <a class="text-link" href="pages/program-mapper.html">
-                    Explore Program Mapper
-                </a>
-            </article>
-
-
-            <article class="card">
-                <h2>Registration Help</h2>
-
-                <p>
-                    Find information that can help you understand course
-                    registration, prerequisites, and degree requirements.
-                </p>
-
-                <a class="text-link" href="pages/registration.html">
-                    Registration Help
-                </a>
-            </article>
-
-
-            <article class="card">
-                <h2>Campus Resource Finder</h2>
-
-                <p>
-                    Find CSUN services such as tutoring, the gym, food assistance,
-                    academic support, and other campus resources.
-                </p>
-
-                <a class="text-link" href="pages/resources.html">
-                    Find Resources
-                </a>
-            </article>
-
-
-            <article class="card">
-                <h2>Cybersecurity Center</h2>
-
-                <p>
-                    Learn how to protect your personal information through
-                    cybersecurity resources, phishing examples, scam awareness,
-                    and online safety information.
-                </p>
-
-                <a class="text-link" href="pages/cybersecurity.html">
-                    Cybersecurity Resources
-                </a>
-            </article>
 
         </div>
 
-    </div>
-</section>
+    </header>
 
 
-        <section class="section">
+    <!-- ========================================
+         MAIN NAVIGATION
+         Copy this entire section to every page
+
+         IMPORTANT:
+         Move class="active" to the current page.
+    ========================================= -->
+
+    <nav class="main-nav">
+
+        <div class="container nav-inner">
+
+            <a class="active" href="index.html">
+                Home
+            </a>
+
+            <a href="pages/program-mapper.html">
+                Program Mapper
+            </a>
+
+            <a href="pages/registration.html">
+                Registration
+            </a>
+
+            <a href="pages/resources.html">
+                Campus Resources
+            </a>
+
+            <a href="pages/cybersecurity.html">
+                Cybersecurity
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- ========================================
+         MAIN PAGE CONTENT
+         Everything unique to this page goes here
+    ========================================= -->
+    <main>
+
+
+        <!-- ====================================
+             PAGE INTRO / HERO
+        ===================================== -->
+        <section class="hero">
+
+            <div class="container hero-inner">
+
+                <div class="hero-content">
+
+                    <h2>
+                        A Better Way to Navigate CSUN
+                    </h2>
+
+                    <p>
+                        The CSUN Student Portal is a redesigned student
+                        experience focused on making university resources,
+                        academic planning, registration, and student services
+                        easier to access.
+                    </p>
+
+                    <a class="button primary-button"
+                       href="pages/resources.html">
+                        Explore Student Resources
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ====================================
+             MAIN FEATURES
+        ===================================== -->
+        <section class="page-section">
 
             <div class="container">
 
-            <h2 class="section-title">Student Tools</h2>
+                <div class="section-heading">
 
+                    <h2>Student Tools</h2>
+
+                    <p>
+                        Choose a section below to find the help
+                        or information you need.
+                    </p>
+
+                </div>
+
+
+                <!-- Feature cards -->
                 <div class="card-grid">
 
-            <ul>
-                <li>
+
+                    <!-- CARD 1 -->
+                    <article class="feature-card">
+
+                        <h3>Program Mapper</h3>
+
+                        <p>
+                            Build a personalized academic roadmap based
+                            on your major, minor, or double major.
+                        </p>
+
+                        <a class="text-link"
+                           href="pages/program-mapper.html">
+                            Explore Program Mapper →
+                        </a>
+
+                    </article>
+
+
+                    <!-- CARD 2 -->
+                    <article class="feature-card">
+
+                        <h3>Registration Help</h3>
+
+                        <p>
+                            Find information about course registration,
+                            prerequisites, and degree requirements.
+                        </p>
+
+                        <a class="text-link"
+                           href="pages/registration.html">
+                            Registration Help →
+                        </a>
+
+                    </article>
+
+
+                    <!-- CARD 3 -->
+                    <article class="feature-card">
+
+                        <h3>Campus Resources</h3>
+
+                        <p>
+                            Find tutoring, academic support, food
+                            assistance, wellness resources, and more.
+                        </p>
+
+                        <a class="text-link"
+                           href="pages/resources.html">
+                            Find Resources →
+                        </a>
+
+                    </article>
+
+
+                    <!-- CARD 4 -->
+                    <article class="feature-card">
+
+                        <h3>Cybersecurity Center</h3>
+
+                        <p>
+                            Learn how to protect your personal
+                            information and recognize online threats.
+                        </p>
+
+                        <a class="text-link"
+                           href="pages/cybersecurity.html">
+                            Cybersecurity Resources →
+                        </a>
+
+                    </article>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ====================================
+             SECONDARY TOOLS
+        ===================================== -->
+        <section class="page-section alternate-section">
+
+            <div class="container">
+
+                <div class="section-heading">
+                    <h2>Additional Student Tools</h2>
+                </div>
+
+                <div class="tool-links">
+
                     <a href="pages/phishing-simulator.html">
                         Phishing Simulator
                     </a>
-                </li>
 
-                <li>
                     <a href="pages/scam-awareness.html">
                         Scam Awareness
                     </a>
-                </li>
 
-                <li>
                     <a href="pages/student-discounts.html">
                         Student Discounts
                     </a>
-                </li>
-            </ul>
+
+                </div>
+
+            </div>
+
         </section>
+
 
     </main>
 
 
+    <!-- ========================================
+         SITE FOOTER
+         Copy this entire section to every page
+    ========================================= -->
     <footer class="site-footer">
-        <p>CSUN Student Portal Project</p>
-        <p>This is a student project and is not an official CSUN website.</p>
+
+        <div class="container footer-inner">
+
+            <p>
+                <strong>CSUN Student Portal Project</strong>
+            </p>
+
+            <p>
+                This is a student project and is not an official
+                CSUN website.
+            </p>
+
+        </div>
+
     </footer>
 
 
