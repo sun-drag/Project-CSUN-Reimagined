@@ -97,7 +97,7 @@
 
                     <a class="button primary-button"
                        href="pages/resources.html">
-                        Explore Student Resources
+                        <u>Explore Student Resources</u>
                     </a>
 
                 </div>
@@ -207,6 +207,29 @@
             </div>
 
         </section>
+ <section class="page-section">
+    <div class="container">
+        <div class="section-heading">
+            <h2>Upcoming Campus Events</h2>
+            <p>Live, dynamic event feeds synchronized directly from California State University, Northridge.</p>
+        </div>
+
+        <!-- The Calendar Panel matches your system's .panel container style -->
+        <div class="panel calendar-panel">
+            <div class="calendar-ctrl-header">
+                <button id="prev-btn" class="calendar-btn">&lt; Prev</button>
+                <h3 id="month-year" style="margin: 0; font-size: 22px;"></h3>
+                <button id="next-btn" class="calendar-btn">Next &gt;</button>
+            </div>
+            
+            <div class="calendar-weekdays">
+                <div>Sun</div><div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div>
+            </div>
+            
+            <div id="calendar-days" class="calendar-grid-cells"></div>
+        </div>
+    </div>
+</section>
 
 
         <!-- ====================================
@@ -246,7 +269,11 @@
                         Involvment Center
                     </a>
 
-
+                    <a href="https://news.csun.edu/events/today/"
+                        target="_blank"
+                        rel="noopener noreferrer">
+                        Upcoming Campus Events
+                    </a>
                 </div>
 
             </div>
@@ -281,6 +308,7 @@
 
     <!-- Shared JavaScript -->
     <script src="js/main.js"></script>
+    <script src="js/pages/calendar.js"></script>
 
 </body>
 
