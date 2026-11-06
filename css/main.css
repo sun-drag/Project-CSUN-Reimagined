@@ -123,6 +123,17 @@ img {
     border-bottom-color: #d71920;
 }
 
+.main-nav .lgb {
+    background-color: #d71920;
+    border-bottom-color: #d71920;
+}
+
+.main-nav .lgb:hover {
+    background-color: #aa1118;
+    border-bottom-color: #aa1118;
+}
+
+
 /* ==========
    HERO
 ============= */
@@ -205,7 +216,7 @@ Controls the text itself.
     display: inline-block;
     padding: 12px 22px;
     background-color: #d71920;
-    color: white;
+    color: #d71920;
     font-weight: bold;
     text-decoration: none;
     border: 2px solid #d71920;
@@ -213,7 +224,7 @@ Controls the text itself.
 }
 
 .login-button:hover {
-    background-color: #aa1118;
+    background-color: #420a0d;
     border-color: #aa1118;
 }
 
