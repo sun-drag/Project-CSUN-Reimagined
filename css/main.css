@@ -201,6 +201,27 @@ Controls the text itself.
     border-color: #111;
 }
 
+.login-button {
+    display: inline-block;
+    padding: 12px 22px;
+    background-color: #d71920;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    border: 2px solid #d71920;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.login-button:hover {
+    background-color: #aa1118;
+    border-color: #aa1118;
+}
+
+.login-button:focus {
+    outline: 3px solid #111;
+    outline-offset: 3px;
+}
+
 /* ===================
    SECTIONS
 ====================== */
@@ -632,3 +653,5 @@ Controls the text itself.
     background-color: #e2b4b4;
     color: #111;
 }
+
+
