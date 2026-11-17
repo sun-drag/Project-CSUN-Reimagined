@@ -1,0 +1,68 @@
+{
+  "runtime_files": {
+    "pages/program-mapper.html": {
+      "status": 200,
+      "content_type": "text/html",
+      "bytes": 10955
+    },
+    "css/pages/program-mapper.css": {
+      "status": 200,
+      "content_type": "text/css",
+      "bytes": 29642
+    },
+    "js/pages/program-mapper.js": {
+      "status": 200,
+      "content_type": "text/javascript",
+      "bytes": 57035
+    },
+    "js/pages/program-mapper-core.mjs": {
+      "status": 200,
+      "content_type": "text/javascript",
+      "bytes": 32929
+    },
+    "js/pages/program-mapper-catalog.mjs": {
+      "status": 200,
+      "content_type": "text/javascript",
+      "bytes": 19861
+    },
+    "data/program-mapper/config.json": {
+      "status": 200,
+      "content_type": "application/json",
+      "bytes": 59
+    },
+    "data/program-mapper/catalog.json": {
+      "status": 200,
+      "content_type": "application/json",
+      "bytes": 8192805
+    }
+  },
+  "html_ids_unique": true,
+  "local_references_resolve": true,
+  "node_tests": {
+    "passed": 45,
+    "failed": 0,
+    "includes_all_program_entries": 265
+  },
+  "browser_automation": {
+    "status": "blocked",
+    "reason": "Chromium cannot create its required AF_UNIX socket in the execution environment; responsive layout and native pointer hit testing were not verified."
+  },
+  "data": {
+    "courses": 4819,
+    "major_options": 158,
+    "minors": 107,
+    "course_records_with_descriptions": 4459,
+    "individual_pages_unconfirmed": 360
+  },
+  "live_rds_connected": false,
+  "live_site_updated": false,
+  "scope": {
+    "modified_existing_files": [
+      "css/pages/program-mapper.css",
+      "js/pages/program-mapper.js",
+      "pages/program-mapper.html"
+    ],
+    "other_existing_files_unchanged": true,
+    "runtime_file_count": 7
+  }
+}
