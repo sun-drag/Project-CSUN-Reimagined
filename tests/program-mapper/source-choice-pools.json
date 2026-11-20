@@ -1,0 +1,5357 @@
+[
+  {
+    "program_id": "accountancy-b-s-professional-accountancy-option",
+    "source_url": "https://catalog.csun.edu/academics/acct/programs/bs-accountancy-i/professional-accountancy-option/",
+    "source_line": 118,
+    "pool_ids": [
+      "ACCT-497CPA",
+      "ACCT-511",
+      "ACCT-542"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "accountancy-b-s-professional-accountancy-option:118:pool1"
+  },
+  {
+    "program_id": "africana-studies-b-a-african-and-african-american-social-sciences-option",
+    "source_url": "https://catalog.csun.edu/academics/afrs/programs/ba-africana-studies-i/african-and-african-american-social-sciences-option/",
+    "source_line": 79,
+    "pool_ids": [
+      "AFRS-161",
+      "AFRS-165",
+      "AFRS-311",
+      "AFRS-367",
+      "AFRS-466A",
+      "AFRS-466B",
+      "AFRS-488",
+      "AFRS-490"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "africana-studies-b-a-african-and-african-american-social-sciences-option:79:pool1"
+  },
+  {
+    "program_id": "africana-studies-b-a-african-and-african-american-humanities-and-cultural-studies-option",
+    "source_url": "https://catalog.csun.edu/academics/afrs/programs/ba-africana-studies-ii/african-and-african-american-humanities-and-cultural-studies-option/",
+    "source_line": 80,
+    "pool_ids": [
+      "AFRS-244",
+      "AFRS-246",
+      "AFRS-280",
+      "AFRS-331/L",
+      "AFRS-333",
+      "AFRS-337",
+      "AFRS-345",
+      "AFRS-447"
+    ],
+    "minimum_units": null,
+    "minimum_count": 2,
+    "decision_id": "africana-studies-b-a-african-and-african-american-humanities-and-cultural-studies-option:80:pool1"
+  },
+  {
+    "program_id": "africana-studies-b-a-african-and-african-american-humanities-and-cultural-studies-option",
+    "source_url": "https://catalog.csun.edu/academics/afrs/programs/ba-africana-studies-ii/african-and-african-american-humanities-and-cultural-studies-option/",
+    "source_line": 90,
+    "pool_ids": [
+      "AFRS-171",
+      "AFRS-274",
+      "AFRS-282",
+      "AFRS-355",
+      "AFRS-368",
+      "AFRS-376"
+    ],
+    "minimum_units": null,
+    "minimum_count": 2,
+    "decision_id": "africana-studies-b-a-african-and-african-american-humanities-and-cultural-studies-option:90:pool1"
+  },
+  {
+    "program_id": "africana-studies-b-a-african-american-urban-education-option",
+    "source_url": "https://catalog.csun.edu/academics/afrs/programs/ba-africana-studies-iii/african-american-urban-education-option/",
+    "source_line": 79,
+    "pool_ids": [
+      "AFRS-300",
+      "AFRS-324",
+      "AFRS-325",
+      "AFRS-395",
+      "AFRS-488"
+    ],
+    "minimum_units": null,
+    "minimum_count": 2,
+    "decision_id": "africana-studies-b-a-african-american-urban-education-option:79:pool1"
+  },
+  {
+    "program_id": "anthropology-b-a",
+    "source_url": "https://catalog.csun.edu/academics/anth/programs/ba-anthropology/",
+    "source_line": 55,
+    "pool_ids": [
+      "ANTH-306",
+      "ANTH-307",
+      "ANTH-338",
+      "ANTH-345",
+      "ANTH-351",
+      "ANTH-352",
+      "ANTH-353",
+      "ANTH-356"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "anthropology-b-a:55:pool1"
+  },
+  {
+    "program_id": "anthropology-b-a",
+    "source_url": "https://catalog.csun.edu/academics/anth/programs/ba-anthropology/",
+    "source_line": 67,
+    "pool_ids": [
+      "ANTH-473",
+      "ANTH-474",
+      "ANTH-475",
+      "ANTH-519",
+      "ANTH-574",
+      "ANTH-575"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "anthropology-b-a:67:pool1"
+  },
+  {
+    "program_id": "anthropology-b-a",
+    "source_url": "https://catalog.csun.edu/academics/anth/programs/ba-anthropology/",
+    "source_line": 77,
+    "pool_ids": [
+      "ANTH-490A-E",
+      "ANTH-516",
+      "ANTH-521",
+      "ANTH-560"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "anthropology-b-a:77:pool1"
+  },
+  {
+    "program_id": "art-b-a",
+    "source_url": "https://catalog.csun.edu/academics/art/programs/ba-art/",
+    "source_line": 51,
+    "pool_ids": [
+      "ART-110",
+      "ART-112",
+      "ART-114"
+    ],
+    "minimum_units": null,
+    "minimum_count": 2,
+    "decision_id": "art-b-a:art-lower-division-surveys"
+  },
+  {
+    "program_id": "art-b-a",
+    "source_url": "https://catalog.csun.edu/academics/art/programs/ba-art/",
+    "source_line": 74,
+    "pool_ids": [
+      "ART-318",
+      "ART-448"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "art-b-a:art-upper-division-history-survey"
+  },
+  {
+    "program_id": "asian-american-studies-b-a-standard-major",
+    "source_url": "https://catalog.csun.edu/academics/aas/programs/ba-asian-american-studies-i/standard-major/",
+    "source_line": 63,
+    "pool_ids": [
+      "AAS-321",
+      "AAS-325A",
+      "AAS-325B",
+      "AAS-420",
+      "AAS-430"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "asian-american-studies-b-a-standard-major:63:pool1"
+  },
+  {
+    "program_id": "asian-american-studies-b-a-standard-major",
+    "source_url": "https://catalog.csun.edu/academics/aas/programs/ba-asian-american-studies-i/standard-major/",
+    "source_line": 72,
+    "pool_ids": [
+      "AAS-345",
+      "AAS-355",
+      "AAS-361A-Z",
+      "AAS-362"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "asian-american-studies-b-a-standard-major:72:pool1"
+  },
+  {
+    "program_id": "asian-american-studies-b-a-standard-major",
+    "source_url": "https://catalog.csun.edu/academics/aas/programs/ba-asian-american-studies-i/standard-major/",
+    "source_line": 82,
+    "pool_ids": [
+      "AAS-340",
+      "AAS-455"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "asian-american-studies-b-a-standard-major:82:pool1"
+  },
+  {
+    "program_id": "asian-american-studies-b-a-standard-major",
+    "source_url": "https://catalog.csun.edu/academics/aas/programs/ba-asian-american-studies-i/standard-major/",
+    "source_line": 89,
+    "pool_ids": [
+      "AAS-347",
+      "AAS-417",
+      "AAS-440"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "asian-american-studies-b-a-standard-major:89:pool1"
+  },
+  {
+    "program_id": "asian-american-studies-b-a-standard-major",
+    "source_url": "https://catalog.csun.edu/academics/aas/programs/ba-asian-american-studies-i/standard-major/",
+    "source_line": 96,
+    "pool_ids": [
+      "AAS-350",
+      "AAS-450",
+      "AAS-453"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "asian-american-studies-b-a-standard-major:96:pool1"
+  },
+  {
+    "program_id": "asian-american-studies-b-a-standard-major",
+    "source_url": "https://catalog.csun.edu/academics/aas/programs/ba-asian-american-studies-i/standard-major/",
+    "source_line": 110,
+    "pool_ids": [
+      "AAS-495A-Z",
+      "AAS-497"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "asian-american-studies-b-a-standard-major:110:pool1"
+  },
+  {
+    "program_id": "asian-american-studies-b-a-double-major",
+    "source_url": "https://catalog.csun.edu/academics/aas/programs/ba-asian-american-studies-ii/double-major/",
+    "source_line": 102,
+    "pool_ids": [
+      "AAS-495A-Z",
+      "AAS-497"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "asian-american-studies-b-a-double-major:102:pool1"
+  },
+  {
+    "program_id": "biology-b-a",
+    "source_url": "https://catalog.csun.edu/academics/biol/programs/ba-biology/",
+    "source_line": 78,
+    "pool_ids": [
+      "BIOL-315/L",
+      "BIOL-316CS/LCS",
+      "BIOL-346L",
+      "BIOL-347L",
+      "BIOL-381",
+      "BIOL-382/L",
+      "BIOL-383/L",
+      "BIOL-408/L",
+      "BIOL-411/L",
+      "BIOL-417/L",
+      "BIOL-441/L",
+      "BIOL-442/L",
+      "BIOL-444",
+      "BIOL-461",
+      "BIOL-462",
+      "BIOL-464",
+      "BIOL-466",
+      "BIOL-468",
+      "BIOL-470",
+      "BIOL-471A",
+      "BIOL-472/L",
+      "BIOL-475/L",
+      "BIOL-476",
+      "BIOL-477/L",
+      "BIOL-479",
+      "BIOL-480/L",
+      "BIOL-481/L",
+      "BIOL-482/L",
+      "BIOL-483/L",
+      "BIOL-485/L",
+      "BIOL-487/L",
+      "BIOL-489",
+      "BIOL-493",
+      "BIOL-551/L"
+    ],
+    "minimum_units": 7,
+    "minimum_count": null,
+    "decision_id": "biology-b-a:76:pool1"
+  },
+  {
+    "program_id": "biology-b-a",
+    "source_url": "https://catalog.csun.edu/academics/biol/programs/ba-biology/",
+    "source_line": 112,
+    "pool_ids": [
+      "BIOL-312/L",
+      "BIOL-313/L",
+      "BIOL-392B",
+      "BIOL-392F",
+      "BIOL-403/L",
+      "BIOL-404/L",
+      "BIOL-406/L",
+      "BIOL-409/L",
+      "BIOL-410/L",
+      "BIOL-412/L",
+      "BIOL-413/L",
+      "BIOL-415/L",
+      "BIOL-418/L",
+      "BIOL-426",
+      "BIOL-430/L",
+      "BIOL-432/L",
+      "BIOL-433/L",
+      "BIOL-435/L",
+      "BIOL-437/L",
+      "BIOL-438/L",
+      "BIOL-446/L",
+      "BIOL-448",
+      "BIOL-452/L",
+      "BIOL-492A-Z",
+      "BIOL-492AA",
+      "BIOL-492BB",
+      "BIOL-492E",
+      "BIOL-492K",
+      "BIOL-492M",
+      "BIOL-492P",
+      "BIOL-492T",
+      "BIOL-492U",
+      "BIOL-492V",
+      "BIOL-492Y"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "biology-b-a:110:pool1"
+  },
+  {
+    "program_id": "biology-b-a",
+    "source_url": "https://catalog.csun.edu/academics/biol/programs/ba-biology/",
+    "source_line": 134,
+    "pool_ids": [
+      "BIOL-326",
+      "BIOL-407/L",
+      "BIOL-414/L",
+      "BIOL-419/L",
+      "BIOL-421/L",
+      "BIOL-422/L",
+      "BIOL-423",
+      "BIOL-424/L",
+      "BIOL-425",
+      "BIOL-426",
+      "BIOL-427/L",
+      "BIOL-427A/AL",
+      "BIOL-428/L",
+      "BIOL-429/L",
+      "BIOL-434/L",
+      "BIOL-439/L",
+      "BIOL-451",
+      "BIOL-453/L",
+      "BIOL-456",
+      "BIOL-492A",
+      "BIOL-492A-Z",
+      "BIOL-492B",
+      "BIOL-492C",
+      "BIOL-492F",
+      "BIOL-492H",
+      "BIOL-492I",
+      "BIOL-492L",
+      "BIOL-492N",
+      "BIOL-492O",
+      "BIOL-492P",
+      "BIOL-492Q",
+      "BIOL-492S",
+      "BIOL-492W",
+      "BIOL-492Z"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "biology-b-a:132:pool1"
+  },
+  {
+    "program_id": "biology-b-s-cell-and-molecular-biology-option",
+    "source_url": "https://catalog.csun.edu/academics/biol/programs/bs-biology-i/cell-and-molecular-biology-option/",
+    "source_line": 92,
+    "pool_ids": [
+      "BIOL-382/L",
+      "BIOL-383/L",
+      "BIOL-410/L",
+      "BIOL-411/L",
+      "BIOL-417/L",
+      "BIOL-437/L",
+      "BIOL-441/L",
+      "BIOL-475/L",
+      "BIOL-476",
+      "BIOL-477/L",
+      "BIOL-479",
+      "BIOL-480/L",
+      "BIOL-481/L",
+      "BIOL-482/L",
+      "BIOL-483/L",
+      "BIOL-485/L",
+      "BIOL-487/L",
+      "BIOL-489",
+      "BIOL-492V",
+      "BIOL-493"
+    ],
+    "minimum_units": null,
+    "minimum_count": 2,
+    "decision_id": "biology-b-s-cell-and-molecular-biology-option:92:pool1"
+  },
+  {
+    "program_id": "biology-b-s-cell-and-molecular-biology-option",
+    "source_url": "https://catalog.csun.edu/academics/biol/programs/bs-biology-i/cell-and-molecular-biology-option/",
+    "source_line": 109,
+    "pool_ids": [
+      "BIOL-408/L",
+      "BIOL-442/L",
+      "BIOL-444",
+      "BIOL-461",
+      "BIOL-462",
+      "BIOL-464",
+      "BIOL-466",
+      "BIOL-468",
+      "BIOL-469",
+      "BIOL-470",
+      "BIOL-471A",
+      "BIOL-472/L",
+      "BIOL-473"
+    ],
+    "minimum_units": null,
+    "minimum_count": 2,
+    "decision_id": "biology-b-s-cell-and-molecular-biology-option:109:pool1"
+  },
+  {
+    "program_id": "biology-b-s-ecology-and-evolutionary-biology-option",
+    "source_url": "https://catalog.csun.edu/academics/biol/programs/bs-biology-ii/ecology-and-evolutionary-biology-option/",
+    "source_line": 84,
+    "pool_ids": [
+      "BIOL-407/L",
+      "BIOL-414/L",
+      "BIOL-422/L",
+      "BIOL-423",
+      "BIOL-424/L",
+      "BIOL-426/L",
+      "BIOL-427/L",
+      "BIOL-428/L",
+      "BIOL-429/L",
+      "BIOL-439/L",
+      "BIOL-448",
+      "BIOL-453/L",
+      "BIOL-456",
+      "BIOL-492A",
+      "BIOL-492A-Z",
+      "BIOL-492F",
+      "BIOL-492H",
+      "BIOL-492I",
+      "BIOL-492N",
+      "BIOL-492O",
+      "BIOL-492P",
+      "BIOL-492S",
+      "BIOL-492U",
+      "BIOL-492W",
+      "BIOL-492Z"
+    ],
+    "minimum_units": null,
+    "minimum_count": 3,
+    "decision_id": "biology-b-s-ecology-and-evolutionary-biology-option:84:pool1"
+  },
+  {
+    "program_id": "biology-b-s-ecology-and-evolutionary-biology-option",
+    "source_url": "https://catalog.csun.edu/academics/biol/programs/bs-biology-ii/ecology-and-evolutionary-biology-option/",
+    "source_line": 99,
+    "pool_ids": [
+      "BIOL-316CS/LCS",
+      "BIOL-403/L",
+      "BIOL-404/L",
+      "BIOL-406/L",
+      "BIOL-407/L",
+      "BIOL-409/L",
+      "BIOL-438/L",
+      "BIOL-481/L",
+      "BIOL-492A-Z",
+      "BIOL-492K",
+      "BIOL-492N",
+      "BIOL-492Y"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "biology-b-s-ecology-and-evolutionary-biology-option:99:pool1"
+  },
+  {
+    "program_id": "biology-b-s-ecology-and-evolutionary-biology-option",
+    "source_url": "https://catalog.csun.edu/academics/biol/programs/bs-biology-ii/ecology-and-evolutionary-biology-option/",
+    "source_line": 109,
+    "pool_ids": [
+      "BIOL-312/L",
+      "BIOL-313/L",
+      "BIOL-392B",
+      "BIOL-392F",
+      "BIOL-412/L",
+      "BIOL-413/L",
+      "BIOL-414/L",
+      "BIOL-415/L",
+      "BIOL-425",
+      "BIOL-430/L",
+      "BIOL-433/L",
+      "BIOL-446/L",
+      "BIOL-492A",
+      "BIOL-492AA",
+      "BIOL-492BB",
+      "BIOL-492E",
+      "BIOL-492M",
+      "BIOL-492T"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "biology-b-s-ecology-and-evolutionary-biology-option:109:pool1"
+  },
+  {
+    "program_id": "biology-b-s-biotechnology-medical-technology-option",
+    "source_url": "https://catalog.csun.edu/academics/biol/programs/bs-biology-iv/biotechnology-medical-technology-option/",
+    "source_line": 93,
+    "pool_ids": [
+      "BIOL-330/L",
+      "BIOL-346L",
+      "BIOL-347L",
+      "BIOL-382/L",
+      "BIOL-383/L",
+      "BIOL-408/L",
+      "BIOL-417/L",
+      "BIOL-418/L",
+      "BIOL-419/L",
+      "BIOL-431/L",
+      "BIOL-437/L",
+      "BIOL-442/L",
+      "BIOL-444",
+      "BIOL-461",
+      "BIOL-462",
+      "BIOL-464",
+      "BIOL-466",
+      "BIOL-468",
+      "BIOL-471A",
+      "BIOL-475/L",
+      "BIOL-476",
+      "BIOL-481/L",
+      "BIOL-482/L",
+      "BIOL-483/L",
+      "BIOL-485/L",
+      "BIOL-489",
+      "BIOL-492C",
+      "BIOL-492V",
+      "BIOL-493",
+      "BIOL-503/L",
+      "BIOL-551/L",
+      "CHEM-321/L"
+    ],
+    "minimum_units": null,
+    "minimum_count": 2,
+    "decision_id": "biology-b-s-biotechnology-medical-technology-option:91:pool1"
+  },
+  {
+    "program_id": "business-administration-b-s-business-analytics-option",
+    "source_url": "https://catalog.csun.edu/academics/som/programs/bs-business-administration-iii/business-analytics-option/",
+    "source_line": 106,
+    "pool_ids": [
+      "BLAW-368",
+      "BLAW-372",
+      "ENGL-306",
+      "PHIL-305"
+    ],
+    "minimum_units": 3,
+    "minimum_count": null,
+    "decision_id": "business-administration-b-s-business-analytics-option:106:pool1"
+  },
+  {
+    "program_id": "business-administration-b-s-financial-analysis-option",
+    "source_url": "https://catalog.csun.edu/academics/fin/programs/bs-business-administration-vi/financial-analysis-option/",
+    "source_line": 101,
+    "pool_ids": [
+      "BLAW-308",
+      "BLAW-368",
+      "COMS-323",
+      "ENGL-305",
+      "ENGL-306",
+      "ENGL-407",
+      "PHIL-305"
+    ],
+    "minimum_units": 3,
+    "minimum_count": null,
+    "decision_id": "business-administration-b-s-financial-analysis-option:101:pool1"
+  },
+  {
+    "program_id": "business-administration-b-s-financial-planning-option",
+    "source_url": "https://catalog.csun.edu/academics/fin/programs/bs-business-administration-vii/financial-planning-option/",
+    "source_line": 104,
+    "pool_ids": [
+      "BLAW-308",
+      "BLAW-368",
+      "COMS-323",
+      "ENGL-305",
+      "ENGL-306",
+      "ENGL-407",
+      "PHIL-305"
+    ],
+    "minimum_units": 3,
+    "minimum_count": null,
+    "decision_id": "business-administration-b-s-financial-planning-option:104:pool1"
+  },
+  {
+    "program_id": "business-administration-b-s-global-supply-chain-management-option",
+    "source_url": "https://catalog.csun.edu/academics/som/programs/bs-business-administration-ii/global-supply-chain-management-option/",
+    "source_line": 101,
+    "pool_ids": [
+      "BANA-310",
+      "BUS-491CS",
+      "ECON-310",
+      "MKT-346",
+      "MKT-442",
+      "MKT-445",
+      "SCM-442",
+      "SOM-464",
+      "SOM-467",
+      "SOM-468",
+      "SOM-498A-C"
+    ],
+    "minimum_units": null,
+    "minimum_count": 3,
+    "decision_id": "business-administration-b-s-global-supply-chain-management-option:101:pool1"
+  },
+  {
+    "program_id": "business-administration-b-s-management-option",
+    "source_url": "https://catalog.csun.edu/academics/mgt/programs/bs-business-administration-ix/management-option/",
+    "source_line": 110,
+    "pool_ids": [
+      "COMS-323",
+      "COMS-443",
+      "ENGL-305",
+      "ENGL-306",
+      "ENGL-407",
+      "PHIL-305"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "business-administration-b-s-management-option:110:pool1"
+  },
+  {
+    "program_id": "business-administration-b-s-management-option",
+    "source_url": "https://catalog.csun.edu/academics/mgt/programs/bs-business-administration-ix/management-option/",
+    "source_line": 120,
+    "pool_ids": [
+      "MGT-340",
+      "MGT-450",
+      "MGT-454",
+      "MGT-456",
+      "MGT-458",
+      "MGT-462",
+      "MGT-464",
+      "MGT-466",
+      "MGT-468",
+      "MGT-491",
+      "MGT-496A-Z",
+      "MGT-499A-C"
+    ],
+    "minimum_units": null,
+    "minimum_count": 2,
+    "decision_id": "business-administration-b-s-management-option:120:pool1"
+  },
+  {
+    "program_id": "business-administration-b-s-marketing-option",
+    "source_url": "https://catalog.csun.edu/academics/mkt/programs/bs-business-administration-x/marketing-option/",
+    "source_line": 146,
+    "pool_ids": [
+      "BUS-491CS",
+      "MKT-498A",
+      "MKT-498B"
+    ],
+    "minimum_units": 3,
+    "minimum_count": null,
+    "decision_id": "business-administration-b-s-marketing-option:144:pool1"
+  },
+  {
+    "program_id": "business-administration-b-s-real-estate-option",
+    "source_url": "https://catalog.csun.edu/academics/blaw/programs/bs-business-administration-iv/real-estate-option/",
+    "source_line": 103,
+    "pool_ids": [
+      "BLAW-368",
+      "BLAW-453",
+      "MGT-456",
+      "RE-422"
+    ],
+    "minimum_units": 3,
+    "minimum_count": null,
+    "decision_id": "business-administration-b-s-real-estate-option:103:pool1"
+  },
+  {
+    "program_id": "business-administration-b-s-risk-management-and-insurance-option",
+    "source_url": "https://catalog.csun.edu/academics/fin/programs/bs-business-administration-viii/risk-management-and-insurance-option/",
+    "source_line": 101,
+    "pool_ids": [
+      "BLAW-308",
+      "BLAW-368",
+      "COMS-323",
+      "ENGL-305",
+      "ENGL-306",
+      "ENGL-407",
+      "PHIL-305"
+    ],
+    "minimum_units": 3,
+    "minimum_count": null,
+    "decision_id": "business-administration-b-s-risk-management-and-insurance-option:101:pool1"
+  },
+  {
+    "program_id": "business-administration-b-s-systems-and-operations-management-option",
+    "source_url": "https://catalog.csun.edu/academics/som/programs/bs-business-administration-v/systems-and-operations-management-option/",
+    "source_line": 100,
+    "pool_ids": [
+      "BLAW-308",
+      "COMS-443",
+      "ENGL-407",
+      "PHIL-305"
+    ],
+    "minimum_units": 3,
+    "minimum_count": null,
+    "decision_id": "business-administration-b-s-systems-and-operations-management-option:100:pool1"
+  },
+  {
+    "program_id": "central-american-studies-b-a-standard-major",
+    "source_url": "https://catalog.csun.edu/academics/cas/programs/ba-central-american-studies-i/standard-major/",
+    "source_line": 45,
+    "pool_ids": [
+      "CAS-100",
+      "CAS-102"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "central-american-studies-b-a-standard-major:45:pool1"
+  },
+  {
+    "program_id": "central-american-studies-b-a-standard-major",
+    "source_url": "https://catalog.csun.edu/academics/cas/programs/ba-central-american-studies-i/standard-major/",
+    "source_line": 57,
+    "pool_ids": [
+      "AAS-201",
+      "AFRS-204",
+      "AFRS-252",
+      "ART-112",
+      "CHS-202",
+      "URBS-250"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "central-american-studies-b-a-standard-major:57:pool1"
+  },
+  {
+    "program_id": "central-american-studies-b-a-standard-major",
+    "source_url": "https://catalog.csun.edu/academics/cas/programs/ba-central-american-studies-i/standard-major/",
+    "source_line": 67,
+    "pool_ids": [
+      "CAS-303",
+      "CAS-309",
+      "CAS-310",
+      "CAS-311",
+      "CAS-350",
+      "CAS-355",
+      "CAS-356",
+      "CAS-364",
+      "CAS-365",
+      "CAS-366",
+      "CAS-367",
+      "CAS-368",
+      "CAS-369",
+      "CAS-410"
+    ],
+    "minimum_units": null,
+    "minimum_count": 7,
+    "decision_id": "central-american-studies-b-a-standard-major:67:pool1"
+  },
+  {
+    "program_id": "central-american-studies-b-a-standard-major",
+    "source_url": "https://catalog.csun.edu/academics/cas/programs/ba-central-american-studies-i/standard-major/",
+    "source_line": 83,
+    "pool_ids": [
+      "ANTH-351",
+      "COMS-356",
+      "ENGL-487",
+      "GEOG-322",
+      "GEOG-350",
+      "GWS-351",
+      "HIST-463",
+      "JOUR-372",
+      "POLS-332",
+      "QS-302",
+      "SPAN-380"
+    ],
+    "minimum_units": null,
+    "minimum_count": 2,
+    "decision_id": "central-american-studies-b-a-standard-major:83:pool1"
+  },
+  {
+    "program_id": "central-american-studies-b-a-standard-major",
+    "source_url": "https://catalog.csun.edu/academics/cas/programs/ba-central-american-studies-i/standard-major/",
+    "source_line": 97,
+    "pool_ids": [
+      "CAS-421",
+      "CAS-440",
+      "CAS-460"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "central-american-studies-b-a-standard-major:97:pool1"
+  },
+  {
+    "program_id": "central-american-studies-b-a-double-major",
+    "source_url": "https://catalog.csun.edu/academics/cas/programs/ba-central-american-studies-ii/double-major/",
+    "source_line": 45,
+    "pool_ids": [
+      "CAS-100",
+      "CAS-102"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "central-american-studies-b-a-double-major:45:pool1"
+  },
+  {
+    "program_id": "central-american-studies-b-a-double-major",
+    "source_url": "https://catalog.csun.edu/academics/cas/programs/ba-central-american-studies-ii/double-major/",
+    "source_line": 50,
+    "pool_ids": [
+      "CAS-201",
+      "CAS-202"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "central-american-studies-b-a-double-major:50:pool1"
+  },
+  {
+    "program_id": "central-american-studies-b-a-double-major",
+    "source_url": "https://catalog.csun.edu/academics/cas/programs/ba-central-american-studies-ii/double-major/",
+    "source_line": 59,
+    "pool_ids": [
+      "CAS-303",
+      "CAS-309",
+      "CAS-310",
+      "CAS-311",
+      "CAS-350",
+      "CAS-355",
+      "CAS-356",
+      "CAS-364",
+      "CAS-365",
+      "CAS-366",
+      "CAS-367",
+      "CAS-368",
+      "CAS-369",
+      "CAS-410"
+    ],
+    "minimum_units": null,
+    "minimum_count": 7,
+    "decision_id": "central-american-studies-b-a-double-major:59:pool1"
+  },
+  {
+    "program_id": "central-american-studies-b-a-double-major",
+    "source_url": "https://catalog.csun.edu/academics/cas/programs/ba-central-american-studies-ii/double-major/",
+    "source_line": 76,
+    "pool_ids": [
+      "CAS-421",
+      "CAS-440",
+      "CAS-460"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "central-american-studies-b-a-double-major:76:pool1"
+  },
+  {
+    "program_id": "chicano-and-chicana-studies-b-a-double-major",
+    "source_url": "https://catalog.csun.edu/academics/chs/programs/ba-chicano-and-chicana-studies-ii/double-major/",
+    "source_line": 64,
+    "pool_ids": [
+      "CHS-351",
+      "CHS-362",
+      "CHS-365",
+      "CHS-380",
+      "CHS-381",
+      "CHS-401",
+      "CHS-432",
+      "CHS-467",
+      "CHS-470",
+      "CHS-473"
+    ],
+    "minimum_units": null,
+    "minimum_count": 2,
+    "decision_id": "chicano-and-chicana-studies-b-a-double-major:64:pool1"
+  },
+  {
+    "program_id": "chicano-and-chicana-studies-b-a-chicana-o-studies-social-science-subject-matter-waiver-program-option",
+    "source_url": "https://catalog.csun.edu/academics/chs/programs/ba-chicano-and-chicana-studies-iii/chicana-o-studies-social-science-subject-matter-waiver-program-option/",
+    "source_line": 84,
+    "pool_ids": [
+      "AIS-304",
+      "CHS-361",
+      "CHS-364",
+      "CHS-460"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "chicano-and-chicana-studies-b-a-chicana-o-studies-social-science-subject-matter-waiver-program-option:84:selection"
+  },
+  {
+    "program_id": "chicano-and-chicana-studies-b-a-chicana-o-studies-social-science-subject-matter-waiver-program-option",
+    "source_url": "https://catalog.csun.edu/academics/chs/programs/ba-chicano-and-chicana-studies-iii/chicana-o-studies-social-science-subject-matter-waiver-program-option/",
+    "source_line": 93,
+    "pool_ids": [
+      "CHS-345",
+      "CHS-346",
+      "CHS-365",
+      "CHS-401"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "chicano-and-chicana-studies-b-a-chicana-o-studies-social-science-subject-matter-waiver-program-option:93:selection"
+  },
+  {
+    "program_id": "chicano-and-chicana-studies-b-a-environmental-justice-in-chicana-o-communities-option",
+    "source_url": "https://catalog.csun.edu/academics/chs/programs/ba-chicano-and-chicana-studies-v/environmental-justice-in-chicana-o-communities-option/",
+    "source_line": 66,
+    "pool_ids": [
+      "AAS-440",
+      "AFRS-488",
+      "AIS-304",
+      "CAS-355",
+      "CHS-347",
+      "CHS-350",
+      "CHS-361",
+      "CHS-362",
+      "GEOG-316",
+      "GEOG-370",
+      "GEOG-375",
+      "GEOL-496ECS",
+      "RS-370",
+      "SUST-300",
+      "URBS-400",
+      "URBS-415",
+      "URBS-425"
+    ],
+    "minimum_units": null,
+    "minimum_count": 2,
+    "decision_id": "chicano-and-chicana-studies-b-a-environmental-justice-in-chicana-o-communities-option:66:pool1"
+  },
+  {
+    "program_id": "chicano-and-chicana-studies-b-a-spanish-bilingual-elementary-program-in-indigenous-and-chicana-o-communities-option",
+    "source_url": "https://catalog.csun.edu/academics/chs/programs/ba-chicano-and-chicana-studies-iv/spanish-bilingual-elementary-program-in-indigenous-and-chicana-o-communities-option/",
+    "source_line": 55,
+    "pool_ids": [
+      "AAS-115",
+      "AFRS-115",
+      "CAS-115",
+      "CHS-115",
+      "QS-115"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "chicano-and-chicana-studies-b-a-spanish-bilingual-elementary-program-in-indigenous-and-chicana-o-communities-option:55:pool1"
+  },
+  {
+    "program_id": "chicano-and-chicana-studies-b-a-spanish-bilingual-elementary-program-in-indigenous-and-chicana-o-communities-option",
+    "source_url": "https://catalog.csun.edu/academics/chs/programs/ba-chicano-and-chicana-studies-iv/spanish-bilingual-elementary-program-in-indigenous-and-chicana-o-communities-option/",
+    "source_line": 70,
+    "pool_ids": [
+      "AAS-201",
+      "AFRS-204",
+      "AIS-210",
+      "CHS-202",
+      "QS-201"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "chicano-and-chicana-studies-b-a-spanish-bilingual-elementary-program-in-indigenous-and-chicana-o-communities-option:70:pool1"
+  },
+  {
+    "program_id": "chicano-and-chicana-studies-b-a-spanish-bilingual-elementary-program-in-indigenous-and-chicana-o-communities-option",
+    "source_url": "https://catalog.csun.edu/academics/chs/programs/ba-chicano-and-chicana-studies-iv/spanish-bilingual-elementary-program-in-indigenous-and-chicana-o-communities-option/",
+    "source_line": 79,
+    "pool_ids": [
+      "AAS-151",
+      "AFRS-151",
+      "CAS-151",
+      "CHS-151",
+      "QS-151"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "chicano-and-chicana-studies-b-a-spanish-bilingual-elementary-program-in-indigenous-and-chicana-o-communities-option:79:pool1"
+  },
+  {
+    "program_id": "chicano-and-chicana-studies-b-a-spanish-bilingual-elementary-program-in-indigenous-and-chicana-o-communities-option",
+    "source_url": "https://catalog.csun.edu/academics/chs/programs/ba-chicano-and-chicana-studies-iv/spanish-bilingual-elementary-program-in-indigenous-and-chicana-o-communities-option/",
+    "source_line": 137,
+    "pool_ids": [
+      "BIOL-325",
+      "LING-303",
+      "LING-310",
+      "QS-369"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "chicano-and-chicana-studies-b-a-spanish-bilingual-elementary-program-in-indigenous-and-chicana-o-communities-option:137:pool1"
+  },
+  {
+    "program_id": "chicano-and-chicana-studies-b-a-spanish-bilingual-elementary-program-in-indigenous-and-chicana-o-communities-option",
+    "source_url": "https://catalog.csun.edu/academics/chs/programs/ba-chicano-and-chicana-studies-iv/spanish-bilingual-elementary-program-in-indigenous-and-chicana-o-communities-option/",
+    "source_line": 144,
+    "pool_ids": [
+      "CAS-309",
+      "CHS-401"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "chicano-and-chicana-studies-b-a-spanish-bilingual-elementary-program-in-indigenous-and-chicana-o-communities-option:144:pool1"
+  },
+  {
+    "program_id": "chicano-and-chicana-studies-b-a-spanish-bilingual-elementary-program-in-indigenous-and-chicana-o-communities-option",
+    "source_url": "https://catalog.csun.edu/academics/chs/programs/ba-chicano-and-chicana-studies-iv/spanish-bilingual-elementary-program-in-indigenous-and-chicana-o-communities-option/",
+    "source_line": 148,
+    "pool_ids": [
+      "ENGL-301",
+      "LING-300"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "chicano-and-chicana-studies-b-a-spanish-bilingual-elementary-program-in-indigenous-and-chicana-o-communities-option:148:pool1"
+  },
+  {
+    "program_id": "chicano-and-chicana-studies-b-a-spanish-bilingual-elementary-program-in-indigenous-and-chicana-o-communities-option",
+    "source_url": "https://catalog.csun.edu/academics/chs/programs/ba-chicano-and-chicana-studies-iv/spanish-bilingual-elementary-program-in-indigenous-and-chicana-o-communities-option/",
+    "source_line": 153,
+    "pool_ids": [
+      "SPAN-304",
+      "SPAN-306",
+      "SPAN-497"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "chicano-and-chicana-studies-b-a-spanish-bilingual-elementary-program-in-indigenous-and-chicana-o-communities-option:153:pool1"
+  },
+  {
+    "program_id": "child-and-adolescent-development-b-a-early-childhood-development-option",
+    "source_url": "https://catalog.csun.edu/academics/cadv/programs/ba-child-and-adolescent-development-ii/early-childhood-development-option/",
+    "source_line": 85,
+    "pool_ids": [
+      "CADV-381/L",
+      "FCS-431",
+      "FCS-431L"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "child-and-adolescent-development-b-a-early-childhood-development-option:85:pool1"
+  },
+  {
+    "program_id": "child-and-adolescent-development-b-a-early-childhood-development-option",
+    "source_url": "https://catalog.csun.edu/academics/cadv/programs/ba-child-and-adolescent-development-ii/early-childhood-development-option/",
+    "source_line": 94,
+    "pool_ids": [
+      "ART-383/L",
+      "ART-385/L",
+      "CADV-406/L",
+      "EPC-430",
+      "MUS-361/L",
+      "MUS-362/L",
+      "RTM-406/L"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "child-and-adolescent-development-b-a-early-childhood-development-option:94:pool1"
+  },
+  {
+    "program_id": "cinema-and-television-arts-b-a-entertainment-media-management-option",
+    "source_url": "https://catalog.csun.edu/academics/ctva/programs/ba-cinema-and-television-arts-vii/entertainment-media-management-option/",
+    "source_line": 51,
+    "pool_ids": [
+      "CTVA-240",
+      "CTVA-250",
+      "CTVA-260"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "cinema-and-television-arts-b-a-entertainment-media-management-option:51:pool1"
+  },
+  {
+    "program_id": "cinema-and-television-arts-b-a-entertainment-media-management-option",
+    "source_url": "https://catalog.csun.edu/academics/ctva/programs/ba-cinema-and-television-arts-vii/entertainment-media-management-option/",
+    "source_line": 59,
+    "pool_ids": [
+      "CTVA-305",
+      "CTVA-310"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "cinema-and-television-arts-b-a-entertainment-media-management-option:59:pool1"
+  },
+  {
+    "program_id": "cinema-and-television-arts-b-a-entertainment-media-management-option",
+    "source_url": "https://catalog.csun.edu/academics/ctva/programs/ba-cinema-and-television-arts-vii/entertainment-media-management-option/",
+    "source_line": 71,
+    "pool_ids": [
+      "CTVA-351",
+      "CTVA-480",
+      "CTVA-482",
+      "CTVA-487"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "cinema-and-television-arts-b-a-entertainment-media-management-option:71:pool1"
+  },
+  {
+    "program_id": "cinema-and-television-arts-b-a-entertainment-media-management-option",
+    "source_url": "https://catalog.csun.edu/academics/ctva/programs/ba-cinema-and-television-arts-vii/entertainment-media-management-option/",
+    "source_line": 81,
+    "pool_ids": [
+      "CTVA-329A-C",
+      "CTVA-329A/B",
+      "CTVA-494A/B"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "cinema-and-television-arts-b-a-entertainment-media-management-option:81:pool1"
+  },
+  {
+    "program_id": "cinema-and-television-arts-b-a-entertainment-media-management-option",
+    "source_url": "https://catalog.csun.edu/academics/ctva/programs/ba-cinema-and-television-arts-vii/entertainment-media-management-option/",
+    "source_line": 95,
+    "pool_ids": [
+      "CTVA-384",
+      "CTVA-405",
+      "CTVA-467",
+      "CTVA-481",
+      "CTVA-483"
+    ],
+    "minimum_units": null,
+    "minimum_count": 2,
+    "decision_id": "cinema-and-television-arts-b-a-entertainment-media-management-option:95:pool1"
+  },
+  {
+    "program_id": "cinema-and-television-arts-b-a-film-production-option",
+    "source_url": "https://catalog.csun.edu/academics/ctva/programs/ba-cinema-and-television-arts-vi/film-production-option/",
+    "source_line": 53,
+    "pool_ids": [
+      "CTVA-240",
+      "CTVA-250",
+      "CTVA-260"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "cinema-and-television-arts-b-a-film-production-option:53:pool1"
+  },
+  {
+    "program_id": "cinema-and-television-arts-b-a-film-production-option",
+    "source_url": "https://catalog.csun.edu/academics/ctva/programs/ba-cinema-and-television-arts-vi/film-production-option/",
+    "source_line": 62,
+    "pool_ids": [
+      "CTVA-305",
+      "CTVA-310"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "cinema-and-television-arts-b-a-film-production-option:62:pool1"
+  },
+  {
+    "program_id": "cinema-and-television-arts-b-a-film-production-option",
+    "source_url": "https://catalog.csun.edu/academics/ctva/programs/ba-cinema-and-television-arts-vi/film-production-option/",
+    "source_line": 74,
+    "pool_ids": [
+      "CTVA-351",
+      "CTVA-480",
+      "CTVA-482",
+      "CTVA-487"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "cinema-and-television-arts-b-a-film-production-option:74:pool1"
+  },
+  {
+    "program_id": "cinema-and-television-arts-b-a-film-production-option",
+    "source_url": "https://catalog.csun.edu/academics/ctva/programs/ba-cinema-and-television-arts-vi/film-production-option/",
+    "source_line": 83,
+    "pool_ids": [
+      "CTVA-329A-C",
+      "CTVA-329A/B",
+      "CTVA-494A/B"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "cinema-and-television-arts-b-a-film-production-option:83:pool1"
+  },
+  {
+    "program_id": "cinema-and-television-arts-b-a-media-theory-and-criticism-option",
+    "source_url": "https://catalog.csun.edu/academics/ctva/programs/ba-cinema-and-television-arts-v/media-theory-and-criticism-option/",
+    "source_line": 52,
+    "pool_ids": [
+      "CTVA-240",
+      "CTVA-250",
+      "CTVA-260"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "cinema-and-television-arts-b-a-media-theory-and-criticism-option:52:pool1"
+  },
+  {
+    "program_id": "cinema-and-television-arts-b-a-media-theory-and-criticism-option",
+    "source_url": "https://catalog.csun.edu/academics/ctva/programs/ba-cinema-and-television-arts-v/media-theory-and-criticism-option/",
+    "source_line": 62,
+    "pool_ids": [
+      "CTVA-305",
+      "CTVA-310"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "cinema-and-television-arts-b-a-media-theory-and-criticism-option:62:pool1"
+  },
+  {
+    "program_id": "cinema-and-television-arts-b-a-media-theory-and-criticism-option",
+    "source_url": "https://catalog.csun.edu/academics/ctva/programs/ba-cinema-and-television-arts-v/media-theory-and-criticism-option/",
+    "source_line": 74,
+    "pool_ids": [
+      "CTVA-351",
+      "CTVA-480",
+      "CTVA-482",
+      "CTVA-487"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "cinema-and-television-arts-b-a-media-theory-and-criticism-option:74:pool1"
+  },
+  {
+    "program_id": "cinema-and-television-arts-b-a-media-theory-and-criticism-option",
+    "source_url": "https://catalog.csun.edu/academics/ctva/programs/ba-cinema-and-television-arts-v/media-theory-and-criticism-option/",
+    "source_line": 82,
+    "pool_ids": [
+      "CTVA-329A-C",
+      "CTVA-329A/B",
+      "CTVA-494A/B"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "cinema-and-television-arts-b-a-media-theory-and-criticism-option:82:pool1"
+  },
+  {
+    "program_id": "cinema-and-television-arts-b-a-media-theory-and-criticism-option",
+    "source_url": "https://catalog.csun.edu/academics/ctva/programs/ba-cinema-and-television-arts-v/media-theory-and-criticism-option/",
+    "source_line": 94,
+    "pool_ids": [
+      "CTVA-305",
+      "CTVA-309",
+      "CTVA-315",
+      "CTVA-400",
+      "CTVA-411A-Z",
+      "CTVA-412",
+      "CTVA-413",
+      "CTVA-415A-Z",
+      "CTVA-416"
+    ],
+    "minimum_units": null,
+    "minimum_count": 4,
+    "decision_id": "cinema-and-television-arts-b-a-media-theory-and-criticism-option:94:pool1"
+  },
+  {
+    "program_id": "cinema-and-television-arts-b-a-emerging-media-production-option",
+    "source_url": "https://catalog.csun.edu/academics/ctva/programs/ba-cinema-and-television-arts-iv/emerging-media-production-option/",
+    "source_line": 57,
+    "pool_ids": [
+      "CTVA-305",
+      "CTVA-310"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "cinema-and-television-arts-b-a-emerging-media-production-option:57:pool1"
+  },
+  {
+    "program_id": "cinema-and-television-arts-b-a-emerging-media-production-option",
+    "source_url": "https://catalog.csun.edu/academics/ctva/programs/ba-cinema-and-television-arts-iv/emerging-media-production-option/",
+    "source_line": 69,
+    "pool_ids": [
+      "CTVA-351",
+      "CTVA-480",
+      "CTVA-482",
+      "CTVA-487"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "cinema-and-television-arts-b-a-emerging-media-production-option:69:pool1"
+  },
+  {
+    "program_id": "cinema-and-television-arts-b-a-emerging-media-production-option",
+    "source_url": "https://catalog.csun.edu/academics/ctva/programs/ba-cinema-and-television-arts-iv/emerging-media-production-option/",
+    "source_line": 77,
+    "pool_ids": [
+      "CTVA-329A-C",
+      "CTVA-329A/B",
+      "CTVA-494A/B"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "cinema-and-television-arts-b-a-emerging-media-production-option:77:pool1"
+  },
+  {
+    "program_id": "cinema-and-television-arts-b-a-screenwriting-option",
+    "source_url": "https://catalog.csun.edu/academics/ctva/programs/ba-cinema-and-television-arts-ii/screenwriting-option/",
+    "source_line": 51,
+    "pool_ids": [
+      "CTVA-240",
+      "CTVA-250",
+      "CTVA-260"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "cinema-and-television-arts-b-a-screenwriting-option:51:pool1"
+  },
+  {
+    "program_id": "cinema-and-television-arts-b-a-screenwriting-option",
+    "source_url": "https://catalog.csun.edu/academics/ctva/programs/ba-cinema-and-television-arts-ii/screenwriting-option/",
+    "source_line": 62,
+    "pool_ids": [
+      "CTVA-305",
+      "CTVA-310"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "cinema-and-television-arts-b-a-screenwriting-option:62:pool1"
+  },
+  {
+    "program_id": "cinema-and-television-arts-b-a-screenwriting-option",
+    "source_url": "https://catalog.csun.edu/academics/ctva/programs/ba-cinema-and-television-arts-ii/screenwriting-option/",
+    "source_line": 74,
+    "pool_ids": [
+      "CTVA-351",
+      "CTVA-480",
+      "CTVA-482",
+      "CTVA-487"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "cinema-and-television-arts-b-a-screenwriting-option:74:pool1"
+  },
+  {
+    "program_id": "cinema-and-television-arts-b-a-screenwriting-option",
+    "source_url": "https://catalog.csun.edu/academics/ctva/programs/ba-cinema-and-television-arts-ii/screenwriting-option/",
+    "source_line": 83,
+    "pool_ids": [
+      "CTVA-329A-C",
+      "CTVA-329A/B",
+      "CTVA-494A/B"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "cinema-and-television-arts-b-a-screenwriting-option:83:pool1"
+  },
+  {
+    "program_id": "cinema-and-television-arts-b-a-screenwriting-option",
+    "source_url": "https://catalog.csun.edu/academics/ctva/programs/ba-cinema-and-television-arts-ii/screenwriting-option/",
+    "source_line": 96,
+    "pool_ids": [
+      "CTVA-350",
+      "CTVA-440"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "cinema-and-television-arts-b-a-screenwriting-option:96:pool1"
+  },
+  {
+    "program_id": "cinema-and-television-arts-b-a-screenwriting-option",
+    "source_url": "https://catalog.csun.edu/academics/ctva/programs/ba-cinema-and-television-arts-ii/screenwriting-option/",
+    "source_line": 101,
+    "pool_ids": [
+      "CTVA-422",
+      "CTVA-428"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "cinema-and-television-arts-b-a-screenwriting-option:101:pool1"
+  },
+  {
+    "program_id": "cinema-and-television-arts-b-a-television-production-option",
+    "source_url": "https://catalog.csun.edu/academics/ctva/programs/ba-cinema-and-television-arts-i/television-production-option/",
+    "source_line": 53,
+    "pool_ids": [
+      "CTVA-240",
+      "CTVA-250",
+      "CTVA-260"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "cinema-and-television-arts-b-a-television-production-option:53:pool1"
+  },
+  {
+    "program_id": "cinema-and-television-arts-b-a-television-production-option",
+    "source_url": "https://catalog.csun.edu/academics/ctva/programs/ba-cinema-and-television-arts-i/television-production-option/",
+    "source_line": 64,
+    "pool_ids": [
+      "CTVA-305",
+      "CTVA-310"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "cinema-and-television-arts-b-a-television-production-option:64:pool1"
+  },
+  {
+    "program_id": "cinema-and-television-arts-b-a-television-production-option",
+    "source_url": "https://catalog.csun.edu/academics/ctva/programs/ba-cinema-and-television-arts-i/television-production-option/",
+    "source_line": 78,
+    "pool_ids": [
+      "CTVA-351",
+      "CTVA-480",
+      "CTVA-482",
+      "CTVA-487"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "cinema-and-television-arts-b-a-television-production-option:78:pool1"
+  },
+  {
+    "program_id": "cinema-and-television-arts-b-a-television-production-option",
+    "source_url": "https://catalog.csun.edu/academics/ctva/programs/ba-cinema-and-television-arts-i/television-production-option/",
+    "source_line": 87,
+    "pool_ids": [
+      "CTVA-329A-C",
+      "CTVA-329A/B",
+      "CTVA-494A/B"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "cinema-and-television-arts-b-a-television-production-option:87:pool1"
+  },
+  {
+    "program_id": "civil-engineering-b-s",
+    "source_url": "https://catalog.csun.edu/academics/cecm/programs/bs-civil-engineering/",
+    "source_line": 118,
+    "pool_ids": [
+      "CE-360",
+      "CE-441/L",
+      "CE-480",
+      "CE-487",
+      "ECE-240N"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "civil-engineering-b-s:111:pool2"
+  },
+  {
+    "program_id": "civil-engineering-b-s",
+    "source_url": "https://catalog.csun.edu/academics/cecm/programs/bs-civil-engineering/",
+    "source_line": 129,
+    "pool_ids": [
+      "CE-461",
+      "CE-480",
+      "CE-487",
+      "ME-493"
+    ],
+    "minimum_units": null,
+    "minimum_count": 3,
+    "decision_id": "civil-engineering-b-s:125:pool2"
+  },
+  {
+    "program_id": "communication-studies-b-a",
+    "source_url": "https://catalog.csun.edu/academics/coms/programs/ba-communication-studies/",
+    "source_line": 49,
+    "pool_ids": [
+      "COMS-104",
+      "COMS-225",
+      "COMS-251"
+    ],
+    "minimum_units": 6,
+    "minimum_count": null,
+    "decision_id": "communication-studies-b-a:49:pool1"
+  },
+  {
+    "program_id": "communication-studies-b-a",
+    "source_url": "https://catalog.csun.edu/academics/coms/programs/ba-communication-studies/",
+    "source_line": 61,
+    "pool_ids": [
+      "COMS-430",
+      "COMS-440",
+      "COMS-450"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "communication-studies-b-a:61:pool1"
+  },
+  {
+    "program_id": "communication-studies-b-a",
+    "source_url": "https://catalog.csun.edu/academics/coms/programs/ba-communication-studies/",
+    "source_line": 71,
+    "pool_ids": [
+      "COMS-303",
+      "COMS-354",
+      "COMS-401",
+      "COMS-404",
+      "COMS-445"
+    ],
+    "minimum_units": 3,
+    "minimum_count": null,
+    "decision_id": "communication-studies-b-a:71:pool1"
+  },
+  {
+    "program_id": "communication-studies-b-a",
+    "source_url": "https://catalog.csun.edu/academics/coms/programs/ba-communication-studies/",
+    "source_line": 81,
+    "pool_ids": [
+      "COMS-425",
+      "COMS-435",
+      "COMS-442",
+      "COMS-444",
+      "COMS-448"
+    ],
+    "minimum_units": 3,
+    "minimum_count": null,
+    "decision_id": "communication-studies-b-a:81:pool1"
+  },
+  {
+    "program_id": "communication-studies-b-a",
+    "source_url": "https://catalog.csun.edu/academics/coms/programs/ba-communication-studies/",
+    "source_line": 91,
+    "pool_ids": [
+      "COMS-320",
+      "COMS-350",
+      "COMS-431",
+      "COMS-451",
+      "COMS-453"
+    ],
+    "minimum_units": 3,
+    "minimum_count": null,
+    "decision_id": "communication-studies-b-a:91:pool1"
+  },
+  {
+    "program_id": "communication-studies-b-a",
+    "source_url": "https://catalog.csun.edu/academics/coms/programs/ba-communication-studies/",
+    "source_line": 99,
+    "pool_ids": [
+      "COMS-323",
+      "COMS-400C",
+      "COMS-410",
+      "COMS-437",
+      "COMS-452",
+      "COMS-468",
+      "COMS-494/L"
+    ],
+    "minimum_units": 3,
+    "minimum_count": null,
+    "decision_id": "communication-studies-b-a:99:pool1"
+  },
+  {
+    "program_id": "communicative-disorders-b-a",
+    "source_url": "https://catalog.csun.edu/academics/cd/programs/ba-communicative-disorders/",
+    "source_line": 82,
+    "pool_ids": [
+      "ART-383/L",
+      "ART-385/L",
+      "BIOL-241/L",
+      "CD-465",
+      "CD-469O",
+      "EPC-314",
+      "FCS-330",
+      "HSCI-314",
+      "HSCI-336",
+      "HSCI-337",
+      "HSCI-345",
+      "PSY-200",
+      "PSY-302",
+      "PSY-313",
+      "PSY-351",
+      "PSY-365",
+      "RTM-305",
+      "RTM-352",
+      "RTM-415",
+      "SOC-440"
+    ],
+    "minimum_units": 3,
+    "minimum_count": null,
+    "decision_id": "communicative-disorders-b-a:82:pool1"
+  },
+  {
+    "program_id": "communicative-disorders-b-a",
+    "source_url": "https://catalog.csun.edu/academics/cd/programs/ba-communicative-disorders/",
+    "source_line": 106,
+    "pool_ids": [
+      "ART-383/L",
+      "ART-385/L",
+      "BIOL-241/L",
+      "CD-465",
+      "CD-469O",
+      "CD-471",
+      "CD-475",
+      "CD-576",
+      "HSCI-314",
+      "HSCI-336",
+      "HSCI-337",
+      "HSCI-345",
+      "PSY-200",
+      "PSY-302",
+      "PSY-313",
+      "PSY-351",
+      "PSY-365",
+      "RTM-305",
+      "RTM-352",
+      "RTM-415",
+      "SOC-440"
+    ],
+    "minimum_units": 10,
+    "minimum_count": null,
+    "decision_id": "communicative-disorders-b-a:106:pool1"
+  },
+  {
+    "program_id": "computer-engineering-b-s",
+    "source_url": "https://catalog.csun.edu/academics/ece/programs/bs-computer-engineering/",
+    "source_line": 101,
+    "pool_ids": [
+      "BIOL-101EN",
+      "BIOL-106",
+      "BIOL-106L",
+      "BIOL-107",
+      "BIOL-107L",
+      "CHEM-101",
+      "CHEM-101D",
+      "CHEM-101L",
+      "CHEM-102",
+      "CHEM-102D",
+      "CHEM-102L",
+      "CHEM-107",
+      "MATH-262",
+      "MATH-326",
+      "PHYS-227",
+      "PHYS-227L",
+      "PHYS-375"
+    ],
+    "minimum_units": 3,
+    "minimum_count": null,
+    "decision_id": "computer-engineering-b-s:99:pool1"
+  },
+  {
+    "program_id": "computer-engineering-b-s",
+    "source_url": "https://catalog.csun.edu/academics/ece/programs/bs-computer-engineering/",
+    "source_line": 137,
+    "pool_ids": [
+      "COMP-322/L",
+      "COMP-324",
+      "COMP-380/L",
+      "COMP-429",
+      "COMP-522",
+      "COMP-524",
+      "COMP-529/L",
+      "COMP-539",
+      "ECE-420L",
+      "ECE-427/L",
+      "ECE-443/L",
+      "ECE-520/L",
+      "ECE-524/L",
+      "ECE-527/L",
+      "ECE-528/L",
+      "ECE-537",
+      "ECE-546",
+      "ECE-551",
+      "ECE-562"
+    ],
+    "minimum_units": 11,
+    "minimum_count": null,
+    "decision_id": "computer-engineering-b-s:137:pool1"
+  },
+  {
+    "program_id": "cit-bs",
+    "source_url": "https://catalog.csun.edu/academics/comp/programs/bs-computer-information-technology/",
+    "source_line": 73,
+    "pool_ids": [
+      "MATH-103",
+      "MATH-150A",
+      "MATH-255A"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "cit-math"
+  },
+  {
+    "program_id": "computer-science-b-s",
+    "source_url": "https://catalog.csun.edu/academics/comp/programs/bs-computer-science/",
+    "source_line": 78,
+    "pool_ids": [
+      "BIOL-106",
+      "BIOL-106L",
+      "BIOL-107",
+      "BIOL-107L",
+      "GEOL-110",
+      "GEOL-112"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "computer-science-b-s:78:pool1"
+  },
+  {
+    "program_id": "computer-science-b-s",
+    "source_url": "https://catalog.csun.edu/academics/comp/programs/bs-computer-science/",
+    "source_line": 83,
+    "pool_ids": [
+      "CHEM-101",
+      "CHEM-101D",
+      "CHEM-101L",
+      "GEOG-101",
+      "GEOG-102",
+      "GEOG-103",
+      "GEOG-105",
+      "GEOL-101",
+      "GEOL-102",
+      "GEOL-110",
+      "GEOL-112",
+      "PHYS-220A",
+      "PHYS-220AL"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "computer-science-b-s:83:pool1"
+  },
+  {
+    "program_id": "consumer-sciences-b-s-consumer-affairs-option",
+    "source_url": "https://catalog.csun.edu/academics/fcs/programs/bs-consumer-sciences-i/consumer-affairs-option/",
+    "source_line": 70,
+    "pool_ids": [
+      "BLAW-280",
+      "FCS-340",
+      "FCS-357",
+      "FCS-424",
+      "FCS-426",
+      "FCS-428",
+      "FCS-480",
+      "MKT-304",
+      "MKT-348"
+    ],
+    "minimum_units": 9,
+    "minimum_count": null,
+    "decision_id": "consumer-sciences-b-s-consumer-affairs-option:68:pool1"
+  },
+  {
+    "program_id": "consumer-sciences-b-s-family-and-consumer-sciences-option",
+    "source_url": "https://catalog.csun.edu/academics/fcs/programs/bs-consumer-sciences-ii/family-and-consumer-sciences-option/",
+    "source_line": 71,
+    "pool_ids": [
+      "FCS-321/L",
+      "FCS-322/L",
+      "FCS-340",
+      "FCS-357",
+      "FCS-436",
+      "FCS-480"
+    ],
+    "minimum_units": 6,
+    "minimum_count": null,
+    "decision_id": "consumer-sciences-b-s-family-and-consumer-sciences-option:69:pool1"
+  },
+  {
+    "program_id": "criminology-and-justice-studies-b-a",
+    "source_url": "https://catalog.csun.edu/academics/cjs/programs/ba-criminology-and-justice-studies/",
+    "source_line": 78,
+    "pool_ids": [
+      "CJS-410CS",
+      "CJS-480",
+      "POLS-494J/A"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "criminology-and-justice-studies-b-a:78:pool1"
+  },
+  {
+    "program_id": "criminology-and-justice-studies-b-a",
+    "source_url": "https://catalog.csun.edu/academics/cjs/programs/ba-criminology-and-justice-studies/",
+    "source_line": 90,
+    "pool_ids": [
+      "AIS-304",
+      "CJS-328",
+      "CJS-338",
+      "CJS-418",
+      "CJS-438",
+      "CJS-448"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "criminology-and-justice-studies-b-a:90:pool1"
+  },
+  {
+    "program_id": "criminology-and-justice-studies-b-a",
+    "source_url": "https://catalog.csun.edu/academics/cjs/programs/ba-criminology-and-justice-studies/",
+    "source_line": 100,
+    "pool_ids": [
+      "CADV-310",
+      "CJS-326",
+      "CJS-446",
+      "CJS-456"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "criminology-and-justice-studies-b-a:100:pool1"
+  },
+  {
+    "program_id": "criminology-and-justice-studies-b-a",
+    "source_url": "https://catalog.csun.edu/academics/cjs/programs/ba-criminology-and-justice-studies/",
+    "source_line": 108,
+    "pool_ids": [
+      "CJS-328",
+      "CJS-338",
+      "CJS-402",
+      "CJS-418",
+      "CJS-422",
+      "CJS-432",
+      "CJS-448",
+      "CJS-452AA-ZZ",
+      "GWS-370"
+    ],
+    "minimum_units": null,
+    "minimum_count": 2,
+    "decision_id": "criminology-and-justice-studies-b-a:108:pool1"
+  },
+  {
+    "program_id": "criminology-and-justice-studies-b-a",
+    "source_url": "https://catalog.csun.edu/academics/cjs/programs/ba-criminology-and-justice-studies/",
+    "source_line": 121,
+    "pool_ids": [
+      "AIS-304",
+      "CJS-334",
+      "CJS-344",
+      "CJS-438",
+      "CJS-444",
+      "CJS-448",
+      "CJS-454AA-ZZ",
+      "LING-310",
+      "POLS-426",
+      "POLS-450",
+      "POLS-455",
+      "POLS-457B",
+      "PSY-443",
+      "SOC-434"
+    ],
+    "minimum_units": null,
+    "minimum_count": 2,
+    "decision_id": "criminology-and-justice-studies-b-a:121:pool1"
+  },
+  {
+    "program_id": "dance-b-a",
+    "source_url": "https://catalog.csun.edu/academics/kin/programs/ba-dance/",
+    "source_line": 72,
+    "pool_ids": [
+      "DANC-421",
+      "DANC-519",
+      "DANC-543"
+    ],
+    "minimum_units": 3,
+    "minimum_count": null,
+    "decision_id": "dance-b-a:72:pool1"
+  },
+  {
+    "program_id": "dance-b-a",
+    "source_url": "https://catalog.csun.edu/academics/kin/programs/ba-dance/",
+    "source_line": 79,
+    "pool_ids": [
+      "DANC-314/L",
+      "DANC-315/L",
+      "DANC-317"
+    ],
+    "minimum_units": 3,
+    "minimum_count": null,
+    "decision_id": "dance-b-a:79:pool1"
+  },
+  {
+    "program_id": "deaf-studies-b-a",
+    "source_url": "https://catalog.csun.edu/academics/deaf/programs/ba-deaf-studies/",
+    "source_line": 58,
+    "pool_ids": [
+      "DEAF-300",
+      "DEAF-370",
+      "DEAF-430",
+      "DEAF-489/L",
+      "DEAF-490A-G"
+    ],
+    "minimum_units": null,
+    "minimum_count": 2,
+    "decision_id": "deaf-studies-b-a:58:selection"
+  },
+  {
+    "program_id": "deaf-studies-b-a",
+    "source_url": "https://catalog.csun.edu/academics/deaf/programs/ba-deaf-studies/",
+    "source_line": 64,
+    "pool_ids": [
+      "CD-410",
+      "DEAF-350",
+      "DEAF-400",
+      "DEAF-401",
+      "DEAF-402",
+      "DEAF-404",
+      "DEAF-406",
+      "DEAF-485"
+    ],
+    "minimum_units": null,
+    "minimum_count": 3,
+    "decision_id": "deaf-studies-b-a:64:pool1"
+  },
+  {
+    "program_id": "electrical-engineering-b-s",
+    "source_url": "https://catalog.csun.edu/academics/ece/programs/bs-electrical-engineering/",
+    "source_line": 115,
+    "pool_ids": [
+      "ME-370",
+      "ME-376"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "electrical-engineering-b-s:115:pool1"
+  },
+  {
+    "program_id": "english-b-a-literature-option",
+    "source_url": "https://catalog.csun.edu/academics/engl/programs/ba-english-i/literature-option/",
+    "source_line": 61,
+    "pool_ids": [
+      "AIS-318",
+      "ENGL-311",
+      "ENGL-318",
+      "ENGL-368",
+      "ENGL-369",
+      "ENGL-371",
+      "ENGL-431",
+      "ENGL-433",
+      "ENGL-434",
+      "ENGL-487"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "english-b-a-literature-option:61:pool1"
+  },
+  {
+    "program_id": "english-b-a-literature-option",
+    "source_url": "https://catalog.csun.edu/academics/engl/programs/ba-english-i/literature-option/",
+    "source_line": 73,
+    "pool_ids": [
+      "ENGL-414",
+      "ENGL-416",
+      "ENGL-417",
+      "ENGL-418",
+      "ENGL-443",
+      "ENGL-449"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "english-b-a-literature-option:73:pool1"
+  },
+  {
+    "program_id": "english-b-a-literature-option",
+    "source_url": "https://catalog.csun.edu/academics/engl/programs/ba-english-i/literature-option/",
+    "source_line": 81,
+    "pool_ids": [
+      "ENGL-419",
+      "ENGL-420",
+      "ENGL-452",
+      "ENGL-456",
+      "ENGL-466"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "english-b-a-literature-option:81:pool1"
+  },
+  {
+    "program_id": "english-b-a-literature-option",
+    "source_url": "https://catalog.csun.edu/academics/engl/programs/ba-english-i/literature-option/",
+    "source_line": 89,
+    "pool_ids": [
+      "ENGL-458",
+      "ENGL-460",
+      "ENGL-467"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "english-b-a-literature-option:89:pool1"
+  },
+  {
+    "program_id": "english-b-a-literature-option",
+    "source_url": "https://catalog.csun.edu/academics/engl/programs/ba-english-i/literature-option/",
+    "source_line": 96,
+    "pool_ids": [
+      "ENGL-473",
+      "ENGL-474",
+      "ENGL-477"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "english-b-a-literature-option:96:pool1"
+  },
+  {
+    "program_id": "english-b-a-literature-option",
+    "source_url": "https://catalog.csun.edu/academics/engl/programs/ba-english-i/literature-option/",
+    "source_line": 103,
+    "pool_ids": [
+      "ENGL-427",
+      "ENGL-461",
+      "ENGL-462",
+      "ENGL-463A",
+      "ENGL-463B",
+      "ENGL-468",
+      "ENGL-475",
+      "ENGL-476",
+      "ENGL-478"
+    ],
+    "minimum_units": null,
+    "minimum_count": 2,
+    "decision_id": "english-b-a-literature-option:103:pool1"
+  },
+  {
+    "program_id": "english-b-a-creative-writing-option",
+    "source_url": "https://catalog.csun.edu/academics/engl/programs/ba-english-ii/creative-writing-option/",
+    "source_line": 53,
+    "pool_ids": [
+      "ENGL-258",
+      "ENGL-259",
+      "ENGL-275"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "english-b-a-creative-writing-option:53:pool1"
+  },
+  {
+    "program_id": "english-b-a-creative-writing-option",
+    "source_url": "https://catalog.csun.edu/academics/engl/programs/ba-english-ii/creative-writing-option/",
+    "source_line": 69,
+    "pool_ids": [
+      "AIS-318",
+      "ENGL-311",
+      "ENGL-318",
+      "ENGL-368",
+      "ENGL-369",
+      "ENGL-371",
+      "ENGL-431",
+      "ENGL-433",
+      "ENGL-434",
+      "ENGL-487"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "english-b-a-creative-writing-option:69:pool1"
+  },
+  {
+    "program_id": "english-b-a-creative-writing-option",
+    "source_url": "https://catalog.csun.edu/academics/engl/programs/ba-english-ii/creative-writing-option/",
+    "source_line": 82,
+    "pool_ids": [
+      "ENGL-414",
+      "ENGL-416",
+      "ENGL-417",
+      "ENGL-418",
+      "ENGL-419",
+      "ENGL-420",
+      "ENGL-443",
+      "ENGL-449",
+      "ENGL-452",
+      "ENGL-456",
+      "ENGL-458",
+      "ENGL-460",
+      "ENGL-466",
+      "ENGL-467"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "english-b-a-creative-writing-option:82:pool1"
+  },
+  {
+    "program_id": "english-b-a-creative-writing-option",
+    "source_url": "https://catalog.csun.edu/academics/engl/programs/ba-english-ii/creative-writing-option/",
+    "source_line": 99,
+    "pool_ids": [
+      "ENGL-473",
+      "ENGL-474",
+      "ENGL-477"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "english-b-a-creative-writing-option:99:pool1"
+  },
+  {
+    "program_id": "english-b-a-creative-writing-option",
+    "source_url": "https://catalog.csun.edu/academics/engl/programs/ba-english-ii/creative-writing-option/",
+    "source_line": 106,
+    "pool_ids": [
+      "ENGL-427",
+      "ENGL-461",
+      "ENGL-462",
+      "ENGL-463A",
+      "ENGL-463B",
+      "ENGL-468",
+      "ENGL-475",
+      "ENGL-476",
+      "ENGL-478"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "english-b-a-creative-writing-option:106:pool1"
+  },
+  {
+    "program_id": "english-b-a-creative-writing-option",
+    "source_url": "https://catalog.csun.edu/academics/engl/programs/ba-english-ii/creative-writing-option/",
+    "source_line": 119,
+    "pool_ids": [
+      "ENGL-308",
+      "ENGL-309",
+      "ENGL-310",
+      "ENGL-408",
+      "ENGL-409",
+      "ENGL-410",
+      "ENGL-457A-Z"
+    ],
+    "minimum_units": null,
+    "minimum_count": 3,
+    "decision_id": "english-b-a-creative-writing-option:119:pool1"
+  },
+  {
+    "program_id": "english-b-a-creative-writing-option",
+    "source_url": "https://catalog.csun.edu/academics/engl/programs/ba-english-ii/creative-writing-option/",
+    "source_line": 132,
+    "pool_ids": [
+      "ENGL-464",
+      "ENGL-465"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "english-b-a-creative-writing-option:132:pool1"
+  },
+  {
+    "program_id": "english-b-a-creative-writing-option",
+    "source_url": "https://catalog.csun.edu/academics/engl/programs/ba-english-ii/creative-writing-option/",
+    "source_line": 139,
+    "pool_ids": [
+      "ENGL-457A-Z",
+      "ENGL-490",
+      "ENGL-491",
+      "ENGL-512"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "english-b-a-creative-writing-option:139:pool1"
+  },
+  {
+    "program_id": "english-b-a-subject-matter-program-for-the-single-subject-credential-option",
+    "source_url": "https://catalog.csun.edu/academics/engl/programs/ba-english-iii/subject-matter-program-for-the-single-subject-credential-option/",
+    "source_line": 59,
+    "pool_ids": [
+      "AAS-347",
+      "AFRS-161",
+      "CHS-260",
+      "POLS-155",
+      "POLS-355",
+      "POLS-403"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "english-b-a-subject-matter-program-for-the-single-subject-credential-option:59:pool1"
+  },
+  {
+    "program_id": "english-b-a-subject-matter-program-for-the-single-subject-credential-option",
+    "source_url": "https://catalog.csun.edu/academics/engl/programs/ba-english-iii/subject-matter-program-for-the-single-subject-credential-option/",
+    "source_line": 80,
+    "pool_ids": [
+      "ENGL-416",
+      "ENGL-417"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "english-b-a-subject-matter-program-for-the-single-subject-credential-option:80:pool1"
+  },
+  {
+    "program_id": "english-b-a-subject-matter-program-for-the-single-subject-credential-option",
+    "source_url": "https://catalog.csun.edu/academics/engl/programs/ba-english-iii/subject-matter-program-for-the-single-subject-credential-option/",
+    "source_line": 86,
+    "pool_ids": [
+      "AAS-321",
+      "AFRS-344",
+      "AFRS-346",
+      "AIS-318",
+      "CHS-380",
+      "CHS-381",
+      "ENGL-311",
+      "ENGL-318",
+      "ENGL-368",
+      "ENGL-369",
+      "ENGL-371",
+      "ENGL-431",
+      "ENGL-433",
+      "ENGL-434",
+      "ENGL-487"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "english-b-a-subject-matter-program-for-the-single-subject-credential-option:86:pool1"
+  },
+  {
+    "program_id": "english-b-a-subject-matter-program-for-the-single-subject-credential-option",
+    "source_url": "https://catalog.csun.edu/academics/engl/programs/ba-english-iii/subject-matter-program-for-the-single-subject-credential-option/",
+    "source_line": 104,
+    "pool_ids": [
+      "ENGL-302",
+      "ENGL-400",
+      "ENGL-405"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "english-b-a-subject-matter-program-for-the-single-subject-credential-option:104:pool1"
+  },
+  {
+    "program_id": "english-b-a-subject-matter-program-for-the-single-subject-credential-option",
+    "source_url": "https://catalog.csun.edu/academics/engl/programs/ba-english-iii/subject-matter-program-for-the-single-subject-credential-option/",
+    "source_line": 225,
+    "pool_ids": [
+      "COMS-104",
+      "COMS-225",
+      "COMS-301",
+      "COMS-303",
+      "COMS-305",
+      "COMS-320",
+      "COMS-323",
+      "COMS-325",
+      "COMS-356",
+      "COMS-360",
+      "COMS-400C",
+      "COMS-425",
+      "COMS-437"
+    ],
+    "minimum_units": 12,
+    "minimum_count": null,
+    "decision_id": "english-b-a-subject-matter-program-for-the-single-subject-credential-option:225:pool1"
+  },
+  {
+    "program_id": "english-b-a-subject-matter-program-for-the-single-subject-credential-option",
+    "source_url": "https://catalog.csun.edu/academics/engl/programs/ba-english-iii/subject-matter-program-for-the-single-subject-credential-option/",
+    "source_line": 270,
+    "pool_ids": [
+      "ENGL-253",
+      "ENGL-254",
+      "ENGL-315",
+      "ENGL-333",
+      "ENGL-405",
+      "ENGL-428",
+      "ENGL-430"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "english-b-a-subject-matter-program-for-the-single-subject-credential-option:270:pool1"
+  },
+  {
+    "program_id": "english-b-a-four-year-integrated-fyi-english-subject-matter-program-for-the-single-subject-credential-option",
+    "source_url": "https://catalog.csun.edu/academics/engl/programs/ba-english-iv/four-year-integrated-fyi-english-subject-matter-program-for-the-single-subject-credential-option/",
+    "source_line": 69,
+    "pool_ids": [
+      "AFRS-161",
+      "CHS-260",
+      "POLS-155"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "english-b-a-four-year-integrated-fyi-english-subject-matter-program-for-the-single-subject-credential-option:69:pool1"
+  },
+  {
+    "program_id": "english-b-a-four-year-integrated-fyi-english-subject-matter-program-for-the-single-subject-credential-option",
+    "source_url": "https://catalog.csun.edu/academics/engl/programs/ba-english-iv/four-year-integrated-fyi-english-subject-matter-program-for-the-single-subject-credential-option/",
+    "source_line": 106,
+    "pool_ids": [
+      "ENGL-311",
+      "ENGL-371"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "english-b-a-four-year-integrated-fyi-english-subject-matter-program-for-the-single-subject-credential-option:106:pool1"
+  },
+  {
+    "program_id": "english-b-a-four-year-integrated-fyi-english-subject-matter-program-for-the-single-subject-credential-option",
+    "source_url": "https://catalog.csun.edu/academics/engl/programs/ba-english-iv/four-year-integrated-fyi-english-subject-matter-program-for-the-single-subject-credential-option/",
+    "source_line": 124,
+    "pool_ids": [
+      "ENGL-443",
+      "ENGL-449",
+      "ENGL-452",
+      "ENGL-456",
+      "ENGL-458",
+      "ENGL-460",
+      "ENGL-461",
+      "ENGL-462",
+      "ENGL-466",
+      "ENGL-467",
+      "ENGL-468"
+    ],
+    "minimum_units": 3,
+    "minimum_count": null,
+    "decision_id": "english-b-a-four-year-integrated-fyi-english-subject-matter-program-for-the-single-subject-credential-option:124:pool1"
+  },
+  {
+    "program_id": "english-b-a-four-year-integrated-fyi-english-subject-matter-program-for-the-single-subject-credential-option",
+    "source_url": "https://catalog.csun.edu/academics/engl/programs/ba-english-iv/four-year-integrated-fyi-english-subject-matter-program-for-the-single-subject-credential-option/",
+    "source_line": 156,
+    "pool_ids": [
+      "ENGL-473",
+      "ENGL-474",
+      "ENGL-475",
+      "ENGL-476",
+      "ENGL-477",
+      "ENGL-478"
+    ],
+    "minimum_units": 3,
+    "minimum_count": null,
+    "decision_id": "english-b-a-four-year-integrated-fyi-english-subject-matter-program-for-the-single-subject-credential-option:156:pool1"
+  },
+  {
+    "program_id": "english-b-a-junior-year-integrated-jyi-english-subject-matter-program-for-the-single-subject-credential-option",
+    "source_url": "https://catalog.csun.edu/academics/engl/programs/ba-english-v/junior-year-integrated-jyi-english-subject-matter-program-for-the-single-subject-credential-option/",
+    "source_line": 76,
+    "pool_ids": [
+      "ENGL-443",
+      "ENGL-449",
+      "ENGL-452",
+      "ENGL-456",
+      "ENGL-458",
+      "ENGL-460",
+      "ENGL-461",
+      "ENGL-462",
+      "ENGL-466",
+      "ENGL-467",
+      "ENGL-468"
+    ],
+    "minimum_units": 3,
+    "minimum_count": null,
+    "decision_id": "english-b-a-junior-year-integrated-jyi-english-subject-matter-program-for-the-single-subject-credential-option:76:pool1"
+  },
+  {
+    "program_id": "english-b-a-junior-year-integrated-jyi-english-subject-matter-program-for-the-single-subject-credential-option",
+    "source_url": "https://catalog.csun.edu/academics/engl/programs/ba-english-v/junior-year-integrated-jyi-english-subject-matter-program-for-the-single-subject-credential-option/",
+    "source_line": 100,
+    "pool_ids": [
+      "ENGL-311",
+      "ENGL-371"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "english-b-a-junior-year-integrated-jyi-english-subject-matter-program-for-the-single-subject-credential-option:100:pool1"
+  },
+  {
+    "program_id": "english-b-a-junior-year-integrated-jyi-english-subject-matter-program-for-the-single-subject-credential-option",
+    "source_url": "https://catalog.csun.edu/academics/engl/programs/ba-english-v/junior-year-integrated-jyi-english-subject-matter-program-for-the-single-subject-credential-option/",
+    "source_line": 134,
+    "pool_ids": [
+      "ENGL-473",
+      "ENGL-474",
+      "ENGL-475",
+      "ENGL-476",
+      "ENGL-477",
+      "ENGL-478"
+    ],
+    "minimum_units": 3,
+    "minimum_count": null,
+    "decision_id": "english-b-a-junior-year-integrated-jyi-english-subject-matter-program-for-the-single-subject-credential-option:134:pool1"
+  },
+  {
+    "program_id": "english-b-a-honors-option",
+    "source_url": "https://catalog.csun.edu/academics/engl/programs/ba-english-vi/honors-option/",
+    "source_line": 63,
+    "pool_ids": [
+      "AIS-318",
+      "ENGL-311",
+      "ENGL-318",
+      "ENGL-368",
+      "ENGL-369",
+      "ENGL-371",
+      "ENGL-431",
+      "ENGL-433",
+      "ENGL-434",
+      "ENGL-487"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "english-b-a-honors-option:63:pool1"
+  },
+  {
+    "program_id": "english-b-a-honors-option",
+    "source_url": "https://catalog.csun.edu/academics/engl/programs/ba-english-vi/honors-option/",
+    "source_line": 78,
+    "pool_ids": [
+      "ENGL-419",
+      "ENGL-443",
+      "ENGL-449",
+      "ENGL-452",
+      "ENGL-456",
+      "ENGL-458",
+      "ENGL-460",
+      "ENGL-461",
+      "ENGL-462",
+      "ENGL-466",
+      "ENGL-467",
+      "ENGL-468"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "english-b-a-honors-option:76:pool1"
+  },
+  {
+    "program_id": "english-b-a-honors-option",
+    "source_url": "https://catalog.csun.edu/academics/engl/programs/ba-english-vi/honors-option/",
+    "source_line": 93,
+    "pool_ids": [
+      "ENGL-473",
+      "ENGL-474",
+      "ENGL-475",
+      "ENGL-476",
+      "ENGL-477",
+      "ENGL-478"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "english-b-a-honors-option:91:pool1"
+  },
+  {
+    "program_id": "environmental-and-occupational-health-b-s",
+    "source_url": "https://catalog.csun.edu/academics/eoh/programs/bs-environmental-and-occupational-health-i/",
+    "source_line": 116,
+    "pool_ids": [
+      "HSCI-390/L",
+      "MATH-140"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "environmental-and-occupational-health-b-s:116:pool1"
+  },
+  {
+    "program_id": "environmental-and-occupational-health-b-s-industrial-hygiene-option",
+    "source_url": "https://catalog.csun.edu/academics/eoh/programs/bs-environmental-and-occupational-health-ii/industrial-hygiene-option/",
+    "source_line": 118,
+    "pool_ids": [
+      "HSCI-390/L",
+      "MATH-140"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "environmental-and-occupational-health-b-s-industrial-hygiene-option:118:pool1"
+  },
+  {
+    "program_id": "environmental-and-occupational-health-b-s-industrial-hygiene-option",
+    "source_url": "https://catalog.csun.edu/academics/eoh/programs/bs-environmental-and-occupational-health-ii/industrial-hygiene-option/",
+    "source_line": 128,
+    "pool_ids": [
+      "EOH-459",
+      "EOH-467",
+      "EOH-468",
+      "EOH-469",
+      "EOH-560",
+      "EOH-570"
+    ],
+    "minimum_units": null,
+    "minimum_count": 2,
+    "decision_id": "environmental-and-occupational-health-b-s-industrial-hygiene-option:128:pool1"
+  },
+  {
+    "program_id": "environmental-science-b-a",
+    "source_url": "https://catalog.csun.edu/academics/geol/programs/ba-environmental-science/",
+    "source_line": 76,
+    "pool_ids": [
+      "GEOG-101",
+      "GEOG-101A",
+      "GEOG-101AL",
+      "GEOG-102",
+      "GEOL-101",
+      "GEOL-102",
+      "GEOL-110",
+      "GEOL-112",
+      "GEOL-113",
+      "GEOL-117",
+      "GEOL-117L",
+      "GEOL-122",
+      "GEOL-123",
+      "SCI-111",
+      "SCI-111L"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "environmental-science-b-a:76:pool1"
+  },
+  {
+    "program_id": "environmental-science-b-a",
+    "source_url": "https://catalog.csun.edu/academics/geol/programs/ba-environmental-science/",
+    "source_line": 115,
+    "pool_ids": [
+      "BIOL-316CS/LCS",
+      "BIOL-322",
+      "EOH-356A",
+      "EOH-459",
+      "EOH-468",
+      "GEOG-306/L",
+      "GEOG-316",
+      "GEOG-364/L",
+      "GEOG-365",
+      "GEOG-365L",
+      "GEOG-366",
+      "GEOG-366L",
+      "GEOG-406/L",
+      "GEOL-306/L",
+      "GEOL-309/L",
+      "GEOL-313",
+      "GEOL-464/L",
+      "GEOL-501",
+      "GEOL-552",
+      "GEOL-575/L"
+    ],
+    "minimum_units": null,
+    "minimum_count": 2,
+    "decision_id": "environmental-science-b-a:110:categories"
+  },
+  {
+    "program_id": "environmental-science-b-a",
+    "source_url": "https://catalog.csun.edu/academics/geol/programs/ba-environmental-science/",
+    "source_line": 135,
+    "pool_ids": [
+      "ANTH-432",
+      "CAS-355",
+      "ECON-360",
+      "EOH-454",
+      "GEOG-350",
+      "GEOG-370",
+      "GEOG-444",
+      "GEOG-459",
+      "GEOG-473",
+      "POLS-461",
+      "RS-370",
+      "SUST-401",
+      "URBS-310",
+      "URBS-415",
+      "URBS-425"
+    ],
+    "minimum_units": null,
+    "minimum_count": 2,
+    "decision_id": "environmental-science-b-a:110:categories"
+  },
+  {
+    "program_id": "family-and-consumer-sciences-b-s-family-studies-option",
+    "source_url": "https://catalog.csun.edu/academics/fcs/programs/bs-family-and-consumer-sciences-iv/family-studies-option/",
+    "source_line": 80,
+    "pool_ids": [
+      "AAS-450",
+      "AFRS-420",
+      "ART-383/L",
+      "CADV-452",
+      "CD-361",
+      "CHS-416",
+      "CHS-430",
+      "ENGL-428",
+      "MUS-362/L",
+      "RTM-305",
+      "SPED-400"
+    ],
+    "minimum_units": null,
+    "minimum_count": 2,
+    "decision_id": "family-and-consumer-sciences-b-s-family-studies-option:80:pool1"
+  },
+  {
+    "program_id": "family-and-consumer-sciences-b-s-family-studies-option",
+    "source_url": "https://catalog.csun.edu/academics/fcs/programs/bs-family-and-consumer-sciences-iv/family-studies-option/",
+    "source_line": 96,
+    "pool_ids": [
+      "CADV-452",
+      "FCS-309",
+      "FCS-323",
+      "FCS-420",
+      "FCS-424",
+      "FCS-427",
+      "FCS-495A-C",
+      "FCS-543"
+    ],
+    "minimum_units": 6,
+    "minimum_count": null,
+    "decision_id": "family-and-consumer-sciences-b-s-family-studies-option:96:pool1"
+  },
+  {
+    "program_id": "fashion-design-and-merchandising-b-s-fashion-design-and-production-option",
+    "source_url": "https://catalog.csun.edu/academics/fcs/programs/bs-fashion-design-and-merchandising-i/fashion-design-and-production-option/",
+    "source_line": 65,
+    "pool_ids": [
+      "FCS-250/L",
+      "FCS-257",
+      "FCS-260",
+      "FCS-324",
+      "FCS-350",
+      "FCS-352",
+      "FCS-354",
+      "FCS-356/L",
+      "FCS-360/L",
+      "FCS-361",
+      "FCS-377",
+      "FCS-451",
+      "FCS-453/L",
+      "FCS-457",
+      "FCS-461",
+      "FCS-463",
+      "MKT-440"
+    ],
+    "minimum_units": 3,
+    "minimum_count": null,
+    "decision_id": "fashion-design-and-merchandising-b-s-fashion-design-and-production-option:65:pool1"
+  },
+  {
+    "program_id": "fashion-design-and-merchandising-b-s-fashion-merchandising-option",
+    "source_url": "https://catalog.csun.edu/academics/fcs/programs/bs-fashion-design-and-merchandising-ii/fashion-merchandising-option/",
+    "source_line": 66,
+    "pool_ids": [
+      "FCS-250/L",
+      "FCS-260",
+      "FCS-277/L",
+      "FCS-324",
+      "FCS-352",
+      "FCS-354",
+      "FCS-360/L",
+      "FCS-361",
+      "FCS-371/L",
+      "FCS-377",
+      "FCS-461",
+      "FCS-463",
+      "FCS-471/L",
+      "FCS-472/L",
+      "FCS-475/L",
+      "FCS-476",
+      "MKT-440"
+    ],
+    "minimum_units": 3,
+    "minimum_count": null,
+    "decision_id": "fashion-design-and-merchandising-b-s-fashion-merchandising-option:66:pool1"
+  },
+  {
+    "program_id": "fashion-design-and-merchandising-b-s-textiles-option",
+    "source_url": "https://catalog.csun.edu/academics/fcs/programs/bs-fashion-design-and-merchandising-iii/textiles-option/",
+    "source_line": 73,
+    "pool_ids": [
+      "FCS-250/L",
+      "FCS-257",
+      "FCS-277/L",
+      "FCS-324",
+      "FCS-350",
+      "FCS-352",
+      "FCS-354",
+      "FCS-356/L",
+      "FCS-371/L",
+      "FCS-377",
+      "FCS-451",
+      "FCS-453/L",
+      "FCS-457",
+      "FCS-471/L",
+      "FCS-472/L",
+      "FCS-476",
+      "MKT-440"
+    ],
+    "minimum_units": 3,
+    "minimum_count": null,
+    "decision_id": "fashion-design-and-merchandising-b-s-textiles-option:73:pool1"
+  },
+  {
+    "program_id": "gender-and-women-s-studies-b-a-double-major",
+    "source_url": "https://catalog.csun.edu/academics/gws/programs/ba-gender-womens-studies-ii/double-major/",
+    "source_line": 60,
+    "pool_ids": [
+      "GWS-205/CS",
+      "GWS-220",
+      "GWS-222",
+      "GWS-230",
+      "GWS-315",
+      "GWS-320",
+      "GWS-340",
+      "GWS-370",
+      "GWS-380",
+      "GWS-396A-Z",
+      "GWS-410",
+      "GWS-420",
+      "GWS-430",
+      "GWS-440",
+      "GWS-495A-Z"
+    ],
+    "minimum_units": null,
+    "minimum_count": 4,
+    "decision_id": "gender-and-women-s-studies-b-a-double-major:58:pool1"
+  },
+  {
+    "program_id": "geographic-information-science-b-s",
+    "source_url": "https://catalog.csun.edu/academics/geog/programs/bs-geographic-information-science/",
+    "source_line": 50,
+    "pool_ids": [
+      "GEOG-101A",
+      "GEOG-101AL",
+      "GEOG-103A",
+      "GEOG-103AL"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "geographic-information-science-b-s:50:pool1"
+  },
+  {
+    "program_id": "geographic-information-science-b-s",
+    "source_url": "https://catalog.csun.edu/academics/geog/programs/bs-geographic-information-science/",
+    "source_line": 57,
+    "pool_ids": [
+      "GEOG-107",
+      "GEOG-108",
+      "GEOG-112",
+      "GEOG-112L",
+      "GEOG-150",
+      "GEOG-170"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "geographic-information-science-b-s:57:pool1"
+  },
+  {
+    "program_id": "geographic-information-science-b-s",
+    "source_url": "https://catalog.csun.edu/academics/geog/programs/bs-geographic-information-science/",
+    "source_line": 85,
+    "pool_ids": [
+      "GEOG-301",
+      "GEOG-311",
+      "GEOG-316",
+      "GEOG-340",
+      "GEOG-351",
+      "GEOG-364/L",
+      "GEOG-365",
+      "GEOG-365L",
+      "GEOG-366",
+      "GEOG-370",
+      "GEOG-375"
+    ],
+    "minimum_units": null,
+    "minimum_count": 2,
+    "decision_id": "geographic-information-science-b-s:85:pool1"
+  },
+  {
+    "program_id": "geographic-information-science-b-s",
+    "source_url": "https://catalog.csun.edu/academics/geog/programs/bs-geographic-information-science/",
+    "source_line": 104,
+    "pool_ids": [
+      "GEOG-305/L",
+      "GEOG-409/L"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "geographic-information-science-b-s:104:pool1"
+  },
+  {
+    "program_id": "geographic-information-science-b-s",
+    "source_url": "https://catalog.csun.edu/academics/geog/programs/bs-geographic-information-science/",
+    "source_line": 116,
+    "pool_ids": [
+      "GEOG-408A/L",
+      "GEOG-408B/L",
+      "GEOG-408C/L",
+      "GEOG-408F/L",
+      "GEOG-408G/L",
+      "GEOG-408H/L",
+      "GEOG-408I/L",
+      "GEOG-494",
+      "GEOG-497A-F",
+      "GEOG-550F"
+    ],
+    "minimum_units": null,
+    "minimum_count": 2,
+    "decision_id": "geographic-information-science-b-s:116:pool1"
+  },
+  {
+    "program_id": "geography-and-environmental-studies-b-s",
+    "source_url": "https://catalog.csun.edu/academics/geog/programs/bs-geography-and-environmental-studies/",
+    "source_line": 51,
+    "pool_ids": [
+      "GEOG-101A",
+      "GEOG-101AL",
+      "GEOG-103A",
+      "GEOG-103AL"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "geography-and-environmental-studies-b-s:51:pool1"
+  },
+  {
+    "program_id": "geography-and-environmental-studies-b-s",
+    "source_url": "https://catalog.csun.edu/academics/geog/programs/bs-geography-and-environmental-studies/",
+    "source_line": 58,
+    "pool_ids": [
+      "GEOG-107",
+      "GEOG-108",
+      "GEOG-112",
+      "GEOG-112L",
+      "GEOG-150",
+      "GEOG-170"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "geography-and-environmental-studies-b-s:58:pool1"
+  },
+  {
+    "program_id": "geography-and-environmental-studies-b-s",
+    "source_url": "https://catalog.csun.edu/academics/geog/programs/bs-geography-and-environmental-studies/",
+    "source_line": 80,
+    "pool_ids": [
+      "GEOG-301",
+      "GEOG-311",
+      "GEOG-316",
+      "GEOG-340",
+      "GEOG-351",
+      "GEOG-364/L",
+      "GEOG-365",
+      "GEOG-365L",
+      "GEOG-366",
+      "GEOG-370",
+      "GEOG-375"
+    ],
+    "minimum_units": null,
+    "minimum_count": 2,
+    "decision_id": "geography-and-environmental-studies-b-s:80:pool1"
+  },
+  {
+    "program_id": "geography-and-environmental-studies-b-s",
+    "source_url": "https://catalog.csun.edu/academics/geog/programs/bs-geography-and-environmental-studies/",
+    "source_line": 96,
+    "pool_ids": [
+      "GEOG-206/L",
+      "GEOG-304/L",
+      "GEOG-305/L",
+      "GEOG-306/L",
+      "GEOG-449"
+    ],
+    "minimum_units": null,
+    "minimum_count": 2,
+    "decision_id": "geography-and-environmental-studies-b-s:96:pool1"
+  },
+  {
+    "program_id": "geography-and-environmental-studies-b-s",
+    "source_url": "https://catalog.csun.edu/academics/geog/programs/bs-geography-and-environmental-studies/",
+    "source_line": 105,
+    "pool_ids": [
+      "GEOG-318",
+      "GEOG-321",
+      "GEOG-322",
+      "GEOG-323",
+      "GEOG-324",
+      "GEOG-326",
+      "GEOG-328",
+      "GEOG-330",
+      "GEOG-334",
+      "GEOG-350"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "geography-and-environmental-studies-b-s:105:pool1"
+  },
+  {
+    "program_id": "geography-and-environmental-studies-b-s",
+    "source_url": "https://catalog.csun.edu/academics/geog/programs/bs-geography-and-environmental-studies/",
+    "source_line": 119,
+    "pool_ids": [
+      "GEOG-402/L",
+      "GEOG-406/L",
+      "GEOG-408A/L",
+      "GEOG-408B/L",
+      "GEOG-408C/L",
+      "GEOG-408D/L",
+      "GEOG-408E/L",
+      "GEOG-408F/L",
+      "GEOG-408G/L",
+      "GEOG-408H/L",
+      "GEOG-408I/L",
+      "GEOG-409/L",
+      "GEOG-411",
+      "GEOG-412",
+      "GEOG-413",
+      "GEOG-414",
+      "GEOG-415",
+      "GEOG-416",
+      "GEOG-444",
+      "GEOG-451",
+      "GEOG-452",
+      "GEOG-453",
+      "GEOG-459",
+      "GEOG-462/L",
+      "GEOG-465/L",
+      "GEOG-466/L",
+      "GEOG-467/L",
+      "GEOG-468/L",
+      "GEOG-470",
+      "GEOG-472",
+      "GEOG-473",
+      "GEOG-474",
+      "GEOG-476",
+      "GEOG-482",
+      "GEOG-483",
+      "GEOG-486",
+      "GEOG-487",
+      "GEOG-494",
+      "GEOG-497A-F",
+      "GEOG-550F"
+    ],
+    "minimum_units": null,
+    "minimum_count": 2,
+    "decision_id": "geography-and-environmental-studies-b-s:119:pool1"
+  },
+  {
+    "program_id": "health-administration-b-s",
+    "source_url": "https://catalog.csun.edu/academics/hsci/programs/bs-health-administration/",
+    "source_line": 89,
+    "pool_ids": [
+      "EOH-353",
+      "HSCI-419",
+      "HSCI-422",
+      "HSCI-438",
+      "HSCI-478",
+      "PSY-365"
+    ],
+    "minimum_units": 6,
+    "minimum_count": null,
+    "decision_id": "health-administration-b-s:89:pool1"
+  },
+  {
+    "program_id": "history-b-a-four-year-integrated-fyi-history-subject-matter-program-for-the-single-subject-credential-option",
+    "source_url": "https://catalog.csun.edu/academics/hist/programs/ba-history-ii/four-year-integrated-fyi-history-subject-matter-program-for-the-single-subject-credential-option/",
+    "source_line": 79,
+    "pool_ids": [
+      "AFRS-161",
+      "POLS-155"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "history-b-a-four-year-integrated-fyi-history-subject-matter-program-for-the-single-subject-credential-option:79:pool1"
+  },
+  {
+    "program_id": "history-b-a-four-year-integrated-fyi-history-subject-matter-program-for-the-single-subject-credential-option",
+    "source_url": "https://catalog.csun.edu/academics/hist/programs/ba-history-ii/four-year-integrated-fyi-history-subject-matter-program-for-the-single-subject-credential-option/",
+    "source_line": 87,
+    "pool_ids": [
+      "GEOG-107",
+      "GEOG-150"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "history-b-a-four-year-integrated-fyi-history-subject-matter-program-for-the-single-subject-credential-option:87:pool1"
+  },
+  {
+    "program_id": "history-b-a-four-year-integrated-fyi-history-subject-matter-program-for-the-single-subject-credential-option",
+    "source_url": "https://catalog.csun.edu/academics/hist/programs/ba-history-ii/four-year-integrated-fyi-history-subject-matter-program-for-the-single-subject-credential-option/",
+    "source_line": 99,
+    "pool_ids": [
+      "HIST-145",
+      "HIST-161",
+      "HIST-185",
+      "HIST-192"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "history-b-a-four-year-integrated-fyi-history-subject-matter-program-for-the-single-subject-credential-option:99:pool1"
+  },
+  {
+    "program_id": "history-b-a-four-year-integrated-fyi-history-subject-matter-program-for-the-single-subject-credential-option",
+    "source_url": "https://catalog.csun.edu/academics/hist/programs/ba-history-ii/four-year-integrated-fyi-history-subject-matter-program-for-the-single-subject-credential-option/",
+    "source_line": 112,
+    "pool_ids": [
+      "HIST-478",
+      "HIST-479A",
+      "HIST-479B",
+      "POLS-310"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "history-b-a-four-year-integrated-fyi-history-subject-matter-program-for-the-single-subject-credential-option:112:pool1"
+  },
+  {
+    "program_id": "history-b-a-four-year-integrated-fyi-history-subject-matter-program-for-the-single-subject-credential-option",
+    "source_url": "https://catalog.csun.edu/academics/hist/programs/ba-history-ii/four-year-integrated-fyi-history-subject-matter-program-for-the-single-subject-credential-option/",
+    "source_line": 123,
+    "pool_ids": [
+      "HIST-417",
+      "HIST-488"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "history-b-a-four-year-integrated-fyi-history-subject-matter-program-for-the-single-subject-credential-option:123:pool1"
+  },
+  {
+    "program_id": "history-b-a-four-year-integrated-fyi-history-subject-matter-program-for-the-single-subject-credential-option",
+    "source_url": "https://catalog.csun.edu/academics/hist/programs/ba-history-ii/four-year-integrated-fyi-history-subject-matter-program-for-the-single-subject-credential-option/",
+    "source_line": 133,
+    "pool_ids": [
+      "HIST-303",
+      "HIST-304",
+      "HIST-323",
+      "HIST-324",
+      "HIST-340",
+      "HIST-341",
+      "HIST-342",
+      "HIST-345",
+      "HIST-349A",
+      "HIST-349B",
+      "HIST-350",
+      "HIST-351",
+      "HIST-355",
+      "HIST-366",
+      "HIST-369",
+      "HIST-370",
+      "HIST-371",
+      "HIST-389"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "history-b-a-four-year-integrated-fyi-history-subject-matter-program-for-the-single-subject-credential-option:133:pool1"
+  },
+  {
+    "program_id": "history-b-a-four-year-integrated-fyi-history-subject-matter-program-for-the-single-subject-credential-option",
+    "source_url": "https://catalog.csun.edu/academics/hist/programs/ba-history-ii/four-year-integrated-fyi-history-subject-matter-program-for-the-single-subject-credential-option/",
+    "source_line": 158,
+    "pool_ids": [
+      "AAS-417",
+      "AFRS-417",
+      "ARMN-417",
+      "CHS-417",
+      "ELPS-417"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "history-b-a-four-year-integrated-fyi-history-subject-matter-program-for-the-single-subject-credential-option:158:pool1"
+  },
+  {
+    "program_id": "history-b-a-junior-year-integrated-jyi-history-subject-matter-program-for-the-single-subject-credential-option",
+    "source_url": "https://catalog.csun.edu/academics/hist/programs/ba-history-iii/junior-year-integrated-jyi-history-subject-matter-program-for-the-single-subject-credential-option/",
+    "source_line": 72,
+    "pool_ids": [
+      "HIST-417",
+      "HIST-488"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "history-b-a-junior-year-integrated-jyi-history-subject-matter-program-for-the-single-subject-credential-option:72:pool1"
+  },
+  {
+    "program_id": "history-b-a-junior-year-integrated-jyi-history-subject-matter-program-for-the-single-subject-credential-option",
+    "source_url": "https://catalog.csun.edu/academics/hist/programs/ba-history-iii/junior-year-integrated-jyi-history-subject-matter-program-for-the-single-subject-credential-option/",
+    "source_line": 76,
+    "pool_ids": [
+      "HIST-303",
+      "HIST-304",
+      "HIST-323",
+      "HIST-324",
+      "HIST-340",
+      "HIST-341",
+      "HIST-342",
+      "HIST-345",
+      "HIST-349A",
+      "HIST-349B",
+      "HIST-350",
+      "HIST-351",
+      "HIST-355",
+      "HIST-366",
+      "HIST-369",
+      "HIST-370",
+      "HIST-371",
+      "HIST-389"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "history-b-a-junior-year-integrated-jyi-history-subject-matter-program-for-the-single-subject-credential-option:76:pool1"
+  },
+  {
+    "program_id": "history-b-a-junior-year-integrated-jyi-history-subject-matter-program-for-the-single-subject-credential-option",
+    "source_url": "https://catalog.csun.edu/academics/hist/programs/ba-history-iii/junior-year-integrated-jyi-history-subject-matter-program-for-the-single-subject-credential-option/",
+    "source_line": 108,
+    "pool_ids": [
+      "AAS-417",
+      "AFRS-417",
+      "ARMN-417",
+      "CHS-417",
+      "ELPS-417"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "history-b-a-junior-year-integrated-jyi-history-subject-matter-program-for-the-single-subject-credential-option:108:pool1"
+  },
+  {
+    "program_id": "information-systems-b-s-business-systems-option",
+    "source_url": "https://catalog.csun.edu/academics/som/programs/bs-information-systems-i/business-systems-option/",
+    "source_line": 105,
+    "pool_ids": [
+      "IS-457",
+      "IS-497A-Z",
+      "IS-498A-C",
+      "IS-499A-C",
+      "SOM-485"
+    ],
+    "minimum_units": 12,
+    "minimum_count": null,
+    "decision_id": "information-systems-b-s-business-systems-option:105:pool1"
+  },
+  {
+    "program_id": "information-systems-b-s-software-technology-option",
+    "source_url": "https://catalog.csun.edu/academics/som/programs/bs-information-systems-ii/software-technology-option/",
+    "source_line": 108,
+    "pool_ids": [
+      "COMP-467",
+      "COMP-484/L",
+      "COMP-485",
+      "COMP-524",
+      "COMP-541",
+      "IS-498A-C",
+      "IS-499A-C"
+    ],
+    "minimum_units": 5,
+    "minimum_count": null,
+    "decision_id": "information-systems-b-s-software-technology-option:108:pool1"
+  },
+  {
+    "program_id": "information-systems-b-s-computer-information-technology-option",
+    "source_url": "https://catalog.csun.edu/academics/som/programs/bs-information-systems-iii/computer-information-technology-option/",
+    "source_line": 108,
+    "pool_ids": [
+      "CIT-425/L",
+      "COMP-484/L",
+      "COMP-485",
+      "COMP-524",
+      "IS-498A-C",
+      "IS-499A-C"
+    ],
+    "minimum_units": 3,
+    "minimum_count": null,
+    "decision_id": "information-systems-b-s-computer-information-technology-option:108:pool1"
+  },
+  {
+    "program_id": "information-systems-b-s-health-systems-option",
+    "source_url": "https://catalog.csun.edu/academics/som/programs/bs-information-systems-iv/health-systems-option/",
+    "source_line": 105,
+    "pool_ids": [
+      "HSCI-314",
+      "HSCI-391",
+      "HSCI-412",
+      "HSCI-415",
+      "IS-498A-C",
+      "IS-499A-C"
+    ],
+    "minimum_units": 12,
+    "minimum_count": null,
+    "decision_id": "information-systems-b-s-health-systems-option:105:pool1"
+  },
+  {
+    "program_id": "interdisciplinary-studies-b-a",
+    "source_url": "https://catalog.csun.edu/academics/lrs/programs/ba-interdisciplinary-studies/",
+    "source_line": 56,
+    "pool_ids": [
+      "COMS-321",
+      "COMS-351",
+      "ENGL-436",
+      "ENGL-455",
+      "LING-408",
+      "PHIL-350",
+      "PHIL-355"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "interdisciplinary-studies-b-a:56:pool1"
+  },
+  {
+    "program_id": "interdisciplinary-studies-b-a",
+    "source_url": "https://catalog.csun.edu/academics/lrs/programs/ba-interdisciplinary-studies/",
+    "source_line": 67,
+    "pool_ids": [
+      "BIOL-330/L",
+      "ECON-309",
+      "GEOG-306/L",
+      "LING-455",
+      "SBS-320",
+      "SOM-120",
+      "URBS-340A"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "interdisciplinary-studies-b-a:67:pool1"
+  },
+  {
+    "program_id": "interdisciplinary-studies-b-a",
+    "source_url": "https://catalog.csun.edu/academics/lrs/programs/ba-interdisciplinary-studies/",
+    "source_line": 78,
+    "pool_ids": [
+      "AAS-311",
+      "AFRS-398",
+      "ART-313",
+      "GWS-302",
+      "PHIL-380",
+      "RS-395",
+      "URBS-340B"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "interdisciplinary-studies-b-a:78:pool1"
+  },
+  {
+    "program_id": "interdisciplinary-studies-b-a-double-major",
+    "source_url": "https://catalog.csun.edu/academics/lrs/programs/ba-interdisciplinary-studies-ii/double-major/",
+    "source_line": 59,
+    "pool_ids": [
+      "BIOL-330/L",
+      "ECON-309",
+      "GEOG-306/L",
+      "LING-455",
+      "SBS-320",
+      "SOM-120",
+      "URBS-340A"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "interdisciplinary-studies-b-a-double-major:59:pool1"
+  },
+  {
+    "program_id": "interdisciplinary-studies-b-a-double-major",
+    "source_url": "https://catalog.csun.edu/academics/lrs/programs/ba-interdisciplinary-studies-ii/double-major/",
+    "source_line": 70,
+    "pool_ids": [
+      "AAS-311",
+      "AFRS-398",
+      "ART-313",
+      "GWS-302",
+      "PHIL-380",
+      "RS-395",
+      "URBS-340B"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "interdisciplinary-studies-b-a-double-major:70:pool1"
+  },
+  {
+    "program_id": "jewish-studies-b-a",
+    "source_url": "https://catalog.csun.edu/academics/js/programs/ba-jewish-studies/",
+    "source_line": 51,
+    "pool_ids": [
+      "HIST-427",
+      "JS-306",
+      "JS-320",
+      "JS-335",
+      "JS-378",
+      "JS-427",
+      "RS-101",
+      "RS-320",
+      "RS-378",
+      "SOC-306",
+      "SOC-335"
+    ],
+    "minimum_units": null,
+    "minimum_count": 2,
+    "decision_id": "jewish-studies-b-a:51:pool1"
+  },
+  {
+    "program_id": "journalism-b-a",
+    "source_url": "https://catalog.csun.edu/academics/jour/programs/ba-journalism-i/",
+    "source_line": 83,
+    "pool_ids": [
+      "JOUR-310",
+      "JOUR-350",
+      "JOUR-410",
+      "JOUR-450",
+      "JOUR-474SLJ"
+    ],
+    "minimum_units": null,
+    "minimum_count": 2,
+    "decision_id": "journalism-b-a:83:pool1"
+  },
+  {
+    "program_id": "journalism-b-a",
+    "source_url": "https://catalog.csun.edu/academics/jour/programs/ba-journalism-i/",
+    "source_line": 95,
+    "pool_ids": [
+      "JOUR-365",
+      "JOUR-371",
+      "JOUR-372",
+      "JOUR-374SLJ",
+      "JOUR-375",
+      "JOUR-455",
+      "JOUR-460",
+      "JOUR-465",
+      "JOUR-491",
+      "JOUR-494AEE/BEE",
+      "JOUR-495A-Z"
+    ],
+    "minimum_units": null,
+    "minimum_count": 4,
+    "decision_id": "journalism-b-a:95:pool1"
+  },
+  {
+    "program_id": "journalism-b-a-broadcast-option",
+    "source_url": "https://catalog.csun.edu/academics/jour/programs/ba-journalism-ii/broadcast-option/",
+    "source_line": 89,
+    "pool_ids": [
+      "JOUR-365",
+      "JOUR-371",
+      "JOUR-372",
+      "JOUR-374SLJ",
+      "JOUR-375",
+      "JOUR-430",
+      "JOUR-445",
+      "JOUR-465",
+      "JOUR-491",
+      "JOUR-494AEE/BEE",
+      "JOUR-495A-Z"
+    ],
+    "minimum_units": null,
+    "minimum_count": 4,
+    "decision_id": "journalism-b-a-broadcast-option:89:pool1"
+  },
+  {
+    "program_id": "journalism-b-a-public-relations-option",
+    "source_url": "https://catalog.csun.edu/academics/jour/programs/ba-journalism-iii/public-relations-option/",
+    "source_line": 88,
+    "pool_ids": [
+      "JOUR-365",
+      "JOUR-371",
+      "JOUR-372",
+      "JOUR-374SLJ",
+      "JOUR-375",
+      "JOUR-465",
+      "JOUR-491",
+      "JOUR-494AEE/BEE",
+      "JOUR-495A-Z"
+    ],
+    "minimum_units": null,
+    "minimum_count": 4,
+    "decision_id": "journalism-b-a-public-relations-option:88:pool1"
+  },
+  {
+    "program_id": "kinesiology-b-s-exercise-science-option",
+    "source_url": "https://catalog.csun.edu/academics/kin/programs/bs-kinesiology-ii/exercise-science-option/",
+    "source_line": 142,
+    "pool_ids": [
+      "CHEM-101",
+      "CHEM-101D",
+      "CHEM-101L"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "kinesiology-b-s-exercise-science-option:142:sequence"
+  },
+  {
+    "program_id": "kinesiology-b-s-exercise-science-option",
+    "source_url": "https://catalog.csun.edu/academics/kin/programs/bs-kinesiology-ii/exercise-science-option/",
+    "source_line": 161,
+    "pool_ids": [
+      "KIN-311/L",
+      "KIN-313/L",
+      "KIN-336/L",
+      "KIN-337/L",
+      "KIN-402/L",
+      "KIN-415",
+      "KIN-417",
+      "KIN-417L",
+      "KIN-436",
+      "KIN-448",
+      "KIN-448L",
+      "KIN-452/L",
+      "KIN-456",
+      "KIN-476",
+      "KIN-479",
+      "KIN-494A-B",
+      "KIN-494I",
+      "KIN-499A-C",
+      "KIN-560",
+      "KIN-575/L"
+    ],
+    "minimum_units": 15,
+    "minimum_count": null,
+    "decision_id": "kinesiology-b-s-exercise-science-option:161:pool1"
+  },
+  {
+    "program_id": "kinesiology-b-s-sport-studies-option",
+    "source_url": "https://catalog.csun.edu/academics/kin/programs/bs-kinesiology-iv/sport-studies-option/",
+    "source_line": 141,
+    "pool_ids": [
+      "DANC-384",
+      "DANC-426",
+      "DANC-427",
+      "KIN-303",
+      "KIN-307",
+      "KIN-308",
+      "KIN-310",
+      "KIN-347",
+      "KIN-385",
+      "KIN-406",
+      "KIN-408",
+      "KIN-410",
+      "KIN-420",
+      "KIN-428",
+      "KIN-484",
+      "KIN-494A-B",
+      "KIN-494I"
+    ],
+    "minimum_units": 15,
+    "minimum_count": null,
+    "decision_id": "kinesiology-b-s-sport-studies-option:141:pool1"
+  },
+  {
+    "program_id": "kinesiology-b-s-applied-fitness-active-lifestyle-strength-and-conditioning-option",
+    "source_url": "https://catalog.csun.edu/academics/kin/programs/bs-kinesiology-v/applied-fitness-active-lifestyle-strength-and-conditioning-option/",
+    "source_line": 158,
+    "pool_ids": [
+      "KIN-311/L",
+      "KIN-313/L",
+      "KIN-415",
+      "KIN-422/L",
+      "KIN-436",
+      "KIN-445",
+      "KIN-451",
+      "KIN-451L",
+      "KIN-453/L",
+      "KIN-456",
+      "KIN-476",
+      "KIN-479",
+      "KIN-494A-B",
+      "KIN-494I",
+      "KIN-499A-C",
+      "KIN-560",
+      "KIN-575/L",
+      "PSY-352"
+    ],
+    "minimum_units": 9,
+    "minimum_count": null,
+    "decision_id": "kinesiology-b-s-applied-fitness-active-lifestyle-strength-and-conditioning-option:158:pool1"
+  },
+  {
+    "program_id": "languages-and-cultures-b-a-armenian-option",
+    "source_url": "https://catalog.csun.edu/academics/mcll/programs/ba-languages-and-cultures-i/armenian-option/",
+    "source_line": 52,
+    "pool_ids": [
+      "FLIT-230",
+      "FLIT-245",
+      "FLIT-250",
+      "FLIT-260",
+      "FLIT-261",
+      "FLIT-295A",
+      "FLIT-295B"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "languages-and-cultures-b-a-armenian-option:52:pool1"
+  },
+  {
+    "program_id": "languages-and-cultures-b-a-armenian-option",
+    "source_url": "https://catalog.csun.edu/academics/mcll/programs/ba-languages-and-cultures-i/armenian-option/",
+    "source_line": 65,
+    "pool_ids": [
+      "ARMN-310",
+      "ARMN-360",
+      "FLIT-320",
+      "FLIT-321",
+      "FLIT-322",
+      "FLIT-330",
+      "FLIT-331",
+      "FLIT-340",
+      "FLIT-341",
+      "FLIT-370",
+      "FLIT-371",
+      "FLIT-380",
+      "FLIT-381",
+      "FLIT-383",
+      "FLIT-384",
+      "FLIT-402",
+      "FLIT-455"
+    ],
+    "minimum_units": null,
+    "minimum_count": 2,
+    "decision_id": "languages-and-cultures-b-a-armenian-option:65:pool1"
+  },
+  {
+    "program_id": "languages-and-cultures-b-a-armenian-option",
+    "source_url": "https://catalog.csun.edu/academics/mcll/programs/ba-languages-and-cultures-i/armenian-option/",
+    "source_line": 89,
+    "pool_ids": [
+      "ARMN-306",
+      "ARMN-310",
+      "ARMN-315",
+      "ARMN-360",
+      "ARMN-380"
+    ],
+    "minimum_units": null,
+    "minimum_count": 5,
+    "decision_id": "languages-and-cultures-b-a-armenian-option:89:pool1"
+  },
+  {
+    "program_id": "languages-and-cultures-b-a-french-option",
+    "source_url": "https://catalog.csun.edu/academics/mcll/programs/ba-languages-and-cultures-ii/french-option/",
+    "source_line": 52,
+    "pool_ids": [
+      "FLIT-230",
+      "FLIT-245",
+      "FLIT-250",
+      "FLIT-260",
+      "FLIT-261",
+      "FLIT-295A",
+      "FLIT-295B"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "languages-and-cultures-b-a-french-option:52:pool1"
+  },
+  {
+    "program_id": "languages-and-cultures-b-a-french-option",
+    "source_url": "https://catalog.csun.edu/academics/mcll/programs/ba-languages-and-cultures-ii/french-option/",
+    "source_line": 65,
+    "pool_ids": [
+      "ARMN-310",
+      "ARMN-360",
+      "FLIT-320",
+      "FLIT-321",
+      "FLIT-322",
+      "FLIT-330",
+      "FLIT-331",
+      "FLIT-340",
+      "FLIT-341",
+      "FLIT-370",
+      "FLIT-371",
+      "FLIT-380",
+      "FLIT-381",
+      "FLIT-383",
+      "FLIT-384",
+      "FLIT-402",
+      "FLIT-455"
+    ],
+    "minimum_units": null,
+    "minimum_count": 2,
+    "decision_id": "languages-and-cultures-b-a-french-option:65:pool1"
+  },
+  {
+    "program_id": "languages-and-cultures-b-a-italian-option",
+    "source_url": "https://catalog.csun.edu/academics/mcll/programs/ba-languages-and-cultures-iii/italian-option/",
+    "source_line": 52,
+    "pool_ids": [
+      "FLIT-230",
+      "FLIT-245",
+      "FLIT-250",
+      "FLIT-260",
+      "FLIT-261",
+      "FLIT-295A",
+      "FLIT-295B"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "languages-and-cultures-b-a-italian-option:52:pool1"
+  },
+  {
+    "program_id": "languages-and-cultures-b-a-italian-option",
+    "source_url": "https://catalog.csun.edu/academics/mcll/programs/ba-languages-and-cultures-iii/italian-option/",
+    "source_line": 65,
+    "pool_ids": [
+      "ARMN-310",
+      "ARMN-360",
+      "FLIT-320",
+      "FLIT-321",
+      "FLIT-322",
+      "FLIT-330",
+      "FLIT-331",
+      "FLIT-340",
+      "FLIT-341",
+      "FLIT-370",
+      "FLIT-371",
+      "FLIT-380",
+      "FLIT-381",
+      "FLIT-383",
+      "FLIT-384",
+      "FLIT-402",
+      "FLIT-455"
+    ],
+    "minimum_units": null,
+    "minimum_count": 2,
+    "decision_id": "languages-and-cultures-b-a-italian-option:65:pool1"
+  },
+  {
+    "program_id": "languages-and-cultures-b-a-italian-option",
+    "source_url": "https://catalog.csun.edu/academics/mcll/programs/ba-languages-and-cultures-iii/italian-option/",
+    "source_line": 85,
+    "pool_ids": [
+      "ITAL-201",
+      "ITAL-202",
+      "ITAL-204",
+      "ITAL-290"
+    ],
+    "minimum_units": null,
+    "minimum_count": 3,
+    "decision_id": "languages-and-cultures-b-a-italian-option:83:pool1"
+  },
+  {
+    "program_id": "languages-and-cultures-b-a-italian-option",
+    "source_url": "https://catalog.csun.edu/academics/mcll/programs/ba-languages-and-cultures-iii/italian-option/",
+    "source_line": 91,
+    "pool_ids": [
+      "FLIT-330",
+      "FLIT-331",
+      "FLIT-371",
+      "FLIT-381",
+      "ITAL-300",
+      "ITAL-305",
+      "ITAL-306",
+      "ITAL-315",
+      "ITAL-335",
+      "ITAL-360"
+    ],
+    "minimum_units": null,
+    "minimum_count": 5,
+    "decision_id": "languages-and-cultures-b-a-italian-option:91:pool1"
+  },
+  {
+    "program_id": "languages-and-cultures-b-a-japanese-option",
+    "source_url": "https://catalog.csun.edu/academics/mcll/programs/ba-languages-and-cultures-iv/japanese-option/",
+    "source_line": 52,
+    "pool_ids": [
+      "FLIT-230",
+      "FLIT-245",
+      "FLIT-250",
+      "FLIT-260",
+      "FLIT-261",
+      "FLIT-295A",
+      "FLIT-295B"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "languages-and-cultures-b-a-japanese-option:52:pool1"
+  },
+  {
+    "program_id": "languages-and-cultures-b-a-japanese-option",
+    "source_url": "https://catalog.csun.edu/academics/mcll/programs/ba-languages-and-cultures-iv/japanese-option/",
+    "source_line": 65,
+    "pool_ids": [
+      "ARMN-310",
+      "ARMN-360",
+      "FLIT-320",
+      "FLIT-321",
+      "FLIT-322",
+      "FLIT-330",
+      "FLIT-331",
+      "FLIT-340",
+      "FLIT-341",
+      "FLIT-370",
+      "FLIT-371",
+      "FLIT-380",
+      "FLIT-381",
+      "FLIT-383",
+      "FLIT-384",
+      "FLIT-402",
+      "FLIT-455"
+    ],
+    "minimum_units": null,
+    "minimum_count": 2,
+    "decision_id": "languages-and-cultures-b-a-japanese-option:65:pool1"
+  },
+  {
+    "program_id": "languages-and-cultures-b-a-japanese-option",
+    "source_url": "https://catalog.csun.edu/academics/mcll/programs/ba-languages-and-cultures-iv/japanese-option/",
+    "source_line": 88,
+    "pool_ids": [
+      "FLIT-250",
+      "JAPN-204",
+      "JAPN-205"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "languages-and-cultures-b-a-japanese-option:88:pool1"
+  },
+  {
+    "program_id": "languages-and-cultures-b-a-japanese-option",
+    "source_url": "https://catalog.csun.edu/academics/mcll/programs/ba-languages-and-cultures-iv/japanese-option/",
+    "source_line": 95,
+    "pool_ids": [
+      "FLIT-370",
+      "JAPN-300",
+      "JAPN-304",
+      "JAPN-305",
+      "JAPN-306"
+    ],
+    "minimum_units": null,
+    "minimum_count": 3,
+    "decision_id": "languages-and-cultures-b-a-japanese-option:95:pool1"
+  },
+  {
+    "program_id": "languages-and-cultures-b-a-japanese-option",
+    "source_url": "https://catalog.csun.edu/academics/mcll/programs/ba-languages-and-cultures-iv/japanese-option/",
+    "source_line": 103,
+    "pool_ids": [
+      "FLIT-402",
+      "JAPN-400",
+      "JAPN-401"
+    ],
+    "minimum_units": null,
+    "minimum_count": 2,
+    "decision_id": "languages-and-cultures-b-a-japanese-option:103:pool1"
+  },
+  {
+    "program_id": "liberal-studies-b-a-pre-credential-program-option",
+    "source_url": "https://catalog.csun.edu/academics/lrs/programs/ba-liberal-studies-i/pre-credential-program-option/",
+    "source_line": 53,
+    "pool_ids": [
+      "AAS-113B",
+      "AAS-114B",
+      "AAS-115",
+      "AFRS-113B",
+      "AFRS-114B",
+      "AFRS-115",
+      "CAS-113B",
+      "CAS-114B",
+      "CAS-115",
+      "CHS-113B",
+      "CHS-114B",
+      "CHS-115",
+      "ENGL-113B",
+      "ENGL-114B",
+      "ENGL-115",
+      "GWS-115",
+      "LING-113B",
+      "QS-113B",
+      "QS-114B",
+      "QS-115"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "liberal-studies-b-a-pre-credential-program-option:53:pool1"
+  },
+  {
+    "program_id": "liberal-studies-b-a-pre-credential-program-option",
+    "source_url": "https://catalog.csun.edu/academics/lrs/programs/ba-liberal-studies-i/pre-credential-program-option/",
+    "source_line": 64,
+    "pool_ids": [
+      "AAS-201",
+      "AFRS-204",
+      "CHS-202",
+      "COMS-225",
+      "PHIL-100",
+      "PHIL-200",
+      "PHIL-210",
+      "RS-204"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "liberal-studies-b-a-pre-credential-program-option:64:pool1"
+  },
+  {
+    "program_id": "liberal-studies-b-a-pre-credential-program-option",
+    "source_url": "https://catalog.csun.edu/academics/lrs/programs/ba-liberal-studies-i/pre-credential-program-option/",
+    "source_line": 76,
+    "pool_ids": [
+      "AAS-151",
+      "AFRS-151",
+      "CAS-151",
+      "CHS-151",
+      "COMS-151",
+      "GWS-151",
+      "QS-151"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "liberal-studies-b-a-pre-credential-program-option:76:pool1"
+  },
+  {
+    "program_id": "liberal-studies-b-a-pre-credential-program-option",
+    "source_url": "https://catalog.csun.edu/academics/lrs/programs/ba-liberal-studies-i/pre-credential-program-option/",
+    "source_line": 91,
+    "pool_ids": [
+      "BIOL-100",
+      "BIOL-100L",
+      "BIOL-101",
+      "BIOL-101L",
+      "BIOL-102CS/LCS"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "liberal-studies-b-a-pre-credential-program-option:91:pool1"
+  },
+  {
+    "program_id": "liberal-studies-b-a-pre-credential-program-option",
+    "source_url": "https://catalog.csun.edu/academics/lrs/programs/ba-liberal-studies-i/pre-credential-program-option/",
+    "source_line": 102,
+    "pool_ids": [
+      "AAS-220",
+      "AFRS-245",
+      "CAS-201",
+      "CHS-201",
+      "ENGL-255",
+      "ENGL-258",
+      "ENGL-259",
+      "ENGL-275",
+      "FLIT-295A",
+      "FLIT-295B"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "liberal-studies-b-a-pre-credential-program-option:102:pool1"
+  },
+  {
+    "program_id": "liberal-studies-b-a-pre-credential-program-option",
+    "source_url": "https://catalog.csun.edu/academics/lrs/programs/ba-liberal-studies-i/pre-credential-program-option/",
+    "source_line": 114,
+    "pool_ids": [
+      "ART-103",
+      "ART-110",
+      "ART-112",
+      "ART-114",
+      "CAS-202",
+      "CHS-111",
+      "MUS-105",
+      "MUS-107",
+      "TH-110",
+      "TH-111"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "liberal-studies-b-a-pre-credential-program-option:114:pool1"
+  },
+  {
+    "program_id": "liberal-studies-b-a-pre-credential-program-option",
+    "source_url": "https://catalog.csun.edu/academics/lrs/programs/ba-liberal-studies-i/pre-credential-program-option/",
+    "source_line": 135,
+    "pool_ids": [
+      "GEOG-106LRS",
+      "GEOL-106LRS"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "liberal-studies-b-a-pre-credential-program-option:135:pool1"
+  },
+  {
+    "program_id": "liberal-studies-b-a-pre-credential-program-option",
+    "source_url": "https://catalog.csun.edu/academics/lrs/programs/ba-liberal-studies-i/pre-credential-program-option/",
+    "source_line": 145,
+    "pool_ids": [
+      "AFRS-271",
+      "CHS-245",
+      "HIST-270"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "liberal-studies-b-a-pre-credential-program-option:145:pool1"
+  },
+  {
+    "program_id": "liberal-studies-b-a-pre-credential-program-option",
+    "source_url": "https://catalog.csun.edu/academics/lrs/programs/ba-liberal-studies-i/pre-credential-program-option/",
+    "source_line": 152,
+    "pool_ids": [
+      "AFRS-161",
+      "CHS-260",
+      "POLS-155",
+      "RS-255"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "liberal-studies-b-a-pre-credential-program-option:152:pool1"
+  },
+  {
+    "program_id": "liberal-studies-b-a-pre-credential-program-option",
+    "source_url": "https://catalog.csun.edu/academics/lrs/programs/ba-liberal-studies-i/pre-credential-program-option/",
+    "source_line": 166,
+    "pool_ids": [
+      "CADV-150",
+      "FCS-330"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "liberal-studies-b-a-pre-credential-program-option:166:pool1"
+  },
+  {
+    "program_id": "liberal-studies-b-a-pre-credential-program-option",
+    "source_url": "https://catalog.csun.edu/academics/lrs/programs/ba-liberal-studies-i/pre-credential-program-option/",
+    "source_line": 193,
+    "pool_ids": [
+      "ART-380",
+      "DANC-314/L",
+      "KIN-314/L",
+      "LRS-457",
+      "MUS-361/L",
+      "TH-371/L"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "liberal-studies-b-a-pre-credential-program-option:193:pool1"
+  },
+  {
+    "program_id": "liberal-studies-b-a-pre-credential-program-option",
+    "source_url": "https://catalog.csun.edu/academics/lrs/programs/ba-liberal-studies-i/pre-credential-program-option/",
+    "source_line": 204,
+    "pool_ids": [
+      "GEOG-417",
+      "HIST-417"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "liberal-studies-b-a-pre-credential-program-option:204:pool1"
+  },
+  {
+    "program_id": "liberal-studies-b-a-pre-credential-program-option",
+    "source_url": "https://catalog.csun.edu/academics/lrs/programs/ba-liberal-studies-i/pre-credential-program-option/",
+    "source_line": 251,
+    "pool_ids": [
+      "DH-480",
+      "INDS-250",
+      "INDS-300",
+      "INDS-350",
+      "LRS-333",
+      "LRS-425A-Z",
+      "LRS-433/F",
+      "SCI-456",
+      "SUST-240",
+      "SUST-300",
+      "SUST-310"
+    ],
+    "minimum_units": null,
+    "minimum_count": 3,
+    "decision_id": "liberal-studies-b-a-pre-credential-program-option:251:pool1"
+  },
+  {
+    "program_id": "liberal-studies-b-a-integrated-teacher-education-program-itep-junior-option",
+    "source_url": "https://catalog.csun.edu/academics/lrs/programs/ba-liberal-studies-ii/integrated-teacher-education-program-itep-junior-option/",
+    "source_line": 56,
+    "pool_ids": [
+      "AAS-113B",
+      "AAS-114B",
+      "AAS-115",
+      "AFRS-113B",
+      "AFRS-114B",
+      "AFRS-115",
+      "CAS-113B",
+      "CAS-114B",
+      "CAS-115",
+      "CHS-113B",
+      "CHS-114B",
+      "CHS-115",
+      "ENGL-113B",
+      "ENGL-114B",
+      "ENGL-115",
+      "GWS-115",
+      "LING-113B",
+      "QS-113B",
+      "QS-114B",
+      "QS-115"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "liberal-studies-b-a-integrated-teacher-education-program-itep-junior-option:56:pool1"
+  },
+  {
+    "program_id": "liberal-studies-b-a-integrated-teacher-education-program-itep-junior-option",
+    "source_url": "https://catalog.csun.edu/academics/lrs/programs/ba-liberal-studies-ii/integrated-teacher-education-program-itep-junior-option/",
+    "source_line": 67,
+    "pool_ids": [
+      "AAS-201",
+      "AFRS-204",
+      "CHS-202",
+      "COMS-225",
+      "PHIL-100",
+      "PHIL-200",
+      "PHIL-210",
+      "RS-204"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "liberal-studies-b-a-integrated-teacher-education-program-itep-junior-option:67:pool1"
+  },
+  {
+    "program_id": "liberal-studies-b-a-integrated-teacher-education-program-itep-junior-option",
+    "source_url": "https://catalog.csun.edu/academics/lrs/programs/ba-liberal-studies-ii/integrated-teacher-education-program-itep-junior-option/",
+    "source_line": 79,
+    "pool_ids": [
+      "AAS-151",
+      "AFRS-151",
+      "CAS-151",
+      "CHS-151",
+      "COMS-151",
+      "GWS-151",
+      "QS-151"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "liberal-studies-b-a-integrated-teacher-education-program-itep-junior-option:79:pool1"
+  },
+  {
+    "program_id": "liberal-studies-b-a-integrated-teacher-education-program-itep-junior-option",
+    "source_url": "https://catalog.csun.edu/academics/lrs/programs/ba-liberal-studies-ii/integrated-teacher-education-program-itep-junior-option/",
+    "source_line": 94,
+    "pool_ids": [
+      "BIOL-100",
+      "BIOL-100L",
+      "BIOL-101",
+      "BIOL-101L",
+      "BIOL-102CS/LCS"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "liberal-studies-b-a-integrated-teacher-education-program-itep-junior-option:94:pool1"
+  },
+  {
+    "program_id": "liberal-studies-b-a-integrated-teacher-education-program-itep-junior-option",
+    "source_url": "https://catalog.csun.edu/academics/lrs/programs/ba-liberal-studies-ii/integrated-teacher-education-program-itep-junior-option/",
+    "source_line": 105,
+    "pool_ids": [
+      "AAS-220",
+      "AFRS-245",
+      "CAS-201",
+      "CHS-201",
+      "ENGL-255",
+      "ENGL-258",
+      "ENGL-259",
+      "ENGL-275",
+      "FLIT-295A",
+      "FLIT-295B"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "liberal-studies-b-a-integrated-teacher-education-program-itep-junior-option:105:pool1"
+  },
+  {
+    "program_id": "liberal-studies-b-a-integrated-teacher-education-program-itep-junior-option",
+    "source_url": "https://catalog.csun.edu/academics/lrs/programs/ba-liberal-studies-ii/integrated-teacher-education-program-itep-junior-option/",
+    "source_line": 117,
+    "pool_ids": [
+      "ART-103",
+      "ART-110",
+      "ART-112",
+      "ART-114",
+      "CAS-202",
+      "CHS-111",
+      "MUS-105",
+      "MUS-107",
+      "TH-110",
+      "TH-111"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "liberal-studies-b-a-integrated-teacher-education-program-itep-junior-option:117:pool1"
+  },
+  {
+    "program_id": "liberal-studies-b-a-integrated-teacher-education-program-itep-junior-option",
+    "source_url": "https://catalog.csun.edu/academics/lrs/programs/ba-liberal-studies-ii/integrated-teacher-education-program-itep-junior-option/",
+    "source_line": 138,
+    "pool_ids": [
+      "GEOG-106LRS",
+      "GEOL-106LRS"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "liberal-studies-b-a-integrated-teacher-education-program-itep-junior-option:138:pool1"
+  },
+  {
+    "program_id": "liberal-studies-b-a-integrated-teacher-education-program-itep-junior-option",
+    "source_url": "https://catalog.csun.edu/academics/lrs/programs/ba-liberal-studies-ii/integrated-teacher-education-program-itep-junior-option/",
+    "source_line": 148,
+    "pool_ids": [
+      "AFRS-271",
+      "CHS-245",
+      "HIST-270"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "liberal-studies-b-a-integrated-teacher-education-program-itep-junior-option:148:pool1"
+  },
+  {
+    "program_id": "liberal-studies-b-a-integrated-teacher-education-program-itep-junior-option",
+    "source_url": "https://catalog.csun.edu/academics/lrs/programs/ba-liberal-studies-ii/integrated-teacher-education-program-itep-junior-option/",
+    "source_line": 155,
+    "pool_ids": [
+      "AFRS-161",
+      "CHS-260",
+      "POLS-155",
+      "RS-255"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "liberal-studies-b-a-integrated-teacher-education-program-itep-junior-option:155:pool1"
+  },
+  {
+    "program_id": "liberal-studies-b-a-integrated-teacher-education-program-itep-junior-option",
+    "source_url": "https://catalog.csun.edu/academics/lrs/programs/ba-liberal-studies-ii/integrated-teacher-education-program-itep-junior-option/",
+    "source_line": 167,
+    "pool_ids": [
+      "CADV-150",
+      "FCS-330"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "liberal-studies-b-a-integrated-teacher-education-program-itep-junior-option:167:pool1"
+  },
+  {
+    "program_id": "liberal-studies-b-a-integrated-teacher-education-program-itep-junior-option",
+    "source_url": "https://catalog.csun.edu/academics/lrs/programs/ba-liberal-studies-ii/integrated-teacher-education-program-itep-junior-option/",
+    "source_line": 193,
+    "pool_ids": [
+      "ART-380",
+      "DANC-314/L",
+      "KIN-314/L",
+      "LRS-457",
+      "MUS-361/L",
+      "TH-371/L"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "liberal-studies-b-a-integrated-teacher-education-program-itep-junior-option:193:pool1"
+  },
+  {
+    "program_id": "liberal-studies-b-a-integrated-teacher-education-program-itep-junior-option",
+    "source_url": "https://catalog.csun.edu/academics/lrs/programs/ba-liberal-studies-ii/integrated-teacher-education-program-itep-junior-option/",
+    "source_line": 203,
+    "pool_ids": [
+      "GEOG-417",
+      "HIST-417"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "liberal-studies-b-a-integrated-teacher-education-program-itep-junior-option:203:pool1"
+  },
+  {
+    "program_id": "liberal-studies-b-a-integrated-teacher-education-program-itep-junior-option",
+    "source_url": "https://catalog.csun.edu/academics/lrs/programs/ba-liberal-studies-ii/integrated-teacher-education-program-itep-junior-option/",
+    "source_line": 288,
+    "pool_ids": [
+      "AAS-113B",
+      "AAS-114B",
+      "AAS-115",
+      "AFRS-113B",
+      "AFRS-114B",
+      "AFRS-115",
+      "CAS-113B",
+      "CAS-114B",
+      "CAS-115",
+      "CHS-113B",
+      "CHS-114B",
+      "CHS-115",
+      "ENGL-113B",
+      "ENGL-114B",
+      "ENGL-115",
+      "GWS-115",
+      "LING-113B",
+      "QS-113B",
+      "QS-114B",
+      "QS-115"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "liberal-studies-b-a-integrated-teacher-education-program-itep-junior-option:56:pool1"
+  },
+  {
+    "program_id": "liberal-studies-b-a-integrated-teacher-education-program-itep-junior-option",
+    "source_url": "https://catalog.csun.edu/academics/lrs/programs/ba-liberal-studies-ii/integrated-teacher-education-program-itep-junior-option/",
+    "source_line": 299,
+    "pool_ids": [
+      "AAS-201",
+      "AFRS-204",
+      "CHS-202",
+      "COMS-225",
+      "PHIL-100",
+      "PHIL-200",
+      "PHIL-210",
+      "RS-204"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "liberal-studies-b-a-integrated-teacher-education-program-itep-junior-option:67:pool1"
+  },
+  {
+    "program_id": "liberal-studies-b-a-integrated-teacher-education-program-itep-junior-option",
+    "source_url": "https://catalog.csun.edu/academics/lrs/programs/ba-liberal-studies-ii/integrated-teacher-education-program-itep-junior-option/",
+    "source_line": 311,
+    "pool_ids": [
+      "AAS-151",
+      "AFRS-151",
+      "CAS-151",
+      "CHS-151",
+      "COMS-151",
+      "GWS-151",
+      "QS-151"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "liberal-studies-b-a-integrated-teacher-education-program-itep-junior-option:79:pool1"
+  },
+  {
+    "program_id": "liberal-studies-b-a-integrated-teacher-education-program-itep-junior-option",
+    "source_url": "https://catalog.csun.edu/academics/lrs/programs/ba-liberal-studies-ii/integrated-teacher-education-program-itep-junior-option/",
+    "source_line": 326,
+    "pool_ids": [
+      "BIOL-100",
+      "BIOL-100L",
+      "BIOL-101",
+      "BIOL-101L",
+      "BIOL-102CS/LCS"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "liberal-studies-b-a-integrated-teacher-education-program-itep-junior-option:94:pool1"
+  },
+  {
+    "program_id": "liberal-studies-b-a-integrated-teacher-education-program-itep-junior-option",
+    "source_url": "https://catalog.csun.edu/academics/lrs/programs/ba-liberal-studies-ii/integrated-teacher-education-program-itep-junior-option/",
+    "source_line": 337,
+    "pool_ids": [
+      "AAS-220",
+      "AFRS-245",
+      "CAS-201",
+      "CHS-201",
+      "ENGL-255",
+      "ENGL-258",
+      "ENGL-259",
+      "ENGL-275",
+      "FLIT-295A",
+      "FLIT-295B"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "liberal-studies-b-a-integrated-teacher-education-program-itep-junior-option:105:pool1"
+  },
+  {
+    "program_id": "liberal-studies-b-a-integrated-teacher-education-program-itep-junior-option",
+    "source_url": "https://catalog.csun.edu/academics/lrs/programs/ba-liberal-studies-ii/integrated-teacher-education-program-itep-junior-option/",
+    "source_line": 349,
+    "pool_ids": [
+      "ART-103",
+      "ART-110",
+      "ART-112",
+      "ART-114",
+      "CAS-202",
+      "CHS-111",
+      "MUS-105",
+      "MUS-107",
+      "TH-110",
+      "TH-111"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "liberal-studies-b-a-integrated-teacher-education-program-itep-junior-option:117:pool1"
+  },
+  {
+    "program_id": "liberal-studies-b-a-integrated-teacher-education-program-itep-junior-option",
+    "source_url": "https://catalog.csun.edu/academics/lrs/programs/ba-liberal-studies-ii/integrated-teacher-education-program-itep-junior-option/",
+    "source_line": 370,
+    "pool_ids": [
+      "GEOG-106LRS",
+      "GEOL-106LRS"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "liberal-studies-b-a-integrated-teacher-education-program-itep-junior-option:138:pool1"
+  },
+  {
+    "program_id": "liberal-studies-b-a-integrated-teacher-education-program-itep-junior-option",
+    "source_url": "https://catalog.csun.edu/academics/lrs/programs/ba-liberal-studies-ii/integrated-teacher-education-program-itep-junior-option/",
+    "source_line": 380,
+    "pool_ids": [
+      "AFRS-271",
+      "CHS-245",
+      "HIST-270"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "liberal-studies-b-a-integrated-teacher-education-program-itep-junior-option:148:pool1"
+  },
+  {
+    "program_id": "liberal-studies-b-a-integrated-teacher-education-program-itep-junior-option",
+    "source_url": "https://catalog.csun.edu/academics/lrs/programs/ba-liberal-studies-ii/integrated-teacher-education-program-itep-junior-option/",
+    "source_line": 387,
+    "pool_ids": [
+      "AFRS-161",
+      "CHS-260",
+      "POLS-155",
+      "RS-255"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "liberal-studies-b-a-integrated-teacher-education-program-itep-junior-option:155:pool1"
+  },
+  {
+    "program_id": "liberal-studies-b-a-integrated-teacher-education-program-itep-junior-option",
+    "source_url": "https://catalog.csun.edu/academics/lrs/programs/ba-liberal-studies-ii/integrated-teacher-education-program-itep-junior-option/",
+    "source_line": 399,
+    "pool_ids": [
+      "CADV-150",
+      "FCS-330"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "liberal-studies-b-a-integrated-teacher-education-program-itep-junior-option:167:pool1"
+  },
+  {
+    "program_id": "liberal-studies-b-a-integrated-teacher-education-program-itep-junior-option",
+    "source_url": "https://catalog.csun.edu/academics/lrs/programs/ba-liberal-studies-ii/integrated-teacher-education-program-itep-junior-option/",
+    "source_line": 421,
+    "pool_ids": [
+      "ART-380",
+      "DANC-314/L",
+      "KIN-314/L",
+      "LRS-457",
+      "MUS-361/L",
+      "TH-371/L"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "liberal-studies-b-a-integrated-teacher-education-program-itep-junior-option:193:pool1"
+  },
+  {
+    "program_id": "liberal-studies-b-a-integrated-teacher-education-program-itep-junior-option",
+    "source_url": "https://catalog.csun.edu/academics/lrs/programs/ba-liberal-studies-ii/integrated-teacher-education-program-itep-junior-option/",
+    "source_line": 489,
+    "pool_ids": [
+      "GEOG-417",
+      "HIST-417"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "liberal-studies-b-a-integrated-teacher-education-program-itep-junior-option:203:pool1"
+  },
+  {
+    "program_id": "liberal-studies-b-a-integrated-teacher-education-program-itep-freshman-option",
+    "source_url": "https://catalog.csun.edu/academics/lrs/programs/ba-liberal-studies-iii/integrated-teacher-education-program-itep-freshman-option/",
+    "source_line": 68,
+    "pool_ids": [
+      "AAS-115",
+      "AFRS-115",
+      "CAS-115",
+      "CHS-115",
+      "ENGL-115",
+      "GWS-115",
+      "QS-115"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "liberal-studies-b-a-integrated-teacher-education-program-itep-freshman-option:68:pool1"
+  },
+  {
+    "program_id": "liberal-studies-b-a-integrated-teacher-education-program-itep-freshman-option",
+    "source_url": "https://catalog.csun.edu/academics/lrs/programs/ba-liberal-studies-iii/integrated-teacher-education-program-itep-freshman-option/",
+    "source_line": 84,
+    "pool_ids": [
+      "AAS-220",
+      "AFRS-245",
+      "CAS-201",
+      "CHS-201"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "liberal-studies-b-a-integrated-teacher-education-program-itep-freshman-option:84:pool1"
+  },
+  {
+    "program_id": "liberal-studies-b-a-integrated-teacher-education-program-itep-freshman-option",
+    "source_url": "https://catalog.csun.edu/academics/lrs/programs/ba-liberal-studies-iii/integrated-teacher-education-program-itep-freshman-option/",
+    "source_line": 96,
+    "pool_ids": [
+      "AAS-151",
+      "AFRS-151",
+      "CAS-151",
+      "CHS-151",
+      "COMS-151",
+      "GWS-151",
+      "QS-151"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "liberal-studies-b-a-integrated-teacher-education-program-itep-freshman-option:96:pool1"
+  },
+  {
+    "program_id": "liberal-studies-b-a-integrated-teacher-education-program-itep-freshman-option",
+    "source_url": "https://catalog.csun.edu/academics/lrs/programs/ba-liberal-studies-iii/integrated-teacher-education-program-itep-freshman-option/",
+    "source_line": 109,
+    "pool_ids": [
+      "AFRS-271",
+      "CHS-245",
+      "HIST-270"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "liberal-studies-b-a-integrated-teacher-education-program-itep-freshman-option:109:pool1"
+  },
+  {
+    "program_id": "liberal-studies-b-a-integrated-teacher-education-program-itep-freshman-option",
+    "source_url": "https://catalog.csun.edu/academics/lrs/programs/ba-liberal-studies-iii/integrated-teacher-education-program-itep-freshman-option/",
+    "source_line": 116,
+    "pool_ids": [
+      "AFRS-161",
+      "CHS-260",
+      "POLS-155",
+      "RS-255"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "liberal-studies-b-a-integrated-teacher-education-program-itep-freshman-option:116:pool1"
+  },
+  {
+    "program_id": "liberal-studies-b-a-integrated-teacher-education-program-itep-freshman-option",
+    "source_url": "https://catalog.csun.edu/academics/lrs/programs/ba-liberal-studies-iii/integrated-teacher-education-program-itep-freshman-option/",
+    "source_line": 141,
+    "pool_ids": [
+      "GEOG-106LRS",
+      "GEOL-106LRS"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "liberal-studies-b-a-integrated-teacher-education-program-itep-freshman-option:141:pool1"
+  },
+  {
+    "program_id": "liberal-studies-b-a-integrated-teacher-education-program-itep-freshman-option",
+    "source_url": "https://catalog.csun.edu/academics/lrs/programs/ba-liberal-studies-iii/integrated-teacher-education-program-itep-freshman-option/",
+    "source_line": 171,
+    "pool_ids": [
+      "GEOG-417",
+      "HIST-417"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "liberal-studies-b-a-integrated-teacher-education-program-itep-freshman-option:171:pool1"
+  },
+  {
+    "program_id": "liberal-studies-b-a-integrated-teacher-education-program-itep-freshman-option",
+    "source_url": "https://catalog.csun.edu/academics/lrs/programs/ba-liberal-studies-iii/integrated-teacher-education-program-itep-freshman-option/",
+    "source_line": 215,
+    "pool_ids": [
+      "AAS-115",
+      "AFRS-115",
+      "CAS-115",
+      "CHS-115",
+      "ENGL-115",
+      "GWS-115",
+      "QS-115"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "liberal-studies-b-a-integrated-teacher-education-program-itep-freshman-option:68:pool1"
+  },
+  {
+    "program_id": "liberal-studies-b-a-integrated-teacher-education-program-itep-freshman-option",
+    "source_url": "https://catalog.csun.edu/academics/lrs/programs/ba-liberal-studies-iii/integrated-teacher-education-program-itep-freshman-option/",
+    "source_line": 226,
+    "pool_ids": [
+      "AAS-151",
+      "AFRS-151",
+      "CAS-151",
+      "CHS-151",
+      "COMS-151",
+      "GWS-151",
+      "QS-151"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "liberal-studies-b-a-integrated-teacher-education-program-itep-freshman-option:96:pool1"
+  },
+  {
+    "program_id": "liberal-studies-b-a-integrated-teacher-education-program-itep-freshman-option",
+    "source_url": "https://catalog.csun.edu/academics/lrs/programs/ba-liberal-studies-iii/integrated-teacher-education-program-itep-freshman-option/",
+    "source_line": 243,
+    "pool_ids": [
+      "AAS-220",
+      "AFRS-245",
+      "CAS-201",
+      "CHS-201"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "liberal-studies-b-a-integrated-teacher-education-program-itep-freshman-option:84:pool1"
+  },
+  {
+    "program_id": "liberal-studies-b-a-integrated-teacher-education-program-itep-freshman-option",
+    "source_url": "https://catalog.csun.edu/academics/lrs/programs/ba-liberal-studies-iii/integrated-teacher-education-program-itep-freshman-option/",
+    "source_line": 253,
+    "pool_ids": [
+      "AFRS-271",
+      "CHS-245",
+      "HIST-270"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "liberal-studies-b-a-integrated-teacher-education-program-itep-freshman-option:109:pool1"
+  },
+  {
+    "program_id": "liberal-studies-b-a-integrated-teacher-education-program-itep-freshman-option",
+    "source_url": "https://catalog.csun.edu/academics/lrs/programs/ba-liberal-studies-iii/integrated-teacher-education-program-itep-freshman-option/",
+    "source_line": 260,
+    "pool_ids": [
+      "AFRS-161",
+      "CHS-260",
+      "POLS-155",
+      "RS-255"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "liberal-studies-b-a-integrated-teacher-education-program-itep-freshman-option:116:pool1"
+  },
+  {
+    "program_id": "liberal-studies-b-a-integrated-teacher-education-program-itep-freshman-option",
+    "source_url": "https://catalog.csun.edu/academics/lrs/programs/ba-liberal-studies-iii/integrated-teacher-education-program-itep-freshman-option/",
+    "source_line": 292,
+    "pool_ids": [
+      "GEOG-106LRS",
+      "GEOL-106LRS"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "liberal-studies-b-a-integrated-teacher-education-program-itep-freshman-option:141:pool1"
+  },
+  {
+    "program_id": "liberal-studies-b-a-integrated-teacher-education-program-itep-freshman-option",
+    "source_url": "https://catalog.csun.edu/academics/lrs/programs/ba-liberal-studies-iii/integrated-teacher-education-program-itep-freshman-option/",
+    "source_line": 303,
+    "pool_ids": [
+      "GEOG-417",
+      "HIST-417"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "liberal-studies-b-a-integrated-teacher-education-program-itep-freshman-option:171:pool1"
+  },
+  {
+    "program_id": "linguistics-b-a",
+    "source_url": "https://catalog.csun.edu/academics/ling/programs/ba-linguistics/",
+    "source_line": 50,
+    "pool_ids": [
+      "LING-100",
+      "LING-200",
+      "LING-230",
+      "LING-250"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "linguistics-b-a:50:pool1"
+  },
+  {
+    "program_id": "linguistics-b-a",
+    "source_url": "https://catalog.csun.edu/academics/ling/programs/ba-linguistics/",
+    "source_line": 57,
+    "pool_ids": [
+      "LING-310",
+      "LING-314CS",
+      "LING-325"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "linguistics-b-a:57:pool1"
+  },
+  {
+    "program_id": "linguistics-b-a",
+    "source_url": "https://catalog.csun.edu/academics/ling/programs/ba-linguistics/",
+    "source_line": 62,
+    "pool_ids": [
+      "LING-309",
+      "LING-427",
+      "LING-441",
+      "LING-447"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "linguistics-b-a:62:pool1"
+  },
+  {
+    "program_id": "linguistics-b-a-double-major",
+    "source_url": "https://catalog.csun.edu/academics/ling/programs/ba-linguistics-ii/double-major/",
+    "source_line": 53,
+    "pool_ids": [
+      "LING-309",
+      "LING-427",
+      "LING-441",
+      "LING-447"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "linguistics-b-a-double-major:53:pool1"
+  },
+  {
+    "program_id": "linguistics-b-a-linguistics-m-a-blended-program",
+    "source_url": "https://catalog.csun.edu/academics/ling/programs/ba-linguistics-ma-linguistics/blended-program/",
+    "source_line": 97,
+    "pool_ids": [
+      "LING-100",
+      "LING-200",
+      "LING-230",
+      "LING-250"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "linguistics-b-a-linguistics-m-a-blended-program:97:pool1"
+  },
+  {
+    "program_id": "linguistics-b-a-linguistics-m-a-blended-program",
+    "source_url": "https://catalog.csun.edu/academics/ling/programs/ba-linguistics-ma-linguistics/blended-program/",
+    "source_line": 104,
+    "pool_ids": [
+      "LING-310",
+      "LING-314CS",
+      "LING-325"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "linguistics-b-a-linguistics-m-a-blended-program:104:pool1"
+  },
+  {
+    "program_id": "linguistics-b-a-linguistics-m-a-blended-program",
+    "source_url": "https://catalog.csun.edu/academics/ling/programs/ba-linguistics-ma-linguistics/blended-program/",
+    "source_line": 109,
+    "pool_ids": [
+      "LING-309",
+      "LING-427",
+      "LING-441",
+      "LING-447"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "linguistics-b-a-linguistics-m-a-blended-program:109:pool1"
+  },
+  {
+    "program_id": "linguistics-b-a-teaching-english-as-a-second-language-m-a-blended-program",
+    "source_url": "https://catalog.csun.edu/academics/ling/programs/ba-linguistics-ma-teaching-english-as-a-second-language/blended-program/",
+    "source_line": 91,
+    "pool_ids": [
+      "LING-100",
+      "LING-200",
+      "LING-230",
+      "LING-250"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "linguistics-b-a-teaching-english-as-a-second-language-m-a-blended-program:91:pool1"
+  },
+  {
+    "program_id": "linguistics-b-a-teaching-english-as-a-second-language-m-a-blended-program",
+    "source_url": "https://catalog.csun.edu/academics/ling/programs/ba-linguistics-ma-teaching-english-as-a-second-language/blended-program/",
+    "source_line": 98,
+    "pool_ids": [
+      "LING-310",
+      "LING-314CS",
+      "LING-325"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "linguistics-b-a-teaching-english-as-a-second-language-m-a-blended-program:98:pool1"
+  },
+  {
+    "program_id": "linguistics-b-a-teaching-english-as-a-second-language-m-a-blended-program",
+    "source_url": "https://catalog.csun.edu/academics/ling/programs/ba-linguistics-ma-teaching-english-as-a-second-language/blended-program/",
+    "source_line": 103,
+    "pool_ids": [
+      "LING-309",
+      "LING-427",
+      "LING-441",
+      "LING-447"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "linguistics-b-a-teaching-english-as-a-second-language-m-a-blended-program:103:pool1"
+  },
+  {
+    "program_id": "mechanical-engineering-b-s",
+    "source_url": "https://catalog.csun.edu/academics/me/programs/bs-mechanical-engineering/",
+    "source_line": 129,
+    "pool_ids": [
+      "AE-472",
+      "AE-473",
+      "AE-480",
+      "AE-586",
+      "AM-410",
+      "ME-415",
+      "ME-430",
+      "ME-431/L",
+      "ME-434",
+      "ME-436/L",
+      "ME-470",
+      "ME-476",
+      "ME-482",
+      "ME-483",
+      "ME-484/L",
+      "ME-485",
+      "ME-490",
+      "ME-493",
+      "ME-495/L",
+      "ME-501A",
+      "ME-501B",
+      "ME-515",
+      "ME-520",
+      "ME-522",
+      "ME-530",
+      "ME-536",
+      "ME-538",
+      "ME-575",
+      "ME-583",
+      "ME-584",
+      "ME-590",
+      "ME-593",
+      "ME-595COM",
+      "ME-595ICS"
+    ],
+    "minimum_units": 12,
+    "minimum_count": null,
+    "decision_id": "mechanical-engineering-b-s:127:pool1"
+  },
+  {
+    "program_id": "music-b-m-vocal-arts-option",
+    "source_url": "https://catalog.csun.edu/academics/mus/programs/bm-music-iii/vocal-arts-option/",
+    "source_line": 81,
+    "pool_ids": [
+      "MUS-403",
+      "MUS-412"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "music-b-m-vocal-arts-option:81:pool1"
+  },
+  {
+    "program_id": "music-b-m-vocal-arts-option",
+    "source_url": "https://catalog.csun.edu/academics/mus/programs/bm-music-iii/vocal-arts-option/",
+    "source_line": 85,
+    "pool_ids": [
+      "MUS-291",
+      "MUS-363/L",
+      "MUS-427",
+      "MUS-428",
+      "MUS-488A-B"
+    ],
+    "minimum_units": 2,
+    "minimum_count": null,
+    "decision_id": "music-b-m-vocal-arts-option:85:pool1"
+  },
+  {
+    "program_id": "music-b-m-keyboard-option",
+    "source_url": "https://catalog.csun.edu/academics/mus/programs/bm-music-iv/keyboard-option/",
+    "source_line": 70,
+    "pool_ids": [
+      "MUS-210",
+      "MUS-210AJ",
+      "MUS-235A",
+      "MUS-235B"
+    ],
+    "minimum_units": 2,
+    "minimum_count": null,
+    "decision_id": "music-b-m-keyboard-option:70:pool1"
+  },
+  {
+    "program_id": "music-b-m-winds-option",
+    "source_url": "https://catalog.csun.edu/academics/mus/programs/bm-music-vi/winds-option/",
+    "source_line": 84,
+    "pool_ids": [
+      "MUS-404",
+      "MUS-405",
+      "MUS-411"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "music-b-m-winds-option:84:pool1"
+  },
+  {
+    "program_id": "music-b-m-strings-option",
+    "source_url": "https://catalog.csun.edu/academics/mus/programs/bm-music-vii/strings-option/",
+    "source_line": 92,
+    "pool_ids": [
+      "MUS-404",
+      "MUS-409",
+      "MUS-411"
+    ],
+    "minimum_units": null,
+    "minimum_count": 2,
+    "decision_id": "music-b-m-strings-option:92:pool1"
+  },
+  {
+    "program_id": "philosophy-b-a",
+    "source_url": "https://catalog.csun.edu/academics/phil/programs/ba-philosophy-i/",
+    "source_line": 56,
+    "pool_ids": [
+      "PHIL-350",
+      "PHIL-352",
+      "PHIL-355"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "philosophy-b-a:56:pool1"
+  },
+  {
+    "program_id": "philosophy-b-a",
+    "source_url": "https://catalog.csun.edu/academics/phil/programs/ba-philosophy-i/",
+    "source_line": 63,
+    "pool_ids": [
+      "PHIL-360",
+      "PHIL-365",
+      "PHIL-380"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "philosophy-b-a:63:pool1"
+  },
+  {
+    "program_id": "philosophy-b-a",
+    "source_url": "https://catalog.csun.edu/academics/phil/programs/ba-philosophy-i/",
+    "source_line": 70,
+    "pool_ids": [
+      "PHIL-329",
+      "PHIL-332",
+      "PHIL-333",
+      "PHIL-343",
+      "PHIL-344",
+      "PHIL-348",
+      "PHIL-353",
+      "PHIL-354"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "philosophy-b-a:70:pool1"
+  },
+  {
+    "program_id": "philosophy-b-a-double-major",
+    "source_url": "https://catalog.csun.edu/academics/phil/programs/ba-philosophy-ii/double-major/",
+    "source_line": 52,
+    "pool_ids": [
+      "PHIL-360",
+      "PHIL-365",
+      "PHIL-380"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "philosophy-b-a-double-major:52:pool1"
+  },
+  {
+    "program_id": "philosophy-b-a-double-major",
+    "source_url": "https://catalog.csun.edu/academics/phil/programs/ba-philosophy-ii/double-major/",
+    "source_line": 58,
+    "pool_ids": [
+      "PHIL-350",
+      "PHIL-352",
+      "PHIL-355"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "philosophy-b-a-double-major:58:pool1"
+  },
+  {
+    "program_id": "philosophy-b-a-double-major",
+    "source_url": "https://catalog.csun.edu/academics/phil/programs/ba-philosophy-ii/double-major/",
+    "source_line": 63,
+    "pool_ids": [
+      "PHIL-329",
+      "PHIL-332",
+      "PHIL-333",
+      "PHIL-343",
+      "PHIL-344",
+      "PHIL-348",
+      "PHIL-353",
+      "PHIL-354"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "philosophy-b-a-double-major:63:pool1"
+  },
+  {
+    "program_id": "physics-b-s-astrophysics-option",
+    "source_url": "https://catalog.csun.edu/academics/phys/programs/bs-physics-ii/astrophysics-option/",
+    "source_line": 87,
+    "pool_ids": [
+      "PHYS-420",
+      "PHYS-421",
+      "PHYS-451",
+      "PHYS-470",
+      "PHYS-480",
+      "PHYS-489",
+      "PHYS-490"
+    ],
+    "minimum_units": 3,
+    "minimum_count": null,
+    "decision_id": "physics-b-s-astrophysics-option:87:pool1"
+  },
+  {
+    "program_id": "psychology-b-a",
+    "source_url": "https://catalog.csun.edu/academics/psy/programs/ba-psychology-i/",
+    "source_line": 67,
+    "pool_ids": [
+      "PSY-310",
+      "PSY-351",
+      "PSY-353",
+      "PSY-370",
+      "PSY-380"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "psychology-b-a:67:pool1"
+  },
+  {
+    "program_id": "psychology-b-a",
+    "source_url": "https://catalog.csun.edu/academics/psy/programs/ba-psychology-i/",
+    "source_line": 76,
+    "pool_ids": [
+      "PSY-304",
+      "PSY-367",
+      "PSY-369",
+      "PSY-382"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "psychology-b-a:76:pool1"
+  },
+  {
+    "program_id": "psychology-b-a",
+    "source_url": "https://catalog.csun.edu/academics/psy/programs/ba-psychology-i/",
+    "source_line": 83,
+    "pool_ids": [
+      "PSY-313",
+      "PSY-327",
+      "PSY-335",
+      "PSY-361",
+      "PSY-365"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "psychology-b-a:83:pool1"
+  },
+  {
+    "program_id": "public-health-b-s",
+    "source_url": "https://catalog.csun.edu/academics/hsci/programs/bs-public-health/",
+    "source_line": 64,
+    "pool_ids": [
+      "MATH-102",
+      "MATH-102L",
+      "MATH-103",
+      "MATH-103L",
+      "MATH-104",
+      "MATH-104L",
+      "MATH-140",
+      "MATH-140BUS",
+      "MATH-140SCI",
+      "MATH-141",
+      "MATH-141L"
+    ],
+    "minimum_units": 4,
+    "minimum_count": null,
+    "decision_id": "public-health-b-s:64:pool1"
+  },
+  {
+    "program_id": "public-health-b-s",
+    "source_url": "https://catalog.csun.edu/academics/hsci/programs/bs-public-health/",
+    "source_line": 86,
+    "pool_ids": [
+      "BIOL-211",
+      "BIOL-212",
+      "BIOL-213",
+      "BIOL-218",
+      "BIOL-218L",
+      "BIOL-281",
+      "BIOL-285",
+      "BIOL-341",
+      "BIOL-366",
+      "BIOL-375"
+    ],
+    "minimum_units": 3,
+    "minimum_count": null,
+    "decision_id": "public-health-b-s:86:pool1"
+  },
+  {
+    "program_id": "religious-studies-b-a",
+    "source_url": "https://catalog.csun.edu/academics/rs/programs/ba-religious-studies-i/",
+    "source_line": 47,
+    "pool_ids": [
+      "RS-101",
+      "RS-150",
+      "RS-170",
+      "RS-225",
+      "RS-240"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "religious-studies-b-a:47:pool1"
+  },
+  {
+    "program_id": "religious-studies-b-a-double-major",
+    "source_url": "https://catalog.csun.edu/academics/rs/programs/ba-religious-studies-ii/double-major/",
+    "source_line": 49,
+    "pool_ids": [
+      "RS-101",
+      "RS-150",
+      "RS-170",
+      "RS-225",
+      "RS-240"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "religious-studies-b-a-double-major:49:pool1"
+  },
+  {
+    "program_id": "spanish-b-a-literature-option",
+    "source_url": "https://catalog.csun.edu/academics/mcll/programs/ba-spanish-i/literature-option/",
+    "source_line": 58,
+    "pool_ids": [
+      "SPAN-315A",
+      "SPAN-315B"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "spanish-b-a-literature-option:58:pool1"
+  },
+  {
+    "program_id": "spanish-b-a-literature-option",
+    "source_url": "https://catalog.csun.edu/academics/mcll/programs/ba-spanish-i/literature-option/",
+    "source_line": 63,
+    "pool_ids": [
+      "SPAN-363",
+      "SPAN-364"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "spanish-b-a-literature-option:63:pool1"
+  },
+  {
+    "program_id": "spanish-b-a-literature-option",
+    "source_url": "https://catalog.csun.edu/academics/mcll/programs/ba-spanish-i/literature-option/",
+    "source_line": 70,
+    "pool_ids": [
+      "FLIT-295A",
+      "FLIT-295B"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "spanish-b-a-literature-option:70:pool1"
+  },
+  {
+    "program_id": "spanish-b-a-literature-option",
+    "source_url": "https://catalog.csun.edu/academics/mcll/programs/ba-spanish-i/literature-option/",
+    "source_line": 74,
+    "pool_ids": [
+      "SPAN-380",
+      "SPAN-381"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "spanish-b-a-literature-option:74:pool1"
+  },
+  {
+    "program_id": "spanish-b-a-literature-option",
+    "source_url": "https://catalog.csun.edu/academics/mcll/programs/ba-spanish-i/literature-option/",
+    "source_line": 78,
+    "pool_ids": [
+      "SPAN-408",
+      "SPAN-409",
+      "SPAN-411",
+      "SPAN-414",
+      "SPAN-415",
+      "SPAN-421",
+      "SPAN-427",
+      "SPAN-428",
+      "SPAN-450",
+      "SPAN-495A-Z",
+      "SPAN-496A-Z"
+    ],
+    "minimum_units": null,
+    "minimum_count": 4,
+    "decision_id": "spanish-b-a-literature-option:78:pool1"
+  },
+  {
+    "program_id": "spanish-b-a-language-and-culture-option",
+    "source_url": "https://catalog.csun.edu/academics/mcll/programs/ba-spanish-ii/language-and-culture-option/",
+    "source_line": 61,
+    "pool_ids": [
+      "SPAN-315A",
+      "SPAN-315B"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "spanish-b-a-language-and-culture-option:61:pool1"
+  },
+  {
+    "program_id": "spanish-b-a-language-and-culture-option",
+    "source_url": "https://catalog.csun.edu/academics/mcll/programs/ba-spanish-ii/language-and-culture-option/",
+    "source_line": 66,
+    "pool_ids": [
+      "SPAN-363",
+      "SPAN-364"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "spanish-b-a-language-and-culture-option:66:pool1"
+  },
+  {
+    "program_id": "spanish-b-a-language-and-culture-option",
+    "source_url": "https://catalog.csun.edu/academics/mcll/programs/ba-spanish-ii/language-and-culture-option/",
+    "source_line": 73,
+    "pool_ids": [
+      "SPAN-300",
+      "SPAN-310"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "spanish-b-a-language-and-culture-option:73:pool1"
+  },
+  {
+    "program_id": "spanish-b-a-language-and-culture-option",
+    "source_url": "https://catalog.csun.edu/academics/mcll/programs/ba-spanish-ii/language-and-culture-option/",
+    "source_line": 77,
+    "pool_ids": [
+      "SPAN-380",
+      "SPAN-381",
+      "SPAN-400",
+      "SPAN-497"
+    ],
+    "minimum_units": null,
+    "minimum_count": 3,
+    "decision_id": "spanish-b-a-language-and-culture-option:77:pool1"
+  },
+  {
+    "program_id": "spanish-b-a-language-and-culture-option",
+    "source_url": "https://catalog.csun.edu/academics/mcll/programs/ba-spanish-ii/language-and-culture-option/",
+    "source_line": 83,
+    "pool_ids": [
+      "SPAN-382",
+      "SPAN-383"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "spanish-b-a-language-and-culture-option:83:pool1"
+  },
+  {
+    "program_id": "spanish-b-a-hispanic-linguistics-option",
+    "source_url": "https://catalog.csun.edu/academics/mcll/programs/ba-spanish-iii/hispanic-linguistics-option/",
+    "source_line": 58,
+    "pool_ids": [
+      "SPAN-315A",
+      "SPAN-315B"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "spanish-b-a-hispanic-linguistics-option:58:pool1"
+  },
+  {
+    "program_id": "spanish-b-a-hispanic-linguistics-option",
+    "source_url": "https://catalog.csun.edu/academics/mcll/programs/ba-spanish-iii/hispanic-linguistics-option/",
+    "source_line": 63,
+    "pool_ids": [
+      "SPAN-363",
+      "SPAN-364"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "spanish-b-a-hispanic-linguistics-option:63:pool1"
+  },
+  {
+    "program_id": "spanish-b-a-hispanic-linguistics-option",
+    "source_url": "https://catalog.csun.edu/academics/mcll/programs/ba-spanish-iii/hispanic-linguistics-option/",
+    "source_line": 75,
+    "pool_ids": [
+      "ENGL-301",
+      "LING-300"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "spanish-b-a-hispanic-linguistics-option:75:pool1"
+  },
+  {
+    "program_id": "spanish-b-a-hispanic-linguistics-option",
+    "source_url": "https://catalog.csun.edu/academics/mcll/programs/ba-spanish-iii/hispanic-linguistics-option/",
+    "source_line": 79,
+    "pool_ids": [
+      "LING-402",
+      "LING-403",
+      "LING-404",
+      "LING-408",
+      "LING-417",
+      "LING-441",
+      "SPAN-495A-Z",
+      "SPAN-496A-Z"
+    ],
+    "minimum_units": null,
+    "minimum_count": 2,
+    "decision_id": "spanish-b-a-hispanic-linguistics-option:79:pool1"
+  },
+  {
+    "program_id": "spanish-b-a-translation-and-interpretation-option",
+    "source_url": "https://catalog.csun.edu/academics/mcll/programs/ba-spanish-iv/translation-and-interpretation-option/",
+    "source_line": 58,
+    "pool_ids": [
+      "SPAN-315A",
+      "SPAN-315B"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "spanish-b-a-translation-and-interpretation-option:58:pool1"
+  },
+  {
+    "program_id": "spanish-b-a-translation-and-interpretation-option",
+    "source_url": "https://catalog.csun.edu/academics/mcll/programs/ba-spanish-iv/translation-and-interpretation-option/",
+    "source_line": 63,
+    "pool_ids": [
+      "SPAN-363",
+      "SPAN-364"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "spanish-b-a-translation-and-interpretation-option:63:pool1"
+  },
+  {
+    "program_id": "spanish-b-a-translation-and-interpretation-option",
+    "source_url": "https://catalog.csun.edu/academics/mcll/programs/ba-spanish-iv/translation-and-interpretation-option/",
+    "source_line": 76,
+    "pool_ids": [
+      "SPAN-462",
+      "SPAN-463"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "spanish-b-a-translation-and-interpretation-option:76:pool1"
+  },
+  {
+    "program_id": "spanish-b-a-translation-and-interpretation-option",
+    "source_url": "https://catalog.csun.edu/academics/mcll/programs/ba-spanish-iv/translation-and-interpretation-option/",
+    "source_line": 80,
+    "pool_ids": [
+      "SPAN-472",
+      "SPAN-473"
+    ],
+    "minimum_units": null,
+    "minimum_count": 1,
+    "decision_id": "spanish-b-a-translation-and-interpretation-option:80:pool1"
+  },
+  {
+    "program_id": "theatre-b-a-theatre-arts-option",
+    "source_url": "https://catalog.csun.edu/academics/th/programs/ba-theatre-i/theatre-arts-option/",
+    "source_line": 59,
+    "pool_ids": [
+      "TH-261",
+      "TH-261P",
+      "TH-262",
+      "TH-262P",
+      "TH-263",
+      "TH-263P"
+    ],
+    "minimum_units": 6,
+    "minimum_count": null,
+    "decision_id": "theatre-b-a-theatre-arts-option:59:pool1"
+  },
+  {
+    "program_id": "theatre-b-a-theatre-arts-option",
+    "source_url": "https://catalog.csun.edu/academics/th/programs/ba-theatre-i/theatre-arts-option/",
+    "source_line": 72,
+    "pool_ids": [
+      "TH-410",
+      "TH-422",
+      "TH-426",
+      "TH-432",
+      "TH-433"
+    ],
+    "minimum_units": 3,
+    "minimum_count": null,
+    "decision_id": "theatre-b-a-theatre-arts-option:72:pool1"
+  },
+  {
+    "program_id": "theatre-b-a-theatre-arts-option",
+    "source_url": "https://catalog.csun.edu/academics/th/programs/ba-theatre-i/theatre-arts-option/",
+    "source_line": 79,
+    "pool_ids": [
+      "TH-381",
+      "TH-385"
+    ],
+    "minimum_units": 2,
+    "minimum_count": null,
+    "decision_id": "theatre-b-a-theatre-arts-option:79:pool1"
+  },
+  {
+    "program_id": "theatre-b-a-acting-and-directing-option",
+    "source_url": "https://catalog.csun.edu/academics/th/programs/ba-theatre-ii/acting-and-directing-option/",
+    "source_line": 60,
+    "pool_ids": [
+      "TH-261",
+      "TH-261P",
+      "TH-262",
+      "TH-262P",
+      "TH-263",
+      "TH-263P"
+    ],
+    "minimum_units": 6,
+    "minimum_count": null,
+    "decision_id": "theatre-b-a-acting-and-directing-option:60:pool1"
+  },
+  {
+    "program_id": "theatre-b-a-acting-and-directing-option",
+    "source_url": "https://catalog.csun.edu/academics/th/programs/ba-theatre-ii/acting-and-directing-option/",
+    "source_line": 73,
+    "pool_ids": [
+      "TH-410",
+      "TH-422",
+      "TH-426",
+      "TH-432",
+      "TH-433"
+    ],
+    "minimum_units": 3,
+    "minimum_count": null,
+    "decision_id": "theatre-b-a-acting-and-directing-option:73:pool1"
+  },
+  {
+    "program_id": "theatre-b-a-acting-and-directing-option",
+    "source_url": "https://catalog.csun.edu/academics/th/programs/ba-theatre-ii/acting-and-directing-option/",
+    "source_line": 92,
+    "pool_ids": [
+      "TH-308A",
+      "TH-342M",
+      "TH-343V",
+      "TH-345",
+      "TH-346",
+      "TH-408A",
+      "TH-442M",
+      "TH-443V",
+      "TH-448",
+      "TH-454"
+    ],
+    "minimum_units": 6,
+    "minimum_count": null,
+    "decision_id": "theatre-b-a-acting-and-directing-option:92:pool1"
+  },
+  {
+    "program_id": "theatre-b-a-design-and-production-option",
+    "source_url": "https://catalog.csun.edu/academics/th/programs/ba-theatre-iii/design-and-production-option/",
+    "source_line": 73,
+    "pool_ids": [
+      "TH-410",
+      "TH-422",
+      "TH-426",
+      "TH-432",
+      "TH-433"
+    ],
+    "minimum_units": 3,
+    "minimum_count": null,
+    "decision_id": "theatre-b-a-design-and-production-option:73:pool1"
+  },
+  {
+    "program_id": "theatre-b-a-design-and-production-option",
+    "source_url": "https://catalog.csun.edu/academics/th/programs/ba-theatre-iii/design-and-production-option/",
+    "source_line": 80,
+    "pool_ids": [
+      "TH-381",
+      "TH-385"
+    ],
+    "minimum_units": 2,
+    "minimum_count": null,
+    "decision_id": "theatre-b-a-design-and-production-option:80:pool1"
+  },
+  {
+    "program_id": "theatre-b-a-design-and-production-option",
+    "source_url": "https://catalog.csun.edu/academics/th/programs/ba-theatre-iii/design-and-production-option/",
+    "source_line": 84,
+    "pool_ids": [
+      "TH-355",
+      "TH-361A",
+      "TH-361B",
+      "TH-362A",
+      "TH-362B",
+      "TH-363A",
+      "TH-363B",
+      "TH-367"
+    ],
+    "minimum_units": 4,
+    "minimum_count": null,
+    "decision_id": "theatre-b-a-design-and-production-option:84:pool1"
+  },
+  {
+    "program_id": "urban-studies-and-planning-b-a",
+    "source_url": "https://catalog.csun.edu/academics/urbs/programs/ba-urban-studies-and-planning/",
+    "source_line": 67,
+    "pool_ids": [
+      "GEOG-206/L",
+      "GEOG-306/L",
+      "URBS-310",
+      "URBS-350",
+      "URBS-400",
+      "URBS-415",
+      "URBS-416",
+      "URBS-425",
+      "URBS-435",
+      "URBS-495A-Z"
+    ],
+    "minimum_units": null,
+    "minimum_count": 3,
+    "decision_id": "urban-studies-and-planning-b-a:67:pool1"
+  }
+]

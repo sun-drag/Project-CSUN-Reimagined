@@ -1,6 +1,6 @@
 # Program mapper — installation and handoff
 
-This update implements the program mapper in the supplied CSUN Reimagined site.
+This update revises the program mapper in the supplied CSUN Reimagined site. It reuses the header, six navigation destinations, shared stylesheet and footer from index.html, with the white / black / red palette.
 The other existing pages, shared styles, shared scripts and images are unchanged.
 
 ## Publish to the existing Amplify site
@@ -17,13 +17,13 @@ data/program-mapper/config.json
 data/program-mapper/catalog.json
 ```
 
-The first three replace existing mapper placeholders. The other four are new.
+Replace those files at their existing paths. The ZIP is based on the supplied project snapshot: merge only the mapper changes into your branch so newer work by teammates is preserved. Do not replace unrelated repository files.
 Keep the repository's current `amplify.yml` and other site files. The build that
 copies `pages`, `css`, `js`, `data` and `images` into `dist` already includes all
 mapper assets. No npm install, build framework, browser API key or environment
 variable is needed for this implementation.
 
-Commit to the branch connected to Amplify (currently `main`). Once that deployment
+Commit to the branch you connected to Amplify, or connect a preview branch first. Once that deployment
 finishes, open `/pages/program-mapper.html` at the site's existing domain. The custom
 domain and DNS records continue to serve the same Amplify app.
 
@@ -95,20 +95,70 @@ The generated plan is a planning draft, not an official degree audit.
 }
 ```
 
-To use RDS later, add a server-side read endpoint that returns the same normalized
-JSON shape as `catalog.json`, including merged `details`, and point `catalogUrl`
-at that endpoint. Keep connection strings and database credentials on the server.
-The endpoint can return cached public catalog data without student authentication.
-If hosted on a different origin, it must permit the site's origin through CORS.
-First reconcile the data corrections and descriptions from this snapshot with
-RDS; simply returning the older imported expressions would reintroduce the
-directory-reference problem. No server, AWS resource or credential was created
-or changed by this update.
+The database is reserved for the later account and saved-progress feature. That feature
+will need server-side authentication and an API that reads/writes each student's plan
+under their own account. This update keeps catalog data public and browser plans local.
+It adds no account flow, database connection or AWS resources.
+
+## Academic and design review — November 19, 2026
+
+All 158 major/option requirement pages and their 156 linked degree roadmaps were
+retrieved again. The linked maps cover 139 entries; 19 program pages expose no
+four-year degree-roadmap link. Many of those are double-major-only, transfer,
+accelerated or blended routes. This does not establish that no other advising
+material exists. The 107 minors and earlier individual-course page captures were
+retained from the previous snapshot.
+
+An independent scan compared 317 explicit selection pools in 109 majors/options.
+Required-credit overcount checks and option-specific footnotes found additional
+cases. Fourteen targeted curriculum corrections cover numbered CHS/Deaf Studies
+alternative lists, Kinesiology biology pathways and approved Dance electives,
+English extended-study emphases, CTVA management restrictions, Environmental
+Science category minimums, and repeated-course overlap. These checks supplement
+review of source conditions; they do not constitute an official degree audit.
+
+The global choice behavior is corrected:
+
+- CIT mathematics starts as a 3–5 unit choice between MATH 103, MATH 150A and
+  MATH 255A. No math course is selected automatically. Programming is likewise
+  an explicit choice. Selected courses are labeled as selected options and can
+  be changed from Program choices or the course details.
+- The same explicit-choice behavior applies to every program. Unresolved
+  prerequisite alternatives request a route instead of enrolling the first
+  course in the list. Mandatory, unambiguous preparation is still included.
+- Guaranteed GE coverage from a pending choice reserves GE space without
+  claiming that the GE area is completed. This prevents a second math GE block
+  alongside CIT's pending math choice. Unit estimates use the minimum until a
+  course/path is selected; higher-unit selections can change the plan.
+- CIT offers the eligible upper-division CIT/COMP domain route or a separately
+  approved package. Eligible selected minors can cover its proposed minor route.
+  The approved package enforces its lower-division limit and prevents GE reuse.
+- Official semester references guide placement, subject to prerequisites, the
+  chosen timeline and course loads. Summer/winter sessions stay distinct.
+  References that include summer or a fifth year produce timeline warnings.
+- CIT's sample roadmap puts COMP 110/L and the math alternative together, while
+  the individual COMP 110/L page requires prior qualifying math. The generated
+  plan follows that prerequisite and flags the discrepancy. Prior credit or an
+  approved exception must be confirmed with CSUN.
+- The same catalog-family entry can represent different variants or repeated
+  enrollments. Required variants and overlap are flagged explicitly; one card
+  must not be treated as proof of every required enrollment.
+
+Read `data/program-mapper/academic-audit.json` for the 158-program source inventory,
+linked roadmaps, reviewed comparison flags, corrections and the 360 course records
+whose individual page requirements remain unconfirmed. The major-page academic
+sections and linked roadmap sections have no missing captured lines. Source
+completeness is not the same as academic certification. Placement, grades,
+admissions, approved repeats/substitutions, residency and actual semester offerings
+still require confirmation.
+
+The review uses the current 2026–2027 catalog and Plan J. The supplied CIT roadmap
+is a 2025-present reference and explicitly includes the 2026 catalog year.
 
 ## Student data and degree-credit estimates
 
-Student plans are saved under `csun-reimagined:program-mapper:v1` in localStorage.
-The site sends no student plans to a server. Clearing browser storage removes the
+Student plans are saved under `csun-reimagined:program-mapper:v2` in localStorage.
+Version 1 saves are read as a fallback. Their program selections move to a review list because earlier versions could preselect alternatives. Completed courses, notes and other progress are retained; users explicitly choose their paths again. The old storage key is not deleted. The site sends no student plans to a server. Clearing browser storage removes the
 local save; an exported JSON file can restore it on another browser. Imports are
 limited to 2 MB, validated, and treated as data. Course content is escaped before
 rendering. CSV output protects user-supplied cells from spreadsheet formulas.
@@ -137,8 +187,10 @@ Then open `http://localhost:8000/pages/program-mapper.html`.
 The tests require a current Node.js runtime, with no package installation:
 
 ```sh
-node --test tests/program-mapper/core.test.mjs tests/program-mapper/interface.test.mjs
+node --test tests/program-mapper/*.test.mjs
 ```
+
+The current revision passes 68 automated tests. A static HTTP check serves all eight runtime/shared assets successfully. Header, navigation destinations and footer are compared with index.html.
 
 Core tests exercise real catalog data and a small independent dependency fixture.
 They include every indexed major/minor, sequencing, alternate prerequisites,
@@ -156,7 +208,7 @@ as certification of academic requirements or semester offerings.
 Recommended browser check after deployment:
 
 1. Open the mapper at desktop and phone widths; check scrolling and dialogs.
-2. Choose CIT + Real Estate; review the suggested paths and required minor electives.
+2. Choose CIT + Real Estate; select the math/programming alternatives and required minor electives.
 3. Drag a course to another semester; try a prerequisite move that cannot fit.
 4. Select two independent courses, create a corequisite link, and move the group.
 5. Check all GE areas, uncheck 5B/B2, and choose BIOL 101 or another eligible course.

@@ -83,7 +83,7 @@ test('selecting an eligible GE course replaces the corresponding placeholder',()
   const s=m.withSuggestedPaths(catalog,m.initialState()),pick=m.geOptions(catalog,'5B').find(c=>c.units_min===3);s.added=[pick.course_id];s.geAssignments[pick.course_id]='5B';const p=m.derivePlan(catalog,s);assert.ok(p.items.some(c=>c.id===pick.course_id));assert.equal(p.items.some(c=>c.geArea==='5B'),false);
 });
 test('removing a required GE-covered course restores needed GE space and a review issue',()=>{
-  const s=m.withSuggestedPaths(catalog,m.initialState());s.removed=['MATH-103'];const p=m.derivePlan(catalog,s);assert.ok(p.items.some(c=>c.geArea==='2-LD'));assert.ok(m.validatePlan(catalog,s,p).some(i=>i.kind==='removed'));
+  const s=m.withSuggestedPaths(catalog,m.initialState());s.selections['cit-math']='MATH-103';s.removed=['MATH-103'];const p=m.derivePlan(catalog,s);assert.ok(p.items.some(c=>c.geArea==='2-LD'));assert.ok(m.validatePlan(catalog,s,p).some(i=>i.kind==='removed'));
 });
 test('verified Calculus III rules contain only the actual Calculus II prerequisite',()=>{
   const c=catalog.courses.find(c=>c.course_id==='MATH-250');assert.equal(c.prerequisites.course_id,'MATH-150B');assert.equal(c.prerequisites.minimum_grade,'C');assert.equal(c.source_url,'https://catalog.csun.edu/academics/math/courses/math-250/');assert.ok(catalog.course_details[c.details_key].description.includes('integral'));

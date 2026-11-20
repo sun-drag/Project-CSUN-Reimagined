@@ -36,7 +36,7 @@ test('program-choice controls remain editable after a selection is resolved',asy
   const h=await launchHarness();try{q(h,'choices-button').click();const select=h.document.querySelectorAll('[data-choice-path]').find(x=>x.dataset.choicePath==='cit-math');assert.ok(select);select.value='MATH-150A';select.trigger('change');assert.ok(findCard(h,'MATH-150A'));assert.equal(!!findCard(h,'MATH-103'),false);assert.equal(h.app.state().selections['cit-math'],'MATH-150A');assert.deepEqual(h.errors,[]);}finally{h.dispose();}
 });
 test('custom course form escapes markup, saves notes and survives browser-save restoration',async()=>{
-  const h=await launchHarness();let restored;try{q(h,'add-course-button').click();q(h,'custom-course-button').click();q(h,'custom-code').value='CIT 499';q(h,'custom-title').value='<img src=x onerror=alert(1)> Test';q(h,'custom-description').value='A student-defined course';q(h,'custom-units').value='3';q(h,'custom-course-form').trigger('submit');const c=h.app.state().customCourses[0];assert.ok(c);assert.ok(findCard(h,c.course_id));assert.equal(h.document.querySelectorAll('img').length,0);q(h,'detail-notes').value='Meet advisor';q(h,'detail-save-notes').click();assert.equal(h.app.state().notes[c.course_id],'Meet advisor');await pause(250);const saved=h.storage.get('csun-reimagined:program-mapper:v1');assert.ok(saved);restored=await launchHarness(saved);assert.ok(findCard(restored,c.course_id));assert.equal(restored.app.state().notes[c.course_id],'Meet advisor');assert.deepEqual(h.errors,[]);assert.deepEqual(restored.errors,[]);}finally{h.dispose();restored?.dispose();}
+  const h=await launchHarness();let restored;try{q(h,'add-course-button').click();q(h,'custom-course-button').click();q(h,'custom-code').value='CIT 499';q(h,'custom-title').value='<img src=x onerror=alert(1)> Test';q(h,'custom-description').value='A student-defined course';q(h,'custom-units').value='3';q(h,'custom-course-form').trigger('submit');const c=h.app.state().customCourses[0];assert.ok(c);assert.ok(findCard(h,c.course_id));assert.equal(h.document.querySelectorAll('img').length,0);q(h,'detail-notes').value='Meet advisor';q(h,'detail-save-notes').click();assert.equal(h.app.state().notes[c.course_id],'Meet advisor');await pause(250);const saved=h.storage.get('csun-reimagined:program-mapper:v2');assert.ok(saved);restored=await launchHarness(saved);assert.ok(findCard(restored,c.course_id));assert.equal(restored.app.state().notes[c.course_id],'Meet advisor');assert.deepEqual(h.errors,[]);assert.deepEqual(restored.errors,[]);}finally{h.dispose();restored?.dispose();}
 });
 test('removing a required course and restoring it through Plan check work',async()=>{
   const h=await launchHarness();try{h.app.openCourse('CIT-160/L');q(h,'detail-remove').click();q(h,'confirm-remove').click();assert.equal(!!findCard(h,'CIT-160/L'),false);q(h,'check-button').click();const restore=h.document.querySelectorAll('[data-restore]').find(b=>b.dataset.restore==='CIT-160/L');assert.ok(restore);restore.click();assert.ok(findCard(h,'CIT-160/L'));assert.deepEqual(h.errors,[]);}finally{h.dispose();}
@@ -49,4 +49,31 @@ test('course search accepts compact course codes without a space',async()=>{
 });
 test('plan file import uses the actual file input handler and refreshes the plan name',async()=>{
   const h=await launchHarness();try{const saved=h.app.state();saved.name='Imported graduation plan';q(h,'import-file').files=[{size:JSON.stringify(saved).length,text:async()=>JSON.stringify({plan:saved})}];await q(h,'import-file').onchange({target:q(h,'import-file')});assert.equal(h.app.state().name,'Imported graduation plan');assert.equal(q(h,'plan-name').value,'Imported graduation plan');assert.deepEqual(h.errors,[]);}finally{h.dispose();}
+});
+
+test('CIT starts with a visible math choice and an empty course selection',async()=>{
+  const h=await launchHarness();try{
+    assert.equal(!!findCard(h,'MATH-103'),false);
+    const slot=h.app.derived().items.find(c=>c.choiceId==='cit-math');assert.ok(findCard(h,slot.id));
+    assert.match(findCard(h,slot.id).textContent,/MATH 103.*MATH 150A.*MATH 255A/);
+    q(h,'choices-button').click();const select=h.document.querySelectorAll('[data-choice-path]').find(s=>s.dataset.choicePath==='cit-math');
+    assert.equal(select.value,'');assert.match(select.textContent,/MATH 150A · 5 units/);assert.deepEqual(h.errors,[]);
+  }finally{h.dispose();}
+});
+test('the official catalog and selected semester reference are linked on the plan',async()=>{
+  const h=await launchHarness();try{
+    const links=q(h,'academic-sources').querySelectorAll('a').map(a=>a.getAttribute('href'));
+    assert.ok(links.includes('https://catalog.csun.edu/academics/comp/programs/bs-computer-information-technology/'));
+    assert.ok(links.includes('https://catalog.csun.edu/resource/road-map/2025/computer-information-technology-2025-2025/'));
+    assert.equal(h.document.querySelector('.main-nav').querySelectorAll('a').length,6);assert.deepEqual(h.errors,[]);
+  }finally{h.dispose();}
+});
+test('an older save exposes its automatic selections for review',async()=>{
+  const first=await launchHarness();const saved=first.app.state();first.dispose();saved.schemaVersion=1;saved.selections={'cit-math':'MATH-103'};
+  const h=await launchHarness(JSON.stringify(saved));try{
+    assert.equal(q(h,'choice-migration-notice').hidden,false);assert.equal(!!findCard(h,'MATH-103'),false);
+    q(h,'review-imported-choices').click();const select=h.document.querySelectorAll('[data-choice-path]').find(s=>s.dataset.choicePath==='cit-math');
+    select.value='MATH-103';select.trigger('change');assert.ok(findCard(h,'MATH-103'));
+    assert.equal(q(h,'choice-migration-notice').hidden,true);assert.deepEqual(h.errors,[]);
+  }finally{h.dispose();}
 });

@@ -11,16 +11,53 @@
 </head>
 <body class="pm-page">
   <a class="pm-skip" href="#roadmap">Skip to your roadmap</a>
-  <header class="pm-site-header">
-    <a href="../index.html" class="pm-brand" aria-label="CSUN Reimagined home"><span class="pm-brand-symbol" aria-hidden="true">N</span><span>CSUN<span class="pm-brand-light"> Reimagined</span><small>A clearer way forward.</small></span></a>
-    <nav class="pm-site-nav" aria-label="Main navigation"><a href="../index.html">Home</a><a href="program-mapper.html" aria-current="page">Program mapper</a><a href="registration.html">Registration</a><a href="resources.html">Resources</a></nav>
-    <span class="pm-student-tag">Made for students</span>
-  </header>
+  <header class="site-header">
+
+        <div class="container header-inner">
+
+            <div class="site-brand">
+                <h1>CSUN Student Portal</h1>
+            </div>
+
+        </div>
+
+    </header>
+<nav class="main-nav" aria-label="Main navigation">
+
+        <div class="container nav-inner">
+
+            <a href="../index.html">
+                Home
+            </a>
+
+            <a class="active" aria-current="page" href="program-mapper.html">
+                Program Mapper
+            </a>
+
+            <a href="registration.html">
+                Registration
+            </a>
+
+            <a href="resources.html">
+                Campus Resources
+            </a>
+
+            <a href="cybersecurity.html">
+                Cybersecurity
+            </a>
+            
+            <a class="lgb" href="login-page.html">
+                Login
+            </a>
+        </div>
+
+    </nav>
   <main id="mapper-app" class="pm-shell" aria-busy="true">
     <div class="pm-heading-row">
-      <div><p class="pm-eyebrow">STUDENT TOOLS <span>/</span> PROGRAM MAPPER</p><h1>Your path, <span>mapped.</span></h1><p class="pm-lead">A big-picture plan. Room to make it yours.</p></div>
+      <div><p class="pm-eyebrow">STUDENT TOOLS <span>/</span> PROGRAM MAPPER</p><h1>Program Mapper</h1><p class="pm-lead">Choose your program. Build and customize your semester plan.</p></div>
       <div class="pm-heading-actions"><span id="save-status" class="pm-save-status" role="status">Loading catalog…</span><button class="pm-button pm-button-light" id="export-button" disabled><span data-icon="download"></span> Export plan</button><button class="pm-button pm-button-primary" id="add-course-button" disabled><span data-icon="plus"></span> Add a course</button></div>
     </div>
+    <div id="choice-migration-notice" class="pm-migration-notice" hidden role="status">Your saved plan contains selections from the earlier automatic-choice version. Please confirm your program choices before treating them as requirements. <button id="review-imported-choices" class="pm-button pm-button-small">Review choices</button></div>
     <div id="load-error" class="pm-error" role="alert" hidden></div>
     <div class="pm-workspace" id="workspace">
       <aside class="pm-sidebar" aria-label="Plan settings">
@@ -32,7 +69,7 @@
             <label class="pm-field">Minor <span class="pm-optional">optional</span><select id="minor-select" aria-label="Minor" disabled><option value="">No minor</option></select></label>
             <div class="pm-field-pair"><label class="pm-field">Start year<input id="start-year" type="number" min="2000" max="2100" value="2026" required></label><label class="pm-field">First term<select id="start-season"><option>Fall</option><option>Spring</option></select></label></div>
             <label class="pm-field">Time to graduation<select id="plan-years"><option value="2">2 years · transfer / accelerated</option><option value="3">3 years</option><option value="4" selected>4 years · traditional</option><option value="5">5 years</option><option value="6">6 years</option><option value="7">7 years</option><option value="8">8 years</option></select></label>
-            <fieldset class="pm-session-options"><legend>Make space for extra terms</legend><label><input type="checkbox" id="include-summer"> Summer</label><label><input type="checkbox" id="include-winter"> Winter</label></fieldset>
+            <label class="pm-field">Official roadmap reference<select id="roadmap-select" aria-label="Official roadmap reference"><option value="">No linked roadmap</option></select><small>Semester suggestions only. Course choices remain yours.</small></label><fieldset class="pm-session-options"><legend>Make space for extra terms</legend><label><input type="checkbox" id="include-summer"> Summer</label><label><input type="checkbox" id="include-winter"> Winter</label></fieldset>
             <details class="pm-more-settings"><summary>Credits & course load <span data-icon="chevron"></span></summary><label class="pm-field">Transfer / other earned units<input id="transfer-units" type="number" min="0" max="300" step="0.5" value="0"><small>Exclude completed cards already in this plan.</small></label><div class="pm-field-pair"><label class="pm-field">Fall / spring limit<input id="regular-limit" type="number" min="1" max="30" value="18"></label><label class="pm-field">Summer limit<input id="summer-limit" type="number" min="1" max="20" value="6"></label></div><label class="pm-field">Winter limit<input id="winter-limit" type="number" min="1" max="12" value="3"></label></details>
             <button class="pm-button pm-button-primary pm-full" id="build-plan-button" disabled><span data-icon="spark"></span> Build my roadmap</button>
             <p class="pm-form-note">Rebuilding updates the roadmap. Undo brings your previous arrangement back.</p>
@@ -50,7 +87,7 @@
       </aside>
       <section class="pm-plan" aria-label="Your degree roadmap">
         <div class="pm-plan-overview">
-          <div class="pm-plan-name-row"><div><p class="pm-eyebrow">THE ROAD AHEAD</p><input id="plan-name" class="pm-plan-name" value="My graduation plan" aria-label="Plan name" maxlength="100"><p id="program-subtitle" class="pm-program-subtitle">Loading your program…</p></div><span id="catalog-badge" class="pm-catalog-badge">2026–27 CATALOG</span></div>
+          <div class="pm-plan-name-row"><div><p class="pm-eyebrow">THE ROAD AHEAD</p><input id="plan-name" class="pm-plan-name" value="My graduation plan" aria-label="Plan name" maxlength="100"><p id="program-subtitle" class="pm-program-subtitle">Loading your program…</p><div id="academic-sources" class="pm-academic-sources"></div></div><span id="catalog-badge" class="pm-catalog-badge">2026–27 CATALOG</span></div>
           <div id="plan-stats" class="pm-stats"><div><strong>—</strong><span>planned units</span></div><div><strong>—</strong><span>courses to go</span></div><div><strong>—</strong><span>target finish</span></div><div><strong>—</strong><span>completed units</span></div></div>
           <div class="pm-progress-track" role="progressbar" aria-label="Completed plan units" aria-valuemin="0" aria-valuemax="120" aria-valuenow="0"><span id="plan-progress"></span></div>
         </div>
@@ -68,7 +105,22 @@
       </section>
     </div>
   </main>
-  <footer class="pm-footer"><span>CSUN Reimagined <span aria-hidden="true">·</span> Student-built. Student-focused.</span><span>An independent student project, not an official CSUN service.</span></footer>
+  <footer class="site-footer">
+
+        <div class="container footer-inner">
+
+            <p>
+                <strong>CSUN Student Portal Project</strong>
+            </p>
+
+            <p>
+                This is a student project and is not an official
+                CSUN website.
+            </p>
+
+        </div>
+
+    </footer>
   <dialog id="mapper-dialog" class="pm-dialog" aria-labelledby="dialog-title"><div class="pm-dialog-header"><div><p id="dialog-eyebrow" class="pm-eyebrow"></p><h2 id="dialog-title"></h2></div><button id="close-dialog" class="pm-icon-button" aria-label="Close dialog" data-icon="close"></button></div><div id="dialog-body" class="pm-dialog-body"></div></dialog>
   <div id="mapper-toast" class="pm-toast" role="status" aria-live="polite" hidden></div>
   <input id="import-file" type="file" accept="application/json,.json" hidden>
