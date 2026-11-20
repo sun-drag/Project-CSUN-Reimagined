@@ -38,7 +38,7 @@ test('the unselected CIT reference reserves 15 minimum-estimate units per semest
 });
 test('legacy saves require explicit confirmation while retaining completed work and notes',()=>{
   const s=m.initialState();s.schemaVersion=1;s.selections={'cit-math':'MATH-103','cit-programming':'comp110'};s.completed=['CIT-101/L'];s.notes['CIT-101/L']='Transfer reviewed';
-  const restored=m.importPlan(JSON.stringify(s),data);assert.equal(restored.schemaVersion,2);assert.deepEqual(restored.selections,{});
+  const restored=m.importPlan(JSON.stringify(s),data);assert.equal(restored.schemaVersion,3);assert.deepEqual(restored.selections,{});
   assert.equal(restored.legacySelections['cit-math'],'MATH-103');assert.deepEqual(restored.completed,s.completed);assert.deepEqual(restored.notes,s.notes);
 });
 test('unselected prerequisite alternatives never enroll the first option automatically',()=>{
@@ -58,7 +58,7 @@ test('course prerequisites take priority and surface the CIT sample-roadmap conf
   assert.ok(m.validatePlan(data,scheduled,d).some(i=>i.kind==='source-conflict'&&i.id==='COMP-110/L'));
 });
 test('all linked official four-year roadmap references have complete captured semester sections',()=>{
-  assert.equal(data.roadmaps.length,156);assert.equal(new Set(data.roadmaps.map(r=>r.program_id)).size,139);
+  assert.equal(data.roadmaps.length,157);assert.equal(new Set(data.roadmaps.map(r=>r.program_id)).size,141);
   for(const r of data.roadmaps){assert.ok(r.academic_lines_complete,r.source_url);assert.ok(r.semesters.length>=7,r.source_url);assert.match(r.source_url,/^https:\/\/catalog\.csun\.edu\//);}
 });
 test('English extended study is a single emphasis choice, not all eight emphases',()=>{

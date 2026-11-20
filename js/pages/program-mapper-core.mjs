@@ -1,6 +1,6 @@
-import {buildPlan, createIndex, isBusinessMajor, geCourseOptions, domainChoice} from './program-mapper-catalog.mjs';
+import {buildPlan, createIndex, isBusinessMajor, geCourseOptions, domainChoice} from './program-mapper-catalog.mjs?v=2026.11.19.3';
 
-export const SCHEMA_VERSION = 2;
+export const SCHEMA_VERSION = 3;
 export const SEASONS = ['Winter', 'Spring', 'Summer', 'Fall'];
 export const GE_ALIASES = {'1A':'A2', '1B':'A3', '1C':'A1', '2-LD':'B4', '3A':'C1', '3B':'C2', '5A':'B1', '5B':'B2', '5C':'B3'};
 export const clone = value => JSON.parse(JSON.stringify(value));
@@ -8,14 +8,17 @@ const unique = values => [...new Set(values)];
 const finite = (n, fallback=0) => Number.isFinite(Number(n)) ? Number(n) : fallback;
 export const termKey = (season, year) => `${year}-${season.toLowerCase()}`;
 export const termOrder = term => term.year*4 + SEASONS.indexOf(term.season);
+const academicYear=(term,state)=>Math.floor((termOrder(term)-(Number(state.settings.startYear)*4+SEASONS.indexOf(state.settings.startSeason)))/4)+1;
 export const termLabel = term => term ? `${term.season} ${term.year}` : 'Unscheduled';
 export const courseUnits = item => finite(item.units_min, 0);
+export const plannedCourseUnits = item => item.remaining_units==null?(item.completed?0:courseUnits(item)):finite(item.remaining_units);
 export const shortCode = id => String(id).replaceAll('-', ' ');
 
 export function initialState(year=2026) {
   return {schemaVersion:SCHEMA_VERSION, name:'My graduation plan',
     settings:{major:'cit-bs', minor:'', years:4, startYear:year, startSeason:'Fall',
-      summer:false, winter:false, regularLimit:18, summerLimit:6, winterLimit:3, transferUnits:0},
+      summer:false, winter:false, regularLimit:15, summerLimit:6, winterLimit:3, transferUnits:0,
+      loadMode:'roadmap',priorUnitsMode:'estimate'},
     selections:{}, prerequisiteSelections:{}, legacySelections:{}, approvedChoices:[], completed:[], geCompleted:[], geAssignments:{},
     added:[], customCourses:[], removed:[], positions:{}, locked:[], links:[], extraTerms:[],
     showLinks:true, moveLinked:true, showCompleted:true, notes:{}, availability:{},unitOverrides:{}};
@@ -108,13 +111,69 @@ export function choiceCourseOptions(data, descriptor) {
     (!descriptor.levels?.length||descriptor.levels.includes(Math.floor(Number(c.code.match(/\d+/)?.[0])/100))||descriptor.levels.includes(c.level)));
 }
 
+export function choiceSelectionEntries(data,state) {
+  const index=createIndex(data),canonical=id=>index.aliases.get(String(id).replaceAll(' ','-'))?.course.course_id||id;
+  return choiceDescriptors(data,state).flatMap(choice=>{
+    const raw=state.selections[choice.choice_id],values=Array.isArray(raw)?raw:raw?[raw]:[];
+    return values.map(value=>{
+      const option=choice.options?.find(o=>o.id===value||nodeIds(o.rule).length===1&&nodeIds(o.rule)[0]===value);
+      return {choiceId:choice.choice_id,type:choice.type,label:choice.label,value,
+        courseIds:unique((option?nodeIds(option.rule):['CHOOSE_COURSES','APPROVED_ELECTIVES'].includes(choice.type)?[value]:[]).map(canonical))};
+    });
+  });
+}
+
+/** Replace one selection in place, retaining the other choices and their semester slots. */
+export function applyChoiceSelection(data,input,choiceId,value,{replaceValue='',placeholderId='',targetTerm=''}={}) {
+  const before=derivePlan(data,input),descriptor=choiceDescriptors(data,input).find(c=>c.choice_id===choiceId);
+  if(!descriptor)return {ok:false,message:'This choice is no longer active. Reopen its requirement.'};
+  const next=clone(input),single=descriptor.type==='CHOOSE_PATH';
+  const existing=single?(next.selections[choiceId]?[next.selections[choiceId]]:[]):Array.isArray(next.selections[choiceId])?[...next.selections[choiceId]]:[];
+  if(single&&!replaceValue)replaceValue=existing[0]||'';
+  const allowed=descriptor.options?.map(o=>o.id)||choiceCourseOptions(data,descriptor).map(c=>c.course_id);
+  if(value&&!allowed.includes(value))return {ok:false,message:'Choose a course or option from this requirement’s eligible list.'};
+  if(value&&existing.includes(value)&&value!==replaceValue)return {ok:false,message:'That course is already selected in this block. Choose a different course.'};
+  const values=existing.filter(v=>v!==replaceValue);
+  if(value)values.push(value);
+  if(descriptor.maximum_count&&values.length>descriptor.maximum_count)return {ok:false,message:'Replace an existing selection; this block already has its required number of courses.'};
+  const selectedBefore=before.items.filter(c=>!c.placeholder&&c.choiceRefs?.some(r=>r.choiceId===choiceId));
+  const selectedUnits=selectedBefore.reduce((sum,c)=>sum+courseUnits(c),0);
+  const pending=before.checklist.choices.find(c=>c.choice_id===choiceId);
+  const unitTarget=pending?.minimum_units??descriptor.minimum_units;
+  if(!single&&!replaceValue&&value&&unitTarget>0&&selectedUnits>=unitTarget)return {ok:false,message:'This block already has enough selected units. Click a selected course to replace it.'};
+  if(single)next.selections[choiceId]=value||'';else next.selections[choiceId]=values;
+  delete next.legacySelections[choiceId];
+  const after=derivePlan(data,next),previousErrors=new Set(before.checklist.errors);
+  const error=after.checklist.errors.find(message=>!previousErrors.has(message));if(error)return {ok:false,message:error};
+  const oldSlots=before.items.filter(c=>c.choiceId===choiceId),newSlots=after.items.filter(c=>c.choiceId===choiceId);
+  const oldEntry=choiceSelectionEntries(data,input).find(r=>r.choiceId===choiceId&&r.value===replaceValue);
+  const newEntry=choiceSelectionEntries(data,next).find(r=>r.choiceId===choiceId&&r.value===value);
+  const oldIndex=Math.max(0,oldSlots.findIndex(c=>c.id===placeholderId));
+  const term=targetTerm||input.positions[placeholderId]||oldEntry?.courseIds.map(id=>input.positions[id]).find(Boolean)||input.positions[oldSlots[0]?.id];
+  if(oldSlots.length&&newSlots.length) {
+    const consumed=Math.max(0,oldSlots.length-newSlots.length),kept=oldSlots.filter((c,i)=>i<oldIndex||i>=oldIndex+consumed);
+    newSlots.forEach((slot,i)=>{if(input.positions[kept[i]?.id])next.positions[slot.id]=input.positions[kept[i].id];});
+  }
+  const previousIds=new Set(before.items.map(c=>c.id));
+  for(const id of newEntry?.courseIds||[])if(after.items.some(c=>c.id===id)&&(!previousIds.has(id)||oldEntry?.courseIds.includes(id))&&term)next.positions[id]=term;
+  // A route choice can open several nested course slots before adding real courses.
+  const childSlots=after.items.filter(c=>c.choiceId&&!previousIds.has(c.id)&&c.choiceId!==choiceId);
+  if(!newEntry?.courseIds.some(id=>after.items.some(c=>c.id===id)))childSlots.forEach((slot,i)=>{
+    const old=oldSlots[i]||oldSlots[0];if(input.positions[old?.id])next.positions[slot.id]=input.positions[old.id];
+  });
+  if(!value&&term)newSlots.filter(c=>!input.positions[c.id]).forEach(c=>next.positions[c.id]=term);
+  return {ok:true,state:next,courseIds:(newEntry?.courseIds||[]).filter(id=>after.items.some(c=>c.id===id))};
+}
+
 function rulePlan(node,ctx,kind='prerequisite') {
   if(!node)return {deps:[],review:[]};
   const {ix, present, completed, self, business}=ctx;
   switch(node.type) {
     case 'COURSE': {
       const id=ix.canonical(node.course_id);
-      if(id===self || completed.has(id))return {deps:[],review:[]};
+      if(id===self || completed.has(id)||(node.component_ids?.length&&node.component_ids.every(p=>ctx.completedParts?.has(p))))return {deps:[],review:[]};
+      const existing=ctx.items.find(c=>c.id===id);
+      if(existing?.required_components&&node.component_ids?.some(p=>!existing.required_components.includes(p)))return {deps:[],review:['An additional lecture/lab component is required by this prerequisite. Confirm that component separately; the completed lecture alone does not satisfy the full bundle.']};
       return {deps:[{from:id,to:self,kind,gap:kind==='prerequisite'?1:0,minimumGrade:node.minimum_grade}],review:[]};
     }
     case 'ANY_OF': {
@@ -172,7 +231,7 @@ export function ruleUnitRange(node,ix) {
   }
   if(['ANY_OF','CHOOSE_PATH'].includes(node.type)) {
     const ranges=(node.options?.map(o=>o.rule)||node.children||[]).map(n=>ruleUnitRange(n,ix));
-    return ranges.length?[Math.min(...ranges.map(r=>r[0])),Math.max(...ranges.map(r=>r[1]))]:[0,0];
+    return ranges.length?[Math.max(node.minimum_units||0,Math.min(...ranges.map(r=>r[0]))),Math.max(node.minimum_units||0,node.maximum_units||0,...ranges.map(r=>r[1]))]:[node.minimum_units||0,node.maximum_units||0];
   }
   if(['CHOOSE_OPTIONS','CHOOSE_COURSES','APPROVED_ELECTIVES','DOMAIN_EMPHASIS'].includes(node.type)) {
     if(node.minimum_units!=null)return [node.minimum_units,node.maximum_units??node.minimum_units];
@@ -204,17 +263,34 @@ function reserveChoiceGE(plan,items,ix,programs) {
         if(ov.rule.type==='ANY_OF'&&ov.rule.children.some(n=>n.type==='COURSE'&&n.course_id===node.course_id))ov.targets.forEach(t=>tags.add(normalize(t)));
       }
       const base=[...tags].filter(t=>plan.ge_requirements.some(a=>a.kind!=='overlay'&&a.area_id===t));
-      // Multiple base areas require an explicit allocation; never reserve both for one course.
-      return base.length===1?new Map([[base[0],ruleUnitRange(node,ix)[0]]]):new Map();
+      const campus=base.filter(t=>plan.ge_requirements.some(a=>a.area_id===t&&a.kind==='campus'));
+      const areas=base.filter(t=>!campus.includes(t)),units=ruleUnitRange(node,ix)[0];
+      const result=new Map();
+      if(campus.length===1)result.set(campus[0],units);
+      if(areas.length===1)result.set(areas[0],units);
+      const lecture=areas.find(t=>t==='5A'||t==='5B'),lab=c.components.find(p=>p.units_min===1&&p.component_id.endsWith('L')&&(!node.component_ids?.length||node.component_ids.includes(p.component_id)));
+      if(lecture&&lab&&areas.length===2&&areas.includes('5C')){result.set(lecture,Math.max(0,units-1));result.set('5C',1);}
+      return result;
     }
     const result=new Map();
     if(['ALL_OF','REQUIREMENT_GROUP'].includes(node.type))for(const child of node.children||[])for(const [tag,u]of coverage(child))result.set(tag,(result.get(tag)||0)+u);
     return result;
   }
-  for(const item of items.filter(c=>c.choice?.type==='CHOOSE_PATH')) {
-    const branches=item.choice.options.map(o=>coverage(o.rule));
+  const seen=new Set();
+  for(const item of items.filter(c=>c.choice&&c.choice.ge_overlap_allowed!==false)) {
+    if(seen.has(item.choiceId))continue;seen.add(item.choiceId);
+    const choice=item.choice,options=choice.options?.filter(o=>!choice.selected?.includes(o.id)).map(o=>o.rule)||
+      (choice.course_ids||choice.candidate_course_ids||[]).filter(id=>!choice.selected?.includes(id)).map(course_id=>({type:'COURSE',course_id}));
+    if(!options.length)continue;
+    const branches=options.map(coverage);
+    const remainingUnits=item.remainingChoiceUnits??item.units_min;
+    const maxOptionUnits=Math.max(...options.map(n=>ruleUnitRange(n,ix)[1]));
+    const count=choice.type==='CHOOSE_PATH'?1:Math.max(0,(choice.minimum_count||0)-(choice.selected?.length||0),maxOptionUnits>0?Math.floor(remainingUnits/maxOptionUnits):0);
+    if(!count)continue;
     for(const area of plan.ge_requirements.filter(a=>a.kind!=='overlay')) {
-      const amount=Math.min(area.additional_units_to_plan,...branches.map(b=>b.get(area.area_id)||0));
+      const guaranteed=Math.min(...branches.map(b=>b.get(area.area_id)||0))*count;
+      const amount=Math.min(area.additional_units_to_plan,guaranteed);
+      if(area.baseline_additional_units_to_plan!=null)area.baseline_additional_units_to_plan-=Math.min(area.baseline_additional_units_to_plan,guaranteed);
       if(amount>0){area.additional_units_to_plan-=amount;area.reserved_by_choices=[...(area.reserved_by_choices||[]),item.choiceId];
         item.geReservations=[...(item.geReservations||[]),area.area_id];}
     }
@@ -228,16 +304,23 @@ export function selectedRoadmap(data,state) {
 
 /** Turn the catalog checklist into real course cards and explicit unresolved slots. */
 export function derivePlan(data,state) {
-  const ix=catalogIndex(data,state), completed=new Set(state.completed.map(ix.canonical));
-  const plan=buildPlan(ix.data,{major_id:state.settings.major,minor_id:state.settings.minor||undefined,
+  const ix=catalogIndex(data,state),completedParts=new Set(state.completed.flatMap(id=>ix.aliases.get(String(id).replaceAll(' ','-'))?.components||[id]));
+  const completed=new Set(ix.data.courses.filter(c=>c.components.every(p=>completedParts.has(p.component_id))).map(c=>c.course_id));
+  const isCompletedEntry=id=>(ix.aliases.get(String(id).replaceAll(' ','-'))?.components||[id]).every(part=>completedParts.has(part));
+  const activeAdded=state.added.filter(id=>ix.courses.has(id)&&(!state.geCompleted.includes(state.geAssignments[id])||isCompletedEntry(id)));
+  const planOptions={major_id:state.settings.major,minor_id:state.settings.minor||undefined,
     selections:state.selections,approved_choices:state.approvedChoices,completed:state.completed,
-    ge_courses:state.added.filter(id=>ix.courses.has(id)),ge_assignments:state.geAssignments,excluded_course_ids:state.removed});
+    ge_courses:activeAdded,ge_assignments:state.geAssignments,excluded_course_ids:state.removed,completed_ge_areas:state.geCompleted};
+  const plan=buildPlan(ix.data,planOptions);
   const removed=new Set(state.removed), items=[];
   for(const row of plan.required_courses) {
     if(removed.has(row.course_id))continue;
     const parts=row.components.filter(p=>row.required_components.includes(p.component_id));
-    items.push({...row,id:row.course_id,units_min:parts.some(p=>p.units_min==null)?null:parts.reduce((s,p)=>s+finite(p.units_min),0),
-      units_max:parts.reduce((s,p)=>s+finite(p.units_max,p.units_min),0),completed:completed.has(row.course_id),geAssignment:state.geAssignments[row.course_id]});
+    const totalUnits=parts.some(p=>p.units_min==null)?null:parts.reduce((s,p)=>s+finite(p.units_min),0),doneUnits=parts.filter(p=>completedParts.has(p.component_id)).reduce((s,p)=>s+finite(p.units_min),0);
+    items.push({...row,id:row.course_id,code:parts.length<row.components.length?parts.map(p=>p.code).join(' + '):row.code,
+      units_min:parts.some(p=>p.units_min==null)?null:parts.reduce((s,p)=>s+finite(p.units_min),0),
+      units_max:parts.reduce((s,p)=>s+finite(p.units_max,p.units_min),0),completed:row.completed,
+      completed_units:doneUnits,remaining_units:totalUnits==null?null:Math.max(0,totalUnits-doneUnits),geAssignment:state.geAssignments[row.course_id]});
   }
   for(const choice of plan.choices) {
     const placeholder=placeholderForChoice(choice,ix), single=choice.type==='CHOOSE_PATH'&&placeholder.units_max<=6, count=single?1:Math.max(1,Math.min(40,Math.ceil(placeholder.remainingChoiceUnits/3)));
@@ -246,7 +329,7 @@ export function derivePlan(data,state) {
       units_max:single?placeholder.units_max:Math.max(0,Math.min(3,placeholder.remainingChoiceUnits-n*3))});
   }
   reserveChoiceGE(plan,items,ix,[ix.programs.get(state.settings.major),ix.programs.get(state.settings.minor)]);
-  const baseAreas=plan.ge_requirements.filter(a=>a.kind!=='overlay');
+  let baseAreas=plan.ge_requirements.filter(a=>a.kind!=='overlay');
   for(const area of baseAreas) {
     if(state.geCompleted.includes(area.area_id))continue;
     let remaining=area.additional_units_to_plan;
@@ -255,7 +338,7 @@ export function derivePlan(data,state) {
       const u=Math.min(area.area_id==='5C'?1:3,remaining);
       items.push({id:`ge:${area.area_id}:${n++}`,code:`GE ${area.area_id}`,title:area.name,
         units_min:u,roles:['ge'],placeholder:true,geArea:area.area_id,ge_areas:[area.area_id],
-        level:area.area_id==='2/5-UD'?'upper_division':'lower_division',minUnits:area.area_id==='2/5-UD'?60:0});
+        level:area.area_id==='2/5-UD'?'upper_division':'lower_division',minUnitsAtTermEnd:area.area_id==='2/5-UD'?60:0});
       remaining-=u;
     }
   }
@@ -265,7 +348,7 @@ export function derivePlan(data,state) {
     const present=new Set(items.map(c=>c.id)); let changed=false;
     for(const item of [...items]) {
       if(item.placeholder || item.completed)continue;
-      const ctx={ix,present,completed,self:item.id,business,items,geCompleted:state.geCompleted,positions:state.positions,terms:makeTerms(state),prerequisiteSelections:state.prerequisiteSelections};
+      const ctx={ix,present,completed,completedParts,self:item.id,business,items,geCompleted:state.geCompleted,positions:state.positions,terms:makeTerms(state),prerequisiteSelections:state.prerequisiteSelections};
       for(const node of [item.prerequisites,item.corequisites]) {
         const result=rulePlan(node,ctx,node===item.corequisites?'corequisite':'prerequisite');
         for(const edge of result.deps) {
@@ -280,14 +363,52 @@ export function derivePlan(data,state) {
     }
     if(!changed)break;
   }
+  const preparationIds=items.filter(c=>c.roles.includes('preparation')).map(c=>c.id);
+  if(preparationIds.length) {
+    const coverage=buildPlan(ix.data,{...planOptions,ge_courses:unique([...activeAdded,...preparationIds])});
+    plan.ge_requirements=coverage.ge_requirements;plan.automatic_ge_assignments=coverage.automatic_ge_assignments;
+    reserveChoiceGE(plan,items,ix,[ix.programs.get(state.settings.major),ix.programs.get(state.settings.minor)]);
+    for(let i=items.length-1;i>=0;i--)if(items[i].geArea)items.splice(i,1);
+    baseAreas=plan.ge_requirements.filter(a=>a.kind!=='overlay');
+    for(const area of baseAreas)if(!state.geCompleted.includes(area.area_id)) {
+      let remaining=area.additional_units_to_plan,index=0;
+      while(remaining>.01&&index<10){const units=Math.min(area.area_id==='5C'?1:3,remaining);
+        items.push({id:`ge:${area.area_id}:${index++}`,code:`GE ${area.area_id}`,title:area.name,units_min:units,
+          roles:['ge'],placeholder:true,geArea:area.area_id,ge_areas:[area.area_id],level:area.area_id==='2/5-UD'?'upper_division':'lower_division',minUnitsAtTermEnd:area.area_id==='2/5-UD'?60:0});remaining-=units;}
+    }
+  }
+  // Completed-area credit is the GE space actually removed from this curriculum, not a second
+  // award of units for courses/waivers already counted in the major or on completed cards.
+  let creditPlan=plan;
+  if(state.geCompleted.length&&activeAdded.some(id=>!isCompletedEntry(id))) {
+    creditPlan=buildPlan(ix.data,{...planOptions,ge_courses:unique([...activeAdded.filter(isCompletedEntry),...preparationIds])});
+    reserveChoiceGE(creditPlan,creditPlan.choices.map(c=>placeholderForChoice(c,ix)),ix,[ix.programs.get(state.settings.major),ix.programs.get(state.settings.minor)]);
+  }
+  const creditAreas=creditPlan.ge_requirements.filter(a=>a.kind!=='overlay');
+  const fullGEGap=creditAreas.reduce((sum,a)=>sum+(a.baseline_additional_units_to_plan??a.additional_units_to_plan),0);
+  const remainingGEGap=creditAreas.filter(a=>!state.geCompleted.includes(a.area_id)).reduce((sum,a)=>sum+a.additional_units_to_plan,0);
+  const inferredGEUnits=Math.max(0,fullGEGap-remainingGEGap);
+  const useTranscript=state.settings.priorUnitsMode==='transcript'||finite(state.settings.transferUnits)>0;
+  const otherPriorUnits=useTranscript?finite(state.settings.transferUnits):inferredGEUnits;
   const minimum=ix.programs.get(state.settings.major)?.degree_unit_minimum||120;
   const roadmap=selectedRoadmap(data,state);
-  const electiveSlots=roadmap?.semesters.flatMap(s=>s.rows.filter(r=>/^(?:(?:degree|free|general) )?elective$/i.test(r.label.trim())).map(r=>({semester:s.index,units:Math.max(...(r.units_label.match(/\d+(?:\.\d+)?/g)||['0']).map(Number))})))||[];
-  const known=items.reduce((sum,c)=>sum+courseUnits(c),0)+finite(state.settings.transferUnits);
-  let electiveRemaining=Math.max(0,minimum-known), i=0;
+  const electiveRows=roadmap?.semesters.flatMap(s=>s.rows.filter(r=>/^(?:(?:degree|free|general) )?electives?(?:\W|$)/i.test(r.label.trim())).map(r=>({semester:s.index,units:Math.max(...(r.units_label.match(/\d+(?:\.\d+)?/g)||['0']).map(Number))})))||[];
+  const electiveSlots=electiveRows.flatMap(row=>Array.from({length:Math.ceil(row.units/3)},(_,i)=>({...row,units:Math.min(3,row.units-i*3)})));
+  const requiredUnits=items.reduce((sum,c)=>sum+courseUnits(c),0),completedCardUnits=items.reduce((sum,c)=>sum+(c.completed_units??(c.completed?courseUnits(c):0)),0);
+  const known=requiredUnits+otherPriorUnits;
+  const rawDegreeGap=Math.max(0,minimum-known),guideElectiveMaximum=electiveRows.reduce((sum,row)=>sum+row.units,0);
+  const unresolvedRequirements=plan.choices.length||plan.units_needing_review.length||plan.requirement_checks.some(c=>c.minimum_met===false);
+  const programReviewUnits=roadmap&&unresolvedRequirements?Math.max(0,rawDegreeGap-guideElectiveMaximum):0;
+  for(let remaining=programReviewUnits,index=0;remaining>.01;index++) {
+    const units=Math.min(3,remaining);remaining-=units;
+    items.push({id:`program-review:${index}`,code:'PROGRAM REVIEW',title:'Confirm the remaining program requirement',units_min:units,
+      roles:['major'],placeholder:true,programReview:true,source_url:ix.programs.get(state.settings.major)?.source_url,
+      level:'lower_division',ge_areas:[]});
+  }
+  let electiveRemaining=rawDegreeGap-programReviewUnits, i=0;
   while(electiveRemaining>0.01 && i<100) {
-    const slot=electiveSlots[i],u=Math.min(slot?.units>0?slot.units:3,electiveRemaining);
-    items.push({id:`elective:${i++}`,code:'ELECTIVE',title:'Choose a degree elective',units_min:u,
+    const slot=electiveSlots[i],u=Math.min(otherPriorUnits>0||completedCardUnits>0?3:slot?.units>0?slot.units:3,electiveRemaining);
+    items.push({id:`elective:${i++}`,code:'DEGREE ELECTIVE',title:'Additional units needed for the degree minimum',units_min:u,
       roles:['elective'],placeholder:true,level:'lower_division',ge_areas:[],roadmapSemester:slot?.semester});
     electiveRemaining-=u;
   }
@@ -295,7 +416,7 @@ export function derivePlan(data,state) {
   const upperGeTags=new Set(['2/5-UD','2-UD','5-UD','3A','3B','4','F']);
   for(const item of items) {
     if(item.placeholder)continue;
-    const ctx={ix,present,completed,self:item.id,business,items,geCompleted:state.geCompleted,positions:state.positions,terms:makeTerms(state),prerequisiteSelections:state.prerequisiteSelections};
+    const ctx={ix,present,completed,completedParts,self:item.id,business,items,geCompleted:state.geCompleted,positions:state.positions,terms:makeTerms(state),prerequisiteSelections:state.prerequisiteSelections};
     if(item.completed)continue;
     item.minUnits=0;
     for(const [node,kind] of [[item.prerequisites,'prerequisite'],[item.corequisites,'corequisite']]) {
@@ -308,7 +429,7 @@ export function derivePlan(data,state) {
     }
     const majorUpperGe=plan.ge_requirements.find(a=>a.area_id==='2/5-UD')?.covered_by_planned_courses?.includes(item.id);
     if(item.level==='upper_division'&&(item.ge_areas?.some(a=>upperGeTags.has(a))||majorUpperGe)) {
-      item.minUnits=Math.max(item.minUnits,60);
+      item.minUnitsAtTermEnd=60;
       for(const areaId of ['1A','1B','1C','2-LD']) {
         const area=plan.ge_requirements.find(a=>a.area_id===areaId);
         if(state.geCompleted.includes(areaId)||area?.covered_by_major_completion)continue;
@@ -323,7 +444,12 @@ export function derivePlan(data,state) {
   }
   const dedup=edges.filter((e,i,a)=>e.from!==e.to&&a.findIndex(o=>o.from===e.from&&o.to===e.to&&o.kind===e.kind)===i);
   const geSlotUse=new Map();
+  const selections=choiceSelectionEntries(data,state);
   for(const item of items) {
+    if(!item.placeholder) {
+      item.choiceRefs=selections.filter(selection=>selection.courseIds.includes(item.id)).sort((a,b)=>Number(a.type==='CHOOSE_PATH')-Number(b.type==='CHOOSE_PATH'));
+      item.geAppliedAreas=plan.ge_requirements.filter(a=>a.kind!=='overlay'&&a.covered_by_planned_courses?.includes(item.id)).map(a=>a.area_id);
+    }
     const matches=roadmap?.semesters.flatMap(s=>s.rows.map(r=>({...r,semester:s.index,season:s.season,year:s.year}))).filter(r=>
       r.course_ids.includes(item.id)||(item.choice&&nodeIds(item.choice).some(id=>r.course_ids.includes(id)))||
       item.geArea&&r.ge_areas.includes(item.geArea))||[];
@@ -337,7 +463,26 @@ export function derivePlan(data,state) {
     }
     if(roadmap?.program_id==='cit-bs'&&item.choiceId?.startsWith('cit-domain'))item.roadmapSemester=[4,5,5,6,7][Number(item.id.split(':').at(-1))]??7;
   }
-  return {ix,checklist:plan,items,edges:dedup,review,pendingPrerequisites,prerequisiteChoices,minimum,terms:makeTerms(state),baseAreas,roadmap};
+  const ledger={minimum,otherPriorUnits,inferredGEUnits,priorUnitsEstimated:!useTranscript&&inferredGEUnits>0,
+    completedCardUnits,earnedUnits:otherPriorUnits+completedCardUnits,requiredFutureUnits:requiredUnits-completedCardUnits,
+    degreeElectiveUnits:rawDegreeGap-programReviewUnits,programReviewUnits,totalPlannedUnits:items.reduce((sum,c)=>sum+courseUnits(c),0)+otherPriorUnits,
+    excessUnits:Math.max(0,known-minimum)};
+  const terms=makeTerms(state),regular=terms.filter(t=>['Fall','Spring'].includes(t.season));
+  for(const term of terms) {
+    const ordinal=regular.indexOf(term),reference=['Fall','Spring'].includes(term.season)?roadmap?.semesters.find(s=>s.index===ordinal):
+      roadmap?.semesters.find(s=>s.season===term.season&&s.year===academicYear(term,state));
+    if(state.settings.loadMode==='custom'){term.loadSource='custom';continue;}
+    if(Number(state.settings.years)>=4) {
+      term.limit=reference?.total_units_max??(['Fall','Spring'].includes(term.season)?15:term.limit);
+      term.target=reference?.total_units_min??term.limit;term.loadSource=reference?.total_units_max!=null?'official-roadmap':'standard-15';
+      term.referenceUrl=roadmap?.source_url;
+    } else if(['Fall','Spring'].includes(term.season)) {
+      const seasonalCapacity=terms.filter(t=>!['Fall','Spring'].includes(t.season)).reduce((sum,t)=>sum+finite(t.limit),0);
+      term.limit=Math.min(30,Math.max(15,Math.ceil((ledger.totalPlannedUnits-ledger.earnedUnits-seasonalCapacity)/Math.max(1,regular.length))));
+      term.target=term.limit;term.loadSource='accelerated';
+    }
+  }
+  return {ix,checklist:plan,items,edges:dedup,review,pendingPrerequisites,prerequisiteChoices,minimum,terms,baseAreas,roadmap,ledger};
 }
 
 /** Atomic groups keep separate corequisite cards in one semester. */
@@ -352,7 +497,7 @@ function groupsFor(derived) {
 
 export function autoSchedule(data,input,{preserve=false}={}) {
   const state=clone(input), d=derivePlan(data,state), {groups,root}=groupsFor(d);
-  const positions={...state.positions}, loads=new Map(d.terms.map(t=>[t.id,0]));
+  const preferences={...state.positions},positions={...state.positions}, loads=new Map(d.terms.map(t=>[t.id,0]));
   const termIx=id=>d.terms.findIndex(t=>t.id===id);
   const inEdges=new Map([...groups.keys()].map(id=>[id,[]]));
   const internallyConflicted=new Set(d.edges.filter(e=>e.gap>0&&groups.has(root(e.to))&&root(e.from)===root(e.to)).map(e=>root(e.to)));
@@ -368,7 +513,7 @@ export function autoSchedule(data,input,{preserve=false}={}) {
   };
   const depths=new Map([...groups.keys()].map(id=>[id,depth(id)]));
   const termWeight=t=>['Fall','Spring'].includes(t.season)?1:Math.min(1,Number(t.limit)/Number(state.settings.regularLimit));
-  const targetUnits=d.items.filter(c=>!c.completed).reduce((sum,c)=>sum+courseUnits(c),0)/d.terms.reduce((sum,t)=>sum+termWeight(t),0);
+  const targetUnits=d.items.reduce((sum,c)=>sum+plannedCourseUnits(c),0)/d.terms.reduce((sum,t)=>sum+termWeight(t),0);
   const unresolved=new Set(groups.keys());
   // Preserve user placements and completed cards. Auto-rebalance honors explicit locks.
   for(const [id,members] of groups) {
@@ -376,19 +521,18 @@ export function autoSchedule(data,input,{preserve=false}={}) {
     if(keep) {
       for(const c of members)positions[c.id]=positions[keep.id];
       unresolved.delete(id);
-    } else if(!preserve)members.forEach(c=>delete positions[c.id]);
+    } else members.forEach(c=>delete positions[c.id]);
   }
-  if(preserve) for(const [id,members] of groups) if(members.every(c=>positions[c.id]&&termIx(positions[c.id])>=0))unresolved.delete(id);
-  for(const c of d.items) if(!unresolved.has(root(c.id)) && !c.completed && loads.has(positions[c.id]))loads.set(positions[c.id],loads.get(positions[c.id])+courseUnits(c));
+  for(const c of d.items) if(!unresolved.has(root(c.id)) && !c.completed && loads.has(positions[c.id]))loads.set(positions[c.id],loads.get(positions[c.id])+plannedCourseUnits(c));
   for(let round=0;round<d.items.length+5 && unresolved.size;round++) {
     const ready=[...unresolved].filter(id=>!internallyConflicted.has(id)&&inEdges.get(id).every(e=>!unresolved.has(root(e.from)) || d.items.find(c=>c.id===e.from)?.completed));
     if(!ready.length)break;
     // Place available foundation / GE credit before testing upper-division standing.
-    ready.sort((a,b)=>Number(groups.get(a).some(c=>c.minUnits>0))-Number(groups.get(b).some(c=>c.minUnits>0)) ||
+    ready.sort((a,b)=>Number(groups.get(a).some(c=>c.minUnits>0||c.minUnitsAtTermEnd>0))-Number(groups.get(b).some(c=>c.minUnits>0||c.minUnitsAtTermEnd>0)) ||
       (depths.get(b)-depths.get(a)) || Number(groups.get(a).every(c=>c.placeholder))-Number(groups.get(b).every(c=>c.placeholder)));
     let progress=false;
     for(const id of ready) {
-      const members=groups.get(id), units=members.filter(c=>!c.completed).reduce((s,c)=>s+courseUnits(c),0);
+      const members=groups.get(id), units=members.reduce((s,c)=>s+plannedCourseUnits(c),0);
       let earliest=0;
       for(const e of inEdges.get(id)) if(!d.items.find(c=>c.id===e.from)?.completed) {
         const idx=termIx(positions[e.from]);
@@ -400,9 +544,10 @@ export function autoSchedule(data,input,{preserve=false}={}) {
       const possible=[];
       for(let t=earliest;t<d.terms.length;t++) {
         const term=d.terms[t];
-        const creditsBefore=finite(state.settings.transferUnits)+d.items.filter(c=>c.completed||termIx(positions[c.id])>=0&&termIx(positions[c.id])<t).reduce((s,c)=>s+courseUnits(c),0);
+        const creditsBefore=d.ledger.earnedUnits+d.items.filter(c=>termIx(positions[c.id])>=0&&termIx(positions[c.id])<t).reduce((s,c)=>s+plannedCourseUnits(c),0);
         // If standing is pending, later groups may fill earlier semesters in a future pass.
         if(creditsBefore<minUnits)continue;
+        if(members.some(c=>c.minUnitsAtTermEnd>creditsBefore+loads.get(term.id)+units))continue;
         if(members.some(c=>state.availability[c.id]?.length&&!state.availability[c.id].includes(term.season)))continue;
         if(loads.get(term.id)+units>Number(term.limit)+0.001)continue;
         possible.push(t);
@@ -417,9 +562,13 @@ export function autoSchedule(data,input,{preserve=false}={}) {
           if(hints.length) {
             const regular=d.terms.filter(t=>['Fall','Spring'].includes(t.season));
             const hint=members.find(c=>c.roadmapSemester===Math.max(...hints));
-            const suggested=['Summer','Winter'].includes(hint?.roadmapSeason)?d.terms.findIndex(t=>t.season===hint.roadmapSeason&&t.year===Number(state.settings.startYear)+hint.roadmapYear):termIx(regular[Math.max(...hints)]?.id);
+            const suggested=['Summer','Winter'].includes(hint?.roadmapSeason)?d.terms.findIndex(t=>t.season===hint.roadmapSeason&&academicYear(t,state)===hint.roadmapYear):termIx(regular[Math.max(...hints)]?.id);
             if(possible.includes(suggested))chosen=suggested;
           }
+        }
+        if(preserve) {
+          const preference=members.map(c=>termIx(preferences[c.id])).find(t=>possible.includes(t));
+          if(preference!=null)chosen=preference;
         }
       }
       if(chosen>=0) {
@@ -431,7 +580,7 @@ export function autoSchedule(data,input,{preserve=false}={}) {
     }
     if(!progress) {
       // Fill an unblocked elective/GE group so minimum-standing courses can become ready.
-      const fillers=ready.filter(id=>groups.get(id).every(c=>c.placeholder&&!c.minUnits));
+      const fillers=ready.filter(id=>groups.get(id).every(c=>c.placeholder&&!c.minUnits&&!c.minUnitsAtTermEnd));
       if(!fillers.length)break;
       break;
     }
@@ -452,7 +601,7 @@ export function validatePlan(data,state,derived=derivePlan(data,state)) {
       issues.push({severity:'warning',id:edge.to,kind:'source-conflict',message:`The sample roadmap places ${shortCode(edge.from)} with or after ${shortCode(edge.to)}, while the course page requires it earlier. This plan follows the course prerequisite. Confirm prior credit or an approved exception.`});
     const years=Math.max(...derived.roadmap.semesters.map(s=>s.year));
     if(years>Number(state.settings.years))issues.push({severity:'warning',kind:'roadmap-horizon',message:`The official reference extends into year ${years}. Your selected ${state.settings.years}-year timeline may require more time.`});
-    for(const season of ['Summer','Winter'])if(derived.roadmap.semesters.some(s=>s.season===season)&&!state.settings[season.toLowerCase()])
+    for(const season of ['Summer','Winter'])if(derived.roadmap.semesters.some(s=>s.season===season&&!s.conditional)&&!state.settings[season.toLowerCase()])
       issues.push({severity:'warning',kind:'roadmap-session',message:`The official roadmap includes ${season} sessions. Your plan has no ${season} sessions enabled; confirm the revised timing and offerings.`});
   }
   for(const check of derived.checklist.requirement_checks.filter(c=>c.minimum_met===false))issues.push({severity:'warning',kind:'program-credits',message:`${check.label}: ${check.selected_units??'?'} of ${check.minimum_units} required units selected. Review this program block.`});
@@ -468,7 +617,7 @@ export function validatePlan(data,state,derived=derivePlan(data,state)) {
   }
   for(const t of derived.terms) {
     const cards=derived.items.filter(c=>state.positions[c.id]===t.id&&!c.completed);
-    const units=cards.reduce((s,c)=>s+courseUnits(c),0);
+    const units=cards.reduce((s,c)=>s+plannedCourseUnits(c),0);
     if(units>Number(t.limit)+0.01)issues.push({severity:'warning',kind:'load',term:t.id,message:`${termLabel(t)} has ${units} units; your limit is ${t.limit}.`});
   }
   for(const c of derived.items) {
@@ -479,12 +628,17 @@ export function validatePlan(data,state,derived=derivePlan(data,state)) {
     const index=ti.get(state.positions[c.id]);
     if(index==null)issues.push({severity:'warning',id:c.id,kind:'unscheduled',message:`${c.code}: choose a semester or extend your timeline.`});
     if(c.completed)continue;
-    const before=finite(state.settings.transferUnits)+derived.items.filter(other=>other.id!==c.id&&(other.completed||ti.get(state.positions[other.id])<index)).reduce((s,x)=>s+courseUnits(x),0);
+    const before=derived.ledger.earnedUnits+derived.items.filter(other=>other.id!==c.id&&ti.get(state.positions[other.id])<index).reduce((s,x)=>s+plannedCourseUnits(x),0);
     if(index!=null && c.minUnits && before<c.minUnits)issues.push({severity:'error',id:c.id,kind:'standing',message:`${c.code} needs ${c.minUnits} prior units; this plan has ${before} before that semester.`});
+    const atTermEnd=before+derived.items.filter(other=>state.positions[other.id]===state.positions[c.id]).reduce((sum,item)=>sum+plannedCourseUnits(item),0);
+    if(index!=null&&c.minUnitsAtTermEnd&&atTermEnd<c.minUnitsAtTermEnd)issues.push({severity:'error',id:c.id,kind:'standing',message:`${c.code} requires junior standing during this semester; the planned total by its end is ${atTermEnd} units.`});
     const t=derived.terms[index];
     if(t&&state.availability[c.id]?.length&&!state.availability[c.id].includes(t.season))issues.push({severity:'error',id:c.id,kind:'availability',message:`${c.code} is outside the seasons you selected.`});
   }
   const placeholders=derived.items.filter(c=>c.placeholder);
+  if(derived.ledger.priorUnitsEstimated)issues.push({severity:'warning',kind:'prior-credit-estimate',message:`${derived.ledger.inferredGEUnits} prior GE/campus units are estimated after removing overlap with this curriculum. Enter your actual earned-credit total for exact remaining degree units.`});
+  if(derived.ledger.excessUnits>0)issues.push({severity:'warning',kind:'excess-units',message:`The plan includes ${derived.ledger.excessUnits} units above the degree minimum. Review optional additions; extra units required by a chosen major/minor must still be completed.`});
+  if(derived.ledger.programReviewUnits>0)issues.push({severity:'warning',kind:'program-credit-review',message:`${derived.ledger.programReviewUnits} units need program-specific confirmation. The official roadmap does not list them as unrestricted electives. Review the program choices and catalog before selecting these courses.`});
   if(placeholders.length)issues.push({severity:'warning',kind:'choices',message:`${placeholders.length} reserved GE, elective or program cards still need specific course selections.`});
   for(const area of derived.checklist.ge_requirements.filter(a=>a.kind==='overlay')) {
     if(state.geCompleted.includes(area.area_id))continue;
@@ -541,6 +695,8 @@ export function moveCourse(data,input,id,target,{linked=input.moveLinked}={}) {
     if(pass===d.items.length-1)return {ok:false,message:'These course links form a cycle. Edit the links before moving this course.'};
   }
   const before=validatePlan(data,input,d), after=validatePlan(data,state);
+  const newOverload=after.find(e=>e.kind==='load'&&!before.some(old=>old.kind==='load'&&old.term===e.term&&old.message===e.message));
+  if(newOverload)return {ok:false,message:newOverload.message+' Move another course first or choose a custom load limit.'};
   const signature=e=>`${e.kind}|${e.id}|${e.message}`;
   const oldErrors=new Set(before.filter(e=>e.severity==='error').map(signature));
   const newError=after.find(e=>e.severity==='error'&&!oldErrors.has(signature(e)));
@@ -584,7 +740,7 @@ export function exportPlan(state,data) {
 export function importPlan(text,data) {
   if(typeof text!=='string'||text.length>2_000_000)throw new Error('Choose a plan JSON file smaller than 2 MB.');
   const raw=JSON.parse(text), p=raw.plan||raw;
-  if(![1,SCHEMA_VERSION].includes(p.schemaVersion)||!p.settings||!Array.isArray(p.completed))throw new Error('This file is not a supported mapper plan.');
+  if(![1,2,SCHEMA_VERSION].includes(p.schemaVersion)||!p.settings||!Array.isArray(p.completed))throw new Error('This file is not a supported mapper plan.');
   const state=initialState(), s=p.settings;
   const programs=new Map(data.programs.map(x=>[x.program_id,x]));
   if(programs.get(s.major)?.type!=='major'||s.minor&&programs.get(s.minor)?.type!=='minor')throw new Error('This plan names a program outside the loaded catalog.');
@@ -595,6 +751,9 @@ export function importPlan(text,data) {
   if(!['Fall','Spring'].includes(s.startSeason))throw new Error('Invalid starting semester.');
   state.settings={major:s.major,minor:s.minor||'',startSeason:s.startSeason,summer:!!s.summer,winter:!!s.winter};
   for(const key of ['years','startYear','regularLimit','summerLimit','winterLimit','transferUnits'])state.settings[key]=Number(s[key]);
+  state.settings.loadMode=s.loadMode==='custom'?'custom':'roadmap';
+  state.settings.priorUnitsMode=s.priorUnitsMode==='transcript'||Number(s.transferUnits)>0?'transcript':'estimate';
+  if(p.schemaVersion<3&&state.settings.loadMode==='roadmap')state.settings.regularLimit=15;
   if(typeof s.roadmap==='string'&&(data.roadmaps||[]).some(r=>r.roadmap_id===s.roadmap&&r.program_id===s.major))state.settings.roadmap=s.roadmap;
   const safeKey=k=>typeof k==='string'&&k.length<250&&!['__proto__','constructor','prototype'].includes(k);
   const strings=a=>Array.isArray(a)?unique(a.filter(safeKey)).slice(0,1000):[];

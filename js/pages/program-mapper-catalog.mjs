@@ -4,6 +4,42 @@ const uniq = values => [...new Set(values)];
 const children = node => node.children || [];
 const indexCache=new WeakMap();
 
+/** Assign a course to one base/campus area, maximizing covered units without splitting a course. */
+function allocateAreas(candidates,capacities) {
+  const left=new Map(capacities),assignment=new Map(),fixed=candidates.filter(c=>c.tags.length===1),flex=candidates.filter(c=>c.tags.length>1);
+  for(const c of fixed) {
+    const area=c.tags[0],units=Math.min(c.units,left.get(area)||0);
+    if(units>0){assignment.set(c.id,area);left.set(area,left.get(area)-units);}
+  }
+  flex.sort((a,b)=>a.tags.length-b.tags.length||b.units-a.units||a.id.localeCompare(b.id));
+  const areas=[...new Set(flex.flatMap(c=>c.tags))],initial=areas.map(a=>Math.round((left.get(a)||0)*100));
+  const rows=flex.map(c=>({...c,units:Math.round(c.units*100),indices:c.tags.map(a=>areas.indexOf(a))}));
+  const memo=new Map(),suffix=Array(rows.length+1).fill(0);
+  for(let i=rows.length-1;i>=0;i--)suffix[i]=suffix[i+1]+rows[i].units;
+  function solve(i,caps) {
+    if(i===rows.length)return {score:0,area:-1};
+    const key=i+'|'+caps.join(',');if(memo.has(key))return memo.get(key);
+    const bound=Math.min(suffix[i],caps.reduce((a,b)=>a+b,0));
+    if(!bound)return {score:0,area:-1};
+    let best={score:-1,area:-1};
+    const order=rows[i].indices.filter(j=>caps[j]>0).sort((a,b)=>Math.min(rows[i].units,caps[b])-Math.min(rows[i].units,caps[a]));
+    for(const area of [...order,-1]) {
+      const next=[...caps],gain=area<0?0:Math.min(rows[i].units,next[area]);if(area>=0)next[area]-=gain;
+      const score=gain+solve(i+1,next).score;
+      if(score>best.score)best={score,area};
+      if(score===bound)break;
+    }
+    memo.set(key,best);return best;
+  }
+  let caps=initial;solve(0,caps);
+  for(let i=0;i<rows.length;i++) {
+    const result=solve(i,caps),area=result.area;
+    if(area<0)continue;
+    assignment.set(rows[i].id,areas[area]);caps=[...caps];caps[area]-=Math.min(rows[i].units,caps[area]);
+  }
+  return assignment;
+}
+
 export function createIndex(data) {
   if(indexCache.has(data))return indexCache.get(data);
   const courses = new Map(data.courses.map(c => [c.course_id,c]));
@@ -50,7 +86,8 @@ function normalizeArea(id) { return ["2-UD","5-UD"].includes(id) ? "2/5-UD" : id
 export function domainChoice(data,node) {
   const route=node.elective_route;
   const eligible=data.courses.filter(c=>route.subjects.includes(c.code.split(' ')[0])&&
-    Number(c.code.match(/\d+/)?.[0])>=route.number_range[0]&&Number(c.code.match(/\d+/)?.[0])<=route.number_range[1]&&!route.excluded_codes.includes(c.code));
+    Number(c.code.match(/\d+/)?.[0])>=route.number_range[0]&&Number(c.code.match(/\d+/)?.[0])<=route.number_range[1]&&
+    !route.excluded_codes.some(code=>code===c.code||c.components.some(p=>p.code===code)));
   return {type:'CHOOSE_PATH',choice_id:node.choice_id+':route',label:node.label+': choose a route',source_url:'https://catalog.csun.edu/academics/comp/programs/bs-computer-information-technology/',
     options:[{id:'cit-comp-electives',label:'15 units of eligible upper-division CIT / COMP electives',rule:{type:'APPROVED_ELECTIVES',choice_id:node.choice_id,
       label:'CIT / COMP domain electives',minimum_units:route.minimum_units,candidate_course_ids:eligible.map(c=>c.course_id),combined_caps:route.combined_caps,
@@ -66,6 +103,8 @@ export function buildPlan(data, options) {
   if(!major || major.type!=="major")throw new Error("Select a known major.");
   if(options.minor_id && (!minor || minor.type!=="minor"))throw new Error("Select a known minor.");
   const required=new Map(), choices=[],notices=[],errors=[];
+  const canonical=id=>ix.aliases.get(key(id))?.course.course_id||key(id);
+  const manualAssignments=new Map(Object.entries(options.ge_assignments||{}).map(([id,area])=>[canonical(id),area]));
   const selections=options.selections || {},selectedChoiceCourses=new Map();
   const requirementChecks=[],reviewConditions=[];
 
@@ -75,16 +114,16 @@ export function buildPlan(data, options) {
     if(a)for(const p of a.components)completedParts.add(p);
   }
   function add(id,role,parts=null) {
-    const c=ix.courses.get(key(id));
+    const alias=ix.aliases.get(key(id)),c=alias?.course||ix.courses.get(key(id));
     if(!c) {errors.push("Unknown course: "+id);return;}
     if(!required.has(c.course_id))required.set(c.course_id,{...c,roles:[],required_components:[]});
     const row=required.get(c.course_id);
     row.roles=uniq([...row.roles,role]);
-    row.required_components=uniq([...row.required_components,...(parts || c.components.map(x=>x.component_id))]);
+    row.required_components=uniq([...row.required_components,...(parts || alias?.components || c.components.map(x=>x.component_id))]);
   }
   function selectedCredits(ids) {
     let total=0,unknown=false;
-    for(const id of uniq(ids)){
+    for(const id of uniq(ids.map(canonical))){
       const r=required.get(id);if(!r)continue;
       for(const part of r.components.filter(p=>r.required_components.includes(p.component_id))) {
         if(part.units_min==null)unknown=true;else total+=part.units_min;
@@ -94,7 +133,7 @@ export function buildPlan(data, options) {
   }
   function nodeIds(n) {
     if(!n)return [];
-    if(n.type==="COURSE" || n.type==="REPEAT_COURSE")return [n.course_id];
+    if(n.type==="COURSE" || n.type==="REPEAT_COURSE")return [canonical(n.course_id)];
     return uniq([...children(n).flatMap(nodeIds),...(n.options||[]).flatMap(o=>nodeIds(o.rule)),...(n.candidate_course_ids||[])]);
   }
   const choiceId=n=>n.choice_id || [n.source_program || major.program_id,"alternative",...nodeIds(n)].join(":");
@@ -102,8 +141,8 @@ export function buildPlan(data, options) {
     if(!n)return;
     if(n.type==="COURSE") {
       add(n.course_id,role,n.component_ids);
-      if(n.requested_variant&&required.has(n.course_id)) {
-        const row=required.get(n.course_id);row.requested_variants=uniq([...(row.requested_variants||[]),n.requested_variant]);
+      if(n.requested_variant&&required.has(canonical(n.course_id))) {
+        const row=required.get(canonical(n.course_id));row.requested_variants=uniq([...(row.requested_variants||[]),n.requested_variant]);
       }
       return;
     }
@@ -124,7 +163,7 @@ export function buildPlan(data, options) {
     }
     if(n.type==="REPEAT_COURSE") {
       add(n.course_id,role,n.component_ids);
-      const row=required.get(n.course_id);
+      const row=required.get(canonical(n.course_id));
       if(row)row.repeat_requirement={minimum_enrollments:n.minimum_enrollments,minimum_units:n.minimum_units,source_url:n.source_url};
       reviewConditions.push({kind:"repeat_requirement",...n,role});return;
     }
@@ -185,7 +224,7 @@ export function buildPlan(data, options) {
         if(units>cap.maximum_units)errors.push(`Combined course cap exceeded in ${n.choice_id}: maximum ${cap.maximum_units} units.`);
       }
       if(n.ge_overlap_allowed===false)for(const id of valid) {
-        required.get(id).exclude_from_ge=true;
+        required.get(canonical(id)).exclude_from_ge=true;
         if(options.ge_assignments?.[id])errors.push('A domain-package course cannot also be assigned to GE. Remove the GE assignment or change the package.');
       }
       const lower=selectedCredits(valid.filter(id=>ix.courses.get(id).level==="lower_division"));
@@ -200,7 +239,7 @@ export function buildPlan(data, options) {
     if(n.type==="CHOOSE_PATH") {
       const selected=selections[n.choice_id],chosen=n.options.find(x=>x.id===selected || nodeIds(x.rule).length===1 && nodeIds(x.rule)[0]===key(selected));
       if(chosen){selectedChoiceCourses.set(n.choice_id,nodeIds(chosen.rule));return walk(chosen.rule,role);}
-      choices.push({choice_id:n.choice_id,label:n.label,type:n.type,options:n.options});
+      choices.push({...n});
       if(selected)errors.push("Invalid selection for "+n.choice_id);
       return;
     }
@@ -261,7 +300,7 @@ export function buildPlan(data, options) {
     r.required_components.includes(p.component_id) && p.units_min==null)).map(r=>r.course_id);
   function plannedMatches(n) {
     if(n.type==="COURSE") {
-      const r=required.get(n.course_id);
+      const r=required.get(canonical(n.course_id));
       return !!r && (n.component_ids || []).every(p=>r.required_components.includes(p));
     }
     if(n.type==="ALL_OF")return children(n).every(plannedMatches);
@@ -283,8 +322,8 @@ export function buildPlan(data, options) {
         }
       } else if(plannedMatches(ov.rule)) {
         function attach(n) {
-          if(n.type==="COURSE" && required.has(n.course_id))for(const t of ov.targets)
-            effectiveTags.get(n.course_id).add(normalizeArea(t));
+          if(n.type==="COURSE" && required.has(canonical(n.course_id)))for(const t of ov.targets)
+            effectiveTags.get(canonical(n.course_id)).add(normalizeArea(t));
           for(const x of children(n))if(plannedMatches(x))attach(x);
         }
         attach(ov.rule);
@@ -296,41 +335,51 @@ export function buildPlan(data, options) {
     }
   }
   const unitAreas=data.ge_areas.filter(a=>a.kind==="base" || a.kind==="campus");
-  function coverage(completedOnly) {
+  function coverage(completedOnly,priorAreas=false) {
     const used=new Map(unitAreas.map(a=>[a.area_id,[]]));
     const amount=new Map(unitAreas.map(a=>[a.area_id,
       (!completedOnly || options.major_completed) && majorCovered.has(a.area_id) ? a.required_units : 0]));
-    const ambiguous=[];
+    const ambiguous=[],candidates=[],split=[],details=[];
     for(const r of rows.filter(r=>!options.excluded_course_ids?.includes(r.course_id))) {
       if(completedOnly && !r.completed)continue;
       let tags=uniq([...effectiveTags.get(r.course_id)].map(normalizeArea))
         .filter(t=>unitAreas.some(a=>a.area_id===t));
       if(r.exclude_from_ge)tags=tags.filter(t=>unitAreas.some(a=>a.area_id===t&&a.kind==='campus'));
-      const manual=options.ge_assignments?.[r.course_id];
+      const manual=manualAssignments.get(r.course_id);
+      if(manual&&!tags.includes(manual)){errors.push(r.code+' is not eligible for the assigned GE area '+manual);tags=[];}
       if(manual)tags=tags.filter(t=>t===manual);
       const credits=r.components.filter(p=>r.required_components.includes(p.component_id))
         .reduce((s,p)=>s+(p.units_min || 0),0);
       if(tags.length>1) {
         // A lecture + lab may cover separate science lecture and lab blocks.
         const lecture=tags.find(t=>t==="5A" || t==="5B");
-        const lab=r.components.find(p=>p.component_id.endsWith("L") && p.units_min===1);
+        const lab=r.components.find(p=>r.required_components.includes(p.component_id)&&p.component_id.endsWith("L") && p.units_min===1);
         if(lecture && tags.includes("5C") && tags.length===2 && lab) {
-          for(const [a,u] of [[lecture,credits-1],["5C",1]]) {
-            amount.set(a,Math.min(unitAreas.find(z=>z.area_id===a).required_units,amount.get(a)+u));
-            used.get(a).push(r.course_id);
-          }
+          split.push({id:r.course_id,area:lecture,units:Math.max(0,credits-1)},{id:r.course_id,area:'5C',units:1});
           continue;
         }
-        ambiguous.push({course_id:r.course_id,choose_one_area:tags});continue;
       }
-      if(tags.length===1) {
-        const a=tags[0],needed=unitAreas.find(z=>z.area_id===a).required_units;
-        if(amount.get(a)<needed){amount.set(a,Math.min(needed,amount.get(a)+credits));used.get(a).push(r.course_id);}
-      }
+      const campus=tags.filter(t=>unitAreas.some(a=>a.area_id===t&&a.kind==='campus'));
+      const base=tags.filter(t=>!campus.includes(t));
+      // Campus requirements and GE are distinct checks; an explicitly designated course
+      // can meet one of each while its earned units still occur only once in rows.
+      if(campus.length&&base.length) {
+        candidates.push({id:r.course_id+':campus',courseId:r.course_id,tags:campus,units:credits});
+        candidates.push({id:r.course_id+':base',courseId:r.course_id,tags:base,units:credits});
+      } else if(tags.length)candidates.push({id:r.course_id,tags,units:credits,manual:!!manual});
     }
-    return {amount,used,ambiguous};
+    function apply(id,area,units) {
+      const accepted=Math.min(units,unitAreas.find(a=>a.area_id===area).required_units-amount.get(area));
+      if(accepted<=0)return;
+      amount.set(area,amount.get(area)+accepted);used.get(area).push(id);details.push({course_id:id,area_id:area,units:accepted});
+    }
+    for(const c of split)if(!priorAreas||!options.completed_ge_areas?.includes(c.area))apply(c.id,c.area,c.units);
+    const remaining=new Map(unitAreas.map(a=>[a.area_id,priorAreas&&options.completed_ge_areas?.includes(a.area_id)?0:a.required_units-amount.get(a.area_id)]));
+    const assignments=allocateAreas(candidates,remaining);
+    for(const c of candidates)if(assignments.has(c.id))apply(c.courseId||c.id,assignments.get(c.id),c.units);
+    return {amount,used,ambiguous,details};
   }
-  const planned=coverage(false),completed=coverage(true);
+  const planned=coverage(false,true),baseline=options.completed_ge_areas?.length?coverage(false):planned,completed=coverage(true);
   const ge=data.ge_areas.map(a => {
     if(a.kind==="overlay")return {...a,eligible_planned_courses:rows.filter(r=>!r.exclude_from_ge&&!options.excluded_course_ids?.includes(r.course_id)).filter(r=>{
       const tags=effectiveTags.get(r.course_id);
@@ -341,6 +390,7 @@ export function buildPlan(data, options) {
       return tags.has(a.rules.designation || a.area_id);
     }).map(r=>r.course_id),allocation_note:"Overlay checks share credits; apply the listed distribution/grade conditions."};
     return {...a,planned_units:planned.amount.get(a.area_id),completed_units:completed.amount.get(a.area_id),
+      baseline_additional_units_to_plan:Math.max(0,a.required_units-baseline.amount.get(a.area_id)),
       additional_units_to_plan:Math.max(0,a.required_units-planned.amount.get(a.area_id)),
       units_remaining_to_complete:Math.max(0,a.required_units-completed.amount.get(a.area_id)),
       covered_by_planned_courses:planned.used.get(a.area_id),covered_by_major_completion:majorCovered.has(a.area_id)};
@@ -354,7 +404,7 @@ export function buildPlan(data, options) {
     required_courses:rows,choices,ge_requirements:ge,prerequisite_edges:edges,
     requirement_checks:checks,review_conditions:reviewConditions,
     unplanned_prerequisite_course_ids:uniq(edges.filter(e=>!required.has(e.required_course_id)).map(e=>e.required_course_id)),
-    ambiguous_ge_assignments:planned.ambiguous,notices,errors,
+    ambiguous_ge_assignments:planned.ambiguous,automatic_ge_assignments:planned.details,notices,errors:uniq(errors),
     listed_curriculum_units:unknownUnitCourses.length?null:listedUnits,
     known_curriculum_units:listedUnits,units_needing_review:unknownUnitCourses,
     additional_base_ge_units_to_plan:ge.filter(a=>a.kind==="base").reduce((s,a)=>s+a.additional_units_to_plan,0),

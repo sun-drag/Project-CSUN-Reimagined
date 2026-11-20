@@ -36,7 +36,7 @@ test('program-choice controls remain editable after a selection is resolved',asy
   const h=await launchHarness();try{q(h,'choices-button').click();const select=h.document.querySelectorAll('[data-choice-path]').find(x=>x.dataset.choicePath==='cit-math');assert.ok(select);select.value='MATH-150A';select.trigger('change');assert.ok(findCard(h,'MATH-150A'));assert.equal(!!findCard(h,'MATH-103'),false);assert.equal(h.app.state().selections['cit-math'],'MATH-150A');assert.deepEqual(h.errors,[]);}finally{h.dispose();}
 });
 test('custom course form escapes markup, saves notes and survives browser-save restoration',async()=>{
-  const h=await launchHarness();let restored;try{q(h,'add-course-button').click();q(h,'custom-course-button').click();q(h,'custom-code').value='CIT 499';q(h,'custom-title').value='<img src=x onerror=alert(1)> Test';q(h,'custom-description').value='A student-defined course';q(h,'custom-units').value='3';q(h,'custom-course-form').trigger('submit');const c=h.app.state().customCourses[0];assert.ok(c);assert.ok(findCard(h,c.course_id));assert.equal(h.document.querySelectorAll('img').length,0);q(h,'detail-notes').value='Meet advisor';q(h,'detail-save-notes').click();assert.equal(h.app.state().notes[c.course_id],'Meet advisor');await pause(250);const saved=h.storage.get('csun-reimagined:program-mapper:v2');assert.ok(saved);restored=await launchHarness(saved);assert.ok(findCard(restored,c.course_id));assert.equal(restored.app.state().notes[c.course_id],'Meet advisor');assert.deepEqual(h.errors,[]);assert.deepEqual(restored.errors,[]);}finally{h.dispose();restored?.dispose();}
+  const h=await launchHarness();let restored;try{q(h,'add-course-button').click();q(h,'custom-course-button').click();q(h,'custom-code').value='CIT 499';q(h,'custom-title').value='<img src=x onerror=alert(1)> Test';q(h,'custom-description').value='A student-defined course';q(h,'custom-units').value='3';q(h,'custom-course-form').trigger('submit');const c=h.app.state().customCourses[0];assert.ok(c);assert.ok(findCard(h,c.course_id));assert.equal(h.document.querySelectorAll('img').length,0);q(h,'detail-notes').value='Meet advisor';q(h,'detail-save-notes').click();assert.equal(h.app.state().notes[c.course_id],'Meet advisor');await pause(250);const saved=h.storage.get('csun-reimagined:program-mapper:v3');assert.ok(saved);restored=await launchHarness(saved);assert.ok(findCard(restored,c.course_id));assert.equal(restored.app.state().notes[c.course_id],'Meet advisor');assert.deepEqual(h.errors,[]);assert.deepEqual(restored.errors,[]);}finally{h.dispose();restored?.dispose();}
 });
 test('removing a required course and restoring it through Plan check work',async()=>{
   const h=await launchHarness();try{h.app.openCourse('CIT-160/L');q(h,'detail-remove').click();q(h,'confirm-remove').click();assert.equal(!!findCard(h,'CIT-160/L'),false);q(h,'check-button').click();const restore=h.document.querySelectorAll('[data-restore]').find(b=>b.dataset.restore==='CIT-160/L');assert.ok(restore);restore.click();assert.ok(findCard(h,'CIT-160/L'));assert.deepEqual(h.errors,[]);}finally{h.dispose();}
@@ -76,4 +76,58 @@ test('an older save exposes its automatic selections for review',async()=>{
     select.value='MATH-103';select.trigger('change');assert.ok(findCard(h,'MATH-103'));
     assert.equal(q(h,'choice-migration-notice').hidden,true);assert.deepEqual(h.errors,[]);
   }finally{h.dispose();}
+});
+
+test('checking all GE uses prior credit instead of recreating the GE as electives',async()=>{
+ const h=await launchHarness();try{
+  q(h,'ge-all').checked=true;q(h,'ge-all').trigger('change');const d=h.app.derived();
+  assert.equal(d.ledger.otherPriorUnits,37);assert.equal(d.ledger.degreeElectiveUnits,3);
+  assert.equal(d.items.filter(c=>c.roles.includes('elective')).reduce((s,c)=>s+c.units_min,0),3);
+  assert.equal(d.items.some(c=>c.geArea),false);assert.match(q(h,'credit-summary').textContent,/3 additional degree-elective units/);
+  assert.match(q(h,'credit-summary').textContent,/37 estimated GE/);assert.deepEqual(h.errors,[]);
+ }finally{h.dispose();}
+});
+test('a selected CIT domain course replaces its box and can be replaced without losing other choices',async()=>{
+ const h=await launchHarness();try{
+  q(h,'choices-button').click();const route=h.document.querySelectorAll('[data-choice-path]').find(s=>s.dataset.choicePath==='cit-domain:route');
+  route.value='cit-comp-electives';route.trigger('change');q(h,'close-dialog').click();
+  let slot=h.app.derived().items.find(c=>c.choiceId==='cit-domain'),term=h.app.state().positions[slot.id];h.app.openCourse(slot.id);
+  h.document.querySelectorAll('[data-pick]').find(b=>b.dataset.pick==='COMP-310').click();
+  assert.ok(findCard(h,'COMP-310'));assert.equal(h.app.state().positions['COMP-310'],term);assert.equal(h.app.derived().items.filter(c=>c.choiceId==='cit-domain').length,4);
+  slot=h.app.derived().items.find(c=>c.choiceId==='cit-domain');h.app.openCourse(slot.id);h.document.querySelectorAll('[data-pick]').find(b=>b.dataset.pick==='COMP-380/L').click();
+  const otherTerm=h.app.state().positions['COMP-380/L'];h.app.openCourse('COMP-310');q(h,'detail-replace-selection').click();h.document.querySelectorAll('[data-pick]').find(b=>b.dataset.pick==='COMP-524').click();
+  assert.ok(findCard(h,'COMP-524'));assert.ok(findCard(h,'COMP-380/L'));assert.equal(!!findCard(h,'COMP-310'),false);
+  assert.equal(h.app.state().positions['COMP-380/L'],otherTerm);assert.equal(h.app.derived().items.filter(c=>c.choiceId==='cit-domain').length,3);assert.deepEqual(h.errors,[]);
+ }finally{h.dispose();}
+});
+test('four-year loads follow the guide until the user explicitly chooses a custom maximum',async()=>{
+ const h=await launchHarness();try{
+  assert.ok(h.app.derived().terms.every(t=>t.limit===15));assert.equal(q(h,'regular-limit').disabled,true);
+  q(h,'load-mode').value='custom';q(h,'load-mode').trigger('change');q(h,'regular-limit').value='21';q(h,'setup-form').trigger('submit');
+  assert.ok(h.app.derived().terms.every(t=>t.limit===21));assert.equal(h.app.state().settings.loadMode,'custom');assert.deepEqual(h.errors,[]);
+ }finally{h.dispose();}
+});
+test('adding an optional course beyond the remaining degree credits is rejected',async()=>{
+ const h=await launchHarness();try{
+  q(h,'ge-all').checked=true;q(h,'ge-all').trigger('change');q(h,'choices-button').click();const math=h.document.querySelectorAll('[data-choice-path]').find(s=>s.dataset.choicePath==='cit-math');math.value='MATH-150A';math.trigger('change');q(h,'close-dialog').click();
+  assert.equal(h.app.derived().ledger.degreeElectiveUnits,1);q(h,'add-course-button').click();q(h,'course-search').value='AAS100';q(h,'course-search').trigger('input');h.document.querySelectorAll('[data-pick]').find(b=>b.dataset.pick==='AAS-100').click();
+  assert.match(q(h,'dialog-error').textContent,/beyond your remaining degree requirements/);assert.equal(!!findCard(h,'AAS-100'),false);assert.deepEqual(h.errors,[]);
+ }finally{h.dispose();}
+});
+test('a multiple-option requirement replaces individual course boxes without clearing its other choices',async()=>{
+ const h=await launchHarness();try{
+  q(h,'major-select').value='environmental-science-b-a';q(h,'major-select').trigger('change');q(h,'setup-form').trigger('submit');
+  const choiceId='environmental-science-b-a:110:categories';let slot=h.app.derived().items.find(c=>c.choiceId===choiceId);h.app.openCourse(slot.id);
+  h.document.querySelectorAll('[data-slot-option]').find(b=>b.dataset.slotOption==='option-2').click();assert.ok(findCard(h,'BIOL-322'));
+  slot=h.app.derived().items.find(c=>c.choiceId===choiceId);h.app.openCourse(slot.id);h.document.querySelectorAll('[data-slot-option]').find(b=>b.dataset.slotOption==='option-19').click();
+  assert.ok(findCard(h,'ANTH-432'));h.app.openCourse('BIOL-322');q(h,'detail-replace-selection').click();h.document.querySelectorAll('[data-slot-option]').find(b=>b.dataset.slotOption==='option-3').click();
+  assert.ok(findCard(h,'EOH-356A'));assert.ok(findCard(h,'ANTH-432'));assert.deepEqual(Array.from(h.app.state().selections[choiceId]).sort(),['option-19','option-3']);assert.deepEqual(h.errors,[]);
+ }finally{h.dispose();}
+});
+test('program credit-review boxes open their source guidance instead of a free-elective picker',async()=>{
+ const h=await launchHarness();try{
+  q(h,'major-select').value='biology-b-a';q(h,'major-select').trigger('change');q(h,'setup-form').trigger('submit');
+  const box=h.app.derived().items.find(c=>c.programReview);assert.ok(box);h.app.openCourse(box.id);
+  assert.equal(q(h,'dialog-title').textContent,'Confirm these program requirements');assert.match(q(h,'dialog-body').textContent,/program-specific requirements/);assert.equal(q(h,'course-search'),null);assert.deepEqual(h.errors,[]);
+ }finally{h.dispose();}
 });

@@ -30,6 +30,53 @@ domain and DNS records continue to serve the same Amplify app.
 The `docs/program-mapper.md` and `tests/program-mapper` files are related handoff and
 test files; publishing them is optional. They are not needed in `dist`.
 
+## Credit and roadmap fixes in this revision
+
+Four-year plans use each selected official roadmap’s actual semester budget,
+usually 15 units. The review parsed 1,262 explicit semester totals across 157 maps;
+one additional summer session is conditional and has no fixed unit total. Heavier
+semesters are allowed when the guide explicitly lists them. Shorter timelines
+calculate their needed load. A higher custom maximum requires selecting the custom
+load mode. If a program has multiple guide variants, select the appropriate one.
+
+Marking GE/campus areas complete reduces remaining credits. The default prior
+credit figure is a conservative estimate of the GE space removed from this specific
+curriculum after subtracting major overlap and waivers. It is labeled as estimated.
+Select **Use my transcript credit total** to replace that estimate with actual other
+earned units. Include prior GE in that total and exclude credits already recorded
+as completed components/cards on the board. Overlays such as ES, IC and WI do not
+create additional earned units.
+
+For CIT with all GE/campus areas checked and the initial minimum-unit math and
+programming choices, the estimate is 37 prior units and 3 genuine degree-elective
+units. MATH 150A reduces that elective balance by 2 units. The actual transcript,
+programming sequence, chosen minor/domain and completed major courses can change
+these figures. Required CIT domain-emphasis coursework remains necessary even when
+GE is finished. A completed-GE plan can have lighter semesters; courses are not
+added merely to bring every semester up to 15 units.
+
+Each multi-course requirement can be filled from its individual boxes. A selected
+course appears as its own card. Open it and use **Replace this course selection**
+to change that selection while retaining the other courses. Shared eligible
+major/minor/preparation courses receive GE coverage automatically. Lecture/bundle
+aliases represent one physical enrollment, and only uncompleted components count
+in future semester loads. Optional additions that would exceed remaining degree
+credits are rejected by the course picker.
+
+Some source blocks had a stated credit total but a nested selector with no credit
+target. The source group’s target is inherited by that selector. Remaining
+unreconciled program credits above a guide’s free-elective allowance appear as
+**PROGRAM REVIEW** reservations. They require program-specific confirmation and
+are not offered as unrestricted elective selections. They cannot be marked as
+completed courses. This is especially relevant to incomplete category rules,
+course-family variants and integrated credential routes. Twenty-five major/option
+entries have such review reservations in their initial unselected state.
+
+The Computer Engineering guide’s program association was corrected. Geography and
+Environmental Studies uses its guide from the central 2026 index. The separate
+Honors guide is not substituted for the ordinary major. Mapper assets are versioned
+to avoid combining an older cached script with the new model/data.
+
 ## Included functionality
 
 - All 158 indexed major/option entries and 107 minors, with editable program paths,
@@ -91,7 +138,7 @@ The generated plan is a planning draft, not an official degree audit.
 ```json
 {
   "schemaVersion": 1,
-  "catalogUrl": "./catalog.json"
+  "catalogUrl": "./catalog.json?v=2026.11.19.3"
 }
 ```
 
@@ -102,9 +149,9 @@ It adds no account flow, database connection or AWS resources.
 
 ## Academic and design review — November 19, 2026
 
-All 158 major/option requirement pages and their 156 linked degree roadmaps were
-retrieved again. The linked maps cover 139 entries; 19 program pages expose no
-four-year degree-roadmap link. Many of those are double-major-only, transfer,
+All 158 major/option requirement pages and 157 degree roadmaps from program pages and the central index were
+retrieved again. The mapped guides cover 141 entries; 17 entries have no mapped
+four-year degree-roadmap reference. Many of those are double-major-only, transfer,
 accelerated or blended routes. This does not establish that no other advising
 material exists. The 107 minors and earlier individual-course page captures were
 retained from the previous snapshot.
@@ -157,15 +204,13 @@ is a 2025-present reference and explicitly includes the 2026 catalog year.
 
 ## Student data and degree-credit estimates
 
-Student plans are saved under `csun-reimagined:program-mapper:v2` in localStorage.
-Version 1 saves are read as a fallback. Their program selections move to a review list because earlier versions could preselect alternatives. Completed courses, notes and other progress are retained; users explicitly choose their paths again. The old storage key is not deleted. The site sends no student plans to a server. Clearing browser storage removes the
+Student plans are saved under `csun-reimagined:program-mapper:v3` in localStorage.
+Version 2 saves are migrated with their explicit selections intact. Version 1 saves are also read as a fallback; their selections move to a review list because that version could preselect alternatives. Completed courses, notes and other progress are retained; users explicitly choose their paths again. The old storage key is not deleted. The site sends no student plans to a server. Clearing browser storage removes the
 local save; an exported JSON file can restore it on another browser. Imports are
 limited to 2 MB, validated, and treated as data. Course content is escaped before
 rendering. CSV output protects user-supplied cells from spreadsheet formulas.
 
-Marking a GE area complete is a self-report, not an automatic grant of transfer
-units. Enter transfer / other earned units explicitly and do not include the
-completed cards already in this plan in that number. Remaining degree-elective
+GE completion is self-reported. It updates a labeled planning-credit estimate; it does not award official university credit. A supplied transcript total replaces the estimate. Do not include completed card/component credits again in that number. Remaining degree-elective
 cards reserve the difference to the program's recorded minimum (usually 120).
 
 Lecture/lab bundles use one card. Special repeated-enrollment requirements and
@@ -190,7 +235,7 @@ The tests require a current Node.js runtime, with no package installation:
 node --test tests/program-mapper/*.test.mjs
 ```
 
-The current revision passes 68 automated tests. A static HTTP check serves all eight runtime/shared assets successfully. Header, navigation destinations and footer are compared with index.html.
+The current revision passes 94 automated tests. A static HTTP check serves all seven versioned mapper assets successfully. The generated-plan review covers 687 major/minor/progress/roadmap scenarios. Header, navigation destinations and footer are compared with index.html.
 
 Core tests exercise real catalog data and a small independent dependency fixture.
 They include every indexed major/minor, sequencing, alternate prerequisites,

@@ -1,9 +1,9 @@
 import {initialState, clone, withSuggestedPaths, derivePlan, autoSchedule, validatePlan, moveCourse,
-  createLink, makeTerms, termKey, termLabel, termOrder, courseUnits, choiceDescriptors, choiceCourseOptions,
-  geOptions, GE_ALIASES, importPlan, exportPlan, safeOfficialUrl, ruleUnitRange, selectedRoadmap} from './program-mapper-core.mjs';
+  createLink, makeTerms, termKey, termLabel, termOrder, courseUnits, plannedCourseUnits, choiceDescriptors, choiceCourseOptions,
+  geOptions, GE_ALIASES, importPlan, exportPlan, safeOfficialUrl, ruleUnitRange, selectedRoadmap, applyChoiceSelection} from './program-mapper-core.mjs?v=2026.11.19.3';
 
 // The page is static-host compatible. Catalog access is configurable; database secrets never belong here.
-const STORAGE_KEY='csun-reimagined:program-mapper:v2';
+const STORAGE_KEY='csun-reimagined:program-mapper:v3';
 const $=id=>document.getElementById(id);
 const e=value=>String(value??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
 const icons={
@@ -63,6 +63,8 @@ function syncSetup(){
   $('minor-select').value=state.settings.minor;
   for(const [id,key] of [['start-year','startYear'],['start-season','startSeason'],['plan-years','years'],['regular-limit','regularLimit'],['summer-limit','summerLimit'],['winter-limit','winterLimit'],['transfer-units','transferUnits']])$(id).value=state.settings[key];
   $('include-summer').checked=state.settings.summer;$('include-winter').checked=state.settings.winter;$('plan-name').value=state.name;
+  $('load-mode').value=state.settings.loadMode||'roadmap';$('prior-credit-mode').value=state.settings.priorUnitsMode||'estimate';
+  $('regular-limit').disabled=$('load-mode').value!=='custom';$('transfer-units').disabled=$('prior-credit-mode').value!=='transcript';
   syncRoadmaps(state.settings.major);
 }
 
@@ -70,6 +72,7 @@ function syncRoadmaps(major){
   const maps=(data.roadmaps||[]).filter(r=>r.program_id===major),selected=selectedRoadmap(data,{settings:{major,roadmap:state.settings.roadmap}});
   $('roadmap-select').innerHTML=`<option value="">${maps.length?'Choose a roadmap reference':'No linked four-year roadmap'}</option>`+maps.map(r=>`<option value="${e(r.roadmap_id)}">${e(r.title)}</option>`).join('');
   $('roadmap-select').value=selected?.roadmap_id||'';$('roadmap-select').disabled=!maps.length;
+  $('roadmap-select').required=maps.length>1;
 }
 function ruleIds(node){return [...new Set([...(node.course_id?[node.course_id]:[]),...(node.children||[]).flatMap(ruleIds),...(node.options||[]).flatMap(o=>ruleIds(o.rule))])];}
 function optionLabel(option){const range=ruleUnitRange(option.rule,derived.ix);return `${option.label} · ${range[0]===range[1]?range[0]:range.join('–')} units`;}
@@ -77,13 +80,14 @@ function optionLabel(option){const range=ruleUnitRange(option.rule,derived.ix);r
 function roleFor(c){return c.roles.includes('major')?'major':c.roles.includes('minor')?'minor':c.roles.includes('preparation')?'preparation':c.placeholder?'choice':'ge';}
 function roleLabel(c){if(!c.placeholder&&c.choice_ids?.length)return (c.roles.includes('major')?'Major':c.roles.includes('minor')?'Minor':'Program')+' · selected option';if(c.placeholder)return c.geArea?'GE requirement':c.choiceId?'Program requirement':'Degree units';return c.roles.includes('major')&&c.roles.includes('minor')?'Major + minor':({major:'Major course',minor:'Minor course',ge:'GE / added course',preparation:'Prerequisite'})[roleFor(c)];}
 function card(c){
-  const completed=state.completed.includes(c.id),locked=state.locked.includes(c.id),hasIssue=issues.some(i=>i.id===c.id),linked=derived.edges.filter(edge=>edge.from===c.id||edge.to===c.id).length;
+  const completed=c.completed,locked=state.locked.includes(c.id),hasIssue=issues.some(i=>i.id===c.id),linked=derived.edges.filter(edge=>edge.from===c.id||edge.to===c.id).length;
   return `<article class="pm-course ${c.placeholder?'is-placeholder':''} ${completed?'is-completed':''} ${locked?'is-locked':''} ${selected.has(c.id)?'is-selected':''}" data-course-id="${e(c.id)}" data-role="${c.geArea?'ge':roleFor(c)}" role="button" tabindex="0" draggable="${!locked&&!completed}" aria-label="${e(c.code+' '+c.title+(completed?', completed':'')+(locked?', locked':''))}">
-    <div class="pm-course-top">${!c.placeholder?`<button class="pm-course-complete" data-complete="${e(c.id)}" aria-label="${completed?'Mark incomplete':'Mark completed'}: ${e(c.code)}" aria-pressed="${completed}">${completed?icon('check'):''}</button>`:''}<h3 class="pm-course-code">${e(c.code)}</h3><span class="pm-course-units">${c.units_min==null?'?':e(c.units_min)}${c.placeholder&&c.units_max>c.units_min?'–'+e(c.units_max):''} units</span></div>
-    <p class="pm-course-name">${e(c.title||'Course details need confirmation')}</p>
+    <div class="pm-course-top">${!c.placeholder?`<button class="pm-course-complete" data-complete="${e(c.id)}" aria-label="${completed?'Mark incomplete':'Mark completed'}: ${e(c.code)}" aria-pressed="${completed}">${completed?icon('check'):''}</button>`:''}<h3 class="pm-course-code">${e(c.code)}</h3><span class="pm-course-units">${c.units_min==null?'?':e(c.completed?courseUnits(c):plannedCourseUnits(c))}${c.placeholder&&c.units_max>c.units_min?'–'+e(c.units_max):''} units</span></div>
+    <p class="pm-course-name">${e(c.title||'Course details need confirmation')}</p>${c.completed_units>0&&!c.completed?`<p class="pm-overlap-note">${e(c.completed_units)} units already completed · ${e(plannedCourseUnits(c))} units remaining</p>`:''}
+    ${c.geAppliedAreas?.length&&c.roles.some(r=>r==='major'||r==='minor'||r==='preparation')?`<p class="pm-overlap-note">Also meets ${c.geAppliedAreas.map(a=>'GE / campus '+e(a.replace('CAMPUS-',''))).join(', ')}</p>`:''}
     ${c.requested_variants?.length?`<p class="pm-option-preview">Required variant: ${c.requested_variants.map(e).join(' / ')} · confirm topic / units</p>`:''}
     ${c.choice?.type==='CHOOSE_PATH'?`<p class="pm-option-preview">Choose one: ${c.choice.options.map(o=>e(o.label)).join(' / ')}</p>`:''}
-    <div class="pm-course-bottom"><span class="pm-course-kind">${e(roleLabel(c))}</span>${c.placeholder?'<span class="pm-placeholder-action">Choose course ↗</span>':`<span class="pm-course-status">${locked?icon('lock'):''}${completed?'<span>Completed</span>':linked?icon('link'):''}${hasIssue?`<span class="pm-course-error" title="Review plan check">${icon('alert')}</span>`:''}</span>`}</div>
+    <div class="pm-course-bottom"><span class="pm-course-kind">${e(roleLabel(c))}</span>${c.placeholder?`<span class="pm-placeholder-action">${c.programReview?'Review program requirements':'Choose course'} ↗</span>`:`<span class="pm-course-status">${locked?icon('lock'):''}${completed?'<span>Completed</span>':linked?icon('link'):''}${hasIssue?`<span class="pm-course-error" title="Review plan check">${icon('alert')}</span>`:''}</span>`}</div>
     ${!c.placeholder?`<button class="pm-card-select" data-select="${e(c.id)}" aria-label="${selected.has(c.id)?'Deselect':'Select for a course link'}: ${e(c.code)}" aria-pressed="${selected.has(c.id)}">${icon(selected.has(c.id)?'check':'select')}</button>`:''}
   </article>`;
 }
@@ -94,9 +98,10 @@ function render(){
   const program=derived.ix.programs.get(state.settings.major),minor=derived.ix.programs.get(state.settings.minor);
   $('academic-sources').innerHTML=`<a href="${e(safeOfficialUrl(program.source_url))}" target="_blank" rel="noopener noreferrer">Official major requirements ↗</a>${minor?`<a href="${e(safeOfficialUrl(minor.source_url))}" target="_blank" rel="noopener noreferrer">Official minor requirements ↗</a>`:''}${derived.roadmap?`<a href="${e(safeOfficialUrl(derived.roadmap.source_url))}" target="_blank" rel="noopener noreferrer">Official semester roadmap ↗</a>`:'<span>No four-year reference selected; review the program catalog.</span>'}<span>Catalog ${e(data.metadata.catalog_year)} · reviewed ${e(data.metadata.academic_review_date||data.metadata.build_date)}</span>`;
   $('choice-migration-notice').hidden=!Object.keys(state.legacySelections||{}).length;
-  const total=derived.items.reduce((sum,c)=>sum+courseUnits(c),0),completed=derived.items.filter(c=>c.completed).reduce((s,c)=>s+courseUnits(c),0)+Number(state.settings.transferUnits);
-  const target=derived.terms.at(-1),stats=[[total+Number(state.settings.transferUnits),'planned + prior units'],[derived.items.filter(c=>!c.completed&&!c.placeholder).length,'courses to go'],[termLabel(target),'target finish'],[completed,'completed / prior units']];
+  const completed=derived.ledger.earnedUnits;
+  const target=derived.terms.at(-1),stats=[[derived.ledger.totalPlannedUnits,'planned + prior units'],[derived.items.filter(c=>!c.completed&&!c.placeholder).length,'courses to go'],[termLabel(target),'target finish'],[completed,derived.ledger.priorUnitsEstimated?'estimated prior + completed units':'completed / prior units']];
   $('plan-stats').innerHTML=stats.map(([v,label])=>`<div><strong>${e(v)}</strong><span>${label}</span></div>`).join('');
+  $('credit-summary').innerHTML=`<strong>${e(derived.ledger.requiredFutureUnits+derived.ledger.degreeElectiveUnits+derived.ledger.programReviewUnits)} units left to plan</strong><span>${e(derived.ledger.degreeElectiveUnits)} additional degree-elective units · ${e(derived.ledger.otherPriorUnits)} ${derived.ledger.priorUnitsEstimated?'estimated GE/campus':'reported prior'} units${derived.ledger.programReviewUnits?' · '+e(derived.ledger.programReviewUnits)+' program units need review':''}</span>${derived.ledger.priorUnitsEstimated?'<small>Checked GE areas reduce the remaining credit estimate. Major overlap is counted once. Use your transcript total in Credits & course load for exact figures.</small>':''}`;
   $('plan-progress').style.width=Math.min(100,completed/derived.minimum*100)+'%';
   const progress=$('plan-progress').parentElement;progress.setAttribute('aria-valuenow',Math.min(derived.minimum,completed));progress.setAttribute('aria-valuemax',derived.minimum);
   $('undo-button').disabled=!undoStack.length;$('redo-button').disabled=!redoStack.length;
@@ -110,10 +115,10 @@ function render(){
   const years=new Map();
   for(const term of derived.terms){const year=Math.floor((termOrder(term)-start)/4)+1;if(!years.has(year))years.set(year,[]);years.get(year).push(term);}
   $('roadmap').innerHTML='<div class="pm-roadmap-content"><svg class="pm-links-svg" aria-hidden="true"></svg>'+[...years].map(([year,terms])=>{
-    const yearUnits=derived.items.filter(c=>terms.some(t=>t.id===state.positions[c.id])&&!c.completed).reduce((s,c)=>s+courseUnits(c),0);
+    const yearUnits=derived.items.filter(c=>terms.some(t=>t.id===state.positions[c.id])&&!c.completed).reduce((s,c)=>s+plannedCourseUnits(c),0);
     return `<section class="pm-year" aria-label="Year ${year}"><div class="pm-year-label"><span class="pm-year-number">${year}</span><h2>Year ${year}</h2><span>${e(yearUnits)} planned units</span></div><div class="pm-year-terms">${terms.map(term=>{
-      const all=derived.items.filter(c=>state.positions[c.id]===term.id),visible=all.filter(c=>state.showCompleted||!c.completed),load=all.filter(c=>!c.completed).reduce((s,c)=>s+courseUnits(c),0);
-      return `<section class="pm-term" data-term-id="${e(term.id)}" aria-label="${e(termLabel(term))}"><div class="pm-term-header"><h3 class="pm-term-title">${icon(term.season==='Summer'?'sun':'calendar')}${e(termLabel(term))}</h3><span class="pm-term-load ${load>term.limit?'is-over':''}">${load} / ${e(term.limit)} units</span></div><div class="pm-term-cards">${visible.length?visible.map(card).join(''):'<div class="pm-term-empty">Room for what’s next.<br>Drop a course here.</div>'}</div>${['Summer','Winter'].includes(term.season)?'<p class="pm-term-season-note">Proposed term · confirm course offerings</p>':''}</section>`;
+      const all=derived.items.filter(c=>state.positions[c.id]===term.id),visible=all.filter(c=>state.showCompleted||!c.completed),load=all.filter(c=>!c.completed).reduce((s,c)=>s+plannedCourseUnits(c),0);
+      return `<section class="pm-term" data-term-id="${e(term.id)}" aria-label="${e(termLabel(term))}"><div class="pm-term-header"><h3 class="pm-term-title">${icon(term.season==='Summer'?'sun':'calendar')}${e(termLabel(term))}</h3><span class="pm-term-load ${load>term.limit?'is-over':''}" title="${e(term.loadSource==='official-roadmap'?'Semester limit from the official CSUN roadmap':term.loadSource==='custom'?'Your custom course-load limit':term.loadSource==='accelerated'?'Calculated for your shorter timeline':'Standard semester limit')}">${load} / ${e(term.limit)} units</span></div><div class="pm-term-cards">${visible.length?visible.map(card).join(''):'<div class="pm-term-empty">No additional course is needed here.<br>Drag a course here to change your timeline.</div>'}</div>${['Summer','Winter'].includes(term.season)?'<p class="pm-term-season-note">Proposed term · confirm course offerings</p>':''}</section>`;
     }).join('')}</div></section>`;
   }).join('')+'</div>';
   const unscheduled=derived.items.filter(c=>!derived.terms.some(t=>t.id===state.positions[c.id]));
@@ -169,7 +174,7 @@ function drawLinks(){
 
 function toggleCompleted(id){
   const c=derived.items.find(c=>c.id===id);if(!c||c.placeholder)return;
-  const next=clone(state),done=next.completed.includes(id);next.completed=done?next.completed.filter(x=>x!==id):[...next.completed,id];
+  const next=clone(state),done=c.completed,parts=c.required_components||c.components.map(p=>p.component_id);if(done){const keep=new Set(next.completed.flatMap(code=>derived.ix.aliases.get(code)?.components||[code]));parts.forEach(p=>keep.delete(p));next.completed=[...keep];}else next.completed=[...new Set([...next.completed,...(parts.length===c.components.length?[id]:parts)])];
   commit(next,`${c.code} marked ${done?'incomplete':'complete'}.`);
 }
 function requestMove(id,term){
@@ -181,11 +186,12 @@ function requestMove(id,term){
 
 function openCourse(id){
   const c=derived.items.find(c=>c.id===id);if(!c)return;
-  if(c.placeholder){if(c.choiceId)openChoices(c.choiceId);else openPicker({area:c.geArea||'',replaceId:c.id,targetTerm:state.positions[c.id]});return;}
+  if(c.programReview){openDialog('Confirm these program requirements','PROGRAM CREDIT REVIEW',`<p>The catalog’s program requirements and the selected roadmap leave ${e(derived.ledger.programReviewUnits)} units to reconcile. These are reserved for program-specific requirements and are not unrestricted degree electives.</p><p>Complete the program’s course selections and review its official requirements before choosing these courses.</p><a class="pm-source-link" href="${e(safeOfficialUrl(c.source_url))}" target="_blank" rel="noopener noreferrer">Official program requirements ↗</a><div class="pm-dialog-footer"><button id="review-program-credit-choices" class="pm-button pm-button-primary">Review program choices</button></div>`);$('review-program-credit-choices').onclick=()=>openChoices();return;}
+  if(c.placeholder){if(c.choiceId)openChoiceSlot(id);else openPicker({area:c.geArea||'',replaceId:c.id,targetTerm:state.positions[c.id],upperDivision:c.level==='upper_division'});return;}
   focused=id;highlight();
-  const details=data.course_details?.[c.details_key]||{},url=safeOfficialUrl(c.source_url),locked=state.locked.includes(id),completed=state.completed.includes(id);
+  const details=data.course_details?.[c.details_key]||{},url=safeOfficialUrl(c.source_url),locked=state.locked.includes(id),completed=c.completed;
   const incoming=derived.edges.filter(edge=>edge.to===id),outgoing=derived.edges.filter(edge=>edge.from===id),links=state.links.filter(g=>g.members.includes(id));
-  const review=derived.review.filter(r=>r.id===id),parts=c.components?.map(p=>p.code).join(' + ');
+  const review=derived.review.filter(r=>r.id===id),parts=c.components?.filter(p=>!c.required_components?.length||c.required_components.includes(p.component_id)).map(p=>p.code).join(' + ');
   const termOptions=derived.terms.map(t=>`<option value="${e(t.id)}" ${state.positions[id]===t.id?'selected':''}>${e(termLabel(t))}</option>`).join('');
   const prerequisites=incoming.map(edge=>derived.items.find(x=>x.id===edge.from)?.code||edge.from.replaceAll('-',' '));
   const descendants=(course,seen=new Set())=>{if(seen.has(course))return 0;const next=new Set(seen).add(course);return Math.max(0,...derived.edges.filter(e=>e.from===course).map(e=>e.gap+descendants(e.to,next)));};
@@ -195,7 +201,8 @@ function openCourse(id){
     <p class="pm-course-description">${e(c.description||details.description||'A catalog description is not available in this snapshot. Open the official source to confirm this course’s content and requirements.')}</p>
     ${url?`<a class="pm-source-link" href="${e(url)}" target="_blank" rel="noopener noreferrer">Open official CSUN ${c.source_coverage==='individual_course_page'?'course page':'source'} ${icon('external')}</a>`:''}
     <p class="pm-source-note">Catalog excerpt · ${e(data.metadata.catalog_year)} planning snapshot</p>
-    ${choiceDescriptors(data,state).filter(choice=>ruleIds(choice).includes(id)&&state.selections[choice.choice_id]).map(choice=>`<p><button class="pm-button pm-button-small" data-change-choice="${e(choice.choice_id)}">Change ${e(choice.label||'program choice')}</button></p>`).join('')}
+    ${c.completed_units>0&&!completed?`<p class="pm-rule-box">${e(c.completed_units)} units are already completed. Only the remaining ${e(plannedCourseUnits(c))} units are included in future semester loads.</p>`:''}
+    ${c.choiceRefs?.length?`<p><button id="detail-replace-selection" class="pm-button pm-button-primary">Replace this course selection</button></p><p class="pm-source-note">${e(c.choiceRefs[0].label)} · the other selections stay in your plan.</p>`:''}
     ${derived.prerequisiteChoices.some(p=>p.course_id===id)?'<p><button id="detail-prerequisite-choice" class="pm-button pm-button-small">Choose prerequisite route</button></p>':''}
     ${c.components?.length>1?`<div class="pm-rule-box"><strong>Included components</strong><br>${e(parts)}<br>Lecture and lab move as one card.</div>`:''}
     <h3>Before you take it</h3><div class="pm-rule-box"><strong>Prerequisites</strong><br>${e(details.prerequisite_text|| (prerequisites.length?prerequisites.join(', '):'No course prerequisite stated in this snapshot.'))}${details.corequisite_text?`<br><strong>Corequisites</strong><br>${e(details.corequisite_text)}`:''}</div>
@@ -211,6 +218,7 @@ function openCourse(id){
   $('detail-complete').onclick=()=>{toggleCompleted(id);openCourse(id);};
   $('detail-lock').onclick=()=>{const n=clone(state);n.locked=locked?n.locked.filter(x=>x!==id):[...n.locked,id];commit(n,locked?'Course unlocked.':'Semester locked.');openCourse(id);};
   $('detail-select').onclick=()=>{selectCourse(id);closeDialog();};
+  $('detail-replace-selection')?.addEventListener('click',()=>openChoiceSlot(id));
   body.querySelectorAll('[data-change-choice]').forEach(b=>b.onclick=()=>openChoices(b.dataset.changeChoice));
   $('detail-prerequisite-choice')?.addEventListener('click',()=>openChoices());
   body.querySelectorAll('[data-detail-course]').forEach(b=>b.onclick=()=>openCourse(b.dataset.detailCourse));
@@ -219,6 +227,32 @@ function openCourse(id){
     openDialog('Remove this course?','EDIT YOUR ROADMAP',`<p>Remove <strong>${e(c.code)}</strong> from the roadmap? A required course will stay listed in Plan check until you restore it. Any course links containing it will also be removed.</p><div class="pm-dialog-footer"><button id="cancel-remove" class="pm-button">Keep course</button><button id="confirm-remove" class="pm-button pm-button-danger">Remove course</button></div>`);
     $('cancel-remove').onclick=()=>openCourse(id);$('confirm-remove').onclick=()=>{const n=clone(state);n.removed.push(id);n.added=n.added.filter(x=>x!==id);delete n.geAssignments[id];n.locked=n.locked.filter(x=>x!==id);n.links=n.links.filter(g=>!g.members.includes(id));selected.delete(id);commit(n,`${c.code} removed. Undo can bring it back.`,{schedule:'preserve'});closeDialog();};
   };
+}
+
+function openChoiceSlot(id){
+  const card=derived.items.find(c=>c.id===id);if(!card)return;
+  const reference=card.choiceRefs?.[0],choiceId=card.choiceId||reference?.choiceId;
+  const descriptor=choiceDescriptors(data,state).find(c=>c.choice_id===choiceId);if(!descriptor)return;
+  const context={choiceId,replaceValue:reference?.value||'',replaceId:card.placeholder?id:'',targetTerm:state.positions[id],singleSlot:true};
+  if(!descriptor.options?.length){openPicker(context);return;}
+  openDialog(reference?'Replace this selection':'Choose this course or pathway',descriptor.label,
+    `<p>${reference?'Choose a replacement for '+e(card.code)+'. The other courses selected for this requirement stay in your plan.':'Choose one eligible option for this box. Remaining selections keep their own boxes.'}</p>
+    <input id="choice-slot-search" type="search" placeholder="Search these options" aria-label="Search course options"><div id="choice-slot-results" class="pm-picker-results"></div>
+    <p class="pm-source-note">${e(state.positions[id]?termLabel(derived.terms.find(t=>t.id===state.positions[id])):'Choose a semester after selection')} · prerequisites and the semester limit still apply.</p>
+    <div class="pm-dialog-footer">${reference?'<button id="clear-slot-selection" class="pm-button">Clear this selection</button>':''}<button id="all-slot-choices" class="pm-button">Review whole requirement</button><button id="close-slot-picker" class="pm-button">Cancel</button></div>`,true);
+  const update=value=>{
+    const result=applyChoiceSelection(data,state,choiceId,value,{replaceValue:context.replaceValue,placeholderId:context.replaceId,targetTerm:context.targetTerm});
+    if(!result.ok){dialogError(result.message);return;}
+    commit(result.state,value?'Your course selection replaced its box.':'Selection cleared.',{schedule:'preserve'});closeDialog();
+    if(!result.courseIds.length&&value){const next=derived.items.find(c=>c.choiceId&&c.choiceId!==choiceId&&state.positions[c.id]===context.targetTerm);if(next)openChoiceSlot(next.id);}
+  };
+  function results(){const query=$('choice-slot-search').value.toLowerCase().trim();
+    const options=descriptor.options.filter(o=>(o.label+' '+ruleIds(o.rule).map(id=>derived.ix.courses.get(id)?.title||'').join(' ')).toLowerCase().includes(query));
+    $('choice-slot-results').innerHTML=options.map(o=>`<button class="pm-picker-row" data-slot-option="${e(o.id)}"><div><strong>${e(o.label)}${reference?.value===o.id?' · Current selection':''}</strong><small>${ruleIds(o.rule).length<=8?ruleIds(o.rule).map(id=>e(derived.ix.courses.get(id)?.title||id)).join('; '):'Choose this pathway to review its course selections.'}</small></div><span>${e(optionLabel(o).split(' · ').at(-1))}</span></button>`).join('')||'<p>No matching option.</p>';
+    $('choice-slot-results').querySelectorAll('[data-slot-option]').forEach(button=>button.onclick=()=>update(button.dataset.slotOption));
+  }
+  $('choice-slot-search').oninput=results;$('clear-slot-selection')?.addEventListener('click',()=>update(''));
+  $('all-slot-choices').onclick=()=>openChoices(choiceId);$('close-slot-picker').onclick=closeDialog;results();
 }
 
 function overlayOptions(area){
@@ -233,16 +267,16 @@ function openPicker(context={}){
   const descriptor=context.choiceId?choiceDescriptors(data,state).find(c=>c.choice_id===context.choiceId):null;
   const area=data.ge_areas.find(a=>a.area_id===context.area),isOverlay=area?.kind==='overlay';
   const title=descriptor?descriptor.label:area?`Choose ${area.area_id}${GE_ALIASES[area.area_id]?' / '+GE_ALIASES[area.area_id]:''} course`:'Find your next course';
-  const pool=descriptor?choiceCourseOptions(data,descriptor):area?(isOverlay?overlayOptions(area.area_id):geOptions(data,area.area_id)):data.courses;
+  const pool=(descriptor?choiceCourseOptions(data,descriptor):area?(isOverlay?overlayOptions(area.area_id):geOptions(data,area.area_id)):data.courses).filter(c=>!context.upperDivision||c.level==='upper_division');
   openDialog(title,descriptor?'PROGRAM REQUIREMENT':area?area.name:'CSUN COURSE CATALOG',`
-    <p>${descriptor?'Choose courses from this requirement’s eligible list.':area?'Select a catalog course eligible for this area.':'Search '+data.courses.length.toLocaleString()+' catalog records by code or title.'}</p>
+    <p>${descriptor?context.singleSlot?'Select one course to replace this box. Your other selections stay in place.':'Choose courses from this requirement’s eligible list.':area?'Select a catalog course eligible for this area. Existing major/minor courses are listed first.':'Search '+data.courses.length.toLocaleString()+' catalog records by code or title.'}</p>
     <div class="pm-picker-search"><input id="course-search" type="search" placeholder="Search code or title, e.g. BIOL 100" aria-label="Search courses" autocomplete="off"><div class="pm-picker-filters"><select id="course-level" aria-label="Course level"><option value="">All levels</option><option value="lower_division">Lower division</option><option value="upper_division">Upper division</option></select>${!descriptor?`<select id="picker-term" aria-label="Add to semester"><option value="">Auto-place course</option>${derived.terms.map(t=>`<option value="${e(t.id)}" ${context.targetTerm===t.id?'selected':''}>${e(termLabel(t))}</option>`).join('')}</select>`:''}</div></div>
     <p id="picker-count" class="pm-picker-count" role="status"></p><div id="course-results" class="pm-picker-results"></div>
     <div class="pm-dialog-footer">${!descriptor&&!area?'<button id="custom-course-button" class="pm-button">Add a custom course</button>':''}<button id="picker-done" class="pm-button pm-button-primary">Done</button></div>`,true);
   let limit=60;
   function results(){
     const query=$('course-search').value.trim().toLowerCase(),tokens=query.replaceAll('-',' ').split(/\s+/).filter(Boolean),level=$('course-level').value;
-    const matches=pool.filter(c=>(!level||c.level===level)&&tokens.every(token=>(c.code+' '+(c.title||'')).toLowerCase().includes(token)||c.code.toLowerCase().replaceAll(' ','').includes(token)));
+    const matches=pool.filter(c=>(!level||c.level===level)&&tokens.every(token=>(c.code+' '+(c.title||'')).toLowerCase().includes(token)||c.code.toLowerCase().replaceAll(' ','').includes(token))).sort((a,b)=>Number(derived.items.some(c=>c.id===b.course_id&&c.roles.some(r=>r==='major'||r==='minor')))-Number(derived.items.some(c=>c.id===a.course_id&&c.roles.some(r=>r==='major'||r==='minor'))));
     $('picker-count').textContent=`${matches.length.toLocaleString()} matching courses${matches.length>limit?' · showing '+limit:''}`;
     const chosen=descriptor?state.selections[descriptor.choice_id]||[]:[];
     $('course-results').innerHTML=matches.slice(0,limit).map(c=>{
@@ -253,12 +287,19 @@ function openPicker(context={}){
     $('load-more-courses')?.addEventListener('click',()=>{limit+=60;results();});
     $('course-results').querySelectorAll('[data-pick]').forEach(button=>button.onclick=()=>{
       const id=button.dataset.pick,next=clone(state);
-      if(descriptor){const selectedIds=Array.isArray(next.selections[descriptor.choice_id])?next.selections[descriptor.choice_id]:[];next.selections[descriptor.choice_id]=selectedIds.includes(id)?selectedIds.filter(x=>x!==id):[...selectedIds,id];commit(next,'Program selection updated.',{schedule:'preserve'});results();return;}
+      if(descriptor){
+        const selectedIds=Array.isArray(next.selections[descriptor.choice_id])?next.selections[descriptor.choice_id]:[],remove=!context.singleSlot&&selectedIds.includes(id);
+        const result=applyChoiceSelection(data,state,descriptor.choice_id,remove?'':id,{replaceValue:remove?id:context.replaceValue,placeholderId:context.replaceId,targetTerm:context.targetTerm});
+        if(!result.ok){dialogError(result.message);return;}
+        commit(result.state,'Course selection updated.',{schedule:'preserve'});if(context.singleSlot)closeDialog();else results();return;
+      }
       if(area&&!isOverlay&&next.geAssignments[id]&&next.geAssignments[id]!==area.area_id){dialogError('This course is already assigned to another GE area. Choose another course to avoid counting its units twice.');return;}
       next.added=[...new Set([...next.added,id])];next.removed=next.removed.filter(x=>x!==id);
       if(area&&!isOverlay)next.geAssignments[id]=area.area_id;
       const target=$('picker-term').value;
       if(target)next.positions[id]=target;
+      const proposed=derivePlan(data,next);
+      if(proposed.ledger.excessUnits>derived.ledger.excessUnits&&!derived.items.some(c=>c.id===id)&&!proposed.items.find(c=>c.id===id)?.geAppliedAreas?.some(a=>!state.geCompleted.includes(a))){dialogError('This would add units beyond your remaining degree requirements. Replace an optional course already in the plan first.');return;}
       commit(next,`${derived.ix.courses.get(id)?.code||id} added to your plan.`,{schedule:'preserve'});
       closeDialog();openCourse(id);
     });
@@ -304,9 +345,9 @@ function openChoices(focusId=''){
     ${derived.checklist.errors.length?`<p class="pm-dialog-note">${derived.checklist.errors.map(e).join('<br>')}</p>`:''}
     <div class="pm-dialog-footer"><button id="choices-done" class="pm-button pm-button-primary">Back to my roadmap</button></div>`,true);
   const refresh=(next,id)=>{if(id)delete next.legacySelections[id];const top=dialog.scrollTop;commit(next,'Program choices updated.',{schedule:'preserve'});openChoices();dialog.scrollTop=top;};
-  body.querySelectorAll('[data-choice-path]').forEach(select=>select.onchange=()=>{const next=clone(state);next.selections[select.dataset.choicePath]=select.value;refresh(next,select.dataset.choicePath);});
+  body.querySelectorAll('[data-choice-path]').forEach(select=>select.onchange=()=>{const result=applyChoiceSelection(data,state,select.dataset.choicePath,select.value);if(!result.ok){dialogError(result.message);return;}refresh(result.state,select.dataset.choicePath);});
   body.querySelectorAll('[data-prerequisite-choice]').forEach(select=>select.onchange=()=>{const next=clone(state);next.prerequisiteSelections[select.dataset.prerequisiteChoice]=select.value;refresh(next);});
-  body.querySelectorAll('[data-choice-option]').forEach(box=>box.onchange=()=>{const next=clone(state),id=box.dataset.choiceOption,values=Array.isArray(next.selections[id])?next.selections[id]:[],descriptor=descriptors.find(c=>c.choice_id===id);if(box.checked&&descriptor.maximum_count&&values.length>=descriptor.maximum_count){box.checked=false;dialogError(`Choose ${descriptor.maximum_count} option(s) in this block. Uncheck a selection to replace it.`);return;}next.selections[id]=box.checked?[...new Set([...values,box.value])]:values.filter(v=>v!==box.value);refresh(next,id);});
+  body.querySelectorAll('[data-choice-option]').forEach(box=>box.onchange=()=>{const id=box.dataset.choiceOption,result=applyChoiceSelection(data,state,id,box.checked?box.value:'',{replaceValue:box.checked?'':box.value});if(!result.ok){box.checked=!box.checked;dialogError(result.message);return;}refresh(result.state,id);});
   body.querySelectorAll('[data-choice-picker]').forEach(button=>button.onclick=()=>openPicker({choiceId:button.dataset.choicePicker}));
   body.querySelectorAll('[data-unchoose]').forEach(button=>button.onclick=()=>{const next=clone(state);next.selections[button.dataset.choiceId]=next.selections[button.dataset.choiceId].filter(id=>id!==button.dataset.unchoose);refresh(next);});
   body.querySelectorAll('[data-approve]').forEach(box=>box.onchange=()=>{const next=clone(state);next.approvedChoices=box.checked?[...next.approvedChoices,box.dataset.approve]:next.approvedChoices.filter(id=>id!==box.dataset.approve);refresh(next);});
@@ -361,7 +402,7 @@ function download(filename,content,mime){const url=URL.createObjectURL(new Blob(
 function exportJson(){download('csun-program-plan.json',exportPlan(state,data),'application/json');toast('Plan exported. Import this file on another browser to keep planning.');}
 function exportCsv(){
   const quote=value=>{let s=String(value??'');if(/^[=+@\-]/.test(s))s="'"+s;return '"'+s.replaceAll('"','""')+'"';};
-  const rows=[['Course','Title','Semester','Units','Completed','Role','Notes'],...derived.items.map(c=>[c.code,c.title,termLabel(derived.terms.find(t=>t.id===state.positions[c.id])),c.units_min,c.completed?'Yes':'No',roleLabel(c),state.notes[c.id]||''])];
+  const rows=[['Course','Title','Semester','Total units','Remaining units','Completed units','Completed','Role','Notes'],...derived.items.map(c=>[c.code,c.title,termLabel(derived.terms.find(t=>t.id===state.positions[c.id])),c.units_min,plannedCourseUnits(c),c.completed_units??(c.completed?courseUnits(c):0),c.completed?'Yes':'No',roleLabel(c),state.notes[c.id]||''])];
   download('csun-program-plan.csv','\uFEFF'+rows.map(row=>row.map(quote).join(',')).join('\r\n'),'text/csv;charset=utf-8');
 }
 function openTools(){
@@ -375,7 +416,7 @@ function openHelp(){openDialog('A roadmap you can make your own','A QUICK TOUR',
 
 function setGE(ids,checked){
   const next=clone(state);next.geCompleted=checked?[...new Set([...next.geCompleted,...ids])]:next.geCompleted.filter(id=>!ids.includes(id));
-  if(checked){next.added=next.added.filter(id=>!ids.includes(next.geAssignments[id]));for(const [id,area] of Object.entries(next.geAssignments))if(ids.includes(area))delete next.geAssignments[id];}
+  if(checked){next.added=next.added.filter(id=>!ids.includes(next.geAssignments[id])||next.completed.includes(id));for(const [id,area] of Object.entries(next.geAssignments))if(ids.includes(area)&&!next.completed.includes(id))delete next.geAssignments[id];}
   commit(next,checked?'Prior GE progress updated.':'Required GE space added to your roadmap.',{schedule:'preserve'});
 }
 
@@ -385,12 +426,16 @@ function wireEvents(){
     const next=clone(state),major=$('major-select').value;
     if(major!==state.settings.major){next.selections={};next.prerequisiteSelections={};next.legacySelections={};next.approvedChoices=[];next.removed=[];next.links=[];next.locked=[];}
     next.settings={major,minor:$('minor-select').value,years:Number($('plan-years').value),startYear:Number($('start-year').value),startSeason:$('start-season').value,summer:$('include-summer').checked,winter:$('include-winter').checked,regularLimit:Number($('regular-limit').value),summerLimit:Number($('summer-limit').value),winterLimit:Number($('winter-limit').value),transferUnits:Number($('transfer-units').value)};
+    next.settings.loadMode=$('load-mode').value;next.settings.priorUnitsMode=$('prior-credit-mode').value;
+    if(next.settings.priorUnitsMode==='estimate')next.settings.transferUnits=0;
     if($('roadmap-select').value)next.settings.roadmap=$('roadmap-select').value;
     if(next.settings.startYear!==state.settings.startYear||next.settings.startSeason!==state.settings.startSeason){next.positions={};next.locked=[];next.extraTerms=[];}
     const proposed=autoSchedule(data,withSuggestedPaths(data,next));commit(proposed,'Your roadmap is ready. Review program choices and plan checks.',{sync:true});
   };
   $('major-search').oninput=event=>populatePrograms(event.target.value);
   $('major-select').onchange=()=>syncRoadmaps($('major-select').value);
+  $('load-mode').onchange=()=>{$('regular-limit').disabled=$('load-mode').value!=='custom';};
+  $('prior-credit-mode').onchange=()=>{$('transfer-units').disabled=$('prior-credit-mode').value!=='transcript';};
   $('review-imported-choices').onclick=()=>openChoices();
   $('plan-name').onchange=event=>{const next=clone(state);next.name=event.target.value.trim()||'My graduation plan';commit(next);};
   $('ge-all').onchange=event=>setGE(data.ge_areas.map(a=>a.area_id),event.target.checked);
@@ -426,14 +471,14 @@ function wireEvents(){
 async function boot(){
   hydrateIcons();
   try{
-    const configUrl=new URL('../../data/program-mapper/config.json',import.meta.url),configResponse=await fetch(configUrl,{credentials:'omit'});
+    const configUrl=new URL('../../data/program-mapper/config.json?v=2026.11.19.3',import.meta.url),configResponse=await fetch(configUrl,{credentials:'omit'});
     if(!configResponse.ok)throw new Error('Could not load the mapper configuration.');
     const config=await configResponse.json(),catalogUrl=new URL(config.catalogUrl,configUrl);
     if(!['http:','https:'].includes(catalogUrl.protocol))throw new Error('The catalog endpoint must use HTTP or HTTPS.');
     const response=await fetch(catalogUrl,{credentials:'omit'});if(!response.ok)throw new Error('The catalog could not be loaded. Try refreshing in a moment.');
     data=await response.json();if(!data.metadata||!['courses','programs','requirements','ge_areas'].every(key=>Array.isArray(data[key])))throw new Error('The catalog response has an unsupported format.');
     let restored=false;
-    try{const saved=localStorage.getItem(STORAGE_KEY)||localStorage.getItem('csun-reimagined:program-mapper:v1');if(saved){state=importPlan(saved,data);if(Object.keys(state.legacySelections).length)state=autoSchedule(data,state,{preserve:true});restored=true;}}catch{toast('Your previous save could not be restored. Import an exported backup if you have one.',true);}
+    try{const saved=localStorage.getItem(STORAGE_KEY)||localStorage.getItem('csun-reimagined:program-mapper:v2')||localStorage.getItem('csun-reimagined:program-mapper:v1');if(saved){state=importPlan(saved,data);state=autoSchedule(data,state,{preserve:true});restored=true;}}catch{toast('Your previous save could not be restored. Import an exported backup if you have one.',true);}
     if(!state)state=autoSchedule(data,withSuggestedPaths(data,initialState(2026)));
     syncSetup();wireEvents();render();
     for(const id of ['major-select','minor-select','build-plan-button','add-course-button','export-button'])$(id).disabled=false;

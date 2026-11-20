@@ -1,68 +1,54 @@
 {
+  "snapshot": "2026.11.19.3",
   "runtime_files": {
     "pages/program-mapper.html": {
       "status": 200,
       "content_type": "text/html",
-      "bytes": 10955
+      "bytes": 12743
     },
-    "css/pages/program-mapper.css": {
+    "css/pages/program-mapper.css?v=2026.11.19.3": {
       "status": 200,
       "content_type": "text/css",
-      "bytes": 29642
+      "bytes": 32919
     },
-    "js/pages/program-mapper.js": {
+    "js/pages/program-mapper.js?v=2026.11.19.3": {
       "status": 200,
       "content_type": "text/javascript",
-      "bytes": 57035
+      "bytes": 71651
     },
-    "js/pages/program-mapper-core.mjs": {
+    "js/pages/program-mapper-core.mjs?v=2026.11.19.3": {
       "status": 200,
       "content_type": "text/javascript",
-      "bytes": 32929
+      "bytes": 60140
     },
-    "js/pages/program-mapper-catalog.mjs": {
+    "js/pages/program-mapper-catalog.mjs?v=2026.11.19.3": {
       "status": 200,
       "content_type": "text/javascript",
-      "bytes": 19861
+      "bytes": 26835
     },
-    "data/program-mapper/config.json": {
+    "data/program-mapper/config.json?v=2026.11.19.3": {
       "status": 200,
       "content_type": "application/json",
-      "bytes": 59
+      "bytes": 74
     },
-    "data/program-mapper/catalog.json": {
+    "data/program-mapper/catalog.json?v=2026.11.19.3": {
       "status": 200,
       "content_type": "application/json",
-      "bytes": 8192805
+      "bytes": 9427674
     }
   },
-  "html_ids_unique": true,
-  "local_references_resolve": true,
-  "node_tests": {
-    "passed": 45,
-    "failed": 0,
-    "includes_all_program_entries": 265
+  "functional_verification": {
+    "tests_passed": 94,
+    "tests_failed": 0,
+    "program_entries": 265,
+    "generated_scenarios_checked": 687,
+    "semester_limits_respected": true,
+    "GE_completed_states_checked": true,
+    "individual_choice_replacement_tested": true,
+    "native_browser": "Unavailable due to AF_UNIX socket restrictions; real layout, touch hit testing and print pagination need manual browser review."
   },
-  "browser_automation": {
-    "status": "blocked",
-    "reason": "Chromium cannot create its required AF_UNIX socket in the execution environment; responsive layout and native pointer hit testing were not verified."
-  },
-  "data": {
-    "courses": 4819,
-    "major_options": 158,
-    "minors": 107,
-    "course_records_with_descriptions": 4459,
-    "individual_pages_unconfirmed": 360
-  },
-  "live_rds_connected": false,
-  "live_site_updated": false,
-  "scope": {
-    "modified_existing_files": [
-      "css/pages/program-mapper.css",
-      "js/pages/program-mapper.js",
-      "pages/program-mapper.html"
-    ],
-    "other_existing_files_unchanged": true,
-    "runtime_file_count": 7
-  }
+  "program_entries": 265,
+  "roadmap_variants": 157,
+  "official_semester_totals": 1262,
+  "academic_audit": "data/program-mapper/academic-audit.json"
 }

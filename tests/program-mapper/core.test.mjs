@@ -112,7 +112,7 @@ test('variable-unit courses use the student selection and preserve it through ex
 test('upper-division GE courses wait for junior standing and basic GE preparation',()=>{
   const s=m.withSuggestedPaths(catalog,m.initialState());const candidate=catalog.courses.find(c=>c.level==='upper_division'&&c.ge_areas.includes('3A'));
   assert.ok(candidate);s.added.push(candidate.course_id);s.geAssignments[candidate.course_id]='3A';
-  const p=m.derivePlan(catalog,s),card=p.items.find(c=>c.id===candidate.course_id);assert.ok(card.minUnits>=60);assert.ok(p.edges.some(e=>e.to===candidate.course_id&&e.from.startsWith('ge:1C:')));
+  const p=m.derivePlan(catalog,s),card=p.items.find(c=>c.id===candidate.course_id);assert.ok(card.minUnitsAtTermEnd>=60);assert.ok(p.edges.some(e=>e.to===candidate.course_id&&e.from.startsWith('ge:1C:')));
 });
 test('all 265 major and minor entries load and schedule without crashes or silent conflicts',()=>{
   const report=[];
