@@ -85,14 +85,16 @@ function normalizeArea(id) { return ["2-UD","5-UD"].includes(id) ? "2/5-UD" : id
 
 export function domainChoice(data,node) {
   const route=node.elective_route;
+  const family=code=>String(code).replace(/\/L$/,'').replace(/(\d)L$/,'$1');
+  const excluded=new Set(route.excluded_codes.map(family));
   const eligible=data.courses.filter(c=>route.subjects.includes(c.code.split(' ')[0])&&
     Number(c.code.match(/\d+/)?.[0])>=route.number_range[0]&&Number(c.code.match(/\d+/)?.[0])<=route.number_range[1]&&
-    !route.excluded_codes.some(code=>code===c.code||c.components.some(p=>p.code===code)));
+    ![c.code,...c.components.map(p=>p.code)].some(code=>excluded.has(family(code))));
   return {type:'CHOOSE_PATH',choice_id:node.choice_id+':route',label:node.label+': choose a route',source_url:'https://catalog.csun.edu/academics/comp/programs/bs-computer-information-technology/',
     options:[{id:'cit-comp-electives',label:'15 units of eligible upper-division CIT / COMP electives',rule:{type:'APPROVED_ELECTIVES',choice_id:node.choice_id,
-      label:'CIT / COMP domain electives',minimum_units:route.minimum_units,candidate_course_ids:eligible.map(c=>c.course_id),combined_caps:route.combined_caps,
+      label:'CIT / COMP domain electives',minimum_units:route.minimum_units,candidate_course_ids:eligible.map(c=>c.course_id),combined_caps:route.combined_caps,strict_eligibility:true,
       constraints:['Excluded courses in the major cannot be reused here. COMP 488 and CIT 488 together may contribute at most 6 units.']}},
-    {id:'approved-package',label:'15-unit department-chair-approved package',rule:{type:'APPROVED_ELECTIVES',choice_id:node.choice_id+':approved',label:'Approved domain package',
+    {id:'approved-package',label:'Domain Emphasis Package · 15 units · all departments',rule:{type:'APPROVED_ELECTIVES',choice_id:node.choice_id+':approved',label:'Domain Emphasis Package',
       minimum_units:node.approved_package_route.minimum_units,maximum_lower_division_units:node.approved_package_route.maximum_lower_division_units,
       ge_overlap_allowed:false,approval_needed:true,candidate_course_ids:[],constraints:['Department chair approval is required before enrollment. At most 6 lower-division units; courses cannot overlap GE.']}}]};
 }
@@ -216,7 +218,7 @@ export function buildPlan(data, options) {
       const valid=[];
       for(const id of selected) {
         if(!ix.courses.has(id))errors.push("Unknown elective: "+id);
-        else if((n.candidate_course_ids||[]).length && !n.candidate_course_ids.includes(id) && !options.approved_choices?.includes(n.choice_id))errors.push(id+" requires approval in "+n.choice_id);
+        else if((n.candidate_course_ids||[]).length && !n.candidate_course_ids.includes(id) && (n.strict_eligibility||!options.approved_choices?.includes(n.choice_id)))errors.push(id+" is not eligible in "+n.choice_id);
         else {valid.push(id);add(id,role);}
       }
       for(const cap of n.combined_caps||[]) {
@@ -259,6 +261,7 @@ export function buildPlan(data, options) {
       return;
     }
     if(n.type==="DOMAIN_EMPHASIS") {
+      if(minor && n.minor_route.excluded_minors.includes(minor.program_id))errors.push('CIT cannot use a Computer Science or Information Systems minor. Choose another minor or a domain-emphasis route.');
       if(minor && options.use_minor_for_domain!==false &&
         !n.minor_route.excluded_minors.includes(minor.program_id)) {
         notices.push({kind:"domain_link",message:minor.name+" is the proposed CIT domain-emphasis route; do not add another 15-unit elective block.",

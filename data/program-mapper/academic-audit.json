@@ -5145,7 +5145,7 @@
     }
   ],
   "verification": {
-    "automated_tests_passed": 94,
+    "automated_tests_passed": 111,
     "automated_tests_failed": 0,
     "test_command": "node --test tests/program-mapper/*.test.mjs",
     "all_program_entries_exercised": 265,
@@ -5156,18 +5156,24 @@
   },
   "refinement": {
     "date": "2026-11-19",
-    "snapshot": "2026.11.19.3",
-    "plan_schema": 3,
+    "snapshot": "2026.11.19.4",
+    "plan_schema": 4,
     "verification": {
-      "tests_passed": 94,
+      "tests_passed": 111,
       "tests_failed": 0,
       "program_entries": 265,
       "generated_scenarios_checked": 687,
       "semester_limits_respected": true,
       "GE_completed_states_checked": true,
       "individual_choice_replacement_tested": true,
+      "roadmap_targets_separate_from_limits": true,
+      "CIT_domain_panel_and_restrictions_tested": true,
+      "manual_18_unit_moves_tested": true,
       "native_browser": "Unavailable due to AF_UNIX socket restrictions; real layout, touch hit testing and print pagination need manual browser review."
     },
+    "semester_loads": "Roadmap semester totals are soft recommendations. Manual and automatic regular-semester loads have an 18-unit ceiling, with lower custom maxima supported. Shorter plans never invent overloads; insufficient capacity is flagged. Summer is capped at 13, winter at 4.",
+    "CIT_domain": "A panel above Year 1 selects all-department domain packages or strictly eligible COMP/CIT 300–599 electives. Appropriate minors replace the extra block. CS and IS minors are disabled for CIT. Package approval, lower-division limit, GE non-overlap, excluded course families and combined 488 credit cap are enforced.",
+    "policy_verification_date": "2026-11-19",
     "credit_accounting": "Checked GE/campus areas receive a conservative planning-credit estimate after removing major/waiver/completed-course overlap. A transcript total replaces that estimate. Overlays create no extra earned units.",
     "degree_electives": "Only the remaining degree-credit balance is assigned to free electives. Unreconciled program credits above the guide’s free-elective budget are held as program review, not offered as unrestricted electives.",
     "course_overlap": "Existing eligible major/minor/preparation courses are automatically allocated to remaining GE. Course components are merged across lecture/bundle aliases, with completed components excluded from future loads.",
@@ -5178,6 +5184,8 @@
     ],
     "official_index": "https://catalog.csun.edu/resource/road-map/2026/",
     "policy_sources": [
+      "https://catalog.csun.edu/academics/comp/programs/bs-computer-information-technology/",
+      "https://catalog.csun.edu/policies/registration-unit-limits-academic-load-regulations/",
       "https://catalog.csun.edu/general-education/rules/",
       "https://catalog.csun.edu/campus-requirements/",
       "https://catalog.csun.edu/academics/phil/courses/phil-164/",
@@ -5189,6 +5197,7 @@
         "name": "Accountancy, B.S.: Professional Accountancy Option",
         "type": "major",
         "initial_degree_elective_units": 0,
+        "planning_major": "accountancy-b-s-professional-accountancy-option",
         "ge_completed_degree_elective_units": 0,
         "inferred_prior_GE_units": 37,
         "program_credit_review_units": 0,
@@ -5196,7 +5205,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 1,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -5211,6 +5220,7 @@
         "name": "Accountancy, B.S.: Information Systems Option",
         "type": "major",
         "initial_degree_elective_units": 0,
+        "planning_major": "accountancy-b-s-information-systems-option",
         "ge_completed_degree_elective_units": 0,
         "inferred_prior_GE_units": 37,
         "program_credit_review_units": 0,
@@ -5218,7 +5228,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 2,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -5233,6 +5243,7 @@
         "name": "Africana Studies, B.A.: African and African-American Social Sciences Option",
         "type": "major",
         "initial_degree_elective_units": 41,
+        "planning_major": "africana-studies-b-a-african-and-african-american-social-sciences-option",
         "ge_completed_degree_elective_units": 41,
         "inferred_prior_GE_units": 34,
         "program_credit_review_units": 0,
@@ -5255,6 +5266,7 @@
         "name": "Africana Studies, B.A.: African and African-American Humanities and Cultural Studies Option",
         "type": "major",
         "initial_degree_elective_units": 41,
+        "planning_major": "africana-studies-b-a-african-and-african-american-humanities-and-cultural-studies-option",
         "ge_completed_degree_elective_units": 41,
         "inferred_prior_GE_units": 34,
         "program_credit_review_units": 0,
@@ -5277,6 +5289,7 @@
         "name": "Africana Studies, B.A.: African-American Urban Education Option",
         "type": "major",
         "initial_degree_elective_units": 38,
+        "planning_major": "africana-studies-b-a-african-american-urban-education-option",
         "ge_completed_degree_elective_units": 38,
         "inferred_prior_GE_units": 37,
         "program_credit_review_units": 0,
@@ -5299,6 +5312,7 @@
         "name": "Anthropology, B.A.",
         "type": "major",
         "initial_degree_elective_units": 35,
+        "planning_major": "anthropology-b-a",
         "ge_completed_degree_elective_units": 35,
         "inferred_prior_GE_units": 40,
         "program_credit_review_units": 0,
@@ -5321,6 +5335,7 @@
         "name": "Art, B.A.",
         "type": "major",
         "initial_degree_elective_units": 17,
+        "planning_major": "art-b-a",
         "ge_completed_degree_elective_units": 17,
         "inferred_prior_GE_units": 46,
         "program_credit_review_units": 12,
@@ -5343,6 +5358,7 @@
         "name": "Asian American Studies, B.A.: Standard Major",
         "type": "major",
         "initial_degree_elective_units": 41,
+        "planning_major": "asian-american-studies-b-a-standard-major",
         "ge_completed_degree_elective_units": 41,
         "inferred_prior_GE_units": 37,
         "program_credit_review_units": 0,
@@ -5365,6 +5381,7 @@
         "name": "Asian American Studies, B.A.: Double Major",
         "type": "major",
         "initial_degree_elective_units": 53,
+        "planning_major": "asian-american-studies-b-a-double-major",
         "ge_completed_degree_elective_units": 53,
         "inferred_prior_GE_units": 37,
         "program_credit_review_units": 0,
@@ -5387,6 +5404,7 @@
         "name": "Biochemistry, B.S.",
         "type": "major",
         "initial_degree_elective_units": 0,
+        "planning_major": "biochemistry-b-s",
         "ge_completed_degree_elective_units": 0,
         "inferred_prior_GE_units": 36,
         "program_credit_review_units": 0,
@@ -5409,6 +5427,7 @@
         "name": "Biology, B.A.",
         "type": "major",
         "initial_degree_elective_units": 15,
+        "planning_major": "biology-b-a",
         "ge_completed_degree_elective_units": 15,
         "inferred_prior_GE_units": 39,
         "program_credit_review_units": 14,
@@ -5431,6 +5450,7 @@
         "name": "Biology, B.S.: Cell and Molecular Biology Option",
         "type": "major",
         "initial_degree_elective_units": 0,
+        "planning_major": "biology-b-s-cell-and-molecular-biology-option",
         "ge_completed_degree_elective_units": 0,
         "inferred_prior_GE_units": 36,
         "program_credit_review_units": 0,
@@ -5438,7 +5458,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 5,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -5453,6 +5473,7 @@
         "name": "Biology, B.S.: Ecology and Evolutionary Biology Option",
         "type": "major",
         "initial_degree_elective_units": 9,
+        "planning_major": "biology-b-s-ecology-and-evolutionary-biology-option",
         "ge_completed_degree_elective_units": 9,
         "inferred_prior_GE_units": 36,
         "program_credit_review_units": 5,
@@ -5460,7 +5481,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 1,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -5475,6 +5496,7 @@
         "name": "Biology, B.S.: Microbiology Option",
         "type": "major",
         "initial_degree_elective_units": 5,
+        "planning_major": "biology-b-s-microbiology-option",
         "ge_completed_degree_elective_units": 5,
         "inferred_prior_GE_units": 36,
         "program_credit_review_units": 1,
@@ -5482,7 +5504,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 2,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -5497,6 +5519,7 @@
         "name": "Biology, B.S.: Biotechnology/Medical Technology Option",
         "type": "major",
         "initial_degree_elective_units": 10,
+        "planning_major": "biology-b-s-biotechnology-medical-technology-option",
         "ge_completed_degree_elective_units": 10,
         "inferred_prior_GE_units": 36,
         "program_credit_review_units": 0,
@@ -5519,6 +5542,7 @@
         "name": "Biology, B.S.: Marine Biology Option",
         "type": "major",
         "initial_degree_elective_units": 8,
+        "planning_major": "biology-b-s-marine-biology-option",
         "ge_completed_degree_elective_units": 8,
         "inferred_prior_GE_units": 36,
         "program_credit_review_units": 0,
@@ -5526,7 +5550,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 1,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -5541,6 +5565,7 @@
         "name": "Business Administration, B.S.: Business Analytics Option",
         "type": "major",
         "initial_degree_elective_units": 14,
+        "planning_major": "business-administration-b-s-business-analytics-option",
         "ge_completed_degree_elective_units": 14,
         "inferred_prior_GE_units": 37,
         "program_credit_review_units": 0,
@@ -5563,6 +5588,7 @@
         "name": "Business Administration, B.S.: Business Law Option",
         "type": "major",
         "initial_degree_elective_units": 14,
+        "planning_major": "business-administration-b-s-business-law-option",
         "ge_completed_degree_elective_units": 14,
         "inferred_prior_GE_units": 37,
         "program_credit_review_units": 0,
@@ -5570,7 +5596,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 2,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -5585,6 +5611,7 @@
         "name": "Business Administration, B.S.: Financial Analysis Option",
         "type": "major",
         "initial_degree_elective_units": 11,
+        "planning_major": "business-administration-b-s-financial-analysis-option",
         "ge_completed_degree_elective_units": 11,
         "inferred_prior_GE_units": 37,
         "program_credit_review_units": 0,
@@ -5607,6 +5634,7 @@
         "name": "Business Administration, B.S.: Financial Planning Option",
         "type": "major",
         "initial_degree_elective_units": 17,
+        "planning_major": "business-administration-b-s-financial-planning-option",
         "ge_completed_degree_elective_units": 17,
         "inferred_prior_GE_units": 37,
         "program_credit_review_units": 0,
@@ -5629,6 +5657,7 @@
         "name": "Business Administration, B.S.: Global Supply Chain Management Option",
         "type": "major",
         "initial_degree_elective_units": 8,
+        "planning_major": "business-administration-b-s-global-supply-chain-management-option",
         "ge_completed_degree_elective_units": 8,
         "inferred_prior_GE_units": 37,
         "program_credit_review_units": 0,
@@ -5651,6 +5680,7 @@
         "name": "Business Administration, B.S.: Management Option",
         "type": "major",
         "initial_degree_elective_units": 14,
+        "planning_major": "business-administration-b-s-management-option",
         "ge_completed_degree_elective_units": 14,
         "inferred_prior_GE_units": 37,
         "program_credit_review_units": 0,
@@ -5673,6 +5703,7 @@
         "name": "Business Administration, B.S.: Marketing Option",
         "type": "major",
         "initial_degree_elective_units": 15,
+        "planning_major": "business-administration-b-s-marketing-option",
         "ge_completed_degree_elective_units": 15,
         "inferred_prior_GE_units": 37,
         "program_credit_review_units": 0,
@@ -5680,7 +5711,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 1,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -5695,6 +5726,7 @@
         "name": "Business Administration, B.S.: Real Estate Option",
         "type": "major",
         "initial_degree_elective_units": 14,
+        "planning_major": "business-administration-b-s-real-estate-option",
         "ge_completed_degree_elective_units": 14,
         "inferred_prior_GE_units": 37,
         "program_credit_review_units": 0,
@@ -5702,7 +5734,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 1,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -5717,6 +5749,7 @@
         "name": "Business Administration, B.S.: Risk Management and Insurance Option",
         "type": "major",
         "initial_degree_elective_units": 14,
+        "planning_major": "business-administration-b-s-risk-management-and-insurance-option",
         "ge_completed_degree_elective_units": 14,
         "inferred_prior_GE_units": 37,
         "program_credit_review_units": 0,
@@ -5739,6 +5772,7 @@
         "name": "Business Administration, B.S.: Systems and Operations Management Option",
         "type": "major",
         "initial_degree_elective_units": 14,
+        "planning_major": "business-administration-b-s-systems-and-operations-management-option",
         "ge_completed_degree_elective_units": 14,
         "inferred_prior_GE_units": 37,
         "program_credit_review_units": 0,
@@ -5761,6 +5795,7 @@
         "name": "Central American Studies, B.A.: Standard Major",
         "type": "major",
         "initial_degree_elective_units": 35,
+        "planning_major": "central-american-studies-b-a-standard-major",
         "ge_completed_degree_elective_units": 35,
         "inferred_prior_GE_units": 40,
         "program_credit_review_units": 0,
@@ -5783,6 +5818,7 @@
         "name": "Central American Studies, B.A.: Double Major",
         "type": "major",
         "initial_degree_elective_units": 44,
+        "planning_major": "central-american-studies-b-a-double-major",
         "ge_completed_degree_elective_units": 44,
         "inferred_prior_GE_units": 43,
         "program_credit_review_units": 0,
@@ -5805,6 +5841,7 @@
         "name": "Chemistry, B.A.",
         "type": "major",
         "initial_degree_elective_units": 24,
+        "planning_major": "chemistry-b-a",
         "ge_completed_degree_elective_units": 24,
         "inferred_prior_GE_units": 39,
         "program_credit_review_units": 0,
@@ -5812,7 +5849,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 1,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -5827,6 +5864,7 @@
         "name": "Chemistry, B.S.",
         "type": "major",
         "initial_degree_elective_units": 2,
+        "planning_major": "chemistry-b-s",
         "ge_completed_degree_elective_units": 2,
         "inferred_prior_GE_units": 39,
         "program_credit_review_units": 0,
@@ -5834,7 +5872,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 3,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -5849,6 +5887,7 @@
         "name": "Chicano and Chicana Studies, B.A.: Single Major",
         "type": "major",
         "initial_degree_elective_units": 42,
+        "planning_major": "chicano-and-chicana-studies-b-a-single-major",
         "ge_completed_degree_elective_units": 42,
         "inferred_prior_GE_units": 31,
         "program_credit_review_units": 0,
@@ -5856,7 +5895,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 1,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -5871,6 +5910,7 @@
         "name": "Chicano and Chicana Studies, B.A.: Double Major",
         "type": "major",
         "initial_degree_elective_units": 49,
+        "planning_major": "chicano-and-chicana-studies-b-a-double-major",
         "ge_completed_degree_elective_units": 49,
         "inferred_prior_GE_units": 34,
         "program_credit_review_units": 0,
@@ -5893,6 +5933,7 @@
         "name": "Chicano and Chicana Studies, B.A.: Chicana/o Studies Social Science Subject Matter Waiver Program Option",
         "type": "major",
         "initial_degree_elective_units": 0,
+        "planning_major": "chicano-and-chicana-studies-b-a-chicana-o-studies-social-science-subject-matter-waiver-program-option",
         "ge_completed_degree_elective_units": 0,
         "inferred_prior_GE_units": 37,
         "program_credit_review_units": 0,
@@ -5915,6 +5956,7 @@
         "name": "Chicano and Chicana Studies, B.A.: Environmental Justice in Chicana/o Communities Option",
         "type": "major",
         "initial_degree_elective_units": 47,
+        "planning_major": "chicano-and-chicana-studies-b-a-environmental-justice-in-chicana-o-communities-option",
         "ge_completed_degree_elective_units": 47,
         "inferred_prior_GE_units": 40,
         "program_credit_review_units": 0,
@@ -5937,6 +5979,7 @@
         "name": "Chicano and Chicana Studies, B.A.: Spanish Bilingual Elementary Program in Indigenous and Chicana/o Communities Option",
         "type": "major",
         "initial_degree_elective_units": 0,
+        "planning_major": "chicano-and-chicana-studies-b-a-spanish-bilingual-elementary-program-in-indigenous-and-chicana-o-communities-option",
         "ge_completed_degree_elective_units": 0,
         "inferred_prior_GE_units": 18,
         "program_credit_review_units": 0,
@@ -5944,12 +5987,12 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 7,
+            "unscheduled_cards": 1,
             "semester_loads_within_limits": true
           },
           {
             "state": "ge-completed",
-            "unscheduled_cards": 1,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           }
         ]
@@ -5959,6 +6002,7 @@
         "name": "Child and Adolescent Development, B.A.: Applied Developmental Science Option",
         "type": "major",
         "initial_degree_elective_units": 21,
+        "planning_major": "child-and-adolescent-development-b-a-applied-developmental-science-option",
         "ge_completed_degree_elective_units": 21,
         "inferred_prior_GE_units": 37,
         "program_credit_review_units": 6,
@@ -5966,7 +6010,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 1,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -5981,6 +6025,7 @@
         "name": "Child and Adolescent Development, B.A.: Early Childhood Development Option",
         "type": "major",
         "initial_degree_elective_units": 30,
+        "planning_major": "child-and-adolescent-development-b-a-early-childhood-development-option",
         "ge_completed_degree_elective_units": 30,
         "inferred_prior_GE_units": 34,
         "program_credit_review_units": 0,
@@ -5988,7 +6033,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 1,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -6003,6 +6048,7 @@
         "name": "Cinema and Television Arts, B.A.: Entertainment Media Management Option",
         "type": "major",
         "initial_degree_elective_units": 31,
+        "planning_major": "cinema-and-television-arts-b-a-entertainment-media-management-option",
         "ge_completed_degree_elective_units": 31,
         "inferred_prior_GE_units": 43,
         "program_credit_review_units": 1,
@@ -6010,7 +6056,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 1,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -6025,6 +6071,7 @@
         "name": "Cinema and Television Arts, B.A.: Film Production Option",
         "type": "major",
         "initial_degree_elective_units": 31,
+        "planning_major": "cinema-and-television-arts-b-a-film-production-option",
         "ge_completed_degree_elective_units": 31,
         "inferred_prior_GE_units": 43,
         "program_credit_review_units": 0,
@@ -6032,7 +6079,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 1,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -6047,6 +6094,7 @@
         "name": "Cinema and Television Arts, B.A.: Media Theory and Criticism Option",
         "type": "major",
         "initial_degree_elective_units": 32,
+        "planning_major": "cinema-and-television-arts-b-a-media-theory-and-criticism-option",
         "ge_completed_degree_elective_units": 32,
         "inferred_prior_GE_units": 43,
         "program_credit_review_units": 0,
@@ -6069,6 +6117,7 @@
         "name": "Cinema and Television Arts, B.A.: Emerging Media Production Option",
         "type": "major",
         "initial_degree_elective_units": 29,
+        "planning_major": "cinema-and-television-arts-b-a-emerging-media-production-option",
         "ge_completed_degree_elective_units": 29,
         "inferred_prior_GE_units": 43,
         "program_credit_review_units": 0,
@@ -6091,6 +6140,7 @@
         "name": "Cinema and Television Arts, B.A.: Screenwriting Option",
         "type": "major",
         "initial_degree_elective_units": 32,
+        "planning_major": "cinema-and-television-arts-b-a-screenwriting-option",
         "ge_completed_degree_elective_units": 32,
         "inferred_prior_GE_units": 43,
         "program_credit_review_units": 0,
@@ -6113,6 +6163,7 @@
         "name": "Cinema and Television Arts, B.A.: Television Production Option",
         "type": "major",
         "initial_degree_elective_units": 35,
+        "planning_major": "cinema-and-television-arts-b-a-television-production-option",
         "ge_completed_degree_elective_units": 35,
         "inferred_prior_GE_units": 43,
         "program_credit_review_units": 0,
@@ -6135,6 +6186,7 @@
         "name": "Civil Engineering, B.S.",
         "type": "major",
         "initial_degree_elective_units": 0,
+        "planning_major": "civil-engineering-b-s",
         "ge_completed_degree_elective_units": 0,
         "inferred_prior_GE_units": 27,
         "program_credit_review_units": 0,
@@ -6142,7 +6194,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 4,
+            "unscheduled_cards": 3,
             "semester_loads_within_limits": true
           },
           {
@@ -6157,6 +6209,7 @@
         "name": "Communication Studies, B.A.",
         "type": "major",
         "initial_degree_elective_units": 20,
+        "planning_major": "communication-studies-b-a",
         "ge_completed_degree_elective_units": 20,
         "inferred_prior_GE_units": 43,
         "program_credit_review_units": 3,
@@ -6179,6 +6232,7 @@
         "name": "Communicative Disorders, B.A.",
         "type": "major",
         "initial_degree_elective_units": 24,
+        "planning_major": "communicative-disorders-b-a",
         "ge_completed_degree_elective_units": 24,
         "inferred_prior_GE_units": 39,
         "program_credit_review_units": 0,
@@ -6201,6 +6255,7 @@
         "name": "Computer Engineering, B.S.",
         "type": "major",
         "initial_degree_elective_units": 0,
+        "planning_major": "computer-engineering-b-s",
         "ge_completed_degree_elective_units": 0,
         "inferred_prior_GE_units": 27,
         "program_credit_review_units": 0,
@@ -6208,7 +6263,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 6,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -6223,6 +6278,7 @@
         "name": "Computer Information Technology, B.S.",
         "type": "major",
         "initial_degree_elective_units": 3,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 3,
         "inferred_prior_GE_units": 37,
         "program_credit_review_units": 0,
@@ -6245,6 +6301,7 @@
         "name": "Computer Science, B.S.",
         "type": "major",
         "initial_degree_elective_units": 0,
+        "planning_major": "computer-science-b-s",
         "ge_completed_degree_elective_units": 0,
         "inferred_prior_GE_units": 36,
         "program_credit_review_units": 0,
@@ -6252,7 +6309,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 3,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -6267,6 +6324,7 @@
         "name": "Construction Management, B.S.",
         "type": "major",
         "initial_degree_elective_units": 0,
+        "planning_major": "construction-management-b-s",
         "ge_completed_degree_elective_units": 0,
         "inferred_prior_GE_units": 21,
         "program_credit_review_units": 0,
@@ -6289,6 +6347,7 @@
         "name": "Consumer Sciences, B.S.: Consumer Affairs Option",
         "type": "major",
         "initial_degree_elective_units": 35,
+        "planning_major": "consumer-sciences-b-s-consumer-affairs-option",
         "ge_completed_degree_elective_units": 35,
         "inferred_prior_GE_units": 40,
         "program_credit_review_units": 0,
@@ -6311,6 +6370,7 @@
         "name": "Consumer Sciences, B.S.: Family and Consumer Sciences Option",
         "type": "major",
         "initial_degree_elective_units": 32,
+        "planning_major": "consumer-sciences-b-s-family-and-consumer-sciences-option",
         "ge_completed_degree_elective_units": 32,
         "inferred_prior_GE_units": 43,
         "program_credit_review_units": 0,
@@ -6333,6 +6393,7 @@
         "name": "Criminology and Justice Studies, B.A.",
         "type": "major",
         "initial_degree_elective_units": 28,
+        "planning_major": "criminology-and-justice-studies-b-a",
         "ge_completed_degree_elective_units": 28,
         "inferred_prior_GE_units": 43,
         "program_credit_review_units": 0,
@@ -6355,6 +6416,7 @@
         "name": "Dance, B.A.",
         "type": "major",
         "initial_degree_elective_units": 20,
+        "planning_major": "dance-b-a",
         "ge_completed_degree_elective_units": 20,
         "inferred_prior_GE_units": 38,
         "program_credit_review_units": 0,
@@ -6377,6 +6439,7 @@
         "name": "Deaf Studies, B.A.",
         "type": "major",
         "initial_degree_elective_units": 21,
+        "planning_major": "deaf-studies-b-a",
         "ge_completed_degree_elective_units": 21,
         "inferred_prior_GE_units": 49,
         "program_credit_review_units": 0,
@@ -6399,9 +6462,33 @@
         "name": "Economics, B.A.",
         "type": "major",
         "initial_degree_elective_units": 27,
+        "planning_major": "economics-b-a",
         "ge_completed_degree_elective_units": 27,
         "inferred_prior_GE_units": 37,
         "program_credit_review_units": 5,
+        "no_GE_placeholders_when_all_completed": true,
+        "results": [
+          {
+            "state": "new-plan",
+            "unscheduled_cards": 0,
+            "semester_loads_within_limits": true
+          },
+          {
+            "state": "ge-completed",
+            "unscheduled_cards": 0,
+            "semester_loads_within_limits": true
+          }
+        ]
+      },
+      {
+        "program_id": "electrical-engineering-b-s",
+        "name": "Electrical Engineering, B.S.",
+        "type": "major",
+        "initial_degree_elective_units": 0,
+        "planning_major": "electrical-engineering-b-s",
+        "ge_completed_degree_elective_units": 0,
+        "inferred_prior_GE_units": 28,
+        "program_credit_review_units": 0,
         "no_GE_placeholders_when_all_completed": true,
         "results": [
           {
@@ -6417,32 +6504,11 @@
         ]
       },
       {
-        "program_id": "electrical-engineering-b-s",
-        "name": "Electrical Engineering, B.S.",
-        "type": "major",
-        "initial_degree_elective_units": 0,
-        "ge_completed_degree_elective_units": 0,
-        "inferred_prior_GE_units": 28,
-        "program_credit_review_units": 0,
-        "no_GE_placeholders_when_all_completed": true,
-        "results": [
-          {
-            "state": "new-plan",
-            "unscheduled_cards": 3,
-            "semester_loads_within_limits": true
-          },
-          {
-            "state": "ge-completed",
-            "unscheduled_cards": 2,
-            "semester_loads_within_limits": true
-          }
-        ]
-      },
-      {
         "program_id": "engineering-management-technology-b-s",
         "name": "Engineering Management Technology, B.S.",
         "type": "major",
         "initial_degree_elective_units": 0,
+        "planning_major": "engineering-management-technology-b-s",
         "ge_completed_degree_elective_units": 0,
         "inferred_prior_GE_units": 25,
         "program_credit_review_units": 0,
@@ -6450,7 +6516,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 2,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -6465,6 +6531,7 @@
         "name": "English, B.A.: Literature Option",
         "type": "major",
         "initial_degree_elective_units": 26,
+        "planning_major": "english-b-a-literature-option",
         "ge_completed_degree_elective_units": 26,
         "inferred_prior_GE_units": 46,
         "program_credit_review_units": 0,
@@ -6487,6 +6554,7 @@
         "name": "English, B.A.: Creative Writing Option",
         "type": "major",
         "initial_degree_elective_units": 32,
+        "planning_major": "english-b-a-creative-writing-option",
         "ge_completed_degree_elective_units": 32,
         "inferred_prior_GE_units": 43,
         "program_credit_review_units": 0,
@@ -6494,7 +6562,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 1,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -6509,6 +6577,7 @@
         "name": "English, B.A.: Subject Matter Program for the Single Subject Credential Option",
         "type": "major",
         "initial_degree_elective_units": 20,
+        "planning_major": "english-b-a-subject-matter-program-for-the-single-subject-credential-option",
         "ge_completed_degree_elective_units": 20,
         "inferred_prior_GE_units": 43,
         "program_credit_review_units": 0,
@@ -6531,6 +6600,7 @@
         "name": "English, B.A.: Four-Year Integrated (FYI) English Subject Matter Program for the Single Subject Credential Option",
         "type": "major",
         "initial_degree_elective_units": 0,
+        "planning_major": "english-b-a-four-year-integrated-fyi-english-subject-matter-program-for-the-single-subject-credential-option",
         "ge_completed_degree_elective_units": 0,
         "inferred_prior_GE_units": 3,
         "program_credit_review_units": 16,
@@ -6553,6 +6623,7 @@
         "name": "English, B.A.: Junior-Year Integrated (JYI) English Subject Matter Program for the Single Subject Credential Option",
         "type": "major",
         "initial_degree_elective_units": 41,
+        "planning_major": "english-b-a-junior-year-integrated-jyi-english-subject-matter-program-for-the-single-subject-credential-option",
         "ge_completed_degree_elective_units": 41,
         "inferred_prior_GE_units": 6,
         "program_credit_review_units": 0,
@@ -6560,12 +6631,12 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 4,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
             "state": "ge-completed",
-            "unscheduled_cards": 2,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           }
         ]
@@ -6575,6 +6646,7 @@
         "name": "English, B.A.: Honors Option",
         "type": "major",
         "initial_degree_elective_units": 29,
+        "planning_major": "english-b-a-honors-option",
         "ge_completed_degree_elective_units": 29,
         "inferred_prior_GE_units": 46,
         "program_credit_review_units": 0,
@@ -6597,6 +6669,7 @@
         "name": "Environmental and Occupational Health, B.S.",
         "type": "major",
         "initial_degree_elective_units": 8,
+        "planning_major": "environmental-and-occupational-health-b-s",
         "ge_completed_degree_elective_units": 8,
         "inferred_prior_GE_units": 33,
         "program_credit_review_units": 0,
@@ -6619,6 +6692,7 @@
         "name": "Environmental and Occupational Health, B.S.: Industrial Hygiene Option",
         "type": "major",
         "initial_degree_elective_units": 7,
+        "planning_major": "environmental-and-occupational-health-b-s-industrial-hygiene-option",
         "ge_completed_degree_elective_units": 7,
         "inferred_prior_GE_units": 33,
         "program_credit_review_units": 0,
@@ -6626,7 +6700,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 1,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -6641,6 +6715,7 @@
         "name": "Environmental Science, B.A.",
         "type": "major",
         "initial_degree_elective_units": 23,
+        "planning_major": "environmental-science-b-a",
         "ge_completed_degree_elective_units": 23,
         "inferred_prior_GE_units": 36,
         "program_credit_review_units": 0,
@@ -6648,7 +6723,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 1,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -6663,6 +6738,7 @@
         "name": "Family and Consumer Sciences, B.S.: Family Studies Option",
         "type": "major",
         "initial_degree_elective_units": 0,
+        "planning_major": "family-and-consumer-sciences-b-s-family-studies-option",
         "ge_completed_degree_elective_units": 0,
         "inferred_prior_GE_units": 40,
         "program_credit_review_units": 0,
@@ -6670,7 +6746,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 4,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -6685,6 +6761,7 @@
         "name": "Fashion Design and Merchandising, B.S.: Fashion Design and Production Option",
         "type": "major",
         "initial_degree_elective_units": 29,
+        "planning_major": "fashion-design-and-merchandising-b-s-fashion-design-and-production-option",
         "ge_completed_degree_elective_units": 29,
         "inferred_prior_GE_units": 40,
         "program_credit_review_units": 0,
@@ -6707,6 +6784,7 @@
         "name": "Fashion Design and Merchandising, B.S.: Fashion Merchandising Option",
         "type": "major",
         "initial_degree_elective_units": 29,
+        "planning_major": "fashion-design-and-merchandising-b-s-fashion-merchandising-option",
         "ge_completed_degree_elective_units": 29,
         "inferred_prior_GE_units": 40,
         "program_credit_review_units": 0,
@@ -6729,6 +6807,7 @@
         "name": "Fashion Design and Merchandising, B.S.: Textiles Option",
         "type": "major",
         "initial_degree_elective_units": 32,
+        "planning_major": "fashion-design-and-merchandising-b-s-textiles-option",
         "ge_completed_degree_elective_units": 32,
         "inferred_prior_GE_units": 40,
         "program_credit_review_units": 0,
@@ -6751,6 +6830,7 @@
         "name": "Gender and Women’s Studies, B.A.",
         "type": "major",
         "initial_degree_elective_units": 29,
+        "planning_major": "gender-and-women-s-studies-b-a",
         "ge_completed_degree_elective_units": 29,
         "inferred_prior_GE_units": 46,
         "program_credit_review_units": 0,
@@ -6773,6 +6853,7 @@
         "name": "Gender and Women’s Studies, B.A.: Double Major",
         "type": "major",
         "initial_degree_elective_units": 47,
+        "planning_major": "gender-and-women-s-studies-b-a-double-major",
         "ge_completed_degree_elective_units": 47,
         "inferred_prior_GE_units": 43,
         "program_credit_review_units": 0,
@@ -6795,6 +6876,7 @@
         "name": "Geographic Information Science, B.S.",
         "type": "major",
         "initial_degree_elective_units": 20,
+        "planning_major": "geographic-information-science-b-s",
         "ge_completed_degree_elective_units": 20,
         "inferred_prior_GE_units": 43,
         "program_credit_review_units": 0,
@@ -6817,6 +6899,7 @@
         "name": "Geography and Environmental Studies, B.S.",
         "type": "major",
         "initial_degree_elective_units": 23,
+        "planning_major": "geography-and-environmental-studies-b-s",
         "ge_completed_degree_elective_units": 23,
         "inferred_prior_GE_units": 49,
         "program_credit_review_units": 0,
@@ -6839,6 +6922,7 @@
         "name": "Geology, B.S.: Geology Option",
         "type": "major",
         "initial_degree_elective_units": 12,
+        "planning_major": "geology-b-s-geology-option",
         "ge_completed_degree_elective_units": 12,
         "inferred_prior_GE_units": 39,
         "program_credit_review_units": 14,
@@ -6846,7 +6930,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 3,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -6861,6 +6945,7 @@
         "name": "Geology, B.S.: Geophysics Option",
         "type": "major",
         "initial_degree_elective_units": 11,
+        "planning_major": "geology-b-s-geophysics-option",
         "ge_completed_degree_elective_units": 11,
         "inferred_prior_GE_units": 36,
         "program_credit_review_units": 6,
@@ -6883,6 +6968,7 @@
         "name": "Health Administration, B.S.",
         "type": "major",
         "initial_degree_elective_units": 13,
+        "planning_major": "health-administration-b-s",
         "ge_completed_degree_elective_units": 13,
         "inferred_prior_GE_units": 36,
         "program_credit_review_units": 0,
@@ -6905,6 +6991,7 @@
         "name": "History, B.A.",
         "type": "major",
         "initial_degree_elective_units": 26,
+        "planning_major": "history-b-a",
         "ge_completed_degree_elective_units": 26,
         "inferred_prior_GE_units": 46,
         "program_credit_review_units": 0,
@@ -6927,6 +7014,7 @@
         "name": "History, B.A.: Four-Year Integrated (FYI) History Subject Matter Program for the Single Subject Credential Option",
         "type": "major",
         "initial_degree_elective_units": 0,
+        "planning_major": "history-b-a-four-year-integrated-fyi-history-subject-matter-program-for-the-single-subject-credential-option",
         "ge_completed_degree_elective_units": 0,
         "inferred_prior_GE_units": 0,
         "program_credit_review_units": 39,
@@ -6934,12 +7022,12 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 5,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
             "state": "ge-completed",
-            "unscheduled_cards": 5,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           }
         ]
@@ -6949,6 +7037,7 @@
         "name": "History, B.A.: Junior-Year Integrated (JYI) History Subject Matter Program for the Single Subject Credential Option",
         "type": "major",
         "initial_degree_elective_units": 69,
+        "planning_major": "history-b-a-junior-year-integrated-jyi-history-subject-matter-program-for-the-single-subject-credential-option",
         "ge_completed_degree_elective_units": 69,
         "inferred_prior_GE_units": 6,
         "program_credit_review_units": 0,
@@ -6956,12 +7045,12 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 5,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
             "state": "ge-completed",
-            "unscheduled_cards": 3,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           }
         ]
@@ -6971,6 +7060,7 @@
         "name": "Information Systems, B.S.: Business Systems Option",
         "type": "major",
         "initial_degree_elective_units": 1,
+        "planning_major": "information-systems-b-s-business-systems-option",
         "ge_completed_degree_elective_units": 1,
         "inferred_prior_GE_units": 37,
         "program_credit_review_units": 0,
@@ -6993,6 +7083,7 @@
         "name": "Information Systems, B.S.: Software Technology Option",
         "type": "major",
         "initial_degree_elective_units": 0,
+        "planning_major": "information-systems-b-s-software-technology-option",
         "ge_completed_degree_elective_units": 0,
         "inferred_prior_GE_units": 34,
         "program_credit_review_units": 0,
@@ -7000,7 +7091,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 3,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -7015,6 +7106,7 @@
         "name": "Information Systems, B.S.: Computer Information Technology Option",
         "type": "major",
         "initial_degree_elective_units": 0,
+        "planning_major": "information-systems-b-s-computer-information-technology-option",
         "ge_completed_degree_elective_units": 0,
         "inferred_prior_GE_units": 37,
         "program_credit_review_units": 0,
@@ -7022,7 +7114,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 4,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -7037,6 +7129,7 @@
         "name": "Information Systems, B.S.: Health Systems Option",
         "type": "major",
         "initial_degree_elective_units": 1,
+        "planning_major": "information-systems-b-s-health-systems-option",
         "ge_completed_degree_elective_units": 1,
         "inferred_prior_GE_units": 37,
         "program_credit_review_units": 0,
@@ -7044,7 +7137,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 1,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -7059,6 +7152,7 @@
         "name": "Interdisciplinary Studies, B.A.",
         "type": "major",
         "initial_degree_elective_units": 23,
+        "planning_major": "interdisciplinary-studies-b-a",
         "ge_completed_degree_elective_units": 23,
         "inferred_prior_GE_units": 49,
         "program_credit_review_units": 0,
@@ -7081,6 +7175,7 @@
         "name": "Interdisciplinary Studies, B.A.: Double Major",
         "type": "major",
         "initial_degree_elective_units": 38,
+        "planning_major": "interdisciplinary-studies-b-a-double-major",
         "ge_completed_degree_elective_units": 38,
         "inferred_prior_GE_units": 49,
         "program_credit_review_units": 0,
@@ -7103,6 +7198,7 @@
         "name": "Interior Design, B.S.",
         "type": "major",
         "initial_degree_elective_units": 2,
+        "planning_major": "interior-design-b-s",
         "ge_completed_degree_elective_units": 2,
         "inferred_prior_GE_units": 40,
         "program_credit_review_units": 0,
@@ -7125,6 +7221,7 @@
         "name": "Jewish Studies, B.A.",
         "type": "major",
         "initial_degree_elective_units": 50,
+        "planning_major": "jewish-studies-b-a",
         "ge_completed_degree_elective_units": 50,
         "inferred_prior_GE_units": 40,
         "program_credit_review_units": 0,
@@ -7147,6 +7244,7 @@
         "name": "Journalism, B.A.",
         "type": "major",
         "initial_degree_elective_units": 0,
+        "planning_major": "journalism-b-a",
         "ge_completed_degree_elective_units": 0,
         "inferred_prior_GE_units": 46,
         "program_credit_review_units": 0,
@@ -7154,12 +7252,12 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 17,
+            "unscheduled_cards": 9,
             "semester_loads_within_limits": true
           },
           {
             "state": "ge-completed",
-            "unscheduled_cards": 2,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           }
         ]
@@ -7169,6 +7267,7 @@
         "name": "Journalism, B.A.: Broadcast Option",
         "type": "major",
         "initial_degree_elective_units": 0,
+        "planning_major": "journalism-b-a-broadcast-option",
         "ge_completed_degree_elective_units": 0,
         "inferred_prior_GE_units": 46,
         "program_credit_review_units": 0,
@@ -7176,12 +7275,12 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 17,
+            "unscheduled_cards": 9,
             "semester_loads_within_limits": true
           },
           {
             "state": "ge-completed",
-            "unscheduled_cards": 2,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           }
         ]
@@ -7191,6 +7290,7 @@
         "name": "Journalism, B.A.: Public Relations Option",
         "type": "major",
         "initial_degree_elective_units": 0,
+        "planning_major": "journalism-b-a-public-relations-option",
         "ge_completed_degree_elective_units": 0,
         "inferred_prior_GE_units": 46,
         "program_credit_review_units": 0,
@@ -7198,12 +7298,12 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 17,
+            "unscheduled_cards": 9,
             "semester_loads_within_limits": true
           },
           {
             "state": "ge-completed",
-            "unscheduled_cards": 2,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           }
         ]
@@ -7213,6 +7313,7 @@
         "name": "Kinesiology, B.S.: Exercise Science Option",
         "type": "major",
         "initial_degree_elective_units": 12,
+        "planning_major": "kinesiology-b-s-exercise-science-option",
         "ge_completed_degree_elective_units": 12,
         "inferred_prior_GE_units": 33,
         "program_credit_review_units": 0,
@@ -7220,7 +7321,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 1,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -7235,6 +7336,7 @@
         "name": "Kinesiology, B.S.: Dance Option",
         "type": "major",
         "initial_degree_elective_units": 18,
+        "planning_major": "kinesiology-b-s-dance-option",
         "ge_completed_degree_elective_units": 18,
         "inferred_prior_GE_units": 36,
         "program_credit_review_units": 0,
@@ -7242,7 +7344,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 1,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -7257,6 +7359,7 @@
         "name": "Kinesiology, B.S.: Sport Studies Option",
         "type": "major",
         "initial_degree_elective_units": 16,
+        "planning_major": "kinesiology-b-s-sport-studies-option",
         "ge_completed_degree_elective_units": 16,
         "inferred_prior_GE_units": 36,
         "program_credit_review_units": 0,
@@ -7264,7 +7367,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 1,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -7279,6 +7382,7 @@
         "name": "Kinesiology, B.S.: Applied Fitness, Active Lifestyle, Strength, and Conditioning Option",
         "type": "major",
         "initial_degree_elective_units": 13,
+        "planning_major": "kinesiology-b-s-applied-fitness-active-lifestyle-strength-and-conditioning-option",
         "ge_completed_degree_elective_units": 13,
         "inferred_prior_GE_units": 30,
         "program_credit_review_units": 0,
@@ -7286,7 +7390,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 3,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -7301,6 +7405,7 @@
         "name": "Kinesiology, B.S.: Physical Education Option",
         "type": "major",
         "initial_degree_elective_units": 11,
+        "planning_major": "kinesiology-b-s-physical-education-option",
         "ge_completed_degree_elective_units": 11,
         "inferred_prior_GE_units": 36,
         "program_credit_review_units": 0,
@@ -7308,12 +7413,12 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 1,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
             "state": "ge-completed",
-            "unscheduled_cards": 1,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           }
         ]
@@ -7323,6 +7428,7 @@
         "name": "Languages and Cultures, B.A.: Armenian Option",
         "type": "major",
         "initial_degree_elective_units": 35,
+        "planning_major": "languages-and-cultures-b-a-armenian-option",
         "ge_completed_degree_elective_units": 35,
         "inferred_prior_GE_units": 43,
         "program_credit_review_units": 0,
@@ -7345,6 +7451,7 @@
         "name": "Languages and Cultures, B.A.: French Option",
         "type": "major",
         "initial_degree_elective_units": 31,
+        "planning_major": "languages-and-cultures-b-a-french-option",
         "ge_completed_degree_elective_units": 31,
         "inferred_prior_GE_units": 46,
         "program_credit_review_units": 1,
@@ -7352,7 +7459,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 1,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -7367,6 +7474,7 @@
         "name": "Languages and Cultures, B.A.: Italian Option",
         "type": "major",
         "initial_degree_elective_units": 32,
+        "planning_major": "languages-and-cultures-b-a-italian-option",
         "ge_completed_degree_elective_units": 32,
         "inferred_prior_GE_units": 46,
         "program_credit_review_units": 0,
@@ -7389,6 +7497,7 @@
         "name": "Languages and Cultures, B.A.: Japanese Option",
         "type": "major",
         "initial_degree_elective_units": 36,
+        "planning_major": "languages-and-cultures-b-a-japanese-option",
         "ge_completed_degree_elective_units": 36,
         "inferred_prior_GE_units": 40,
         "program_credit_review_units": 0,
@@ -7411,6 +7520,7 @@
         "name": "Liberal Studies, B.A.: Pre-Credential Program Option",
         "type": "major",
         "initial_degree_elective_units": 9,
+        "planning_major": "liberal-studies-b-a-pre-credential-program-option",
         "ge_completed_degree_elective_units": 9,
         "inferred_prior_GE_units": 3,
         "program_credit_review_units": 0,
@@ -7418,7 +7528,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 1,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -7433,6 +7543,7 @@
         "name": "Liberal Studies, B.A.: Integrated Teacher Education Program (ITEP) Junior Option",
         "type": "major",
         "initial_degree_elective_units": 0,
+        "planning_major": "liberal-studies-b-a-integrated-teacher-education-program-itep-junior-option",
         "ge_completed_degree_elective_units": 0,
         "inferred_prior_GE_units": 6,
         "program_credit_review_units": 0,
@@ -7440,7 +7551,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 1,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -7455,6 +7566,7 @@
         "name": "Liberal Studies, B.A.: Integrated Teacher Education Program (ITEP) Freshman Option",
         "type": "major",
         "initial_degree_elective_units": 0,
+        "planning_major": "liberal-studies-b-a-integrated-teacher-education-program-itep-freshman-option",
         "ge_completed_degree_elective_units": 0,
         "inferred_prior_GE_units": 6,
         "program_credit_review_units": 0,
@@ -7462,7 +7574,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 2,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -7477,6 +7589,7 @@
         "name": "Linguistics, B.A.",
         "type": "major",
         "initial_degree_elective_units": 26,
+        "planning_major": "linguistics-b-a",
         "ge_completed_degree_elective_units": 26,
         "inferred_prior_GE_units": 49,
         "program_credit_review_units": 12,
@@ -7499,6 +7612,7 @@
         "name": "Linguistics, B.A.: Double Major",
         "type": "major",
         "initial_degree_elective_units": 41,
+        "planning_major": "linguistics-b-a-double-major",
         "ge_completed_degree_elective_units": 41,
         "inferred_prior_GE_units": 49,
         "program_credit_review_units": 0,
@@ -7521,6 +7635,7 @@
         "name": "Linguistics, B.A. + Linguistics, M.A.: Blended Program",
         "type": "major",
         "initial_degree_elective_units": 38,
+        "planning_major": "linguistics-b-a-linguistics-m-a-blended-program",
         "ge_completed_degree_elective_units": 38,
         "inferred_prior_GE_units": 49,
         "program_credit_review_units": 0,
@@ -7528,7 +7643,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 9,
+            "unscheduled_cards": 1,
             "semester_loads_within_limits": true
           },
           {
@@ -7543,6 +7658,7 @@
         "name": "Linguistics, B.A. + Teaching English as a Second Language, M.A.: Blended Program",
         "type": "major",
         "initial_degree_elective_units": 8,
+        "planning_major": "linguistics-b-a-teaching-english-as-a-second-language-m-a-blended-program",
         "ge_completed_degree_elective_units": 8,
         "inferred_prior_GE_units": 49,
         "program_credit_review_units": 0,
@@ -7550,7 +7666,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 9,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -7565,6 +7681,7 @@
         "name": "Manufacturing Systems Engineering, B.S.",
         "type": "major",
         "initial_degree_elective_units": 0,
+        "planning_major": "manufacturing-systems-engineering-b-s",
         "ge_completed_degree_elective_units": 0,
         "inferred_prior_GE_units": 28,
         "program_credit_review_units": 0,
@@ -7572,7 +7689,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 2,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -7587,6 +7704,7 @@
         "name": "Mathematics, B.A.: General Option",
         "type": "major",
         "initial_degree_elective_units": 26,
+        "planning_major": "mathematics-b-a-general-option",
         "ge_completed_degree_elective_units": 26,
         "inferred_prior_GE_units": 36,
         "program_credit_review_units": 0,
@@ -7609,6 +7727,7 @@
         "name": "Mathematics, B.A.: Secondary Teaching Option",
         "type": "major",
         "initial_degree_elective_units": 27,
+        "planning_major": "mathematics-b-a-secondary-teaching-option",
         "ge_completed_degree_elective_units": 27,
         "inferred_prior_GE_units": 33,
         "program_credit_review_units": 0,
@@ -7631,6 +7750,7 @@
         "name": "Mathematics, B.S.: Mathematics Option",
         "type": "major",
         "initial_degree_elective_units": 20,
+        "planning_major": "mathematics-b-s-mathematics-option",
         "ge_completed_degree_elective_units": 20,
         "inferred_prior_GE_units": 36,
         "program_credit_review_units": 0,
@@ -7638,7 +7758,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 1,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -7653,6 +7773,7 @@
         "name": "Mathematics, B.S.: Statistics Option",
         "type": "major",
         "initial_degree_elective_units": 20,
+        "planning_major": "mathematics-b-s-statistics-option",
         "ge_completed_degree_elective_units": 20,
         "inferred_prior_GE_units": 36,
         "program_credit_review_units": 0,
@@ -7675,6 +7796,7 @@
         "name": "Mathematics, B.S.: Applied Mathematical Sciences Option",
         "type": "major",
         "initial_degree_elective_units": 18,
+        "planning_major": "mathematics-b-s-applied-mathematical-sciences-option",
         "ge_completed_degree_elective_units": 18,
         "inferred_prior_GE_units": 36,
         "program_credit_review_units": 2,
@@ -7697,6 +7819,7 @@
         "name": "Mathematics, B.A.: Four-Year Integrated (FYI) Mathematics Subject Matter Program for the Single Subject Credential Option",
         "type": "major",
         "initial_degree_elective_units": 0,
+        "planning_major": "mathematics-b-a-four-year-integrated-fyi-mathematics-subject-matter-program-for-the-single-subject-credential-option",
         "ge_completed_degree_elective_units": 0,
         "inferred_prior_GE_units": 0,
         "program_credit_review_units": 21,
@@ -7704,12 +7827,12 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 4,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
             "state": "ge-completed",
-            "unscheduled_cards": 4,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           }
         ]
@@ -7719,8 +7842,32 @@
         "name": "Mathematics, B.A.: Junior-Year Integrated (JYI) Mathematics Subject Matter Program for the Single Subject Credential Option",
         "type": "major",
         "initial_degree_elective_units": 33,
+        "planning_major": "mathematics-b-a-junior-year-integrated-jyi-mathematics-subject-matter-program-for-the-single-subject-credential-option",
         "ge_completed_degree_elective_units": 33,
         "inferred_prior_GE_units": 3,
+        "program_credit_review_units": 0,
+        "no_GE_placeholders_when_all_completed": true,
+        "results": [
+          {
+            "state": "new-plan",
+            "unscheduled_cards": 0,
+            "semester_loads_within_limits": true
+          },
+          {
+            "state": "ge-completed",
+            "unscheduled_cards": 0,
+            "semester_loads_within_limits": true
+          }
+        ]
+      },
+      {
+        "program_id": "mechanical-engineering-b-s",
+        "name": "Mechanical Engineering, B.S.",
+        "type": "major",
+        "initial_degree_elective_units": 0,
+        "planning_major": "mechanical-engineering-b-s",
+        "ge_completed_degree_elective_units": 0,
+        "inferred_prior_GE_units": 28,
         "program_credit_review_units": 0,
         "no_GE_placeholders_when_all_completed": true,
         "results": [
@@ -7737,32 +7884,11 @@
         ]
       },
       {
-        "program_id": "mechanical-engineering-b-s",
-        "name": "Mechanical Engineering, B.S.",
-        "type": "major",
-        "initial_degree_elective_units": 0,
-        "ge_completed_degree_elective_units": 0,
-        "inferred_prior_GE_units": 28,
-        "program_credit_review_units": 0,
-        "no_GE_placeholders_when_all_completed": true,
-        "results": [
-          {
-            "state": "new-plan",
-            "unscheduled_cards": 12,
-            "semester_loads_within_limits": true
-          },
-          {
-            "state": "ge-completed",
-            "unscheduled_cards": 12,
-            "semester_loads_within_limits": true
-          }
-        ]
-      },
-      {
         "program_id": "music-b-a-directed-studies-option",
         "name": "Music, B.A.: Directed Studies Option",
         "type": "major",
         "initial_degree_elective_units": 15,
+        "planning_major": "music-b-a-directed-studies-option",
         "ge_completed_degree_elective_units": 15,
         "inferred_prior_GE_units": 40,
         "program_credit_review_units": 0,
@@ -7770,7 +7896,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 1,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -7785,6 +7911,7 @@
         "name": "Music, B.A.: Music Industry Studies Option",
         "type": "major",
         "initial_degree_elective_units": 14,
+        "planning_major": "music-b-a-music-industry-studies-option",
         "ge_completed_degree_elective_units": 14,
         "inferred_prior_GE_units": 37,
         "program_credit_review_units": 0,
@@ -7792,7 +7919,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 1,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -7807,6 +7934,7 @@
         "name": "Music, B.A.: Pre-Teaching Option",
         "type": "major",
         "initial_degree_elective_units": 2,
+        "planning_major": "music-b-a-pre-teaching-option",
         "ge_completed_degree_elective_units": 2,
         "inferred_prior_GE_units": 40,
         "program_credit_review_units": 0,
@@ -7814,7 +7942,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 1,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -7829,6 +7957,7 @@
         "name": "Music, B.A.: Music Therapy Option",
         "type": "major",
         "initial_degree_elective_units": 0,
+        "planning_major": "music-b-a-music-therapy-option",
         "ge_completed_degree_elective_units": 0,
         "inferred_prior_GE_units": 40,
         "program_credit_review_units": 10,
@@ -7836,7 +7965,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 1,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -7851,6 +7980,7 @@
         "name": "Music, B.M.: Jazz Studies Option",
         "type": "major",
         "initial_degree_elective_units": 0,
+        "planning_major": "music-b-m-jazz-studies-option",
         "ge_completed_degree_elective_units": 0,
         "inferred_prior_GE_units": 40,
         "program_credit_review_units": 0,
@@ -7858,7 +7988,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 4,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -7873,6 +8003,7 @@
         "name": "Music, B.M.: Composition/Commercial and Media Writing Option",
         "type": "major",
         "initial_degree_elective_units": 6,
+        "planning_major": "music-b-m-composition-commercial-and-media-writing-option",
         "ge_completed_degree_elective_units": 6,
         "inferred_prior_GE_units": 40,
         "program_credit_review_units": 0,
@@ -7895,6 +8026,7 @@
         "name": "Music, B.M.: Vocal Arts Option",
         "type": "major",
         "initial_degree_elective_units": 1,
+        "planning_major": "music-b-m-vocal-arts-option",
         "ge_completed_degree_elective_units": 1,
         "inferred_prior_GE_units": 40,
         "program_credit_review_units": 7,
@@ -7902,7 +8034,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 1,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -7917,6 +8049,7 @@
         "name": "Music, B.M.: Keyboard Option",
         "type": "major",
         "initial_degree_elective_units": 0,
+        "planning_major": "music-b-m-keyboard-option",
         "ge_completed_degree_elective_units": 0,
         "inferred_prior_GE_units": 40,
         "program_credit_review_units": 0,
@@ -7939,6 +8072,7 @@
         "name": "Music, B.M.: Percussion Option",
         "type": "major",
         "initial_degree_elective_units": 0,
+        "planning_major": "music-b-m-percussion-option",
         "ge_completed_degree_elective_units": 0,
         "inferred_prior_GE_units": 40,
         "program_credit_review_units": 2,
@@ -7946,7 +8080,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 3,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -7961,6 +8095,7 @@
         "name": "Music, B.M.: Winds Option",
         "type": "major",
         "initial_degree_elective_units": 1,
+        "planning_major": "music-b-m-winds-option",
         "ge_completed_degree_elective_units": 1,
         "inferred_prior_GE_units": 40,
         "program_credit_review_units": 1,
@@ -7968,7 +8103,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 2,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -7983,6 +8118,7 @@
         "name": "Music, B.M.: Strings Option",
         "type": "major",
         "initial_degree_elective_units": 1,
+        "planning_major": "music-b-m-strings-option",
         "ge_completed_degree_elective_units": 1,
         "inferred_prior_GE_units": 40,
         "program_credit_review_units": 0,
@@ -8005,6 +8141,7 @@
         "name": "Nursing, B.S.: Accelerated Option",
         "type": "major",
         "initial_degree_elective_units": 1,
+        "planning_major": "nursing-b-s-accelerated-option",
         "ge_completed_degree_elective_units": 1,
         "inferred_prior_GE_units": 42,
         "program_credit_review_units": 0,
@@ -8012,7 +8149,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 1,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -8027,6 +8164,7 @@
         "name": "Nursing, B.S.: RN to BSN Option",
         "type": "major",
         "initial_degree_elective_units": 34,
+        "planning_major": "nursing-b-s-rn-to-bsn-option",
         "ge_completed_degree_elective_units": 34,
         "inferred_prior_GE_units": 42,
         "program_credit_review_units": 0,
@@ -8049,6 +8187,7 @@
         "name": "Nutrition, Dietetics and Food Science, B.S.: Nutrition and Dietetics Option",
         "type": "major",
         "initial_degree_elective_units": 0,
+        "planning_major": "nutrition-dietetics-and-food-science-b-s-nutrition-and-dietetics-option",
         "ge_completed_degree_elective_units": 0,
         "inferred_prior_GE_units": 30,
         "program_credit_review_units": 0,
@@ -8056,7 +8195,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 3,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -8071,6 +8210,7 @@
         "name": "Nutrition, Dietetics and Food Science, B.S.: Food Science Option",
         "type": "major",
         "initial_degree_elective_units": 4,
+        "planning_major": "nutrition-dietetics-and-food-science-b-s-food-science-option",
         "ge_completed_degree_elective_units": 4,
         "inferred_prior_GE_units": 36,
         "program_credit_review_units": 0,
@@ -8078,7 +8218,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 1,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -8093,6 +8233,7 @@
         "name": "Philosophy, B.A.",
         "type": "major",
         "initial_degree_elective_units": 29,
+        "planning_major": "philosophy-b-a",
         "ge_completed_degree_elective_units": 29,
         "inferred_prior_GE_units": 46,
         "program_credit_review_units": 0,
@@ -8115,6 +8256,7 @@
         "name": "Philosophy, B.A.: Double Major",
         "type": "major",
         "initial_degree_elective_units": 44,
+        "planning_major": "philosophy-b-a-double-major",
         "ge_completed_degree_elective_units": 44,
         "inferred_prior_GE_units": 46,
         "program_credit_review_units": 0,
@@ -8137,6 +8279,7 @@
         "name": "Physics, B.A.",
         "type": "major",
         "initial_degree_elective_units": 21,
+        "planning_major": "physics-b-a",
         "ge_completed_degree_elective_units": 21,
         "inferred_prior_GE_units": 36,
         "program_credit_review_units": 0,
@@ -8159,6 +8302,7 @@
         "name": "Physics, B.S.: Physics Option",
         "type": "major",
         "initial_degree_elective_units": 6,
+        "planning_major": "physics-b-s-physics-option",
         "ge_completed_degree_elective_units": 6,
         "inferred_prior_GE_units": 36,
         "program_credit_review_units": 0,
@@ -8181,6 +8325,7 @@
         "name": "Physics, B.S.: Astrophysics Option",
         "type": "major",
         "initial_degree_elective_units": 5,
+        "planning_major": "physics-b-s-astrophysics-option",
         "ge_completed_degree_elective_units": 5,
         "inferred_prior_GE_units": 36,
         "program_credit_review_units": 0,
@@ -8203,6 +8348,7 @@
         "name": "Political Science, B.A.: Politics and Government Option",
         "type": "major",
         "initial_degree_elective_units": 32,
+        "planning_major": "political-science-b-a-politics-and-government-option",
         "ge_completed_degree_elective_units": 32,
         "inferred_prior_GE_units": 40,
         "program_credit_review_units": 0,
@@ -8225,6 +8371,7 @@
         "name": "Political Science, B.A.: Public Policy and Management Option",
         "type": "major",
         "initial_degree_elective_units": 32,
+        "planning_major": "political-science-b-a-public-policy-and-management-option",
         "ge_completed_degree_elective_units": 32,
         "inferred_prior_GE_units": 40,
         "program_credit_review_units": 0,
@@ -8247,6 +8394,7 @@
         "name": "Political Science, B.A.: Law and Society Option",
         "type": "major",
         "initial_degree_elective_units": 32,
+        "planning_major": "political-science-b-a-law-and-society-option",
         "ge_completed_degree_elective_units": 32,
         "inferred_prior_GE_units": 40,
         "program_credit_review_units": 0,
@@ -8269,6 +8417,7 @@
         "name": "Psychology, B.A.",
         "type": "major",
         "initial_degree_elective_units": 38,
+        "planning_major": "psychology-b-a",
         "ge_completed_degree_elective_units": 38,
         "inferred_prior_GE_units": 40,
         "program_credit_review_units": 0,
@@ -8276,7 +8425,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 1,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -8291,6 +8440,7 @@
         "name": "Psychology, B.A.: Honors Option",
         "type": "major",
         "initial_degree_elective_units": 67,
+        "planning_major": "psychology-b-a-honors-option",
         "ge_completed_degree_elective_units": 67,
         "inferred_prior_GE_units": 49,
         "program_credit_review_units": 0,
@@ -8313,6 +8463,7 @@
         "name": "Public Health, B.S.",
         "type": "major",
         "initial_degree_elective_units": 15,
+        "planning_major": "public-health-b-s",
         "ge_completed_degree_elective_units": 15,
         "inferred_prior_GE_units": 30,
         "program_credit_review_units": 0,
@@ -8335,6 +8486,7 @@
         "name": "Public Sector Management, B.A.",
         "type": "major",
         "initial_degree_elective_units": 14,
+        "planning_major": "public-sector-management-b-a",
         "ge_completed_degree_elective_units": 14,
         "inferred_prior_GE_units": 37,
         "program_credit_review_units": 0,
@@ -8357,6 +8509,7 @@
         "name": "Radiologic Sciences, B.S.",
         "type": "major",
         "initial_degree_elective_units": 0,
+        "planning_major": "radiologic-sciences-b-s",
         "ge_completed_degree_elective_units": 0,
         "inferred_prior_GE_units": 27,
         "program_credit_review_units": 0,
@@ -8364,12 +8517,12 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 6,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
             "state": "ge-completed",
-            "unscheduled_cards": 6,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           }
         ]
@@ -8379,6 +8532,7 @@
         "name": "Religious Studies, B.A.",
         "type": "major",
         "initial_degree_elective_units": 29,
+        "planning_major": "religious-studies-b-a",
         "ge_completed_degree_elective_units": 29,
         "inferred_prior_GE_units": 46,
         "program_credit_review_units": 3,
@@ -8401,6 +8555,7 @@
         "name": "Religious Studies, B.A.: Double Major",
         "type": "major",
         "initial_degree_elective_units": 44,
+        "planning_major": "religious-studies-b-a-double-major",
         "ge_completed_degree_elective_units": 44,
         "inferred_prior_GE_units": 46,
         "program_credit_review_units": 0,
@@ -8423,6 +8578,7 @@
         "name": "Sociology, B.A.",
         "type": "major",
         "initial_degree_elective_units": 33,
+        "planning_major": "sociology-b-a",
         "ge_completed_degree_elective_units": 33,
         "inferred_prior_GE_units": 40,
         "program_credit_review_units": 0,
@@ -8445,6 +8601,7 @@
         "name": "Sociology, B.A.: Social Welfare and Social Justice Option",
         "type": "major",
         "initial_degree_elective_units": 36,
+        "planning_major": "sociology-b-a-social-welfare-and-social-justice-option",
         "ge_completed_degree_elective_units": 36,
         "inferred_prior_GE_units": 40,
         "program_credit_review_units": 0,
@@ -8467,6 +8624,7 @@
         "name": "Spanish, B.A.: Literature Option",
         "type": "major",
         "initial_degree_elective_units": 35,
+        "planning_major": "spanish-b-a-literature-option",
         "ge_completed_degree_elective_units": 35,
         "inferred_prior_GE_units": 43,
         "program_credit_review_units": 0,
@@ -8489,6 +8647,7 @@
         "name": "Spanish, B.A.: Language and Culture Option",
         "type": "major",
         "initial_degree_elective_units": 35,
+        "planning_major": "spanish-b-a-language-and-culture-option",
         "ge_completed_degree_elective_units": 35,
         "inferred_prior_GE_units": 43,
         "program_credit_review_units": 0,
@@ -8511,6 +8670,7 @@
         "name": "Spanish, B.A.: Hispanic Linguistics Option",
         "type": "major",
         "initial_degree_elective_units": 35,
+        "planning_major": "spanish-b-a-hispanic-linguistics-option",
         "ge_completed_degree_elective_units": 35,
         "inferred_prior_GE_units": 43,
         "program_credit_review_units": 0,
@@ -8533,6 +8693,7 @@
         "name": "Spanish, B.A.: Translation and Interpretation Option",
         "type": "major",
         "initial_degree_elective_units": 35,
+        "planning_major": "spanish-b-a-translation-and-interpretation-option",
         "ge_completed_degree_elective_units": 35,
         "inferred_prior_GE_units": 43,
         "program_credit_review_units": 0,
@@ -8555,6 +8716,7 @@
         "name": "Theatre, B.A.: Theatre Arts Option",
         "type": "major",
         "initial_degree_elective_units": 16,
+        "planning_major": "theatre-b-a-theatre-arts-option",
         "ge_completed_degree_elective_units": 16,
         "inferred_prior_GE_units": 46,
         "program_credit_review_units": 0,
@@ -8562,7 +8724,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 1,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -8577,6 +8739,7 @@
         "name": "Theatre, B.A.: Acting and Directing Option",
         "type": "major",
         "initial_degree_elective_units": 15,
+        "planning_major": "theatre-b-a-acting-and-directing-option",
         "ge_completed_degree_elective_units": 15,
         "inferred_prior_GE_units": 46,
         "program_credit_review_units": 1,
@@ -8599,6 +8762,7 @@
         "name": "Theatre, B.A.: Design and Production Option",
         "type": "major",
         "initial_degree_elective_units": 13,
+        "planning_major": "theatre-b-a-design-and-production-option",
         "ge_completed_degree_elective_units": 13,
         "inferred_prior_GE_units": 46,
         "program_credit_review_units": 2,
@@ -8621,6 +8785,7 @@
         "name": "Tourism, Hospitality, and Recreation Management, B.S.",
         "type": "major",
         "initial_degree_elective_units": 17,
+        "planning_major": "tourism-hospitality-and-recreation-management-b-s",
         "ge_completed_degree_elective_units": 17,
         "inferred_prior_GE_units": 40,
         "program_credit_review_units": 13,
@@ -8643,6 +8808,7 @@
         "name": "Urban Studies and Planning, B.A.",
         "type": "major",
         "initial_degree_elective_units": 22,
+        "planning_major": "urban-studies-and-planning-b-a",
         "ge_completed_degree_elective_units": 22,
         "inferred_prior_GE_units": 43,
         "program_credit_review_units": 8,
@@ -8665,6 +8831,7 @@
         "name": "Minor in Africana Studies",
         "type": "minor",
         "initial_degree_elective_units": 3,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 3,
         "inferred_prior_GE_units": 31,
         "program_credit_review_units": 0,
@@ -8672,7 +8839,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 1,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -8687,6 +8854,7 @@
         "name": "Minor in American Indian Studies",
         "type": "minor",
         "initial_degree_elective_units": 3,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 3,
         "inferred_prior_GE_units": 34,
         "program_credit_review_units": 0,
@@ -8694,7 +8862,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 1,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -8709,6 +8877,7 @@
         "name": "Minor in Anthropological Linguistics",
         "type": "minor",
         "initial_degree_elective_units": 3,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 3,
         "inferred_prior_GE_units": 31,
         "program_credit_review_units": 3,
@@ -8716,7 +8885,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 1,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -8731,6 +8900,7 @@
         "name": "Minor in Anthropology",
         "type": "minor",
         "initial_degree_elective_units": 0,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 0,
         "inferred_prior_GE_units": 37,
         "program_credit_review_units": 0,
@@ -8738,7 +8908,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 2,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -8753,6 +8923,7 @@
         "name": "Minor in Applied Anthropology",
         "type": "minor",
         "initial_degree_elective_units": 3,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 3,
         "inferred_prior_GE_units": 31,
         "program_credit_review_units": 3,
@@ -8760,7 +8931,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 1,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -8775,6 +8946,7 @@
         "name": "Minor in Armenian",
         "type": "minor",
         "initial_degree_elective_units": 3,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 3,
         "inferred_prior_GE_units": 34,
         "program_credit_review_units": 0,
@@ -8782,7 +8954,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 1,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -8797,6 +8969,7 @@
         "name": "Minor in Art",
         "type": "minor",
         "initial_degree_elective_units": 0,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 0,
         "inferred_prior_GE_units": 34,
         "program_credit_review_units": 0,
@@ -8804,7 +8977,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 2,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -8819,6 +8992,7 @@
         "name": "Minor in Art Education",
         "type": "minor",
         "initial_degree_elective_units": 3,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 3,
         "inferred_prior_GE_units": 34,
         "program_credit_review_units": 3,
@@ -8826,7 +9000,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 2,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -8841,6 +9015,7 @@
         "name": "Minor in Art History",
         "type": "minor",
         "initial_degree_elective_units": 3,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 3,
         "inferred_prior_GE_units": 31,
         "program_credit_review_units": 0,
@@ -8848,7 +9023,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 1,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -8863,6 +9038,7 @@
         "name": "Minor in Asian American Studies",
         "type": "minor",
         "initial_degree_elective_units": 0,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 0,
         "inferred_prior_GE_units": 37,
         "program_credit_review_units": 0,
@@ -8870,7 +9046,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 5,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -8885,6 +9061,7 @@
         "name": "Minor in Asian Studies",
         "type": "minor",
         "initial_degree_elective_units": 0,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 0,
         "inferred_prior_GE_units": 37,
         "program_credit_review_units": 0,
@@ -8892,7 +9069,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 2,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -8907,6 +9084,7 @@
         "name": "Minor in Automation and CAD/CAM",
         "type": "minor",
         "initial_degree_elective_units": 0,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 0,
         "inferred_prior_GE_units": 37,
         "program_credit_review_units": 0,
@@ -8914,7 +9092,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 2,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -8929,6 +9107,7 @@
         "name": "Minor in Biology",
         "type": "minor",
         "initial_degree_elective_units": 0,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 0,
         "inferred_prior_GE_units": 30,
         "program_credit_review_units": 0,
@@ -8936,7 +9115,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 9,
+            "unscheduled_cards": 4,
             "semester_loads_within_limits": true
           },
           {
@@ -8951,6 +9130,7 @@
         "name": "Minor in Business Analytics",
         "type": "minor",
         "initial_degree_elective_units": 0,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 0,
         "inferred_prior_GE_units": 37,
         "program_credit_review_units": 0,
@@ -8958,7 +9138,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 2,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -8973,6 +9153,7 @@
         "name": "Minor in Business Ethics",
         "type": "minor",
         "initial_degree_elective_units": 0,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 0,
         "inferred_prior_GE_units": 37,
         "program_credit_review_units": 0,
@@ -8980,7 +9161,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 2,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -8995,6 +9176,7 @@
         "name": "Minor in Business Law",
         "type": "minor",
         "initial_degree_elective_units": 0,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 0,
         "inferred_prior_GE_units": 37,
         "program_credit_review_units": 0,
@@ -9002,7 +9184,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 3,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -9017,6 +9199,7 @@
         "name": "Minor in California Studies",
         "type": "minor",
         "initial_degree_elective_units": 3,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 3,
         "inferred_prior_GE_units": 34,
         "program_credit_review_units": 0,
@@ -9024,7 +9207,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 1,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -9039,6 +9222,7 @@
         "name": "Minor in Central American Studies",
         "type": "minor",
         "initial_degree_elective_units": 3,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 3,
         "inferred_prior_GE_units": 34,
         "program_credit_review_units": 0,
@@ -9046,7 +9230,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 1,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -9061,6 +9245,7 @@
         "name": "Minor in Chemistry",
         "type": "minor",
         "initial_degree_elective_units": 0,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 0,
         "inferred_prior_GE_units": 33,
         "program_credit_review_units": 0,
@@ -9068,7 +9253,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 5,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -9083,6 +9268,7 @@
         "name": "Minor in Chicano and Chicana Studies",
         "type": "minor",
         "initial_degree_elective_units": 3,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 3,
         "inferred_prior_GE_units": 28,
         "program_credit_review_units": 0,
@@ -9090,7 +9276,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 1,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -9105,6 +9291,7 @@
         "name": "Minor in Child and Adolescent Development",
         "type": "minor",
         "initial_degree_elective_units": 3,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 3,
         "inferred_prior_GE_units": 31,
         "program_credit_review_units": 3,
@@ -9112,7 +9299,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 1,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -9127,6 +9314,7 @@
         "name": "Minor in Child-Care Administration",
         "type": "minor",
         "initial_degree_elective_units": 0,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 0,
         "inferred_prior_GE_units": 37,
         "program_credit_review_units": 0,
@@ -9134,7 +9322,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 2,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -9149,6 +9337,7 @@
         "name": "Minor in Civic and Community Engagement",
         "type": "minor",
         "initial_degree_elective_units": 3,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 3,
         "inferred_prior_GE_units": 37,
         "program_credit_review_units": 12,
@@ -9156,7 +9345,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 2,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -9171,6 +9360,7 @@
         "name": "Minor in Classical Greek and Roman Civilization",
         "type": "minor",
         "initial_degree_elective_units": 0,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 0,
         "inferred_prior_GE_units": 28,
         "program_credit_review_units": 0,
@@ -9178,7 +9368,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 1,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -9193,6 +9383,7 @@
         "name": "Minor in Communication Studies",
         "type": "minor",
         "initial_degree_elective_units": 0,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 0,
         "inferred_prior_GE_units": 34,
         "program_credit_review_units": 0,
@@ -9200,7 +9391,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 2,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -9215,6 +9406,7 @@
         "name": "Minor in Computational Linguistics",
         "type": "minor",
         "initial_degree_elective_units": 0,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 0,
         "inferred_prior_GE_units": 37,
         "program_credit_review_units": 0,
@@ -9222,7 +9414,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 2,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -9237,6 +9429,7 @@
         "name": "Minor in Computer Engineering",
         "type": "minor",
         "initial_degree_elective_units": 0,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 0,
         "inferred_prior_GE_units": 37,
         "program_credit_review_units": 0,
@@ -9244,7 +9437,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 2,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -9258,15 +9451,16 @@
         "program_id": "minor-in-computer-science",
         "name": "Minor in Computer Science",
         "type": "minor",
-        "initial_degree_elective_units": 0,
-        "ge_completed_degree_elective_units": 0,
-        "inferred_prior_GE_units": 37,
+        "initial_degree_elective_units": 3,
+        "planning_major": "biology-b-a",
+        "ge_completed_degree_elective_units": 3,
+        "inferred_prior_GE_units": 33,
         "program_credit_review_units": 0,
         "no_GE_placeholders_when_all_completed": true,
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 8,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -9281,6 +9475,7 @@
         "name": "Minor in Construction Management",
         "type": "minor",
         "initial_degree_elective_units": 0,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 0,
         "inferred_prior_GE_units": 34,
         "program_credit_review_units": 0,
@@ -9288,12 +9483,12 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 7,
+            "unscheduled_cards": 4,
             "semester_loads_within_limits": true
           },
           {
             "state": "ge-completed",
-            "unscheduled_cards": 2,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           }
         ]
@@ -9303,6 +9498,7 @@
         "name": "Minor in Creative Writing",
         "type": "minor",
         "initial_degree_elective_units": 3,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 3,
         "inferred_prior_GE_units": 34,
         "program_credit_review_units": 0,
@@ -9310,7 +9506,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 2,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -9325,6 +9521,7 @@
         "name": "Minor in Criminology and Justice Studies",
         "type": "minor",
         "initial_degree_elective_units": 0,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 0,
         "inferred_prior_GE_units": 37,
         "program_credit_review_units": 0,
@@ -9332,7 +9529,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 2,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -9347,6 +9544,7 @@
         "name": "Minor in Dance",
         "type": "minor",
         "initial_degree_elective_units": 0,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 0,
         "inferred_prior_GE_units": 37,
         "program_credit_review_units": 0,
@@ -9354,7 +9552,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 2,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -9369,6 +9567,7 @@
         "name": "Minor in Data Science",
         "type": "minor",
         "initial_degree_elective_units": 0,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 0,
         "inferred_prior_GE_units": 37,
         "program_credit_review_units": 0,
@@ -9376,7 +9575,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 5,
+            "unscheduled_cards": 1,
             "semester_loads_within_limits": true
           },
           {
@@ -9391,6 +9590,7 @@
         "name": "Minor in Digital Humanities",
         "type": "minor",
         "initial_degree_elective_units": 3,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 3,
         "inferred_prior_GE_units": 34,
         "program_credit_review_units": 0,
@@ -9398,7 +9598,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 2,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -9413,6 +9613,7 @@
         "name": "Minor in Disability Studies",
         "type": "minor",
         "initial_degree_elective_units": 3,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 3,
         "inferred_prior_GE_units": 28,
         "program_credit_review_units": 6,
@@ -9420,7 +9621,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 1,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -9435,6 +9636,7 @@
         "name": "Minor in Economics",
         "type": "minor",
         "initial_degree_elective_units": 3,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 3,
         "inferred_prior_GE_units": 31,
         "program_credit_review_units": 3,
@@ -9442,7 +9644,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 1,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -9457,6 +9659,7 @@
         "name": "Minor in Electrical Engineering",
         "type": "minor",
         "initial_degree_elective_units": 0,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 0,
         "inferred_prior_GE_units": 33,
         "program_credit_review_units": 0,
@@ -9464,12 +9667,12 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 5,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
             "state": "ge-completed",
-            "unscheduled_cards": 3,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           }
         ]
@@ -9479,6 +9682,7 @@
         "name": "Minor in Emerging Media Production",
         "type": "minor",
         "initial_degree_elective_units": 0,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 0,
         "inferred_prior_GE_units": 37,
         "program_credit_review_units": 0,
@@ -9486,7 +9690,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 5,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -9501,6 +9705,7 @@
         "name": "Minor in Engineering Management",
         "type": "minor",
         "initial_degree_elective_units": 0,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 0,
         "inferred_prior_GE_units": 37,
         "program_credit_review_units": 0,
@@ -9508,7 +9713,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 2,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -9523,6 +9728,7 @@
         "name": "Minor in Entertainment Media Management",
         "type": "minor",
         "initial_degree_elective_units": 3,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 3,
         "inferred_prior_GE_units": 34,
         "program_credit_review_units": 0,
@@ -9530,7 +9736,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 2,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -9545,6 +9751,7 @@
         "name": "Minor in Entrepreneurship",
         "type": "minor",
         "initial_degree_elective_units": 0,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 0,
         "inferred_prior_GE_units": 34,
         "program_credit_review_units": 0,
@@ -9552,7 +9759,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 10,
+            "unscheduled_cards": 3,
             "semester_loads_within_limits": true
           },
           {
@@ -9567,6 +9774,7 @@
         "name": "Minor in Environmental and Occupational Health",
         "type": "minor",
         "initial_degree_elective_units": 0,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 0,
         "inferred_prior_GE_units": 30,
         "program_credit_review_units": 0,
@@ -9574,7 +9782,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 10,
+            "unscheduled_cards": 5,
             "semester_loads_within_limits": true
           },
           {
@@ -9589,6 +9797,7 @@
         "name": "Minor in Ethics",
         "type": "minor",
         "initial_degree_elective_units": 0,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 0,
         "inferred_prior_GE_units": 37,
         "program_credit_review_units": 0,
@@ -9596,7 +9805,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 2,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -9611,6 +9820,7 @@
         "name": "Minor in Family and Consumer Sciences",
         "type": "minor",
         "initial_degree_elective_units": 0,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 0,
         "inferred_prior_GE_units": 34,
         "program_credit_review_units": 0,
@@ -9618,7 +9828,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 1,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -9633,6 +9843,7 @@
         "name": "Minor in Family Studies",
         "type": "minor",
         "initial_degree_elective_units": 3,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 3,
         "inferred_prior_GE_units": 34,
         "program_credit_review_units": 0,
@@ -9640,7 +9851,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 1,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -9655,6 +9866,7 @@
         "name": "Minor in Fashion Design and Merchandising",
         "type": "minor",
         "initial_degree_elective_units": 3,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 3,
         "inferred_prior_GE_units": 31,
         "program_credit_review_units": 3,
@@ -9662,7 +9874,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 1,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -9677,6 +9889,7 @@
         "name": "Minor in Finance",
         "type": "minor",
         "initial_degree_elective_units": 0,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 0,
         "inferred_prior_GE_units": 37,
         "program_credit_review_units": 0,
@@ -9684,7 +9897,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 2,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -9699,6 +9912,7 @@
         "name": "Minor in Financial Counseling and Management",
         "type": "minor",
         "initial_degree_elective_units": 0,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 0,
         "inferred_prior_GE_units": 37,
         "program_credit_review_units": 0,
@@ -9706,7 +9920,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 1,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -9721,6 +9935,7 @@
         "name": "Minor in Food Science",
         "type": "minor",
         "initial_degree_elective_units": 0,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 0,
         "inferred_prior_GE_units": 30,
         "program_credit_review_units": 0,
@@ -9728,12 +9943,12 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 9,
+            "unscheduled_cards": 4,
             "semester_loads_within_limits": true
           },
           {
             "state": "ge-completed",
-            "unscheduled_cards": 2,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           }
         ]
@@ -9743,6 +9958,7 @@
         "name": "Minor in French",
         "type": "minor",
         "initial_degree_elective_units": 0,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 0,
         "inferred_prior_GE_units": 37,
         "program_credit_review_units": 0,
@@ -9750,7 +9966,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 2,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -9765,6 +9981,7 @@
         "name": "Minor in Gender and Women’s Studies",
         "type": "minor",
         "initial_degree_elective_units": 3,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 3,
         "inferred_prior_GE_units": 34,
         "program_credit_review_units": 0,
@@ -9772,7 +9989,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 2,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -9787,6 +10004,7 @@
         "name": "Minor in Geographic Information Science",
         "type": "minor",
         "initial_degree_elective_units": 0,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 0,
         "inferred_prior_GE_units": 37,
         "program_credit_review_units": 0,
@@ -9794,7 +10012,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 2,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -9809,6 +10027,7 @@
         "name": "Minor in Geography",
         "type": "minor",
         "initial_degree_elective_units": 0,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 0,
         "inferred_prior_GE_units": 37,
         "program_credit_review_units": 0,
@@ -9816,7 +10035,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 2,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -9831,6 +10050,7 @@
         "name": "Minor in Geology",
         "type": "minor",
         "initial_degree_elective_units": 0,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 0,
         "inferred_prior_GE_units": 37,
         "program_credit_review_units": 0,
@@ -9838,7 +10058,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 3,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -9853,6 +10073,7 @@
         "name": "Minor in Gerontology",
         "type": "minor",
         "initial_degree_elective_units": 0,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 0,
         "inferred_prior_GE_units": 34,
         "program_credit_review_units": 0,
@@ -9860,7 +10081,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 5,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -9875,6 +10096,7 @@
         "name": "Minor in Health Sciences for Teachers",
         "type": "minor",
         "initial_degree_elective_units": 0,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 0,
         "inferred_prior_GE_units": 31,
         "program_credit_review_units": 0,
@@ -9882,7 +10104,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 2,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -9897,6 +10119,7 @@
         "name": "Minor in Heritage and Community Languages",
         "type": "minor",
         "initial_degree_elective_units": 3,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 3,
         "inferred_prior_GE_units": 31,
         "program_credit_review_units": 3,
@@ -9904,7 +10127,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 1,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -9919,6 +10142,7 @@
         "name": "Minor in History",
         "type": "minor",
         "initial_degree_elective_units": 0,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 0,
         "inferred_prior_GE_units": 37,
         "program_credit_review_units": 0,
@@ -9926,7 +10150,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 5,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -9941,6 +10165,7 @@
         "name": "Minor in Hospitality and Tourism",
         "type": "minor",
         "initial_degree_elective_units": 0,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 0,
         "inferred_prior_GE_units": 34,
         "program_credit_review_units": 0,
@@ -9948,7 +10173,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 5,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -9963,6 +10188,7 @@
         "name": "Minor in Human Lactation",
         "type": "minor",
         "initial_degree_elective_units": 0,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 0,
         "inferred_prior_GE_units": 33,
         "program_credit_review_units": 0,
@@ -9970,7 +10196,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 3,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -9985,6 +10211,7 @@
         "name": "Minor in Human Resource and Talent Management",
         "type": "minor",
         "initial_degree_elective_units": 0,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 0,
         "inferred_prior_GE_units": 37,
         "program_credit_review_units": 0,
@@ -9992,7 +10219,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 2,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -10007,6 +10234,7 @@
         "name": "Minor in Human Sexuality",
         "type": "minor",
         "initial_degree_elective_units": 0,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 0,
         "inferred_prior_GE_units": 37,
         "program_credit_review_units": 0,
@@ -10014,7 +10242,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 2,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -10029,6 +10257,7 @@
         "name": "Minor in Humanities Interdisciplinary Studies",
         "type": "minor",
         "initial_degree_elective_units": 0,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 0,
         "inferred_prior_GE_units": 31,
         "program_credit_review_units": 0,
@@ -10036,7 +10265,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 2,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -10050,15 +10279,16 @@
         "program_id": "minor-in-information-systems",
         "name": "Minor in Information Systems",
         "type": "minor",
-        "initial_degree_elective_units": 0,
-        "ge_completed_degree_elective_units": 0,
-        "inferred_prior_GE_units": 37,
+        "initial_degree_elective_units": 11,
+        "planning_major": "biology-b-a",
+        "ge_completed_degree_elective_units": 11,
+        "inferred_prior_GE_units": 36,
         "program_credit_review_units": 0,
         "no_GE_placeholders_when_all_completed": true,
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 3,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -10073,6 +10303,7 @@
         "name": "Minor in Interdisciplinary Studies of Africa",
         "type": "minor",
         "initial_degree_elective_units": 0,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 0,
         "inferred_prior_GE_units": 37,
         "program_credit_review_units": 0,
@@ -10080,7 +10311,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 2,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -10095,6 +10326,7 @@
         "name": "Minor in Italian",
         "type": "minor",
         "initial_degree_elective_units": 0,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 0,
         "inferred_prior_GE_units": 37,
         "program_credit_review_units": 0,
@@ -10102,7 +10334,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 2,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -10117,6 +10349,7 @@
         "name": "Minor in Japanese",
         "type": "minor",
         "initial_degree_elective_units": 0,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 0,
         "inferred_prior_GE_units": 31,
         "program_credit_review_units": 0,
@@ -10124,7 +10357,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 5,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -10139,6 +10372,7 @@
         "name": "Minor in Jewish Studies",
         "type": "minor",
         "initial_degree_elective_units": 3,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 3,
         "inferred_prior_GE_units": 28,
         "program_credit_review_units": 6,
@@ -10146,7 +10380,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 1,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -10161,6 +10395,7 @@
         "name": "Minor in Journalism",
         "type": "minor",
         "initial_degree_elective_units": 0,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 0,
         "inferred_prior_GE_units": 37,
         "program_credit_review_units": 0,
@@ -10168,7 +10403,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 2,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -10183,6 +10418,7 @@
         "name": "Minor in Leadership in the 21st Century",
         "type": "minor",
         "initial_degree_elective_units": 0,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 0,
         "inferred_prior_GE_units": 37,
         "program_credit_review_units": 0,
@@ -10190,7 +10426,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 2,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -10205,6 +10441,7 @@
         "name": "Minor in Leadership Through Adventure",
         "type": "minor",
         "initial_degree_elective_units": 0,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 0,
         "inferred_prior_GE_units": 37,
         "program_credit_review_units": 0,
@@ -10212,7 +10449,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 2,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -10227,6 +10464,7 @@
         "name": "Minor in Linguistics",
         "type": "minor",
         "initial_degree_elective_units": 0,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 0,
         "inferred_prior_GE_units": 37,
         "program_credit_review_units": 0,
@@ -10234,7 +10472,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 2,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -10249,6 +10487,7 @@
         "name": "Minor in Literature",
         "type": "minor",
         "initial_degree_elective_units": 0,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 0,
         "inferred_prior_GE_units": 34,
         "program_credit_review_units": 0,
@@ -10256,7 +10495,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 2,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -10271,6 +10510,7 @@
         "name": "Minor in Management",
         "type": "minor",
         "initial_degree_elective_units": 0,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 0,
         "inferred_prior_GE_units": 37,
         "program_credit_review_units": 0,
@@ -10278,7 +10518,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 2,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -10293,6 +10533,7 @@
         "name": "Minor in Manufacturing Systems Engineering",
         "type": "minor",
         "initial_degree_elective_units": 0,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 0,
         "inferred_prior_GE_units": 33,
         "program_credit_review_units": 0,
@@ -10300,7 +10541,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 6,
+            "unscheduled_cards": 2,
             "semester_loads_within_limits": true
           },
           {
@@ -10315,6 +10556,7 @@
         "name": "Minor in Marketing",
         "type": "minor",
         "initial_degree_elective_units": 3,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 3,
         "inferred_prior_GE_units": 34,
         "program_credit_review_units": 0,
@@ -10322,7 +10564,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 1,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -10337,6 +10579,7 @@
         "name": "Minor in Mathematics",
         "type": "minor",
         "initial_degree_elective_units": 0,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 0,
         "inferred_prior_GE_units": 37,
         "program_credit_review_units": 0,
@@ -10344,7 +10587,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 5,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -10359,6 +10602,7 @@
         "name": "Minor in Middle Eastern and Islamic Studies",
         "type": "minor",
         "initial_degree_elective_units": 3,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 3,
         "inferred_prior_GE_units": 34,
         "program_credit_review_units": 0,
@@ -10366,7 +10610,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 1,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -10381,6 +10625,7 @@
         "name": "Minor in Modern China Studies",
         "type": "minor",
         "initial_degree_elective_units": 3,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 3,
         "inferred_prior_GE_units": 34,
         "program_credit_review_units": 0,
@@ -10388,7 +10633,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 2,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -10403,6 +10648,7 @@
         "name": "Minor in Musical Theatre",
         "type": "minor",
         "initial_degree_elective_units": 0,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 0,
         "inferred_prior_GE_units": 37,
         "program_credit_review_units": 0,
@@ -10410,7 +10656,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 2,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -10425,6 +10671,7 @@
         "name": "Minor in Philosophy",
         "type": "minor",
         "initial_degree_elective_units": 3,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 3,
         "inferred_prior_GE_units": 34,
         "program_credit_review_units": 0,
@@ -10432,7 +10679,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 2,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -10447,6 +10694,7 @@
         "name": "Minor in Philosophy and Emerging Technologies",
         "type": "minor",
         "initial_degree_elective_units": 0,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 0,
         "inferred_prior_GE_units": 34,
         "program_credit_review_units": 0,
@@ -10454,7 +10702,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 2,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -10469,6 +10717,7 @@
         "name": "Minor in Photography/Video",
         "type": "minor",
         "initial_degree_elective_units": 0,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 0,
         "inferred_prior_GE_units": 37,
         "program_credit_review_units": 0,
@@ -10476,7 +10725,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 2,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -10491,6 +10740,7 @@
         "name": "Minor in Physics",
         "type": "minor",
         "initial_degree_elective_units": 0,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 0,
         "inferred_prior_GE_units": 36,
         "program_credit_review_units": 0,
@@ -10498,7 +10748,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 9,
+            "unscheduled_cards": 4,
             "semester_loads_within_limits": true
           },
           {
@@ -10513,6 +10763,7 @@
         "name": "Minor in Political Science",
         "type": "minor",
         "initial_degree_elective_units": 0,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 0,
         "inferred_prior_GE_units": 31,
         "program_credit_review_units": 0,
@@ -10520,7 +10771,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 1,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -10535,6 +10786,7 @@
         "name": "Minor in Popular Culture Studies",
         "type": "minor",
         "initial_degree_elective_units": 3,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 3,
         "inferred_prior_GE_units": 34,
         "program_credit_review_units": 0,
@@ -10542,7 +10794,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 2,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -10557,6 +10809,7 @@
         "name": "Minor in Psychology",
         "type": "minor",
         "initial_degree_elective_units": 0,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 0,
         "inferred_prior_GE_units": 34,
         "program_credit_review_units": 0,
@@ -10564,7 +10817,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 1,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -10579,6 +10832,7 @@
         "name": "Minor in Public Health",
         "type": "minor",
         "initial_degree_elective_units": 0,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 0,
         "inferred_prior_GE_units": 34,
         "program_credit_review_units": 0,
@@ -10586,7 +10840,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 5,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -10601,6 +10855,7 @@
         "name": "Minor in Public Relations",
         "type": "minor",
         "initial_degree_elective_units": 0,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 0,
         "inferred_prior_GE_units": 34,
         "program_credit_review_units": 0,
@@ -10608,7 +10863,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 1,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -10623,6 +10878,7 @@
         "name": "Minor in Quality Management and Assurance",
         "type": "minor",
         "initial_degree_elective_units": 0,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 0,
         "inferred_prior_GE_units": 37,
         "program_credit_review_units": 0,
@@ -10630,7 +10886,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 2,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -10645,6 +10901,7 @@
         "name": "Minor in Queer Studies",
         "type": "minor",
         "initial_degree_elective_units": 3,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 3,
         "inferred_prior_GE_units": 34,
         "program_credit_review_units": 0,
@@ -10652,7 +10909,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 1,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -10667,6 +10924,7 @@
         "name": "Minor in Real Estate",
         "type": "minor",
         "initial_degree_elective_units": 0,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 0,
         "inferred_prior_GE_units": 37,
         "program_credit_review_units": 0,
@@ -10674,7 +10932,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 2,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -10689,6 +10947,7 @@
         "name": "Minor in Recreation Management",
         "type": "minor",
         "initial_degree_elective_units": 0,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 0,
         "inferred_prior_GE_units": 34,
         "program_credit_review_units": 0,
@@ -10696,7 +10955,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 1,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -10711,6 +10970,7 @@
         "name": "Minor in Religious Studies",
         "type": "minor",
         "initial_degree_elective_units": 3,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 3,
         "inferred_prior_GE_units": 34,
         "program_credit_review_units": 0,
@@ -10718,7 +10978,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 2,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -10733,6 +10993,7 @@
         "name": "Minor in Russian Studies",
         "type": "minor",
         "initial_degree_elective_units": 3,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 3,
         "inferred_prior_GE_units": 31,
         "program_credit_review_units": 1,
@@ -10740,7 +11001,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 1,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -10755,6 +11016,7 @@
         "name": "Minor in Sociology",
         "type": "minor",
         "initial_degree_elective_units": 2,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 2,
         "inferred_prior_GE_units": 34,
         "program_credit_review_units": 0,
@@ -10762,7 +11024,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 1,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -10777,6 +11039,7 @@
         "name": "Minor in Spanish",
         "type": "minor",
         "initial_degree_elective_units": 3,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 3,
         "inferred_prior_GE_units": 31,
         "program_credit_review_units": 3,
@@ -10784,7 +11047,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 1,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -10799,6 +11062,7 @@
         "name": "Minor in Spanish for Business Majors",
         "type": "minor",
         "initial_degree_elective_units": 3,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 3,
         "inferred_prior_GE_units": 31,
         "program_credit_review_units": 3,
@@ -10806,7 +11070,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 1,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -10821,6 +11085,7 @@
         "name": "Minor in Spanish for the Health Sciences",
         "type": "minor",
         "initial_degree_elective_units": 3,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 3,
         "inferred_prior_GE_units": 31,
         "program_credit_review_units": 3,
@@ -10828,7 +11093,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 1,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -10843,6 +11108,7 @@
         "name": "Minor in Spanish-Language Journalism",
         "type": "minor",
         "initial_degree_elective_units": 0,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 0,
         "inferred_prior_GE_units": 31,
         "program_credit_review_units": 0,
@@ -10850,7 +11116,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 5,
+            "unscheduled_cards": 1,
             "semester_loads_within_limits": true
           },
           {
@@ -10865,6 +11131,7 @@
         "name": "Minor in Sustainability",
         "type": "minor",
         "initial_degree_elective_units": 3,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 3,
         "inferred_prior_GE_units": 34,
         "program_credit_review_units": 0,
@@ -10872,7 +11139,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 1,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -10887,6 +11154,7 @@
         "name": "Minor in Teaching English as a Second Language (TESL)",
         "type": "minor",
         "initial_degree_elective_units": 0,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 0,
         "inferred_prior_GE_units": 37,
         "program_credit_review_units": 0,
@@ -10894,7 +11162,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 2,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -10909,6 +11177,7 @@
         "name": "Minor in Theatre: Acting and Directing",
         "type": "minor",
         "initial_degree_elective_units": 0,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 0,
         "inferred_prior_GE_units": 37,
         "program_credit_review_units": 0,
@@ -10916,7 +11185,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 2,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -10931,6 +11200,7 @@
         "name": "Minor in Theatre: Design and Production",
         "type": "minor",
         "initial_degree_elective_units": 0,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 0,
         "inferred_prior_GE_units": 37,
         "program_credit_review_units": 0,
@@ -10938,7 +11208,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 2,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -10953,6 +11223,7 @@
         "name": "Minor in Theatre: History and Literature",
         "type": "minor",
         "initial_degree_elective_units": 0,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 0,
         "inferred_prior_GE_units": 34,
         "program_credit_review_units": 0,
@@ -10960,7 +11231,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 2,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -10975,6 +11246,7 @@
         "name": "Minor in Urban Studies and Planning",
         "type": "minor",
         "initial_degree_elective_units": 3,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 3,
         "inferred_prior_GE_units": 31,
         "program_credit_review_units": 3,
@@ -10982,7 +11254,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 1,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {
@@ -10997,6 +11269,7 @@
         "name": "Minor in Writing and Rhetoric",
         "type": "minor",
         "initial_degree_elective_units": 0,
+        "planning_major": "cit-bs",
         "ge_completed_degree_elective_units": 0,
         "inferred_prior_GE_units": 37,
         "program_credit_review_units": 0,
@@ -11004,7 +11277,7 @@
         "results": [
           {
             "state": "new-plan",
-            "unscheduled_cards": 2,
+            "unscheduled_cards": 0,
             "semester_loads_within_limits": true
           },
           {

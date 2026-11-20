@@ -1,6 +1,7 @@
-import {buildPlan, createIndex, isBusinessMajor, geCourseOptions, domainChoice} from './program-mapper-catalog.mjs?v=2026.11.19.3';
+import {buildPlan, createIndex, isBusinessMajor, geCourseOptions, domainChoice} from './program-mapper-catalog.mjs?v=2026.11.19.4';
 
-export const SCHEMA_VERSION = 3;
+export const SCHEMA_VERSION = 4;
+export const REGULAR_UNIT_MAXIMUM = 18;
 export const SEASONS = ['Winter', 'Spring', 'Summer', 'Fall'];
 export const GE_ALIASES = {'1A':'A2', '1B':'A3', '1C':'A1', '2-LD':'B4', '3A':'C1', '3B':'C2', '5A':'B1', '5B':'B2', '5C':'B3'};
 export const clone = value => JSON.parse(JSON.stringify(value));
@@ -17,7 +18,7 @@ export const shortCode = id => String(id).replaceAll('-', ' ');
 export function initialState(year=2026) {
   return {schemaVersion:SCHEMA_VERSION, name:'My graduation plan',
     settings:{major:'cit-bs', minor:'', years:4, startYear:year, startSeason:'Fall',
-      summer:false, winter:false, regularLimit:15, summerLimit:6, winterLimit:3, transferUnits:0,
+      summer:false, winter:false, regularLimit:18, summerLimit:6, winterLimit:3, transferUnits:0,
       loadMode:'roadmap',priorUnitsMode:'estimate'},
     selections:{}, prerequisiteSelections:{}, legacySelections:{}, approvedChoices:[], completed:[], geCompleted:[], geAssignments:{},
     added:[], customCourses:[], removed:[], positions:{}, locked:[], links:[], extraTerms:[],
@@ -468,18 +469,23 @@ export function derivePlan(data,state) {
     degreeElectiveUnits:rawDegreeGap-programReviewUnits,programReviewUnits,totalPlannedUnits:items.reduce((sum,c)=>sum+courseUnits(c),0)+otherPriorUnits,
     excessUnits:Math.max(0,known-minimum)};
   const terms=makeTerms(state),regular=terms.filter(t=>['Fall','Spring'].includes(t.season));
+  const remainingUnits=items.reduce((sum,c)=>sum+plannedCourseUnits(c),0);
+  const seasonalCapacity=terms.filter(t=>!['Fall','Spring'].includes(t.season)).reduce((sum,t)=>sum+finite(t.limit),0);
   for(const term of terms) {
-    const ordinal=regular.indexOf(term),reference=['Fall','Spring'].includes(term.season)?roadmap?.semesters.find(s=>s.index===ordinal):
+    const isRegular=['Fall','Spring'].includes(term.season),ordinal=regular.indexOf(term);
+    const reference=isRegular?roadmap?.semesters.find(s=>s.index===ordinal):
       roadmap?.semesters.find(s=>s.season===term.season&&s.year===academicYear(term,state));
-    if(state.settings.loadMode==='custom'){term.loadSource='custom';continue;}
-    if(Number(state.settings.years)>=4) {
-      term.limit=reference?.total_units_max??(['Fall','Spring'].includes(term.season)?15:term.limit);
-      term.target=reference?.total_units_min??term.limit;term.loadSource=reference?.total_units_max!=null?'official-roadmap':'standard-15';
-      term.referenceUrl=roadmap?.source_url;
-    } else if(['Fall','Spring'].includes(term.season)) {
-      const seasonalCapacity=terms.filter(t=>!['Fall','Spring'].includes(t.season)).reduce((sum,t)=>sum+finite(t.limit),0);
-      term.limit=Math.min(30,Math.max(15,Math.ceil((ledger.totalPlannedUnits-ledger.earnedUnits-seasonalCapacity)/Math.max(1,regular.length))));
-      term.target=term.limit;term.loadSource='accelerated';
+    // The sample roadmap is a scheduling target. Registration limits govern moves.
+    term.limit=Math.min(isRegular?REGULAR_UNIT_MAXIMUM:term.season==='Summer'?13:4,Math.max(1,finite(term.limit,isRegular?18:3)));
+    term.referenceUrl=roadmap?.source_url;
+    if(state.settings.loadMode==='custom') {term.target=term.limit;term.loadSource='custom';}
+    else if(Number(state.settings.years)<4&&isRegular) {
+      term.target=Math.min(term.limit,Math.max(15,Math.ceil((remainingUnits-seasonalCapacity)/Math.max(1,regular.length))));
+      term.loadSource='accelerated';
+    } else {
+      term.target=Math.min(term.limit,reference?.total_units_max??(isRegular?15:term.limit));
+      term.roadmapUnits=reference?.total_units_max;
+      term.loadSource=reference?.total_units_max!=null?'official-roadmap':isRegular?'standard-15':'seasonal';
     }
   }
   return {ix,checklist:plan,items,edges:dedup,review,pendingPrerequisites,prerequisiteChoices,minimum,terms,baseAreas,roadmap,ledger};
@@ -555,7 +561,9 @@ export function autoSchedule(data,input,{preserve=false}={}) {
       if(possible.length) {
         const latest=d.terms.length-1-depths.get(id);
         const onTime=possible.filter(t=>t<=latest);
-        const eligible=onTime.length?onTime:possible;
+        const withinTarget=possible.filter(t=>loads.get(d.terms[t].id)+units<=d.terms[t].target+.001);
+        const preferred=withinTarget.filter(t=>t<=latest);
+        const eligible=preferred.length?preferred:onTime.length?onTime:withinTarget.length?withinTarget:possible;
         chosen=eligible.find(t=>loads.get(d.terms[t].id)+units<=Math.min(Number(d.terms[t].limit),targetUnits*termWeight(d.terms[t]))+0.5)??eligible[0];
         if(Number(state.settings.years)===4) {
           const hints=members.map(c=>c.roadmapSemester).filter(Number.isFinite);
@@ -563,7 +571,7 @@ export function autoSchedule(data,input,{preserve=false}={}) {
             const regular=d.terms.filter(t=>['Fall','Spring'].includes(t.season));
             const hint=members.find(c=>c.roadmapSemester===Math.max(...hints));
             const suggested=['Summer','Winter'].includes(hint?.roadmapSeason)?d.terms.findIndex(t=>t.season===hint.roadmapSeason&&academicYear(t,state)===hint.roadmapYear):termIx(regular[Math.max(...hints)]?.id);
-            if(possible.includes(suggested))chosen=suggested;
+            if(eligible.includes(suggested))chosen=suggested;
           }
         }
         if(preserve) {
@@ -604,6 +612,8 @@ export function validatePlan(data,state,derived=derivePlan(data,state)) {
     for(const season of ['Summer','Winter'])if(derived.roadmap.semesters.some(s=>s.season===season&&!s.conditional)&&!state.settings[season.toLowerCase()])
       issues.push({severity:'warning',kind:'roadmap-session',message:`The official roadmap includes ${season} sessions. Your plan has no ${season} sessions enabled; confirm the revised timing and offerings.`});
   }
+  const capacity=derived.terms.reduce((sum,t)=>sum+Number(t.limit),0),remaining=derived.items.reduce((sum,c)=>sum+plannedCourseUnits(c),0);
+  if(remaining>capacity+.01)issues.push({severity:'warning',kind:'timeline-capacity',message:`This timeline has space for ${capacity} units, but ${remaining} remain. Add summer/winter terms, record actual prior credit, or extend the timeline. Fall and spring stay within 18 units.`});
   for(const check of derived.checklist.requirement_checks.filter(c=>c.minimum_met===false))issues.push({severity:'warning',kind:'program-credits',message:`${check.label}: ${check.selected_units??'?'} of ${check.minimum_units} required units selected. Review this program block.`});
   for(const c of derived.checklist.required_courses)if(state.removed.includes(c.course_id)&&c.roles.some(r=>r==='major'||r==='minor'))issues.push({severity:'warning',id:c.course_id,kind:'removed',message:`${c.code} was removed but remains a program requirement. Confirm an approved substitution or restore it.`});
   for(const e of derived.edges) {
@@ -618,7 +628,7 @@ export function validatePlan(data,state,derived=derivePlan(data,state)) {
   for(const t of derived.terms) {
     const cards=derived.items.filter(c=>state.positions[c.id]===t.id&&!c.completed);
     const units=cards.reduce((s,c)=>s+plannedCourseUnits(c),0);
-    if(units>Number(t.limit)+0.01)issues.push({severity:'warning',kind:'load',term:t.id,message:`${termLabel(t)} has ${units} units; your limit is ${t.limit}.`});
+    if(units>Number(t.limit)+0.01)issues.push({severity:'error',kind:'load',term:t.id,message:`${termLabel(t)} has ${units} units; your limit is ${t.limit}.`});
   }
   for(const c of derived.items) {
     if(!c.placeholder&&c.source_coverage&&c.source_coverage!=='individual_course_page')issues.push({severity:'warning',id:c.id,kind:'course-source',message:`${c.code}: the program lists this course, but its individual course requirements are unconfirmed in this snapshot. Check the linked official program source.`});
@@ -696,7 +706,7 @@ export function moveCourse(data,input,id,target,{linked=input.moveLinked}={}) {
   }
   const before=validatePlan(data,input,d), after=validatePlan(data,state);
   const newOverload=after.find(e=>e.kind==='load'&&!before.some(old=>old.kind==='load'&&old.term===e.term&&old.message===e.message));
-  if(newOverload)return {ok:false,message:newOverload.message+' Move another course first or choose a custom load limit.'};
+  if(newOverload)return {ok:false,message:newOverload.message+' Move another course first or add a term. Fall and spring cannot exceed 18 units.'};
   const signature=e=>`${e.kind}|${e.id}|${e.message}`;
   const oldErrors=new Set(before.filter(e=>e.severity==='error').map(signature));
   const newError=after.find(e=>e.severity==='error'&&!oldErrors.has(signature(e)));
@@ -740,7 +750,7 @@ export function exportPlan(state,data) {
 export function importPlan(text,data) {
   if(typeof text!=='string'||text.length>2_000_000)throw new Error('Choose a plan JSON file smaller than 2 MB.');
   const raw=JSON.parse(text), p=raw.plan||raw;
-  if(![1,2,SCHEMA_VERSION].includes(p.schemaVersion)||!p.settings||!Array.isArray(p.completed))throw new Error('This file is not a supported mapper plan.');
+  if(![1,2,3,SCHEMA_VERSION].includes(p.schemaVersion)||!p.settings||!Array.isArray(p.completed))throw new Error('This file is not a supported mapper plan.');
   const state=initialState(), s=p.settings;
   const programs=new Map(data.programs.map(x=>[x.program_id,x]));
   if(programs.get(s.major)?.type!=='major'||s.minor&&programs.get(s.minor)?.type!=='minor')throw new Error('This plan names a program outside the loaded catalog.');
@@ -753,7 +763,9 @@ export function importPlan(text,data) {
   for(const key of ['years','startYear','regularLimit','summerLimit','winterLimit','transferUnits'])state.settings[key]=Number(s[key]);
   state.settings.loadMode=s.loadMode==='custom'?'custom':'roadmap';
   state.settings.priorUnitsMode=s.priorUnitsMode==='transcript'||Number(s.transferUnits)>0?'transcript':'estimate';
-  if(p.schemaVersion<3&&state.settings.loadMode==='roadmap')state.settings.regularLimit=15;
+  if(p.schemaVersion<4&&state.settings.loadMode==='roadmap')state.settings.regularLimit=18;
+  state.settings.regularLimit=Math.min(18,state.settings.regularLimit);
+  state.settings.summerLimit=Math.min(13,state.settings.summerLimit);state.settings.winterLimit=Math.min(4,state.settings.winterLimit);
   if(typeof s.roadmap==='string'&&(data.roadmaps||[]).some(r=>r.roadmap_id===s.roadmap&&r.program_id===s.major))state.settings.roadmap=s.roadmap;
   const safeKey=k=>typeof k==='string'&&k.length<250&&!['__proto__','constructor','prototype'].includes(k);
   const strings=a=>Array.isArray(a)?unique(a.filter(safeKey)).slice(0,1000):[];

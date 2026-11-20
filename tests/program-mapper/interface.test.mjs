@@ -9,7 +9,7 @@ test('page boots with all programs, dated course cards and SVG relationship path
   const h=await launchHarness();try{assert.equal(q(h,'major-select').querySelectorAll('option').length,158);assert.equal(q(h,'minor-select').querySelectorAll('option').length,108);assert.equal(h.document.querySelectorAll('.pm-term').length,8);assert.ok(h.document.querySelectorAll('.pm-course').length>30);assert.ok(h.document.querySelectorAll('.pm-link-path').length>10);assert.equal(q(h,'mapper-app').getAttribute('aria-busy'),'false');assert.equal(q(h,'load-error').hidden,true);assert.deepEqual(h.errors,[]);}finally{h.dispose();}
 });
 test('single-click opens an actual catalog description and official course link',async()=>{
-  const h=await launchHarness();try{findCard(h,'CIT-360/L').click();await pause(300);assert.equal(q(h,'mapper-dialog').open,true);assert.equal(q(h,'dialog-title').textContent,'CIT 360/L');assert.match(q(h,'dialog-body').textContent,/enterprise system architecture/);assert.equal(h.document.querySelector('.pm-source-link').getAttribute('href'),'https://catalog.csun.edu/academics/comp/courses/cit-360l/');assert.deepEqual(h.errors,[]);}finally{h.dispose();}
+  const h=await launchHarness();try{findCard(h,'CIT-360/L').click();await pause(300);assert.equal(q(h,'mapper-dialog').open,true);assert.equal(q(h,'dialog-title').textContent,'CIT 360/L');assert.match(q(h,'dialog-body').textContent,/enterprise system architecture/);assert.equal(q(h,'dialog-body').querySelector('.pm-source-link').getAttribute('href'),'https://catalog.csun.edu/academics/comp/courses/cit-360l/');assert.deepEqual(h.errors,[]);}finally{h.dispose();}
 });
 test('double-click marks completion, and the real Undo handler restores it',async()=>{
   const h=await launchHarness();try{const c=findCard(h,'CIT-101/L');c.click();c.click();c.trigger('dblclick');assert.ok(h.app.state().completed.includes('CIT-101/L'));assert.equal(q(h,'mapper-dialog').open,false);q(h,'undo-button').click();assert.equal(h.app.state().completed.includes('CIT-101/L'),false);assert.deepEqual(h.errors,[]);}finally{h.dispose();}
@@ -36,7 +36,7 @@ test('program-choice controls remain editable after a selection is resolved',asy
   const h=await launchHarness();try{q(h,'choices-button').click();const select=h.document.querySelectorAll('[data-choice-path]').find(x=>x.dataset.choicePath==='cit-math');assert.ok(select);select.value='MATH-150A';select.trigger('change');assert.ok(findCard(h,'MATH-150A'));assert.equal(!!findCard(h,'MATH-103'),false);assert.equal(h.app.state().selections['cit-math'],'MATH-150A');assert.deepEqual(h.errors,[]);}finally{h.dispose();}
 });
 test('custom course form escapes markup, saves notes and survives browser-save restoration',async()=>{
-  const h=await launchHarness();let restored;try{q(h,'add-course-button').click();q(h,'custom-course-button').click();q(h,'custom-code').value='CIT 499';q(h,'custom-title').value='<img src=x onerror=alert(1)> Test';q(h,'custom-description').value='A student-defined course';q(h,'custom-units').value='3';q(h,'custom-course-form').trigger('submit');const c=h.app.state().customCourses[0];assert.ok(c);assert.ok(findCard(h,c.course_id));assert.equal(h.document.querySelectorAll('img').length,0);q(h,'detail-notes').value='Meet advisor';q(h,'detail-save-notes').click();assert.equal(h.app.state().notes[c.course_id],'Meet advisor');await pause(250);const saved=h.storage.get('csun-reimagined:program-mapper:v3');assert.ok(saved);restored=await launchHarness(saved);assert.ok(findCard(restored,c.course_id));assert.equal(restored.app.state().notes[c.course_id],'Meet advisor');assert.deepEqual(h.errors,[]);assert.deepEqual(restored.errors,[]);}finally{h.dispose();restored?.dispose();}
+  const h=await launchHarness();let restored;try{q(h,'add-course-button').click();q(h,'custom-course-button').click();q(h,'custom-code').value='CIT 499';q(h,'custom-title').value='<img src=x onerror=alert(1)> Test';q(h,'custom-description').value='A student-defined course';q(h,'custom-units').value='3';q(h,'custom-course-form').trigger('submit');const c=h.app.state().customCourses[0];assert.ok(c);assert.ok(findCard(h,c.course_id));assert.equal(h.document.querySelectorAll('img').length,0);q(h,'detail-notes').value='Meet advisor';q(h,'detail-save-notes').click();assert.equal(h.app.state().notes[c.course_id],'Meet advisor');await pause(250);const saved=h.storage.get('csun-reimagined:program-mapper:v4');assert.ok(saved);restored=await launchHarness(saved);assert.ok(findCard(restored,c.course_id));assert.equal(restored.app.state().notes[c.course_id],'Meet advisor');assert.deepEqual(h.errors,[]);assert.deepEqual(restored.errors,[]);}finally{h.dispose();restored?.dispose();}
 });
 test('removing a required course and restoring it through Plan check work',async()=>{
   const h=await launchHarness();try{h.app.openCourse('CIT-160/L');q(h,'detail-remove').click();q(h,'confirm-remove').click();assert.equal(!!findCard(h,'CIT-160/L'),false);q(h,'check-button').click();const restore=h.document.querySelectorAll('[data-restore]').find(b=>b.dataset.restore==='CIT-160/L');assert.ok(restore);restore.click();assert.ok(findCard(h,'CIT-160/L'));assert.deepEqual(h.errors,[]);}finally{h.dispose();}
@@ -100,11 +100,11 @@ test('a selected CIT domain course replaces its box and can be replaced without 
   assert.equal(h.app.state().positions['COMP-380/L'],otherTerm);assert.equal(h.app.derived().items.filter(c=>c.choiceId==='cit-domain').length,3);assert.deepEqual(h.errors,[]);
  }finally{h.dispose();}
 });
-test('four-year loads follow the guide until the user explicitly chooses a custom maximum',async()=>{
+test('four-year suggested loads are separate from the 18-unit move maximum',async()=>{
  const h=await launchHarness();try{
-  assert.ok(h.app.derived().terms.every(t=>t.limit===15));assert.equal(q(h,'regular-limit').disabled,true);
-  q(h,'load-mode').value='custom';q(h,'load-mode').trigger('change');q(h,'regular-limit').value='21';q(h,'setup-form').trigger('submit');
-  assert.ok(h.app.derived().terms.every(t=>t.limit===21));assert.equal(h.app.state().settings.loadMode,'custom');assert.deepEqual(h.errors,[]);
+  assert.ok(h.app.derived().terms.every(t=>t.limit===18&&t.target===15));assert.equal(q(h,'regular-limit').disabled,true);
+  q(h,'load-mode').value='custom';q(h,'load-mode').trigger('change');q(h,'regular-limit').value='16';q(h,'setup-form').trigger('submit');
+  assert.ok(h.app.derived().terms.every(t=>t.limit===16));assert.equal(h.app.state().settings.loadMode,'custom');assert.deepEqual(h.errors,[]);
  }finally{h.dispose();}
 });
 test('adding an optional course beyond the remaining degree credits is rejected',async()=>{

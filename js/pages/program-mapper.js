@@ -1,9 +1,9 @@
 import {initialState, clone, withSuggestedPaths, derivePlan, autoSchedule, validatePlan, moveCourse,
   createLink, makeTerms, termKey, termLabel, termOrder, courseUnits, plannedCourseUnits, choiceDescriptors, choiceCourseOptions,
-  geOptions, GE_ALIASES, importPlan, exportPlan, safeOfficialUrl, ruleUnitRange, selectedRoadmap, applyChoiceSelection} from './program-mapper-core.mjs?v=2026.11.19.3';
+  geOptions, GE_ALIASES, importPlan, exportPlan, safeOfficialUrl, ruleUnitRange, selectedRoadmap, applyChoiceSelection} from './program-mapper-core.mjs?v=2026.11.19.4';
 
 // The page is static-host compatible. Catalog access is configurable; database secrets never belong here.
-const STORAGE_KEY='csun-reimagined:program-mapper:v3';
+const STORAGE_KEY='csun-reimagined:program-mapper:v4';
 const $=id=>document.getElementById(id);
 const e=value=>String(value??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
 const icons={
@@ -59,7 +59,7 @@ function populatePrograms(query=''){
 }
 function syncSetup(){
   $('major-search').value='';populatePrograms();$('major-select').value=state.settings.major;
-  $('minor-select').innerHTML='<option value="">No minor</option>'+data.programs.filter(p=>p.type==='minor').map(p=>`<option value="${e(p.program_id)}">${e(p.name.replace(/^Minor in /,''))}</option>`).join('');
+  $('minor-select').innerHTML='<option value="">No minor</option>'+data.programs.filter(p=>p.type==='minor').map(p=>`<option value="${e(p.program_id)}" ${state.settings.major==='cit-bs'&&['minor-in-computer-science','minor-in-information-systems'].includes(p.program_id)?'disabled':''}>${e(p.name.replace(/^Minor in /,''))}${state.settings.major==='cit-bs'&&['minor-in-computer-science','minor-in-information-systems'].includes(p.program_id)?' · unavailable with CIT':''}</option>`).join('');
   $('minor-select').value=state.settings.minor;
   for(const [id,key] of [['start-year','startYear'],['start-season','startSeason'],['plan-years','years'],['regular-limit','regularLimit'],['summer-limit','summerLimit'],['winter-limit','winterLimit'],['transfer-units','transferUnits']])$(id).value=state.settings[key];
   $('include-summer').checked=state.settings.summer;$('include-winter').checked=state.settings.winter;$('plan-name').value=state.name;
@@ -74,6 +74,49 @@ function syncRoadmaps(major){
   $('roadmap-select').value=selected?.roadmap_id||'';$('roadmap-select').disabled=!maps.length;
   $('roadmap-select').required=maps.length>1;
 }
+function syncMinorAvailability(major){
+  $('minor-select').querySelectorAll('option').forEach(option=>{
+    option.disabled=major==='cit-bs'&&['minor-in-computer-science','minor-in-information-systems'].includes(option.value);
+  });
+  if($('minor-select').querySelectorAll('option').some(option=>option.disabled&&option.value===$('minor-select').value))$('minor-select').value='';
+}
+
+function renderCITDomain(){
+  const panel=$('cit-domain-panel');panel.hidden=state.settings.major!=='cit-bs';if(panel.hidden)return;
+  const minor=derived.ix.programs.get(state.settings.minor),excluded=['minor-in-computer-science','minor-in-information-systems'].includes(state.settings.minor);
+  const source='<a class="pm-source-link" href="https://catalog.csun.edu/academics/comp/programs/bs-computer-information-technology/" target="_blank" rel="noopener noreferrer">Official CIT domain-emphasis rules ↗</a>';
+  if(minor&&!excluded){
+    panel.innerHTML=`<p class="pm-eyebrow">CIT DOMAIN EMPHASIS</p><h2 id="cit-domain-heading">Your minor is your emphasis route</h2><p><strong>${e(minor.name.replace(/^Minor in /,''))}</strong> fulfills the proposed minor route. Its courses are included below; an extra 15-unit emphasis block is not added. Confirm that this is an appropriate minor with your advisor.</p>${source}`;
+    return;
+  }
+  const descriptors=choiceDescriptors(data,state),route=state.selections['cit-domain:route']||'';
+  const choiceId=route==='approved-package'?'cit-domain:approved':route==='cit-comp-electives'?'cit-domain':'';
+  const descriptor=descriptors.find(c=>c.choice_id===choiceId),ids=Array.isArray(state.selections[choiceId])?state.selections[choiceId]:[];
+  const courses=ids.map(id=>derived.ix.courses.get(id)).filter(Boolean),units=courses.reduce((sum,c)=>sum+courseUnits(c),0),lower=courses.filter(c=>c.level==='lower_division').reduce((sum,c)=>sum+courseUnits(c),0);
+  panel.innerHTML=`<div class="pm-domain-heading"><div><p class="pm-eyebrow">CIT DOMAIN EMPHASIS</p><h2 id="cit-domain-heading">Choose how to complete your emphasis</h2></div><span class="pm-domain-progress" role="status">${e(units)} / 15 units selected</span></div>
+    <p>With no eligible minor selected, choose one route. Choose specific courses here or from their semester boxes. Change your route at any time.</p>
+    ${excluded?'<p class="pm-dialog-error">Computer Science and Information Systems minors cannot satisfy the CIT minor route. Choose another minor in Plan settings.</p>':''}
+    <fieldset class="pm-domain-routes"><legend class="pm-sr-only">CIT domain-emphasis route</legend>
+      <label class="pm-domain-route ${route==='approved-package'?'is-active':''}"><input type="radio" name="cit-domain-route" data-domain-route="approved-package" ${route==='approved-package'?'checked':''}><span><strong>Domain Emphasis Package</strong><small>15 units · choose from all departments</small></span></label>
+      <label class="pm-domain-route ${route==='cit-comp-electives'?'is-active':''}"><input type="radio" name="cit-domain-route" data-domain-route="cit-comp-electives" ${route==='cit-comp-electives'?'checked':''}><span><strong>Upper-division COMP / CIT electives</strong><small>15 units · eligible 300-, 400- and 500-level courses</small></span></label>
+    </fieldset>
+    ${descriptor?`<div class="pm-domain-details">${route==='approved-package'?`<p>Build a cohesive IT or application-domain package with your faculty advisor. All departments are searchable. <strong>Department chair approval is required before enrollment.</strong> At most 6 lower-division units; package courses cannot also satisfy GE.</p><p class="pm-domain-status">${e(lower)} / 6 lower-division units selected</p><label class="pm-detail-check"><input type="checkbox" id="cit-package-approval" ${state.approvedChoices.includes(choiceId)?'checked':''}>My faculty advisor and department chair have approved this package before enrollment.</label>`:
+      '<p>Only eligible COMP / CIT courses numbered 300–599 appear in the picker. All prerequisites still apply. COMP 488 and CIT 488 together can contribute at most 6 units.</p><details class="pm-domain-exclusions"><summary>Excluded courses</summary><p>COMP 300, 482, 484, 485, 490/L, 491/L, 492, 494, 499, 502, 505; CIT 360/L, 384/L, 425/L, 480/L, 481/L.</p></details>'}
+      <div class="pm-domain-courses">${courses.map(c=>`<button class="pm-related-chip" data-domain-course="${e(c.course_id)}">${e(c.code)} · ${e(courseUnits(c))}u · edit</button>`).join('')||'<span>No courses selected yet.</span>'}</div>
+      <button id="cit-domain-courses" class="pm-button pm-button-primary pm-button-small">${icon('plus')} ${courses.length?'Edit emphasis courses':'Choose emphasis courses'}</button>
+      ${units>=15?'<p class="pm-domain-status">Course selections reach 15 units. Review prerequisites and any required approval in Plan check.</p>':`<p class="pm-domain-status">${e(Math.max(0,15-units))} more units to select.</p>`}</div>`:'<p class="pm-domain-status">Select a route to see its course picker.</p>'}${source}`;
+  panel.querySelectorAll('[data-domain-route]').forEach(input=>input.onchange=()=>{
+    const result=applyChoiceSelection(data,state,'cit-domain:route',input.dataset.domainRoute);
+    if(!result.ok){toast(result.message,true);return;}
+    commit(result.state,'CIT emphasis route updated.',{schedule:'preserve'});
+  });
+  $('cit-domain-courses')?.addEventListener('click',()=>openPicker({choiceId,returnToDomain:true}));
+  panel.querySelectorAll('[data-domain-course]').forEach(button=>button.onclick=()=>openCourse(button.dataset.domainCourse));
+  $('cit-package-approval')?.addEventListener('change',event=>{
+    const next=clone(state);next.approvedChoices=event.target.checked?[...new Set([...next.approvedChoices,choiceId])]:next.approvedChoices.filter(id=>id!==choiceId);
+    commit(next,'Package approval status updated.',{schedule:'preserve'});
+  });
+}
 function ruleIds(node){return [...new Set([...(node.course_id?[node.course_id]:[]),...(node.children||[]).flatMap(ruleIds),...(node.options||[]).flatMap(o=>ruleIds(o.rule))])];}
 function optionLabel(option){const range=ruleUnitRange(option.rule,derived.ix);return `${option.label} · ${range[0]===range[1]?range[0]:range.join('–')} units`;}
 
@@ -81,7 +124,7 @@ function roleFor(c){return c.roles.includes('major')?'major':c.roles.includes('m
 function roleLabel(c){if(!c.placeholder&&c.choice_ids?.length)return (c.roles.includes('major')?'Major':c.roles.includes('minor')?'Minor':'Program')+' · selected option';if(c.placeholder)return c.geArea?'GE requirement':c.choiceId?'Program requirement':'Degree units';return c.roles.includes('major')&&c.roles.includes('minor')?'Major + minor':({major:'Major course',minor:'Minor course',ge:'GE / added course',preparation:'Prerequisite'})[roleFor(c)];}
 function card(c){
   const completed=c.completed,locked=state.locked.includes(c.id),hasIssue=issues.some(i=>i.id===c.id),linked=derived.edges.filter(edge=>edge.from===c.id||edge.to===c.id).length;
-  return `<article class="pm-course ${c.placeholder?'is-placeholder':''} ${completed?'is-completed':''} ${locked?'is-locked':''} ${selected.has(c.id)?'is-selected':''}" data-course-id="${e(c.id)}" data-role="${c.geArea?'ge':roleFor(c)}" role="button" tabindex="0" draggable="${!locked&&!completed}" aria-label="${e(c.code+' '+c.title+(completed?', completed':'')+(locked?', locked':''))}">
+  return `<article class="pm-course ${c.placeholder?'is-placeholder':''} ${completed?'is-completed':''} ${locked?'is-locked':''} ${selected.has(c.id)?'is-selected':''} ${linked&&state.showLinks?'has-course-links':''}" data-course-id="${e(c.id)}" data-role="${c.geArea?'ge':roleFor(c)}" role="button" tabindex="0" draggable="${!locked&&!completed}" aria-label="${e(c.code+' '+c.title+(completed?', completed':'')+(locked?', locked':''))}">
     <div class="pm-course-top">${!c.placeholder?`<button class="pm-course-complete" data-complete="${e(c.id)}" aria-label="${completed?'Mark incomplete':'Mark completed'}: ${e(c.code)}" aria-pressed="${completed}">${completed?icon('check'):''}</button>`:''}<h3 class="pm-course-code">${e(c.code)}</h3><span class="pm-course-units">${c.units_min==null?'?':e(c.completed?courseUnits(c):plannedCourseUnits(c))}${c.placeholder&&c.units_max>c.units_min?'–'+e(c.units_max):''} units</span></div>
     <p class="pm-course-name">${e(c.title||'Course details need confirmation')}</p>${c.completed_units>0&&!c.completed?`<p class="pm-overlap-note">${e(c.completed_units)} units already completed · ${e(plannedCourseUnits(c))} units remaining</p>`:''}
     ${c.geAppliedAreas?.length&&c.roles.some(r=>r==='major'||r==='minor'||r==='preparation')?`<p class="pm-overlap-note">Also meets ${c.geAppliedAreas.map(a=>'GE / campus '+e(a.replace('CAMPUS-',''))).join(', ')}</p>`:''}
@@ -110,7 +153,7 @@ function render(){
   $('issue-count').textContent=issues.length+derived.checklist.choices.length+reviewCount;
   $('check-button').classList.toggle('has-issues',issues.length+derived.checklist.choices.length+reviewCount>0);
   $('show-links').checked=state.showLinks;$('move-linked').checked=state.moveLinked;
-  renderGE();
+  renderGE();renderCITDomain();
   const start=Number(state.settings.startYear)*4+['Winter','Spring','Summer','Fall'].indexOf(state.settings.startSeason);
   const years=new Map();
   for(const term of derived.terms){const year=Math.floor((termOrder(term)-start)/4)+1;if(!years.has(year))years.set(year,[]);years.get(year).push(term);}
@@ -118,7 +161,7 @@ function render(){
     const yearUnits=derived.items.filter(c=>terms.some(t=>t.id===state.positions[c.id])&&!c.completed).reduce((s,c)=>s+plannedCourseUnits(c),0);
     return `<section class="pm-year" aria-label="Year ${year}"><div class="pm-year-label"><span class="pm-year-number">${year}</span><h2>Year ${year}</h2><span>${e(yearUnits)} planned units</span></div><div class="pm-year-terms">${terms.map(term=>{
       const all=derived.items.filter(c=>state.positions[c.id]===term.id),visible=all.filter(c=>state.showCompleted||!c.completed),load=all.filter(c=>!c.completed).reduce((s,c)=>s+plannedCourseUnits(c),0);
-      return `<section class="pm-term" data-term-id="${e(term.id)}" aria-label="${e(termLabel(term))}"><div class="pm-term-header"><h3 class="pm-term-title">${icon(term.season==='Summer'?'sun':'calendar')}${e(termLabel(term))}</h3><span class="pm-term-load ${load>term.limit?'is-over':''}" title="${e(term.loadSource==='official-roadmap'?'Semester limit from the official CSUN roadmap':term.loadSource==='custom'?'Your custom course-load limit':term.loadSource==='accelerated'?'Calculated for your shorter timeline':'Standard semester limit')}">${load} / ${e(term.limit)} units</span></div><div class="pm-term-cards">${visible.length?visible.map(card).join(''):'<div class="pm-term-empty">No additional course is needed here.<br>Drag a course here to change your timeline.</div>'}</div>${['Summer','Winter'].includes(term.season)?'<p class="pm-term-season-note">Proposed term · confirm course offerings</p>':''}</section>`;
+      return `<section class="pm-term" data-term-id="${e(term.id)}" aria-label="${e(termLabel(term))}"><div class="pm-term-header"><h3 class="pm-term-title">${icon(term.season==='Summer'?'sun':'calendar')}${e(termLabel(term))}</h3><span class="pm-term-load ${load>term.limit?'is-over':''}" title="${e((term.loadSource==='official-roadmap'?'Official roadmap suggestion: ':term.loadSource==='accelerated'?'Shorter timeline target: ':'Suggested load: ')+term.target+' units. Maximum: '+term.limit+' units. Drag courses up to this maximum while keeping prerequisites.')}">${load} / ${e(term.limit)} units${['Fall','Spring'].includes(term.season)?`<small>Suggested ${e(term.target)}</small>`:''}</span></div><div class="pm-term-cards">${visible.length?visible.map(card).join(''):'<div class="pm-term-empty">No additional course is needed here.<br>Drag a course here to change your timeline.</div>'}</div>${['Summer','Winter'].includes(term.season)?'<p class="pm-term-season-note">Proposed term · confirm course offerings</p>':''}</section>`;
     }).join('')}</div></section>`;
   }).join('')+'</div>';
   const unscheduled=derived.items.filter(c=>!derived.terms.some(t=>t.id===state.positions[c.id]));
@@ -152,6 +195,7 @@ function selectCourse(id){selected.has(id)?selected.delete(id):selected.add(id);
 function drawLinks(){
   const board=$('roadmap').querySelector('.pm-roadmap-content'),svg=board?.querySelector('.pm-links-svg');if(!svg||!derived)return;
   svg.innerHTML='';if(!state.showLinks)return;
+  svg.innerHTML='<defs><marker id="pm-connection-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M 1 1 L 9 5 L 1 9" fill="none" stroke="#d71920" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>';
   const rect=board.getBoundingClientRect(),related=connected(focused);
   svg.setAttribute('width',rect.width);svg.setAttribute('height',rect.height);
   const ns='http://www.w3.org/2000/svg';
@@ -168,6 +212,8 @@ function drawLinks(){
     }
     const line=document.createElementNS(ns,'path');line.setAttribute('d',path);line.dataset.from=edge.from;line.dataset.to=edge.to;
     line.setAttribute('class','pm-link-path'+(edge.kind==='corequisite'?' is-corequisite':'')+(edge.linkId?' is-custom':'')+(focused?(related.has(edge.from)&&related.has(edge.to)?' is-highlighted':' is-dim'):''));
+    line.setAttribute('marker-end','url(#pm-connection-arrow)');
+    const title=document.createElementNS(ns,'title');title.textContent=`${derived.ix.courses.get(edge.from)?.code||edge.from} ${edge.kind==='corequisite'?'shares a semester with':'comes before'} ${derived.ix.courses.get(edge.to)?.code||edge.to}`;line.append(title);
     svg.append(line);
   }
 }
@@ -270,13 +316,13 @@ function openPicker(context={}){
   const pool=(descriptor?choiceCourseOptions(data,descriptor):area?(isOverlay?overlayOptions(area.area_id):geOptions(data,area.area_id)):data.courses).filter(c=>!context.upperDivision||c.level==='upper_division');
   openDialog(title,descriptor?'PROGRAM REQUIREMENT':area?area.name:'CSUN COURSE CATALOG',`
     <p>${descriptor?context.singleSlot?'Select one course to replace this box. Your other selections stay in place.':'Choose courses from this requirement’s eligible list.':area?'Select a catalog course eligible for this area. Existing major/minor courses are listed first.':'Search '+data.courses.length.toLocaleString()+' catalog records by code or title.'}</p>
-    <div class="pm-picker-search"><input id="course-search" type="search" placeholder="Search code or title, e.g. BIOL 100" aria-label="Search courses" autocomplete="off"><div class="pm-picker-filters"><select id="course-level" aria-label="Course level"><option value="">All levels</option><option value="lower_division">Lower division</option><option value="upper_division">Upper division</option></select>${!descriptor?`<select id="picker-term" aria-label="Add to semester"><option value="">Auto-place course</option>${derived.terms.map(t=>`<option value="${e(t.id)}" ${context.targetTerm===t.id?'selected':''}>${e(termLabel(t))}</option>`).join('')}</select>`:''}</div></div>
+    <div class="pm-picker-search"><input id="course-search" type="search" placeholder="Search code or title, e.g. BIOL 100" aria-label="Search courses" autocomplete="off"><div class="pm-picker-filters"><select id="course-level" aria-label="Course level"><option value="">All levels</option><option value="lower_division">Lower division</option><option value="upper_division">Upper division</option></select>${descriptor?.ge_overlap_allowed===false?`<select id="course-subject" aria-label="Course department"><option value="">All departments</option>${[...new Set(pool.map(c=>c.code.split(' ')[0]))].sort().map(subject=>`<option value="${e(subject)}">${e(subject)}</option>`).join('')}</select>`:''}${!descriptor?`<select id="picker-term" aria-label="Add to semester"><option value="">Auto-place course</option>${derived.terms.map(t=>`<option value="${e(t.id)}" ${context.targetTerm===t.id?'selected':''}>${e(termLabel(t))}</option>`).join('')}</select>`:''}</div></div>
     <p id="picker-count" class="pm-picker-count" role="status"></p><div id="course-results" class="pm-picker-results"></div>
     <div class="pm-dialog-footer">${!descriptor&&!area?'<button id="custom-course-button" class="pm-button">Add a custom course</button>':''}<button id="picker-done" class="pm-button pm-button-primary">Done</button></div>`,true);
   let limit=60;
   function results(){
-    const query=$('course-search').value.trim().toLowerCase(),tokens=query.replaceAll('-',' ').split(/\s+/).filter(Boolean),level=$('course-level').value;
-    const matches=pool.filter(c=>(!level||c.level===level)&&tokens.every(token=>(c.code+' '+(c.title||'')).toLowerCase().includes(token)||c.code.toLowerCase().replaceAll(' ','').includes(token))).sort((a,b)=>Number(derived.items.some(c=>c.id===b.course_id&&c.roles.some(r=>r==='major'||r==='minor')))-Number(derived.items.some(c=>c.id===a.course_id&&c.roles.some(r=>r==='major'||r==='minor'))));
+    const query=$('course-search').value.trim().toLowerCase(),tokens=query.replaceAll('-',' ').split(/\s+/).filter(Boolean),level=$('course-level').value,subject=$('course-subject')?.value;
+    const matches=pool.filter(c=>(!level||c.level===level)&&(!subject||c.code.split(' ')[0]===subject)&&tokens.every(token=>(c.code+' '+(c.title||'')).toLowerCase().includes(token)||c.code.toLowerCase().replaceAll(' ','').includes(token))).sort((a,b)=>Number(derived.items.some(c=>c.id===b.course_id&&c.roles.some(r=>r==='major'||r==='minor')))-Number(derived.items.some(c=>c.id===a.course_id&&c.roles.some(r=>r==='major'||r==='minor'))));
     $('picker-count').textContent=`${matches.length.toLocaleString()} matching courses${matches.length>limit?' · showing '+limit:''}`;
     const chosen=descriptor?state.selections[descriptor.choice_id]||[]:[];
     $('course-results').innerHTML=matches.slice(0,limit).map(c=>{
@@ -304,8 +350,8 @@ function openPicker(context={}){
       closeDialog();openCourse(id);
     });
   }
-  $('course-search').oninput=()=>{limit=60;results();};$('course-level').onchange=results;
-  $('picker-done').onclick=()=>descriptor?openChoices(descriptor.choice_id):closeDialog();
+  $('course-search').oninput=()=>{limit=60;results();};$('course-level').onchange=results;if($('course-subject'))$('course-subject').onchange=results;
+  $('picker-done').onclick=()=>descriptor&&!context.returnToDomain?openChoices(descriptor.choice_id):closeDialog();
   $('custom-course-button')?.addEventListener('click',openCustomCourse);results();
 }
 
@@ -332,8 +378,8 @@ function openChoices(focusId=''){
       ${state.legacySelections?.[c.choice_id]?'<p class="pm-choice-constraint">An older save contains a selection here. Choose it again to confirm it; earlier versions could fill choices automatically.</p>':''}
       ${c.type==='CHOOSE_PATH'?`<select data-choice-path="${e(c.choice_id)}" aria-label="${e(c.label)}"><option value="" ${!selectedValue?'selected':''}>Select a course or pathway…</option>${c.options.map(o=>`<option value="${e(o.id)}" ${selectedValue===o.id?'selected':''}>${e(optionLabel(o))}</option>`).join('')}</select><div class="pm-option-preview">${c.options.map(o=>`<p><strong>${e(o.label)}</strong>${ruleIds(o.rule).length<=6?' — '+ruleIds(o.rule).map(id=>e(derived.ix.courses.get(id)?.title||id)).join('; '):''}</p>`).join('')}</div>`:
         c.type==='CHOOSE_OPTIONS'?`${c.minimum_count||c.minimum_units?`<p>${c.minimum_count?'Choose at least '+c.minimum_count+' options. ':''}${c.minimum_units?'Minimum '+c.minimum_units+' units.':''}</p>`:''}${c.options.map(o=>`<label class="pm-choice-option"><input type="checkbox" data-choice-option="${e(c.choice_id)}" value="${e(o.id)}" ${selectedIds.includes(o.id)?'checked':''}><span>${e(o.label)}</span></label>`).join('')}`:
-        `<p>${e(c.minimum_units||c.elective_route?.minimum_units||'Required')} units${c.approval_needed?' · advisor approval required':''}</p><div class="pm-related-list">${selectedIds.map(id=>`<button class="pm-related-chip" data-unchoose="${e(id)}" data-choice-id="${e(c.choice_id)}">${e(derived.ix.courses.get(id)?.code||id)} ×</button>`).join('')}</div><button class="pm-button pm-button-small" data-choice-picker="${e(c.choice_id)}">${icon('plus')} Choose courses</button>`}
-      ${c.approval_needed?`<label class="pm-detail-check"><input type="checkbox" data-approve="${e(c.choice_id)}" ${state.approvedChoices.includes(c.choice_id)?'checked':''}>I have an advisor-approved selection for this block.</label>`:''}
+        `<p>${e(c.minimum_units||c.elective_route?.minimum_units||'Required')} units${c.approval_needed?' · department chair approval required before enrollment':''}</p><div class="pm-related-list">${selectedIds.map(id=>`<button class="pm-related-chip" data-unchoose="${e(id)}" data-choice-id="${e(c.choice_id)}">${e(derived.ix.courses.get(id)?.code||id)} ×</button>`).join('')}</div><button class="pm-button pm-button-small" data-choice-picker="${e(c.choice_id)}">${icon('plus')} Choose courses</button>`}
+      ${c.approval_needed?`<label class="pm-detail-check"><input type="checkbox" data-approve="${e(c.choice_id)}" ${state.approvedChoices.includes(c.choice_id)?'checked':''}>My faculty advisor and department chair have approved this package before enrollment.</label>`:''}
       ${(c.constraints||[]).length?`<p class="pm-choice-constraint">${c.constraints.map(x=>e(typeof x==='string'?x:JSON.stringify(x))).join('<br>')}</p>`:''}
       ${c.maximum_lower_division_units!=null?`<p>Maximum ${e(c.maximum_lower_division_units)} lower-division units in this block.</p>`:''}
       ${c.subset_minima?.length?`<p>${c.subset_minima.map(s=>e(s.label||'Required category')+': '+(s.minimum_count?e(s.minimum_count)+' options':e(s.minimum_units)+' units')).join(' · ')}</p>`:''}
@@ -426,6 +472,7 @@ function wireEvents(){
     const next=clone(state),major=$('major-select').value;
     if(major!==state.settings.major){next.selections={};next.prerequisiteSelections={};next.legacySelections={};next.approvedChoices=[];next.removed=[];next.links=[];next.locked=[];}
     next.settings={major,minor:$('minor-select').value,years:Number($('plan-years').value),startYear:Number($('start-year').value),startSeason:$('start-season').value,summer:$('include-summer').checked,winter:$('include-winter').checked,regularLimit:Number($('regular-limit').value),summerLimit:Number($('summer-limit').value),winterLimit:Number($('winter-limit').value),transferUnits:Number($('transfer-units').value)};
+    if(major==='cit-bs'&&['minor-in-computer-science','minor-in-information-systems'].includes(next.settings.minor)){toast('Choose a minor other than Computer Science or Information Systems for CIT.',true);return;}
     next.settings.loadMode=$('load-mode').value;next.settings.priorUnitsMode=$('prior-credit-mode').value;
     if(next.settings.priorUnitsMode==='estimate')next.settings.transferUnits=0;
     if($('roadmap-select').value)next.settings.roadmap=$('roadmap-select').value;
@@ -433,7 +480,7 @@ function wireEvents(){
     const proposed=autoSchedule(data,withSuggestedPaths(data,next));commit(proposed,'Your roadmap is ready. Review program choices and plan checks.',{sync:true});
   };
   $('major-search').oninput=event=>populatePrograms(event.target.value);
-  $('major-select').onchange=()=>syncRoadmaps($('major-select').value);
+  $('major-select').onchange=()=>{syncRoadmaps($('major-select').value);syncMinorAvailability($('major-select').value);};
   $('load-mode').onchange=()=>{$('regular-limit').disabled=$('load-mode').value!=='custom';};
   $('prior-credit-mode').onchange=()=>{$('transfer-units').disabled=$('prior-credit-mode').value!=='transcript';};
   $('review-imported-choices').onclick=()=>openChoices();
@@ -471,14 +518,14 @@ function wireEvents(){
 async function boot(){
   hydrateIcons();
   try{
-    const configUrl=new URL('../../data/program-mapper/config.json?v=2026.11.19.3',import.meta.url),configResponse=await fetch(configUrl,{credentials:'omit'});
+    const configUrl=new URL('../../data/program-mapper/config.json?v=2026.11.19.4',import.meta.url),configResponse=await fetch(configUrl,{credentials:'omit'});
     if(!configResponse.ok)throw new Error('Could not load the mapper configuration.');
     const config=await configResponse.json(),catalogUrl=new URL(config.catalogUrl,configUrl);
     if(!['http:','https:'].includes(catalogUrl.protocol))throw new Error('The catalog endpoint must use HTTP or HTTPS.');
     const response=await fetch(catalogUrl,{credentials:'omit'});if(!response.ok)throw new Error('The catalog could not be loaded. Try refreshing in a moment.');
     data=await response.json();if(!data.metadata||!['courses','programs','requirements','ge_areas'].every(key=>Array.isArray(data[key])))throw new Error('The catalog response has an unsupported format.');
     let restored=false;
-    try{const saved=localStorage.getItem(STORAGE_KEY)||localStorage.getItem('csun-reimagined:program-mapper:v2')||localStorage.getItem('csun-reimagined:program-mapper:v1');if(saved){state=importPlan(saved,data);state=autoSchedule(data,state,{preserve:true});restored=true;}}catch{toast('Your previous save could not be restored. Import an exported backup if you have one.',true);}
+    try{const saved=localStorage.getItem(STORAGE_KEY)||localStorage.getItem('csun-reimagined:program-mapper:v3')||localStorage.getItem('csun-reimagined:program-mapper:v2')||localStorage.getItem('csun-reimagined:program-mapper:v1');if(saved){state=importPlan(saved,data);state=autoSchedule(data,state,{preserve:true});restored=true;}}catch{toast('Your previous save could not be restored. Import an exported backup if you have one.',true);}
     if(!state)state=autoSchedule(data,withSuggestedPaths(data,initialState(2026)));
     syncSetup();wireEvents();render();
     for(const id of ['major-select','minor-select','build-plan-button','add-course-button','export-button'])$(id).disabled=false;

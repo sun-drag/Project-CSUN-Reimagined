@@ -38,7 +38,7 @@ test('the unselected CIT reference reserves 15 minimum-estimate units per semest
 });
 test('legacy saves require explicit confirmation while retaining completed work and notes',()=>{
   const s=m.initialState();s.schemaVersion=1;s.selections={'cit-math':'MATH-103','cit-programming':'comp110'};s.completed=['CIT-101/L'];s.notes['CIT-101/L']='Transfer reviewed';
-  const restored=m.importPlan(JSON.stringify(s),data);assert.equal(restored.schemaVersion,3);assert.deepEqual(restored.selections,{});
+  const restored=m.importPlan(JSON.stringify(s),data);assert.equal(restored.schemaVersion,4);assert.deepEqual(restored.selections,{});
   assert.equal(restored.legacySelections['cit-math'],'MATH-103');assert.deepEqual(restored.completed,s.completed);assert.deepEqual(restored.notes,s.notes);
 });
 test('unselected prerequisite alternatives never enroll the first option automatically',()=>{

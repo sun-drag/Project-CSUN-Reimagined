@@ -88,23 +88,23 @@ for(const type of ['CHOOSE_OPTIONS','APPROVED_ELECTIVES'])test(type+': choosing 
  assert.deepEqual([...next.selections.pool].sort(),['A','C']);assert.equal(next.positions.A,aTerm);assert.equal(p.items.some(c=>c.id==='B'),false);assert.equal(p.ledger.totalPlannedUnits,6);
  assert.equal(m.applyChoiceSelection(d,next,'pool','B').ok,false);
 });
-test('the four-year CIT plan uses 15-unit official semester limits',()=>{
+test('the four-year CIT plan recommends 15 units while allowing 18',()=>{
  const s=m.autoSchedule(data,m.initialState()),d=m.derivePlan(data,s);
- assert.deepEqual(d.terms.map(t=>t.limit),Array(8).fill(15));assert.deepEqual(d.terms.map(t=>total(d.items.filter(c=>s.positions[c.id]===t.id))),Array(8).fill(15));
+ assert.deepEqual(d.terms.map(t=>t.limit),Array(8).fill(18));assert.deepEqual(d.terms.map(t=>t.target),Array(8).fill(15));assert.deepEqual(d.terms.map(t=>total(d.items.filter(c=>s.positions[c.id]===t.id))),Array(8).fill(15));
  assert.ok(d.terms.every(t=>t.loadSource==='official-roadmap'));
 });
 test('heavier semesters are permitted where the selected official guide lists them',()=>{
  const s=m.initialState();s.settings.major='computer-engineering-b-s';const d=m.derivePlan(data,s);
- assert.equal(d.roadmap.program_id,'computer-engineering-b-s');assert.deepEqual(d.terms.map(t=>t.limit),[15,16,17,16,15,14,14,16]);
+ assert.equal(d.roadmap.program_id,'computer-engineering-b-s');assert.deepEqual(d.terms.map(t=>t.target),[15,16,17,16,15,14,14,16]);
 });
-test('shorter plans calculate their needed load; higher custom limits require an explicit choice',()=>{
- const s=m.initialState();s.settings.years=3;assert.ok(m.derivePlan(data,s).terms.every(t=>t.limit===20));
- s.settings.years=4;s.settings.regularLimit=21;assert.ok(m.derivePlan(data,s).terms.every(t=>t.limit===15));
- s.settings.loadMode='custom';assert.ok(m.derivePlan(data,s).terms.every(t=>t.limit===21));
+test('shorter plans never exceed 18 units and custom loads can set a lower maximum',()=>{
+ const s=m.initialState();s.settings.years=3;assert.ok(m.derivePlan(data,s).terms.every(t=>t.limit===18&&t.target===18));
+ s.settings.years=4;s.settings.regularLimit=21;assert.ok(m.derivePlan(data,s).terms.every(t=>t.limit===18));
+ s.settings.loadMode='custom';s.settings.regularLimit=16;assert.ok(m.derivePlan(data,s).terms.every(t=>t.limit===16&&t.target===16));
 });
 test('older saves preserve selections while migrating to roadmap limits',()=>{
  const s=m.initialState();s.schemaVersion=2;delete s.settings.loadMode;delete s.settings.priorUnitsMode;s.settings.regularLimit=18;s.selections['cit-math']='MATH-255A';
- const restored=m.importPlan(JSON.stringify(s),data);assert.equal(restored.schemaVersion,3);assert.equal(restored.selections['cit-math'],'MATH-255A');assert.equal(restored.settings.loadMode,'roadmap');assert.equal(restored.settings.regularLimit,15);
+ const restored=m.importPlan(JSON.stringify(s),data);assert.equal(restored.schemaVersion,4);assert.equal(restored.selections['cit-math'],'MATH-255A');assert.equal(restored.settings.loadMode,'roadmap');assert.equal(restored.settings.regularLimit,18);
 });
 test('every official roadmap has a parsed budget or a clearly conditional session',()=>{
  assert.equal(data.roadmaps.length,157);
@@ -112,7 +112,7 @@ test('every official roadmap has a parsed budget or a clearly conditional sessio
 });
 test('spring starts map summer budgets to the correct academic year',()=>{
  const s=m.initialState();s.settings.major='radiologic-sciences-b-s';s.settings.startSeason='Spring';s.settings.summer=true;
- const d=m.derivePlan(data,s);assert.equal(d.terms.find(t=>t.id==='2028-summer').limit,3);
+ const d=m.derivePlan(data,s);assert.equal(d.terms.find(t=>t.id==='2028-summer').target,3);
  assert.equal(d.terms.find(t=>t.id==='2028-summer').loadSource,'official-roadmap');
 });
 test('all majors, minors, roadmap variants and GE-complete states respect guide limits without phantom electives',()=>{

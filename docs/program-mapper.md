@@ -32,12 +32,48 @@ test files; publishing them is optional. They are not needed in `dist`.
 
 ## Credit and roadmap fixes in this revision
 
-Four-year plans use each selected official roadmap’s actual semester budget,
-usually 15 units. The review parsed 1,262 explicit semester totals across 157 maps;
-one additional summer session is conditional and has no fixed unit total. Heavier
-semesters are allowed when the guide explicitly lists them. Shorter timelines
-calculate their needed load. A higher custom maximum requires selecting the custom
-load mode. If a program has multiple guide variants, select the appropriate one.
+Official roadmap totals are **suggested loads**, usually 15 units, and remain the
+starting point for a four-year schedule. The 1,262 captured semester totals across
+157 maps are retained as placement targets. Each semester now shows both the
+suggestion and the maximum. Students can drag classes from 15 up to **18 units in
+fall or spring**, subject to prerequisites, corequisites, locks and availability
+preferences. A lower custom maximum can still be set. Auto-arrange also respects
+18; choosing two or three years does not silently raise it to 20 or 30. If the
+remaining units exceed the timeline's capacity, Plan check asks for actual prior
+credit, summer/winter terms or a longer timeline. A shorter plan is not a guarantee
+of completion or course availability. Summer and winter default to 6 and 3 units;
+the configurable ceilings are 13 and 4 respectively. These defaults model ordinary
+undergraduate good standing. Graduating-senior/approved overload exceptions are
+outside this mapper's current scope.
+
+For CIT, a dedicated box **above Year 1** makes the domain-emphasis route explicit:
+
+- An appropriate selected minor supplies the minor route, with no additional
+  15-unit emphasis block. Computer Science and Information Systems minors are
+  disabled for CIT and flagged if present in an imported plan. Other majors retain
+  their normal minor selection.
+- With no eligible minor, choose **Domain Emphasis Package** or **Upper-division
+  COMP / CIT electives**. Course selections remain editable from the panel or
+  semester cards. Changing routes stops counting the inactive route's selections;
+  switching back restores the saved choices.
+- The package picker searches all catalog departments, with a department filter.
+  It requires 15 units, at most 6 lower-division units, no GE reuse, and recorded
+  confirmation of faculty-advisor and department-chair approval before enrollment.
+  The mapper cannot grant that approval. A GE-designated course can be selected
+  for the package, but then cannot also fulfill GE in the plan.
+- The elective picker includes only COMP/CIT courses numbered 300–599, excluding
+  every course family listed by the CIT catalog. Exclusions apply to lecture/lab
+  aliases and cannot be bypassed by an imported approval flag. COMP 488 and
+  CIT 488 share one 6-unit cap; all selected-course prerequisites still apply.
+
+Course links now use visible red lines with directional arrows. Linked cards have
+red accents; selected or focused linked courses receive a stronger red outline.
+Corequisites use dashed red connections. Show links can hide the lines and their
+persistent card accents.
+
+Saved plans migrate to schema 4 and browser key v4. Schema 1/2/3 imports remain
+supported. An older roadmap-mode 15-unit limit becomes 18 without changing course
+selections, notes, progress or locks; lower custom limits are preserved.
 
 Marking GE/campus areas complete reduces remaining credits. The default prior
 credit figure is a conservative estimate of the GE space removed from this specific
@@ -235,7 +271,7 @@ The tests require a current Node.js runtime, with no package installation:
 node --test tests/program-mapper/*.test.mjs
 ```
 
-The current revision passes 94 automated tests. A static HTTP check serves all seven versioned mapper assets successfully. The generated-plan review covers 687 major/minor/progress/roadmap scenarios. Header, navigation destinations and footer are compared with index.html.
+The current revision passes 111 automated tests. A static HTTP check serves all seven versioned mapper assets successfully. The generated-plan review covers 687 major/minor/progress/roadmap scenarios. Header, navigation destinations and footer are compared with index.html.
 
 Core tests exercise real catalog data and a small independent dependency fixture.
 They include every indexed major/minor, sequencing, alternate prerequisites,

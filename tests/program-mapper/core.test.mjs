@@ -116,6 +116,6 @@ test('upper-division GE courses wait for junior standing and basic GE preparatio
 });
 test('all 265 major and minor entries load and schedule without crashes or silent conflicts',()=>{
   const report=[];
-  for(const p of catalog.programs){let s=m.initialState();if(p.type==='major')s.settings.major=p.program_id;else s.settings.minor=p.program_id;s=m.autoSchedule(catalog,m.withSuggestedPaths(catalog,s));const d=m.derivePlan(catalog,s);const errors=m.validatePlan(catalog,s,d).filter(i=>i.severity==='error');assert.equal(errors.length,0,p.name+': '+JSON.stringify(errors));assert.ok(d.items.length>0);report.push({program:p.program_id,items:d.items.length,scheduled:Object.keys(s.positions).length});}
+  for(const p of catalog.programs){let s=m.initialState();if(p.type==='major')s.settings.major=p.program_id;else{s.settings.minor=p.program_id;if(['minor-in-computer-science','minor-in-information-systems'].includes(p.program_id))s.settings.major='biology-b-a';}s=m.autoSchedule(catalog,m.withSuggestedPaths(catalog,s));const d=m.derivePlan(catalog,s);const errors=m.validatePlan(catalog,s,d).filter(i=>i.severity==='error');assert.equal(errors.length,0,p.name+': '+JSON.stringify(errors));assert.ok(d.items.length>0);report.push({program:p.program_id,items:d.items.length,scheduled:Object.keys(s.positions).length});}
   assert.equal(report.length,265);
 });
