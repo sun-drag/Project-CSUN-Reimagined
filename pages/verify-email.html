@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="no-referrer">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Verify email | CSUN Reimagined</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/pages/login.css?v=2026.11.20.1">
+</head>
+<body class="auth-page" data-auth-page="verify">
+    <a class="auth-skip" href="#account-main">Skip to account form</a>
+    <header class="site-header">
+
+        <div class="container header-inner">
+
+            <div class="site-brand">
+                <h1>CSUN Student Portal</h1>
+            </div>
+
+        </div>
+
+    </header>
+    <nav class="main-nav">
+
+        <div class="container nav-inner">
+
+            <a href="../index.html">
+                Home
+            </a>
+
+            <a href="program-mapper.html">
+                Program Mapper
+            </a>
+
+            <a href="registration.html">
+                Registration
+            </a>
+
+            <a href="resources.html">
+                Campus Resources
+            </a>
+
+            <a href="cybersecurity.html">
+                Cybersecurity
+            </a>
+            
+            <a class="lgb active" aria-current="page" href="login-page.html">
+                Login
+            </a>
+        </div>
+
+    </nav>
+    <main id="account-main" class="container auth-layout">
+        <section class="auth-intro" aria-labelledby="intro-title">
+            <p class="auth-eyebrow">CSUN REIMAGINED / YOUR ACCOUNT</p>
+            <h2 id="intro-title">Your next chapter.<br><span>Your own path.</span></h2>
+            <p>A little less guesswork. A clearer way forward. Explore your options and build a plan that works for you.</p>
+            <div class="auth-preview" aria-hidden="true">
+                <div><span>01</span><strong>Find your direction</strong></div>
+                <div><span>02</span><strong>Make it your plan</strong></div>
+                <div><span>03</span><strong>Take the next step</strong></div>
+            </div>
+            <a class="auth-guest" href="program-mapper.html">Continue to the Program Mapper <span aria-hidden="true">↗</span></a>
+            <p class="auth-fine">No account needed to use the mapper. Plans currently stay in this browser; account syncing is coming later.</p>
+        </section>
+        <section class="auth-card" aria-labelledby="account-title">
+            <div class="auth-card-heading"><span class="auth-mark" aria-hidden="true">↗</span><span>YOUR STUDENT PROJECT ACCOUNT</span></div>
+            <div id="account-entry">
+                <h2 id="account-title">One last step.</h2>
+                <p class="auth-subtitle">Verify your email address to finish creating your account.</p>
+                <p class="auth-project-note">This is an independent student project. Use a different password from your university account.</p>
+                <div id="service-status" class="auth-service" role="status" aria-live="polite">Checking account availability…</div>
+                <div id="form-status" class="auth-status" role="status" aria-live="polite" aria-atomic="true" tabindex="-1" hidden></div>
+                <p id="verify-help">Open the verification link in your email, then use the button below to confirm.</p><form id="account-form" method="post" novalidate><div class="auth-fields"></div><button class="auth-primary" type="submit" disabled>Verify email</button></form><div class="auth-switch"><a href="login-page.html">Back to log in <span aria-hidden="true">→</span></a></div>
+            </div>
+            <div id="account-session" hidden>
+                <h2>You’re logged in.</h2>
+                <p>Welcome, <strong id="account-name"></strong>.</p>
+                <p id="account-email" class="auth-subtitle"></p>
+                <p class="auth-project-note">Your mapper plan still saves in this browser. Account syncing is coming later.</p>
+                <a class="auth-primary" href="program-mapper.html">Open Program Mapper</a>
+                <button id="sign-out" class="auth-secondary" type="button">Sign out</button>
+                <p id="session-status" role="status" aria-live="polite"></p>
+            </div>
+            <noscript><p class="auth-service">Account forms need JavaScript. You can still <a href="program-mapper.html">use the Program Mapper</a>.</p></noscript>
+        </section>
+    </main>
+    <footer class="site-footer">
+
+        <div class="container footer-inner">
+
+            <p>
+                <strong>CSUN Student Portal Project</strong>
+            </p>
+
+            <p>
+                This is a student project and is not an official
+                CSUN website.
+            </p>
+
+        </div>
+
+    </footer>
+    <script type="module" src="../js/pages/account.js?v=2026.11.20.1"></script>
+</body>
+</html>

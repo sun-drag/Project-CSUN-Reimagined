@@ -1,0 +1,6 @@
+{
+  "schemaVersion": 1,
+  "enabled": false,
+  "apiBaseUrl": "/api",
+  "requestTimeoutMs": 15000
+}

@@ -1,0 +1,58 @@
+{
+  "date": "2026-11-20",
+  "tests_passed": 164,
+  "tests_failed": 0,
+  "account_tests": 21,
+  "existing_mapper_and_support_tests": 143,
+  "runtime_assets": {
+    "pages/login-page.html": {
+      "status": 200,
+      "content_type": "text/html",
+      "bytes": 5750
+    },
+    "pages/create-account.html": {
+      "status": 200,
+      "content_type": "text/html",
+      "bytes": 6814
+    },
+    "pages/reset-password.html": {
+      "status": 200,
+      "content_type": "text/html",
+      "bytes": 6610
+    },
+    "pages/verify-email.html": {
+      "status": 200,
+      "content_type": "text/html",
+      "bytes": 4933
+    },
+    "css/pages/login.css?v=2026.11.20.1": {
+      "status": 200,
+      "content_type": "text/css",
+      "bytes": 5868
+    },
+    "js/pages/account.js?v=2026.11.20.1": {
+      "status": 200,
+      "content_type": "text/javascript",
+      "bytes": 8182
+    },
+    "js/pages/account-core.mjs?v=2026.11.20.1": {
+      "status": 200,
+      "content_type": "text/javascript",
+      "bytes": 7871
+    },
+    "data/accounts/config.json?v=2026.11.20.1": {
+      "status": 200,
+      "content_type": "application/json",
+      "bytes": 98
+    }
+  },
+  "html_checks": "All account page local links/assets resolve, IDs are unique, and label/ARIA references resolve.",
+  "scope": "Login changed; create-account/reset/verify pages and their supporting account-only files added. Other existing site files identical.",
+  "database_status": "Schema supplied for review; not applied to RDS. No deployed account API, email delivery or saved-plan syncing. Default frontend config disabled.",
+  "test_method": "Pure module tests plus real page JavaScript handlers in a small DOM harness with mocked HTTP responses. No live accounts or credentials used.",
+  "limitations": [
+    "No native browser rendering available: Chromium startup is blocked by AF_UNIX socket policy. Visual layout, focus, autofill and password-manager behavior require browser review.",
+    "PostgreSQL migration syntax/behavior has not been run against staging PostgreSQL.",
+    "Actual HTTPS cookies, CORS, CSRF enforcement, rate limiting and email delivery require backend implementation and staging tests."
+  ]
+}
