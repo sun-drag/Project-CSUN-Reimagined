@@ -1010,7 +1010,7 @@
         },
         {
           "url": "https://catalog.csun.edu/resource/road-map/2025/cinema-and-television-arts-television-production-option-documentary-pathway-2025/",
-          "title": "Cinema and Television Arts/Television Production Option – Documentary Pathway (2025-Present)",
+          "title": "Cinema and Television Arts/Television Production Option \u2013 Documentary Pathway (2025-Present)",
           "academic_source_section_complete": true,
           "sessions": 8
         }
@@ -1546,7 +1546,7 @@
     },
     {
       "program_id": "gender-and-women-s-studies-b-a",
-      "name": "Gender and Women’s Studies, B.A.",
+      "name": "Gender and Women\u2019s Studies, B.A.",
       "source_url": "https://catalog.csun.edu/academics/gws/programs/ba-gender-and-womens-studies-i/",
       "academic_source_section_complete": true,
       "roadmaps": [
@@ -1563,7 +1563,7 @@
     },
     {
       "program_id": "gender-and-women-s-studies-b-a-double-major",
-      "name": "Gender and Women’s Studies, B.A.: Double Major",
+      "name": "Gender and Women\u2019s Studies, B.A.: Double Major",
       "source_url": "https://catalog.csun.edu/academics/gws/programs/ba-gender-womens-studies-ii/double-major/",
       "academic_source_section_complete": true,
       "roadmaps": [],
@@ -2198,7 +2198,7 @@
       "roadmaps": [
         {
           "url": "https://catalog.csun.edu/resource/road-map/2025/mathematics-bachelor-of-arts-secondary-teaching-option-2025/",
-          "title": "Mathematics/Bachelor of Arts – Secondary Teaching Option (2025-Present)",
+          "title": "Mathematics/Bachelor of Arts \u2013 Secondary Teaching Option (2025-Present)",
           "academic_source_section_complete": true,
           "sessions": 8
         }
@@ -2232,7 +2232,7 @@
       "roadmaps": [
         {
           "url": "https://catalog.csun.edu/resource/road-map/2025/mathematics-bachelor-of-science-statistics-option-2025/",
-          "title": "Mathematics/Bachelor of Science – Statistics Option (2025-Present)",
+          "title": "Mathematics/Bachelor of Science \u2013 Statistics Option (2025-Present)",
           "academic_source_section_complete": true,
           "sessions": 8
         }
@@ -2249,7 +2249,7 @@
       "roadmaps": [
         {
           "url": "https://catalog.csun.edu/resource/road-map/2025/mathematics-bachelor-of-science-applied-mathematical-sciences-option-2025/",
-          "title": "Mathematics/Bachelor of Science – Applied Mathematical Sciences Option (2025-Present)",
+          "title": "Mathematics/Bachelor of Science \u2013 Applied Mathematical Sciences Option (2025-Present)",
           "academic_source_section_complete": true,
           "sessions": 8
         }
@@ -5145,7 +5145,7 @@
     }
   ],
   "verification": {
-    "automated_tests_passed": 111,
+    "automated_tests_passed": 121,
     "automated_tests_failed": 0,
     "test_command": "node --test tests/program-mapper/*.test.mjs",
     "all_program_entries_exercised": 265,
@@ -5172,14 +5172,14 @@
       "native_browser": "Unavailable due to AF_UNIX socket restrictions; real layout, touch hit testing and print pagination need manual browser review."
     },
     "semester_loads": "Roadmap semester totals are soft recommendations. Manual and automatic regular-semester loads have an 18-unit ceiling, with lower custom maxima supported. Shorter plans never invent overloads; insufficient capacity is flagged. Summer is capped at 13, winter at 4.",
-    "CIT_domain": "A panel above Year 1 selects all-department domain packages or strictly eligible COMP/CIT 300–599 electives. Appropriate minors replace the extra block. CS and IS minors are disabled for CIT. Package approval, lower-division limit, GE non-overlap, excluded course families and combined 488 credit cap are enforced.",
+    "CIT_domain": "A panel above Year 1 selects all-department domain packages or strictly eligible COMP/CIT 300\u2013599 electives. Appropriate minors replace the extra block. CS and IS minors are disabled for CIT. Package approval, lower-division limit, GE non-overlap, excluded course families and combined 488 credit cap are enforced.",
     "policy_verification_date": "2026-11-19",
     "credit_accounting": "Checked GE/campus areas receive a conservative planning-credit estimate after removing major/waiver/completed-course overlap. A transcript total replaces that estimate. Overlays create no extra earned units.",
-    "degree_electives": "Only the remaining degree-credit balance is assigned to free electives. Unreconciled program credits above the guide’s free-elective budget are held as program review, not offered as unrestricted electives.",
+    "degree_electives": "Only the remaining degree-credit balance is assigned to free electives. Unreconciled program credits above the guide\u2019s free-elective budget are held as program review, not offered as unrestricted electives.",
     "course_overlap": "Existing eligible major/minor/preparation courses are automatically allocated to remaining GE. Course components are merged across lecture/bundle aliases, with completed components excluded from future loads.",
     "missing_credit_targets_restored": 452,
     "roadmap_mapping_corrections": [
-      "Computer Engineering’s guide was incorrectly associated with Civil Engineering; it now belongs to Computer Engineering.",
+      "Computer Engineering\u2019s guide was incorrectly associated with Civil Engineering; it now belongs to Computer Engineering.",
       "Added Geography and Environmental Studies from the central 2026 four-year roadmap index. The separate Honors map is not exposed as an ordinary-major guide."
     ],
     "official_index": "https://catalog.csun.edu/resource/road-map/2026/",
@@ -6827,7 +6827,7 @@
       },
       {
         "program_id": "gender-and-women-s-studies-b-a",
-        "name": "Gender and Women’s Studies, B.A.",
+        "name": "Gender and Women\u2019s Studies, B.A.",
         "type": "major",
         "initial_degree_elective_units": 29,
         "planning_major": "gender-and-women-s-studies-b-a",
@@ -6850,7 +6850,7 @@
       },
       {
         "program_id": "gender-and-women-s-studies-b-a-double-major",
-        "name": "Gender and Women’s Studies, B.A.: Double Major",
+        "name": "Gender and Women\u2019s Studies, B.A.: Double Major",
         "type": "major",
         "initial_degree_elective_units": 47,
         "planning_major": "gender-and-women-s-studies-b-a-double-major",
@@ -9978,7 +9978,7 @@
       },
       {
         "program_id": "minor-in-gender-and-women-s-studies",
-        "name": "Minor in Gender and Women’s Studies",
+        "name": "Minor in Gender and Women\u2019s Studies",
         "type": "minor",
         "initial_degree_elective_units": 3,
         "planning_major": "cit-bs",
@@ -11288,5 +11288,19 @@
         ]
       }
     ]
+  },
+  "layout_revision": {
+    "snapshot": "2026.11.19.5",
+    "academic_data_snapshot": "2026.11.19.4",
+    "date": "2026-11-19",
+    "scope": "Horizontal timeline, muted red links, pointer/keyboard course-chain emphasis. No academic rule changes.",
+    "tests_passed": 121,
+    "tests_failed": 0,
+    "horizontal_navigation_tested": true,
+    "hover_focus_leave_tested": true,
+    "unrelated_sibling_isolation_tested": true,
+    "edge_drag_scroll_tested": true,
+    "scroll_position_retention_tested": true,
+    "native_browser": "Native Chromium unavailable because AF_UNIX sockets are blocked; actual layout, touch hit testing, print pagination and visual colors still need browser review."
   }
 }

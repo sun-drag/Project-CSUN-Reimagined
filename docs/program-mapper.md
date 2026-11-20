@@ -66,10 +66,30 @@ For CIT, a dedicated box **above Year 1** makes the domain-emphasis route explic
   aliases and cannot be bypassed by an imported approval flag. COMP 488 and
   CIT 488 share one 6-unit cap; all selected-course prerequisites still apply.
 
-Course links now use visible red lines with directional arrows. Linked cards have
-red accents; selected or focused linked courses receive a stronger red outline.
-Corequisites use dashed red connections. Show links can hide the lines and their
-persistent card accents.
+The timeline now runs **horizontally from left to right**, grouping semesters
+under each academic year. Courses remain readable within their semester columns.
+The timeline scrolls independently of the page, including on phones. Earlier/later
+buttons and Arrow Left/Right, Home and End controls are available when the timeline
+region has keyboard focus. Dragging near its left/right edge scrolls the canvas so
+a card can be moved to a semester outside the initial view. Editing a course keeps
+the current horizontal scroll position. Winter/summer sessions retain their normal
+chronological order. Print uses a compact, wrapping year layout to avoid clipping.
+
+Course links use **faint, muted red lines by default**. Hovering a linked card, or
+focusing it with the keyboard, brings its prerequisites, corequisites and follow-on
+courses into focus with a brighter red connection and outline. Unrelated paths are
+dimmed. Ancestors and descendants are traced separately so an unrelated sibling
+course is not highlighted just because it shares an earlier prerequisite. Moving
+within one card does not flicker the highlight; leaving the card restores the quiet
+state. Hover never changes the saved plan or opens a course dialog. Touch pointer
+contacts do not leave a hover state behind. Show links hides both the lines and the
+relationship highlights. Manual course-link selection remains separately visible.
+
+If the previous version is already installed, this revision changes three runtime
+files: `pages/program-mapper.html`, `css/pages/program-mapper.css` and
+`js/pages/program-mapper.js`. Their UI cache version is `2026.11.19.5`. Catalog data,
+core scheduling logic, CIT emphasis rules and schema 4 are retained exactly from
+`2026.11.19.4`. For an older installation, merge all seven runtime files listed above.
 
 Saved plans migrate to schema 4 and browser key v4. Schema 1/2/3 imports remain
 supported. An older roadmap-mode 15-unit limit becomes 18 without changing course
@@ -271,14 +291,16 @@ The tests require a current Node.js runtime, with no package installation:
 node --test tests/program-mapper/*.test.mjs
 ```
 
-The current revision passes 111 automated tests. A static HTTP check serves all seven versioned mapper assets successfully. The generated-plan review covers 687 major/minor/progress/roadmap scenarios. Header, navigation destinations and footer are compared with index.html.
+The current revision passes 121 automated tests. A static HTTP check serves all seven versioned mapper assets successfully. The generated-plan review covers 687 major/minor/progress/roadmap scenarios. Header, navigation destinations and footer are compared with index.html.
 
 Core tests exercise real catalog data and a small independent dependency fixture.
 They include every indexed major/minor, sequencing, alternate prerequisites,
 corequisites, locks, calendar dates, GE replacement, unit selection, and import
 boundaries. Interface tests execute the real page script with a small DOM contract
 harness and exercise event handlers, dialogs, drag/drop dispatch, completion,
-links, GE, custom courses, restore, downloads and print invocation.
+links, GE, custom courses, restore, downloads and print invocation. This revision
+also tests hover/focus/leave behavior, sibling-branch isolation, touch handling,
+horizontal navigation, edge scrolling, connection geometry and scroll retention.
 
 The DOM harness is **not** a substitute for a real browser. Automated Chromium
 launch was blocked by an AF_UNIX socket restriction in the execution environment.

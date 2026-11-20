@@ -1,20 +1,20 @@
 {
-  "snapshot": "2026.11.19.4",
+  "snapshot": "2026.11.19.5",
   "runtime_files": {
     "pages/program-mapper.html": {
       "status": 200,
       "content_type": "text/html",
-      "bytes": 12917
+      "bytes": 13489
     },
-    "css/pages/program-mapper.css?v=2026.11.19.4": {
+    "css/pages/program-mapper.css?v=2026.11.19.5": {
       "status": 200,
       "content_type": "text/css",
-      "bytes": 35791
+      "bytes": 38434
     },
-    "js/pages/program-mapper.js?v=2026.11.19.4": {
+    "js/pages/program-mapper.js?v=2026.11.19.5": {
       "status": 200,
       "content_type": "text/javascript",
-      "bytes": 79491
+      "bytes": 83223
     },
     "js/pages/program-mapper-core.mjs?v=2026.11.19.4": {
       "status": 200,
@@ -38,7 +38,7 @@
     }
   },
   "functional_verification": {
-    "tests_passed": 111,
+    "tests_passed": 121,
     "tests_failed": 0,
     "program_entries": 265,
     "generated_scenarios_checked": 687,
@@ -48,7 +48,12 @@
     "roadmap_targets_separate_from_limits": true,
     "CIT_domain_panel_and_restrictions_tested": true,
     "manual_18_unit_moves_tested": true,
-    "native_browser": "Unavailable due to AF_UNIX socket restrictions; real layout, touch hit testing and print pagination need manual browser review."
+    "native_browser": "Unavailable due to AF_UNIX socket restrictions; real layout, touch hit testing and print pagination need manual browser review.",
+    "horizontal_navigation_tested": true,
+    "hover_focus_leave_tested": true,
+    "sibling_branch_isolation_tested": true,
+    "edge_drag_scroll_tested": true,
+    "scroll_position_retention_tested": true
   },
   "program_entries": 265,
   "roadmap_variants": 157,
@@ -58,5 +63,6 @@
     "catalog": "https://catalog.csun.edu/academics/comp/programs/bs-computer-information-technology/",
     "unit_policy": "https://catalog.csun.edu/policies/registration-unit-limits-academic-load-regulations/",
     "roadmap": "https://catalog.csun.edu/resource/road-map/2025/computer-information-technology-2025-2025/"
-  }
+  },
+  "academic_data_snapshot": "2026.11.19.4"
 }

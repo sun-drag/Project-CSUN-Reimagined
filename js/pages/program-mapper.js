@@ -24,7 +24,7 @@ const icons={
 };
 function icon(name){return `<svg class="pm-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="${icons[name]||icons.info}"/></svg>`;}
 function hydrateIcons(root=document){root.querySelectorAll('[data-icon]').forEach(el=>el.innerHTML=icon(el.dataset.icon));}
-let data,state,derived,issues=[],undoStack=[],redoStack=[],selected=new Set(),focused='',dragId='',saveTimer,toastTimer,clickTimer;
+let data,state,derived,issues=[],undoStack=[],redoStack=[],selected=new Set(),focused='',hovered='',keyboardCourse='',dragId='',saveTimer,toastTimer,clickTimer;
 let dialogOrigin=null;
 const dialog=$('mapper-dialog'), body=$('dialog-body');
 
@@ -136,6 +136,7 @@ function card(c){
 }
 
 function render(){
+  const previousScroll=$('roadmap').scrollLeft||0;
   derived=derivePlan(data,state);issues=validatePlan(data,state,derived);
   $('plan-name').value=state.name;$('program-subtitle').textContent=derived.checklist.major.name+(derived.checklist.minor?' + '+derived.checklist.minor.name.replace(/^Minor in /,''):'');
   const program=derived.ix.programs.get(state.settings.major),minor=derived.ix.programs.get(state.settings.minor);
@@ -166,7 +167,7 @@ function render(){
   }).join('')+'</div>';
   const unscheduled=derived.items.filter(c=>!derived.terms.some(t=>t.id===state.positions[c.id]));
   $('unscheduled-section').hidden=!unscheduled.length;$('unscheduled-count').textContent=unscheduled.length;$('unscheduled-cards').innerHTML=unscheduled.map(card).join('');
-  updateSelection();requestAnimationFrame(drawLinks);
+  updateSelection();requestAnimationFrame(()=>{$('roadmap').scrollLeft=previousScroll;highlight();updateTimelineNavigation();});
 }
 
 function renderGE(){
@@ -181,8 +182,40 @@ function renderGE(){
   $('ge-overlays').innerHTML=derived.checklist.ge_requirements.filter(a=>a.kind==='overlay').map(a=>`<div class="pm-overlay-item"><label class="pm-detail-check"><input type="checkbox" data-ge="${e(a.area_id)}" ${state.geCompleted.includes(a.area_id)?'checked':''}><strong>${e(a.area_id)}</strong></label>${e(a.name)}<br><span>${a.eligible_planned_courses.length} eligible planned course${a.eligible_planned_courses.length===1?'':'s'} · distribution still applies</span><br><button class="pm-choice-remove" data-overlay-picker="${e(a.area_id)}">Find eligible courses</button></div>`).join('');
 }
 
-function connected(id){const seen=new Set(id?[id]:[]);for(let n=0;n<derived.items.length;n++){let changed=false;for(const edge of derived.edges)if(seen.has(edge.from)||seen.has(edge.to))for(const part of [edge.from,edge.to])if(!seen.has(part)){seen.add(part);changed=true;}if(!changed)break;}return seen;}
-function highlight(){const related=connected(focused);document.querySelectorAll('.pm-course').forEach(el=>el.classList.toggle('is-related',related.has(el.dataset.courseId)));drawLinks();}
+// Trace ancestors and descendants separately, avoiding unrelated sibling branches.
+function connected(id){
+  const seen=new Set(id?[id]:[]);if(!id||!state.showLinks)return new Set();
+  for(const direction of ['before','after']) {
+    const visited=new Set([id]),queue=[id];
+    while(queue.length){const current=queue.shift();for(const edge of derived.edges){
+      const next=edge.kind==='corequisite'?(edge.from===current?edge.to:edge.to===current?edge.from:null):
+        direction==='before'&&edge.to===current?edge.from:direction==='after'&&edge.from===current?edge.to:null;
+      if(next&&!visited.has(next)){visited.add(next);seen.add(next);queue.push(next);}
+    }}
+  }
+  return seen;
+}
+function activeCourse(){const id=hovered||keyboardCourse||focused;return derived?.edges.some(edge=>edge.from===id||edge.to===id)?id:'';}
+function highlight(){
+  const active=state.showLinks?activeCourse():'',related=connected(active);
+  document.querySelectorAll('.pm-course').forEach(el=>{
+    el.classList.toggle('is-related',related.has(el.dataset.courseId));
+    el.classList.toggle('is-link-origin',el.dataset.courseId===active);
+    el.classList.toggle('is-dim',!!active&&!related.has(el.dataset.courseId));
+  });drawLinks();
+}
+function updateTimelineNavigation(){
+  const timeline=$('roadmap'),maximum=Math.max(0,(timeline.scrollWidth||0)-(timeline.clientWidth||0));
+  $('timeline-previous').disabled=(timeline.scrollLeft||0)<=1;
+  $('timeline-next').disabled=(timeline.scrollLeft||0)>=maximum-1;
+}
+function scrollTimeline(distance,smooth=true){
+  const timeline=$('roadmap'),maximum=Math.max(0,(timeline.scrollWidth||0)-(timeline.clientWidth||0));
+  const left=Math.max(0,Math.min(maximum,(timeline.scrollLeft||0)+distance));
+  if(timeline.scrollTo)timeline.scrollTo({left,behavior:smooth&&!window.matchMedia?.('(prefers-reduced-motion: reduce)').matches?'smooth':'auto'});
+  else timeline.scrollLeft=left;
+  updateTimelineNavigation();
+}
 function updateSelection(){
   $('selection-bar').hidden=!selected.size;$('selection-count').textContent=`${selected.size} selected`;
   document.body.classList.toggle('has-selection',!!selected.size);
@@ -196,22 +229,22 @@ function drawLinks(){
   const board=$('roadmap').querySelector('.pm-roadmap-content'),svg=board?.querySelector('.pm-links-svg');if(!svg||!derived)return;
   svg.innerHTML='';if(!state.showLinks)return;
   svg.innerHTML='<defs><marker id="pm-connection-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M 1 1 L 9 5 L 1 9" fill="none" stroke="#d71920" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>';
-  const rect=board.getBoundingClientRect(),related=connected(focused);
+  const rect=board.getBoundingClientRect(),active=activeCourse(),related=connected(active);
   svg.setAttribute('width',rect.width);svg.setAttribute('height',rect.height);
   const ns='http://www.w3.org/2000/svg';
-  for(const edge of derived.edges.slice(0,180)){
+  for(const edge of derived.edges){
     const source=board.querySelector(`[data-course-id="${CSS.escape(edge.from)}"]`),target=board.querySelector(`[data-course-id="${CSS.escape(edge.to)}"]`);
     if(!source||!target||source===target)continue;
     const a=source.getBoundingClientRect(),b=target.getBoundingClientRect();let path;
-    if(Math.abs(a.top-b.top)<100 && b.left>a.right){
-      const x1=a.right-rect.left,y1=a.top+a.height/2-rect.top,x2=b.left-rect.left,y2=b.top+b.height/2-rect.top,mid=(x1+x2)/2;
+    if(b.left>=a.right-1 || b.right<=a.left+1){
+      const forward=b.left>=a.right-1,x1=(forward?a.right:a.left)-rect.left,y1=a.top+a.height/2-rect.top,x2=(forward?b.left:b.right)-rect.left,y2=b.top+b.height/2-rect.top,mid=(x1+x2)/2;
       path=`M${x1} ${y1} C${mid} ${y1},${mid} ${y2},${x2} ${y2}`;
     } else {
       const down=b.top>=a.top,x1=a.left+a.width*.7-rect.left,y1=(down?a.bottom:a.top)-rect.top,x2=b.left+b.width*.3-rect.left,y2=(down?b.top:b.bottom)-rect.top,mid=(y1+y2)/2;
       path=`M${x1} ${y1} C${x1} ${mid},${x2} ${mid},${x2} ${y2}`;
     }
     const line=document.createElementNS(ns,'path');line.setAttribute('d',path);line.dataset.from=edge.from;line.dataset.to=edge.to;
-    line.setAttribute('class','pm-link-path'+(edge.kind==='corequisite'?' is-corequisite':'')+(edge.linkId?' is-custom':'')+(focused?(related.has(edge.from)&&related.has(edge.to)?' is-highlighted':' is-dim'):''));
+    line.setAttribute('class','pm-link-path'+(edge.kind==='corequisite'?' is-corequisite':'')+(edge.linkId?' is-custom':'')+(active?(related.has(edge.from)&&related.has(edge.to)?' is-highlighted':' is-dim'):''));
     line.setAttribute('marker-end','url(#pm-connection-arrow)');
     const title=document.createElementNS(ns,'title');title.textContent=`${derived.ix.courses.get(edge.from)?.code||edge.from} ${edge.kind==='corequisite'?'shares a semester with':'comes before'} ${derived.ix.courses.get(edge.to)?.code||edge.to}`;line.append(title);
     svg.append(line);
@@ -505,13 +538,39 @@ function wireEvents(){
     if(event.shiftKey){selectCourse(el.dataset.courseId);return;}
     clearTimeout(clickTimer);clickTimer=setTimeout(()=>openCourse(el.dataset.courseId),250);
   });
+  $('timeline-previous').onclick=()=>scrollTimeline(-Math.max(280,$('roadmap').clientWidth*.8||560));
+  $('timeline-next').onclick=()=>scrollTimeline(Math.max(280,$('roadmap').clientWidth*.8||560));
+  $('roadmap').addEventListener('scroll',updateTimelineNavigation,{passive:true});
+  $('roadmap').addEventListener('keydown',event=>{
+    if(event.target!==$('roadmap'))return;
+    if(event.key==='ArrowRight'||event.key==='ArrowLeft'){event.preventDefault();scrollTimeline(event.key==='ArrowRight'?300:-300);}
+    if(event.key==='Home'||event.key==='End'){event.preventDefault();scrollTimeline(event.key==='Home'?-Infinity:Infinity);}
+  });
+  document.addEventListener('pointerover',event=>{
+    if(event.pointerType==='touch')return;
+    const course=event.target.closest('.pm-course');if(!course||hovered===course.dataset.courseId)return;
+    hovered=course.dataset.courseId;highlight();
+  });
+  document.addEventListener('pointerout',event=>{
+    const course=event.target.closest('.pm-course');if(!course||event.relatedTarget?.closest?.('.pm-course')===course)return;
+    hovered=event.relatedTarget?.closest?.('.pm-course')?.dataset.courseId||'';highlight();
+  });
+  document.addEventListener('focusin',event=>{
+    keyboardCourse=event.target.closest?.('.pm-course')?.dataset.courseId||'';highlight();
+  });
+  document.addEventListener('focusout',event=>{
+    if(!event.target.closest?.('.pm-course'))return;
+    keyboardCourse=event.relatedTarget?.closest?.('.pm-course')?.dataset.courseId||'';highlight();
+  });
   document.addEventListener('dblclick',event=>{const card=event.target.closest('.pm-course');if(card&&!event.target.closest('button')){clearTimeout(clickTimer);toggleCompleted(card.dataset.courseId);}});
   document.addEventListener('keydown',event=>{const card=event.target.closest('.pm-course');if(!card||event.target.closest('button'))return;if(event.key==='Enter'){event.preventDefault();openCourse(card.dataset.courseId);}if(event.key===' '){event.preventDefault();selectCourse(card.dataset.courseId);}});
   document.addEventListener('dragstart',event=>{const card=event.target.closest('.pm-course');if(!card)return;clearTimeout(clickTimer);dragId=card.dataset.courseId;if(card.draggable!==true){event.preventDefault();return;}event.dataTransfer.setData('text/plain',dragId);event.dataTransfer.effectAllowed='move';card.classList.add('is-dragging');});
-  document.addEventListener('dragover',event=>{const term=event.target.closest('[data-term-id]');if(term&&dragId){event.preventDefault();event.dataTransfer.dropEffect='move';document.querySelectorAll('.is-drop-target').forEach(t=>t.classList.remove('is-drop-target'));term.classList.add('is-drop-target');if(event.clientY<100)window.scrollBy(0,-12);else if(event.clientY>window.innerHeight-100)window.scrollBy(0,12);}});
+  document.addEventListener('dragover',event=>{const term=event.target.closest('[data-term-id]');if(dragId&&event.target.closest('#roadmap')){const rect=$('roadmap').getBoundingClientRect();if(event.clientX<rect.left+55)scrollTimeline(-24,false);else if(event.clientX>rect.right-55)scrollTimeline(24,false);}if(term&&dragId){event.preventDefault();event.dataTransfer.dropEffect='move';document.querySelectorAll('.is-drop-target').forEach(t=>t.classList.remove('is-drop-target'));term.classList.add('is-drop-target');if(event.clientY<100)window.scrollBy(0,-12);else if(event.clientY>window.innerHeight-100)window.scrollBy(0,12);}});
   document.addEventListener('drop',event=>{const term=event.target.closest('[data-term-id]');if(!term||!dragId)return;event.preventDefault();const id=dragId;dragId='';document.querySelectorAll('.is-drop-target').forEach(t=>t.classList.remove('is-drop-target'));requestMove(id,term.dataset.termId);});
   document.addEventListener('dragend',()=>{dragId='';document.querySelectorAll('.is-dragging,.is-drop-target').forEach(el=>el.classList.remove('is-dragging','is-drop-target'));});
-  new ResizeObserver(()=>requestAnimationFrame(drawLinks)).observe($('roadmap'));
+  const observer=new ResizeObserver(()=>requestAnimationFrame(()=>{drawLinks();updateTimelineNavigation();}));observer.observe($('roadmap'));observer.observe($('roadmap').querySelector('.pm-roadmap-content')||$('roadmap'));
+  window.addEventListener('resize',()=>requestAnimationFrame(()=>{drawLinks();updateTimelineNavigation();}));
+  window.addEventListener('blur',()=>{hovered='';keyboardCourse='';highlight();});
   window.addEventListener('beforeunload',()=>{try{localStorage.setItem(STORAGE_KEY,JSON.stringify(state));}catch{}});
 }
 
