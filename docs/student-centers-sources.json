@@ -1,0 +1,264 @@
+{
+  "review_date": "2026-11-19",
+  "resource_count": 32,
+  "categories": [
+    "Academic support",
+    "Food & basic needs",
+    "Money & career",
+    "Health & wellness",
+    "Technology",
+    "Access & accommodations",
+    "Community & belonging",
+    "Getting around"
+  ],
+  "resource_sources": [
+    {
+      "id": "lrc",
+      "name": "Learning Resource Center",
+      "url": "https://www.csun.edu/learning-resource-center",
+      "location": "University Library, 3rd floor, East Wing",
+      "checked": "2026-11-19"
+    },
+    {
+      "id": "writing",
+      "name": "University Writing Center",
+      "url": "https://www.csun.edu/learning-resource-center/welcome-university-writing-center/writing-center-resources",
+      "location": "University Library, 3rd floor, East Wing",
+      "checked": "2026-11-19"
+    },
+    {
+      "id": "smart",
+      "name": "SMART Lab",
+      "url": "https://www.csun.edu/undergraduate-studies/learning-resource-center/smart-lab",
+      "location": "University Library, 3rd floor, East Wing",
+      "checked": "2026-11-19"
+    },
+    {
+      "id": "library",
+      "name": "University Library",
+      "url": "https://library.csun.edu/services/library-for-students",
+      "location": "University Library",
+      "checked": "2026-11-19"
+    },
+    {
+      "id": "advising",
+      "name": "Academic advising",
+      "url": "https://www.csun.edu/university-advising/im-continuing-student",
+      "location": "Office depends on your major and student group",
+      "checked": "2026-11-19"
+    },
+    {
+      "id": "pantry",
+      "name": "CSUN Food Pantry",
+      "url": "https://www.csun.edu/heart/foodpantry",
+      "location": "Valera NEST, University Student Union; entrance next to Subway",
+      "checked": "2026-11-19"
+    },
+    {
+      "id": "basic-needs",
+      "name": "Valera NEST & Basic Needs",
+      "url": "https://catalog.csun.edu/groups/valera-nest/",
+      "location": "Valera NEST, University Student Union, between Grand Salon and Subway",
+      "checked": "2026-11-19"
+    },
+    {
+      "id": "calfresh",
+      "name": "CalFresh & food assistance",
+      "url": "https://www.csun.edu/heart",
+      "location": "Valera NEST / Basic Needs; confirm appointment location",
+      "checked": "2026-11-19"
+    },
+    {
+      "id": "emergency-funds",
+      "name": "Emergency financial support",
+      "url": "https://www.csun.edu/heart/resources/emergency-financial-support",
+      "location": "Start with the official online instructions",
+      "checked": "2026-11-19"
+    },
+    {
+      "id": "mattys",
+      "name": "Matty’s Closet",
+      "url": "https://w2.csun.edu/career/students/mattys-closet",
+      "location": "Valera NEST, University Student Union",
+      "checked": "2026-11-19"
+    },
+    {
+      "id": "health",
+      "name": "Klotz Student Health Center",
+      "url": "https://www.csun.edu/shc",
+      "location": "Klotz Student Health Center",
+      "checked": "2026-11-19"
+    },
+    {
+      "id": "counseling",
+      "name": "University Counseling Services",
+      "url": "https://catalog.csun.edu/groups/university-counseling-services/",
+      "location": "Bayramian Hall 520",
+      "checked": "2026-11-19"
+    },
+    {
+      "id": "src",
+      "name": "Student Recreation Center",
+      "url": "https://w2.csun.edu/src",
+      "location": "Student Recreation Center, University Student Union",
+      "checked": "2026-11-19"
+    },
+    {
+      "id": "oasis",
+      "name": "Oasis Wellness Center",
+      "url": "https://www.csun.edu/oasis",
+      "location": "University Student Union, below the Computer Lab, next to Plaza Pool",
+      "checked": "2026-11-19"
+    },
+    {
+      "id": "it",
+      "name": "IT Help Center",
+      "url": "https://www.csun.edu/it",
+      "location": "University Library, 1st floor, Learning Commons",
+      "checked": "2026-11-19"
+    },
+    {
+      "id": "devices",
+      "name": "Device Loaner Program",
+      "url": "https://library.csun.edu/technology/dlp",
+      "location": "University Library, main-floor Guest Services",
+      "checked": "2026-11-19"
+    },
+    {
+      "id": "tech-spaces",
+      "name": "Library technology & study spaces",
+      "url": "https://library.csun.edu/learning-commons",
+      "location": "University Library, main floor",
+      "checked": "2026-11-19"
+    },
+    {
+      "id": "financial-aid",
+      "name": "Financial Aid & Scholarships",
+      "url": "https://w2.csun.edu/financialaid",
+      "location": "Bayramian Hall, first-floor lobby; check the current service counter",
+      "checked": "2026-11-19"
+    },
+    {
+      "id": "career",
+      "name": "Career Center",
+      "url": "https://www.csun.edu/career",
+      "location": "Bayramian Hall 413",
+      "checked": "2026-11-19"
+    },
+    {
+      "id": "dres",
+      "name": "Disability Resources & Educational Services",
+      "url": "https://www.csun.edu/dres",
+      "location": "Bayramian Hall 110",
+      "checked": "2026-11-19"
+    },
+    {
+      "id": "ncod",
+      "name": "NCOD: Deaf & Hard of Hearing Services",
+      "url": "https://w2.csun.edu/ncod",
+      "location": "Jeanne Chisholm Hall",
+      "checked": "2026-11-19"
+    },
+    {
+      "id": "dream",
+      "name": "DREAM Center",
+      "url": "https://www.csun.edu/usu/edi",
+      "location": "University Student Union; confirm the current office",
+      "checked": "2026-11-19"
+    },
+    {
+      "id": "pride",
+      "name": "Pride Center",
+      "url": "https://www.csun.edu/usu/edi",
+      "location": "University Student Union; confirm the current office",
+      "checked": "2026-11-19"
+    },
+    {
+      "id": "veterans",
+      "name": "Veterans Resource Center",
+      "url": "https://www.csun.edu/usu/edi",
+      "location": "University Student Union; confirm the current office",
+      "checked": "2026-11-19"
+    },
+    {
+      "id": "international",
+      "name": "International & Exchange Student Center",
+      "url": "https://www.csun.edu/international/international-student-advising-options",
+      "location": "Appointment location or online meeting is confirmed by IESC",
+      "checked": "2026-11-19"
+    },
+    {
+      "id": "clubs",
+      "name": "Matador Involvement Center",
+      "url": "https://www.csun.edu/mic/student-organizations",
+      "location": "University Student Union, Sol Center 122",
+      "checked": "2026-11-19"
+    },
+    {
+      "id": "parents",
+      "name": "Parent scholar resources",
+      "url": "https://w2.csun.edu/as/services/parent-scholar-resources",
+      "location": "Service locations vary; use the official resource directory",
+      "checked": "2026-11-19"
+    },
+    {
+      "id": "housing",
+      "name": "Student Housing & Residential Life",
+      "url": "https://w2.csun.edu/housing",
+      "location": "Student Housing Office, 17950 Lassen Street",
+      "checked": "2026-11-19"
+    },
+    {
+      "id": "transportation",
+      "name": "Parking & transportation",
+      "url": "https://www.csun.edu/parking/transportation-services",
+      "location": "Parking & Transportation Services; locations vary by service",
+      "checked": "2026-11-19"
+    },
+    {
+      "id": "upass",
+      "name": "Metro U-Pass",
+      "url": "https://www.csun.edu/as/departments/ticket-office/u-pass",
+      "location": "AS Ticket Office / official online instructions",
+      "checked": "2026-11-19"
+    },
+    {
+      "id": "escort",
+      "name": "Matador Patrol & campus safety",
+      "url": "https://www.csun.edu/police/matador-patrol",
+      "location": "Campus service; check coverage and operating hours",
+      "checked": "2026-11-19"
+    },
+    {
+      "id": "advocacy",
+      "name": "Student Advocacy Resource Guide",
+      "url": "https://www.csun.edu/as/services/student-advocacy-resource-guide",
+      "location": "Office and appointment depend on the issue",
+      "checked": "2026-11-19"
+    }
+  ],
+  "security_sources": {
+    "students": "https://www.csun.edu/it/information-security/information-security-students",
+    "phishing": "https://www.csun.edu/it/information-security/information-security-tips/protect-yourself-phishing-and-cyber-threats-0",
+    "reporting": "https://www.csun.edu/it/information-security/information-security-tips/protect-yourself-phishing-and-cyber-threats-1",
+    "account": "https://www.csun.edu/it/it-help-center/accounts-passwords/csun-account-activation",
+    "help": "https://www.csun.edu/it",
+    "recovery": "https://consumer.ftc.gov/articles/what-do-if-you-were-scammed",
+    "jobs": "https://consumer.ftc.gov/consumer-alerts/2025/05/college-students-avoid-scammers-while-you-job-hunt",
+    "fraud": "https://reportfraud.ftc.gov/",
+    "identity": "https://www.identitytheft.gov/"
+  },
+  "map_sources": {
+    "official": "https://w2.csun.edu/csun-maps",
+    "directions_documentation": "https://developers.google.com/maps/documentation/urls/get-started",
+    "embedding": "Google Maps public building search embed; independently verify in a deployed browser."
+  },
+  "source_notes": [
+    "Descriptions and contacts grounded in official CSUN current pages/catalog and FTC guidance.",
+    "Food Pantry and Matty’s Closet now use the Valera NEST location; the obsolete Sagebrush pantry location is omitted.",
+    "Some direct CSUN fetches returned 403; current search-indexed primary-source content was reviewed. External HTTP 200 verification is not claimed.",
+    "No fixed operating hours, live stock, current benefit eligibility or grant approval is promised."
+  ],
+  "scenario_count": 8,
+  "scam_guides": 6
+}

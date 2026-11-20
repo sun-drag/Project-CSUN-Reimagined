@@ -1,0 +1,64 @@
+{
+  "date": "2026-11-19",
+  "tests_passed": 143,
+  "tests_failed": 0,
+  "new_support_page_tests": 22,
+  "existing_mapper_tests": 121,
+  "resource_records": 32,
+  "practice_examples": 8,
+  "scam_guides": 6,
+  "runtime_assets": {
+    "pages/cybersecurity.html": {
+      "status": 200,
+      "content_type": "text/html",
+      "bytes": 10061
+    },
+    "pages/resources.html": {
+      "status": 200,
+      "content_type": "text/html",
+      "bytes": 7584
+    },
+    "pages/phishing-simulator.html": {
+      "status": 200,
+      "content_type": "text/html",
+      "bytes": 5850
+    },
+    "pages/scam-awareness.html": {
+      "status": 200,
+      "content_type": "text/html",
+      "bytes": 5974
+    },
+    "css/pages/student-centers.css?v=2026.11.19.1": {
+      "status": 200,
+      "content_type": "text/css",
+      "bytes": 15384
+    },
+    "js/pages/cybersecurity.js?v=2026.11.19.1": {
+      "status": 200,
+      "content_type": "text/javascript",
+      "bytes": 5498
+    },
+    "js/pages/resource-finder.js?v=2026.11.19.1": {
+      "status": 200,
+      "content_type": "text/javascript",
+      "bytes": 7305
+    },
+    "js/pages/phishing-simulator.js?v=2026.11.19.1": {
+      "status": 200,
+      "content_type": "text/javascript",
+      "bytes": 5732
+    },
+    "js/pages/student-tools-core.mjs?v=2026.11.19.1": {
+      "status": 200,
+      "content_type": "text/javascript",
+      "bytes": 2587
+    },
+    "js/pages/student-tools-data.mjs?v=2026.11.19.1": {
+      "status": 200,
+      "content_type": "text/javascript",
+      "bytes": 35534
+    }
+  },
+  "browser_limitation": "Native Chromium cannot start because AF_UNIX sockets are blocked. Responsive visuals, real focus/touch interactions and third-party map rendering need manual browser review.",
+  "external_source_checks": "Official indexed CSUN and FTC primary-source content reviewed; some direct CSUN retrievals returned 403. Live external availability is not certified."
+}
