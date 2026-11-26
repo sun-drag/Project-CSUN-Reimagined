@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "enabled": false,
-  "apiBaseUrl": "/api",
+  "enabled": true,
+  "apiBaseUrl": "https://api.csunreimagined.com",
   "requestTimeoutMs": 15000
 }

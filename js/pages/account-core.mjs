@@ -52,6 +52,7 @@ export function consumeEmailToken(pageURL, replaceURL) {
 }
 
 export function accountMessage(error, operation) {
+  if (error?.status === 422 && ['register', 'reset-confirm'].includes(operation)) return 'Choose a less common password or passphrase with 15–128 characters.';
   if (error?.status === 429) return 'Too many attempts. Please wait a few minutes before trying again.';
   if (error?.status === 401 && operation === 'login') return 'We couldn’t log you in. Check your email and password. If you just registered, verify your email first.';
   if ([400, 410].includes(error?.status) && ['verify', 'reset-confirm'].includes(operation)) return 'This link is invalid or has expired. Request a new link and try again.';

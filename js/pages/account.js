@@ -1,4 +1,4 @@
-import { AccountClient, parseAccountConfig, validateFields, consumeEmailToken, accountMessage } from './account-core.mjs?v=2026.11.20.1';
+import { AccountClient, parseAccountConfig, validateFields, consumeEmailToken, accountMessage } from './account-core.mjs?v=2026.11.20.2';
 
 const byId = id => document.getElementById(id);
 const mode = document.body.dataset.authPage;
