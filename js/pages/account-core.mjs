@@ -84,7 +84,9 @@ export function accountMessage(error, operation) {
 }
 
 export class AccountClient {
-  constructor(config, fetcher = globalThis.fetch) {
+  // Call native fetch on its global object. Calling a bare Window.fetch as
+  // this.fetcher(...) otherwise throws before a network request is sent.
+  constructor(config, fetcher = (...args) => globalThis.fetch(...args)) {
     this.config = config; this.fetcher = fetcher; this.csrfToken = null;
   }
   async request(path, body, expectedStatus = 200) {
