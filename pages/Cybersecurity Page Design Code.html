@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cybersecurity Awareness Center | CSUN Student Portal</title>
+  <style>
+    :root {
+      --csun-red: #d22030;
+      --csun-red-dark: #a81825;
+      --nav-bg: #1e1e1e;
+      --nav-active: #3a3a3a;
+      --bg-light: #f8f9fa;
+      --card-bg: #ffffff;
+      --border-gray: #e0e0e0;
+      --text-main: #222222;
+      --text-muted: #555555;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg-light);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    /* Top Site Header */
+    .top-header {
+      background-color: #ffffff;
+      padding: 18px 10%;
+      border-bottom: 1px solid var(--border-gray);
+    }
+
+    .top-header h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #111111;
+    }
+
+    /* Navigation Bar */
+    .navbar {
+      background-color: var(--nav-bg);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      padding: 0 10%;
+    }
+
+    .navbar a {
+      color: #ffffff;
+      text-decoration: none;
+      padding: 14px 20px;
+      font-size: 0.92rem;
+      font-weight: 500;
+      transition: background-color 0.2s;
+    }
+
+    .navbar a:hover {
+      background-color: #2e2e2e;
+    }
+
+    .navbar a.active {
+      background-color: var(--nav-active);
+      font-weight: 600;
+    }
+
+    .navbar a.login-btn {
+      background-color: var(--csun-red);
+      margin-left: 10px;
+      padding: 14px 22px;
+      font-weight: 600;
+    }
+
+    .navbar a.login-btn:hover {
+      background-color: var(--csun-red-dark);
+    }
+
+    /* Hero Banner */
+    .hero-banner {
+      background: linear-gradient(135deg, #252525 0%, #141414 100%);
+      color: #ffffff;
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    .hero-banner h2 {
+      font-size: 2.1rem;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+
+    .hero-banner p {
+      font-size: 1.05rem;
+      color: #dcdcdc;
+      max-width: 650px;
+      margin: 0 auto;
+    }
+
+    /* Main Container */
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 45px 20px 60px;
+    }
+
+    .section-block {
+      margin-bottom: 50px;
+    }
+
+    .section-title {
+      font-size: 1.45rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: #111111;
+    }
+
+    .section-subtitle {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-bottom: 22px;
+    }
+
+    /* Interactive Tools Row (2 Columns) */
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border-gray);
+      border-radius: 4px;
+      padding: 24px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .card h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: #111111;
+    }
+
+    .card p {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .card-link {
+      color: var(--csun-red);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.92rem;
+    }
+
+    .card-link:hover {
+      text-decoration: underline;
+      color: var(--csun-red-dark);
+    }
+
+    /* Common Threats Grid (2x3 Static Cards) */
+    .threats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .threat-card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border-gray);
+      border-radius: 4px;
+      padding: 22px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    }
+
+    .threat-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .threat-header h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #111111;
+    }
+
+    .threat-icon {
+      font-size: 1.3rem;
+    }
+
+    .threat-card p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin: 0;
+    }
+
+    /* Spot the Phishing Email Section */
+    .phishing-box {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border-gray);
+      border-radius: 4px;
+      padding: 30px;
+      text-align: center;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    }
+
+    .phishing-box img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 4px;
+      border: 1px solid #eeeeee;
+    }
+
+    /* What To Do If You Get Hacked (5-Step Grid) */
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+
+    .step-card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border-gray);
+      border-top: 3px solid var(--csun-red);
+      border-radius: 4px;
+      padding: 18px 16px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    }
+
+    .step-card h4 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: #111111;
+    }
+
+    .step-card p {
+      font-size: 0.86rem;
+      color: var(--text-muted);
+    }
+
+    /* Red Alert Callout */
+    .alert-banner {
+      background-color: var(--csun-red);
+      color: #ffffff;
+      padding: 18px 24px;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 0.95rem;
+    }
+
+    .alert-banner strong {
+      font-weight: 700;
+    }
+
+    .alert-banner a {
+      color: #ffffff;
+      text-decoration: underline;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #111111;
+      color: #ffffff;
+      padding: 36px 10%;
+      font-size: 0.9rem;
+    }
+
+    footer .footer-title {
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    footer .footer-sub {
+      color: #cccccc;
+      font-size: 0.85rem;
+    }
+
+    /* Responsive Breakpoints */
+    @media (max-width: 960px) {
+      .threats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .steps-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .tools-grid,
+      .threats-grid,
+      .steps-grid {
+        grid-template-columns: 1fr;
+      }
+      .navbar {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .navbar a.login-btn {
+        margin-left: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Header -->
+  <header class="top-header">
+    <h1>CSUN Student Portal</h1>
+  </header>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <a href="index.html">Home</a>
+    <a href="program-mapper.html">Program Mapper</a>
+    <a href="registration.html">Registration</a>
+    <a href="campus-resources.html">Campus Resources</a>
+    <a href="cybersecurity.html" class="active">Cybersecurity</a>
+    <a href="login.html" class="login-btn">Login</a>
+  </nav>
+
+  <!-- Hero Banner -->
+  <section class="hero-banner">
+    <h2>Cybersecurity Awareness Center</h2>
+    <p>Protect your CSUN account, personal data, and devices from online threats.</p>
+  </section>
+
+  <!-- Main Content -->
+  <main class="container">
+
+    <!-- Section 1: Interactive Tools & Quick Links (2 Cards, No Student Discounts) -->
+    <section class="section-block">
+      <h2 class="section-title">Interactive Tools &amp; Quick Links</h2>
+      <p class="section-subtitle">Test your awareness and explore campus safety resources.</p>
+      <div class="tools-grid">
+        <div class="card">
+          <div>
+            <h3>Phishing Simulator</h3>
+            <p>Practice identifying fraudulent emails and suspicious links with an interactive, safe simulation.</p>
+          </div>
+          <a href="#phishing-example" class="card-link">Launch Phishing Simulator &rarr;</a>
+        </div>
+
+        <div class="card">
+          <div>
+            <h3>Scam Awareness</h3>
+            <p>Learn how to spot fake campus job offers, financial aid fraud, and student-targeted scams.</p>
+          </div>
+          <a href="#common-threats" class="card-link">Scam Awareness Guide &rarr;</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: Common Cybersecurity Threats for Students (Static 2x3 Cards) -->
+    <section id="common-threats" class="section-block">
+      <h2 class="section-title">Common Cybersecurity Threats for Students</h2>
+      <p class="section-subtitle">Key digital risks that frequently target university students on and off campus.</p>
+      <div class="threats-grid">
+        <div class="threat-card">
+          <div class="threat-header">
+            <h3>Phishing Attacks</h3>
+            <span class="threat-icon" aria-hidden="true">&#128231;</span>
+          </div>
+          <p>Deceptive emails masquerading as campus IT, financial aid, or professors to steal login credentials and personal data.</p>
+        </div>
+
+        <div class="threat-card">
+          <div class="threat-header">
+            <h3>Password Theft</h3>
+            <span class="threat-icon" aria-hidden="true">&#128274;</span>
+          </div>
+          <p>Reusing passwords across personal and university accounts allows attackers to compromise your portal after third-party breaches.</p>
+        </div>
+
+        <div class="threat-card">
+          <div class="threat-header">
+            <h3>Fake Login Pages</h3>
+            <span class="threat-icon" aria-hidden="true">&#127760;</span>
+          </div>
+          <p>Spoofed CSUN SSO or banking login portals designed to harvest your username, password, and multi-factor authentication codes.</p>
+        </div>
+
+        <div class="threat-card">
+          <div class="threat-header">
+            <h3>Public Wi-Fi Risks</h3>
+            <span class="threat-icon" aria-hidden="true">&#128246;</span>
+          </div>
+          <p>Unsecured or rogue Wi-Fi networks in cafes and public spaces where attackers can intercept unencrypted browsing traffic.</p>
+        </div>
+
+        <div class="threat-card">
+          <div class="threat-header">
+            <h3>Malware &amp; Ransomware</h3>
+            <span class="threat-icon" aria-hidden="true">&#9888;&#65039;</span>
+          </div>
+          <p>Infected downloads, pirated textbooks, or malicious email attachments that lock files or install spyware on your device.</p>
+        </div>
+
+        <div class="threat-card">
+          <div class="threat-header">
+            <h3>Social Engineering</h3>
+            <span class="threat-icon" aria-hidden="true">&#128101;</span>
+          </div>
+          <p>Manipulative messages or urgent phone calls exploiting trust and fear to trick students into sending money or sensitive details.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: Spot the Phishing Email -->
+    <section id="phishing-example" class="section-block">
+      <h2 class="section-title">Spot the Phishing Email</h2>
+      <p class="section-subtitle">Review the highlighted red flags in this sample student job scam email.</p>
+      <div class="phishing-box">
+        <!-- Make sure your saved image file in GitHub matches this exact filename -->
+        <img src="phishing-email-example.jpg" alt="Spot the Phishing Email example highlighting spoofed sender, generic greeting, urgency, suspicious demands, and unofficial links" />
+      </div>
+    </section>
+
+    <!-- Section 4: What To Do If You Get Hacked -->
+    <section class="section-block">
+      <h2 class="section-title">What To Do If You Get Hacked</h2>
+      <p class="section-subtitle">Follow these five steps immediately if you believe your account or device has been compromised.</p>
+      <div class="steps-grid">
+        <div class="step-card">
+          <h4>1. Contain the Threat</h4>
+          <p>Disconnect from Wi-Fi if a device is infected, and sign out of all active sessions in your account security settings.</p>
+        </div>
+
+        <div class="step-card">
+          <h4>2. Secure Credentials</h4>
+          <p>Change your CSUN and personal passwords from a clean device, and verify your multi-factor authentication settings.</p>
+        </div>
+
+        <div class="step-card">
+          <h4>3. Report to Campus IT</h4>
+          <p>Contact the CSUN IT Help Center right away so they can lock unauthorized portal access and protect your records.</p>
+        </div>
+
+        <div class="step-card">
+          <h4>4. Scan &amp; Remediate</h4>
+          <p>Run a full antivirus scan on your computer and remove any unfamiliar browser extensions or third-party app permissions.</p>
+        </div>
+
+        <div class="step-card">
+          <h4>5. Monitor &amp; Recover</h4>
+          <p>Check your sent emails, financial aid direct deposit info, and enrolled classes for unauthorized changes.</p>
+        </div>
+      </div>
+
+      <div class="alert-banner">
+        <span>&#9888;&#65039;</span>
+        <div>
+          <strong>Report Suspicious Activity Immediately:</strong> Forward phishing emails as an attachment to <a href="mailto:abuse@csun.edu">abuse@csun.edu</a> or contact the CSUN IT Help Center.
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-title">CSUN Student Portal Project</div>
+    <div class="footer-sub">This is a student project and is not an official CSUN website.</div>
+  </footer>
+
+</body>
+</html>
