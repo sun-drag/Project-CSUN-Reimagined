@@ -3,65 +3,129 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Explore CSUN majors, minors, degree roadmaps, and academic advising resources to plan your next semester.">
-  <title>Program Mapper | CSUN Student Portal</title>
+  <meta name="description" content="Build and customize your CSUN semester-by-semester degree plan. Explore majors, minors, GE courses and linked course sequences.">
+  <title>Program Mapper | CSUN Reimagined</title>
   <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/pages/program-mapper.css?v=2026.11.19.5">
+  <script type="module" src="../js/pages/program-mapper.js?v=2026.11.19.5"></script>
 </head>
-<body>
-  <header>
-    <div class="container">
-      <h1>CSUN Student Portal</h1>
-      <nav class="main-nav" aria-label="Main navigation">
-        <div class="nav-inner">
-          <a href="../index.html">Home</a>
-          <a href="program-mapper.html" class="active" aria-current="page">Program Mapper</a>
-          <a href="registration.html">Registration</a>
-          <a href="resources.html">Campus Resources</a>
-          <a href="cybersecurity.html">Cybersecurity</a>
-          <a href="login-page.html" class="lgb">Login</a>
+<body class="pm-page">
+  <a class="pm-skip" href="#roadmap">Skip to your roadmap</a>
+  <header class="site-header">
+
+        <div class="container header-inner">
+
+            <div class="site-brand">
+                <h1>CSUN Student Portal</h1>
+            </div>
 
         </div>
-      </nav>
+
+    </header>
+<nav class="main-nav" aria-label="Main navigation">
+
+        <div class="container nav-inner">
+
+            <a href="../index.html">
+                Home
+            </a>
+
+            <a class="active" aria-current="page" href="program-mapper.html">
+                Program Mapper
+            </a>
+
+            <a href="registration.html">
+                Registration
+            </a>
+
+            <a href="resources.html">
+                Campus Resources
+            </a>
+
+            <a href="cybersecurity.html">
+                Cybersecurity
+            </a>
+
+            <a class="lgb" href="login-page.html">
+                Login
+            </a>
+        </div>
+
+    </nav>
+  <main id="mapper-app" class="pm-shell" aria-busy="true">
+    <div class="pm-heading-row">
+      <div><p class="pm-eyebrow">STUDENT TOOLS <span>/</span> PROGRAM MAPPER</p><h1>Program Mapper</h1><p class="pm-lead">Choose your program. Build and customize your semester plan.</p></div>
+      <div class="pm-heading-actions"><span id="save-status" class="pm-save-status" role="status">Loading catalog…</span><button class="pm-button pm-button-light" id="export-button" disabled><span data-icon="download"></span> Export plan</button><button class="pm-button pm-button-primary" id="add-course-button" disabled><span data-icon="plus"></span> Add a course</button></div>
     </div>
-  </header>
-  <main class="mapper-content">
-    <section class="section" aria-labelledby="program-mapper-heading">
-      <div class="container">
-        <div class="mapper-intro">
-          <h2 id="program-mapper-heading" class="section-title">Program Mapper</h2>
-          <p>Start shaping your path to graduation. Explore your program, review the courses ahead, and prepare a plan to discuss with your academic advisor.</p>
-          <p>Use these official CSUN resources to get started with your undergraduate degree plan.</p>
+    <div id="choice-migration-notice" class="pm-migration-notice" hidden role="status">Your saved plan contains selections from the earlier automatic-choice version. Please confirm your program choices before treating them as requirements. <button id="review-imported-choices" class="pm-button pm-button-small">Review choices</button></div>
+    <div id="load-error" class="pm-error" role="alert" hidden></div>
+    <div class="pm-workspace" id="workspace">
+      <aside class="pm-sidebar" aria-label="Plan settings">
+        <section class="pm-panel pm-setup-panel">
+          <div class="pm-panel-title"><span class="pm-icon-tile" data-icon="compass"></span><div><h2>Make it your plan</h2><p>Start with where you want to go.</p></div></div>
+          <form id="setup-form">
+            <label class="pm-field">Find your major<input id="major-search" type="search" placeholder="Search majors…" autocomplete="off"></label>
+            <label class="pm-field">Major<select id="major-select" required aria-label="Major" disabled><option>Loading programs…</option></select></label>
+            <label class="pm-field">Minor <span class="pm-optional">optional</span><select id="minor-select" aria-label="Minor" disabled><option value="">No minor</option></select></label>
+            <div class="pm-field-pair"><label class="pm-field">Start year<input id="start-year" type="number" min="2000" max="2100" value="2026" required></label><label class="pm-field">First term<select id="start-season"><option>Fall</option><option>Spring</option></select></label></div>
+            <label class="pm-field">Time to graduation<select id="plan-years"><option value="2">2 years · transfer / accelerated</option><option value="3">3 years</option><option value="4" selected>4 years · traditional</option><option value="5">5 years</option><option value="6">6 years</option><option value="7">7 years</option><option value="8">8 years</option></select></label>
+            <label class="pm-field">Official roadmap reference<select id="roadmap-select" aria-label="Official roadmap reference"><option value="">No linked roadmap</option></select><small>Semester suggestions only. Course choices remain yours.</small></label><fieldset class="pm-session-options"><legend>Make space for extra terms</legend><label><input type="checkbox" id="include-summer"> Summer</label><label><input type="checkbox" id="include-winter"> Winter</label></fieldset>
+            <details class="pm-more-settings"><summary>Credits & course load <span data-icon="chevron"></span></summary><label class="pm-field">Semester loads<select id="load-mode"><option value="roadmap">Follow the official CSUN roadmap</option><option value="custom">Use my preferred semester maximum</option></select><small>Roadmaps suggest the load (usually 15). You can move courses up to 18 units in fall or spring. Shorter plans use up to 18, plus optional summer/winter.</small></label><label class="pm-field">Prior credit accounting<select id="prior-credit-mode"><option value="estimate">Estimate from checked GE areas</option><option value="transcript">Use my transcript credit total</option></select></label><label class="pm-field">Other earned units from transcript<input id="transfer-units" type="number" min="0" max="300" step="0.5" value="0"><small>Include prior GE credits in this total. Exclude courses already marked completed on this board.</small></label><div class="pm-field-pair"><label class="pm-field">Fall / spring maximum<input id="regular-limit" type="number" min="1" max="18" value="18"></label><label class="pm-field">Summer limit<input id="summer-limit" type="number" min="1" max="13" value="6"></label></div><label class="pm-field">Winter limit<input id="winter-limit" type="number" min="1" max="4" value="3"></label></details>
+            <button class="pm-button pm-button-primary pm-full" id="build-plan-button" disabled><span data-icon="spark"></span> Build my roadmap</button>
+            <p class="pm-form-note">Rebuilding updates the roadmap. Undo brings your previous arrangement back.</p>
+          </form>
+        </section>
+        <section class="pm-panel pm-ge-panel" aria-labelledby="ge-heading">
+          <div class="pm-section-heading"><h2 id="ge-heading">GE & campus progress</h2><span id="ge-progress-badge" class="pm-count">0 / 15</span></div>
+          <p class="pm-small-muted">Check areas you finished before this plan. Uncheck any you still need.</p>
+          <label class="pm-check-all"><input type="checkbox" id="ge-all"> All GE & campus areas completed</label>
+          <div id="ge-checklist" class="pm-ge-checklist"></div>
+          <details class="pm-overlay-details"><summary>Overlapping GE designations</summary><div id="ge-overlays"></div></details>
+          <p class="pm-ge-caption">GE Plan J · 2025–present. Science area 5B corresponds to the former B2 label. <a href="https://catalog.csun.edu/general-education/" target="_blank" rel="noopener noreferrer">View GE rules ↗</a></p>
+        </section>
+        <div class="pm-sidebar-note"><span data-icon="shield"></span><p>No account needed.<br><strong>Saved on this browser.</strong><br>Export a backup to keep or share.</p></div>
+      </aside>
+      <section class="pm-plan" aria-label="Your degree roadmap">
+        <div class="pm-plan-overview">
+          <div class="pm-plan-name-row"><div><p class="pm-eyebrow">THE ROAD AHEAD</p><input id="plan-name" class="pm-plan-name" value="My graduation plan" aria-label="Plan name" maxlength="100"><p id="program-subtitle" class="pm-program-subtitle">Loading your program…</p><div id="academic-sources" class="pm-academic-sources"></div></div><span id="catalog-badge" class="pm-catalog-badge">2026–27 CATALOG</span></div>
+          <div id="plan-stats" class="pm-stats"><div><strong>—</strong><span>planned units</span></div><div><strong>—</strong><span>courses to go</span></div><div><strong>—</strong><span>target finish</span></div><div><strong>—</strong><span>completed units</span></div></div>
+          <div id="credit-summary" class="pm-credit-summary" role="status"></div><div class="pm-progress-track" role="progressbar" aria-label="Completed plan units" aria-valuemin="0" aria-valuemax="120" aria-valuenow="0"><span id="plan-progress"></span></div>
         </div>
-      </div>
-    </section>
-    <section class="section" aria-labelledby="explore-heading">
-      <div class="container">
-        <h2 id="explore-heading" class="section-title">Explore your program</h2>
-        <div class="card-grid mapper-resources">
-          <article class="card">
-            <h3>Find your major</h3>
-            <p>Browse CSUN majors and program options, then review the requirements for the degree you want to pursue.</p>
-      
-          </article>
-          <article class="card">
-            <h3>Explore a minor</h3>
-            <p>Find another subject that interests you. Review its requirements and ask your advisor how it could fit into your degree plan.</p>
-         
-          </article>
-          <article class="card">
-            <h3>Follow a degree roadmap</h3>
-            <p>Review suggested course sequences for your major. CSUN provides four-year, transfer, and ADT/STAR Act roadmaps.</p>
-        
-          </article>
+        <div class="pm-toolbar">
+          <div class="pm-toolbar-group"><button id="undo-button" class="pm-icon-button" title="Undo (Ctrl/⌘ Z)" aria-label="Undo" disabled data-icon="undo"></button><button id="redo-button" class="pm-icon-button" title="Redo (Ctrl/⌘ Shift Z)" aria-label="Redo" disabled data-icon="redo"></button><span class="pm-toolbar-divider"></span><button id="choices-button" class="pm-tool-button"><span data-icon="sliders"></span> Program choices <span id="choices-count" class="pm-count"></span></button><button id="links-button" class="pm-tool-button"><span data-icon="link"></span> Course links <span id="links-count" class="pm-count">0</span></button></div>
+          <div class="pm-toolbar-group"><button id="check-button" class="pm-check-button"><span data-icon="check"></span> Plan check <span id="issue-count" class="pm-count">…</span></button><button id="more-button" class="pm-icon-button" aria-label="More plan tools" title="Import, print and more" data-icon="more"></button></div>
         </div>
-      </div>
-    </section>
+        <div class="pm-board-controls"><div class="pm-legend"><span><i class="pm-dot-major"></i>Major</span><span><i class="pm-dot-minor"></i>Minor</span><span><i class="pm-dot-ge"></i>GE / campus</span><span><i class="pm-dot-choice"></i>To choose</span></div><div class="pm-view-controls"><label><input id="show-links" type="checkbox" checked> Show links</label><label><input id="move-linked" type="checkbox" checked> Move linked courses</label></div></div>
+        <div id="selection-bar" class="pm-selection-bar" hidden><strong id="selection-count">0 selected</strong><span>Move a sequence together or keep corequisites in one semester.</span><button id="create-link-button" class="pm-button pm-button-small">Create course link</button><button id="clear-selection-button" class="pm-icon-button" aria-label="Clear selection" data-icon="close"></button></div>
+        <div class="pm-board-hint"><span data-icon="hand"></span><p>Drag cards between semesters. Hover to trace course links. Click for details. Double-click to mark complete.</p><button id="help-button">How it works <span aria-hidden="true">↗</span></button></div>
+        <section id="cit-domain-panel" class="pm-domain-panel" aria-labelledby="cit-domain-heading" hidden></section>
+        <div class="pm-timeline-navigation"><p id="timeline-help">Scroll left or right to explore your semesters.</p><div><button id="timeline-previous" class="pm-icon-button" aria-label="Show earlier semesters" aria-controls="roadmap" title="Earlier semesters">←</button><button id="timeline-next" class="pm-icon-button" aria-label="Show later semesters" aria-controls="roadmap" title="Later semesters">→</button></div></div>
+        <div id="roadmap" class="pm-roadmap" role="region" aria-label="Semester timeline, arranged from left to right" aria-describedby="timeline-help" tabindex="0"><div class="pm-loading"><span class="pm-spinner"></span><h2>Making room for your next chapter.</h2><p>Loading the CSUN catalog and your roadmap…</p></div></div>
+        <section id="unscheduled-section" class="pm-unscheduled" hidden><div class="pm-section-heading"><h2>Needs a semester</h2><span id="unscheduled-count" class="pm-count"></span></div><p>These cards don’t fit the current limits or still have a sequencing conflict. Add a term, adjust your course load, or use the card’s Move control.</p><div id="unscheduled-cards" class="pm-unscheduled-cards"></div></section>
+        <button id="add-term-button" class="pm-add-term"><span data-icon="plus"></span> Add a summer, winter, or extension term</button>
+        <div class="pm-planning-note"><span data-icon="info"></span><p><strong>A working plan, made for exploring.</strong> This roadmap uses the 2026–27 catalog snapshot. Term offerings, placement, grades, approved electives and program exceptions still need confirmation. Review your plan with an advisor before registration.</p></div>
+      </section>
+    </div>
   </main>
   <footer class="site-footer">
-    <div class="container">
-      <p>CSUN Student Portal Project</p>
-      <p>This is a student project and is not an official CSUN website.</p>
-    </div>
-  </footer>
+
+        <div class="container footer-inner">
+
+            <p>
+                <strong>CSUN Student Portal Project</strong>
+            </p>
+
+            <p>
+                This is a student project and is not an official
+                CSUN website.
+            </p>
+
+        </div>
+
+    </footer>
+  <dialog id="mapper-dialog" class="pm-dialog" aria-labelledby="dialog-title"><div class="pm-dialog-header"><div><p id="dialog-eyebrow" class="pm-eyebrow"></p><h2 id="dialog-title"></h2></div><button id="close-dialog" class="pm-icon-button" aria-label="Close dialog" data-icon="close"></button></div><div id="dialog-body" class="pm-dialog-body"></div></dialog>
+  <div id="mapper-toast" class="pm-toast" role="status" aria-live="polite" hidden></div>
+  <input id="import-file" type="file" accept="application/json,.json" hidden>
+  <noscript><p class="pm-error">Enable JavaScript to build and customize your program roadmap.</p></noscript>
 </body>
 </html>
